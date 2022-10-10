@@ -1,0 +1,38 @@
+import 'dart:convert';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_template/core/common/store/secure_storage_cached_source.dart';
+import 'package:flutter_template/core/model/user.dart';
+import 'package:stock/stock.dart';
+
+class AuthLocalSource {
+  static const _storageAuthPrefix = 'AuthLocalSource';
+  static const _keyToken = '$_storageAuthPrefix.token';
+  static const _keyUser = '$_storageAuthPrefix.user';
+
+  late SourceOfTruth<String, String> _userTokenStorage;
+  late SourceOfTruth<String, User> _userStorage;
+
+  AuthLocalSource(FlutterSecureStorage storage) {
+    final secureStorage = SecuredStorageSourceOfTruth(storage);
+    _userTokenStorage = secureStorage;
+    _userStorage = secureStorage.mapToUsingMapper(UserStockTypeMapper());
+  }
+
+  Stream<String?> getUserToken() => _userTokenStorage.reader(_keyToken);
+
+  Stream<User?> getUser() => _userStorage.reader(_keyUser);
+
+  Future<void> saveUserToken(String? token) =>
+      _userTokenStorage.write(_keyToken, token);
+
+  Future<void> saveUserInfo(User? user) => _userStorage.write(_keyUser, user);
+}
+
+class UserStockTypeMapper extends StockTypeMapper<String, User> {
+  @override
+  User fromInput(String userJson) => User.fromJson(json.decode(userJson));
+
+  @override
+  String fromOutput(User user) => json.encode(user.toJson());
+}
