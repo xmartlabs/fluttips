@@ -14,12 +14,12 @@ class SignInCubit extends Cubit<SignInBaseState> {
 
   SignInCubit(this._errorHandler)
       : super(
-          SignInBaseState.state(
-            email: 'hi@xmartlabs.com',
-            password: 'xmartlabs',
-            error: '',
-          ),
-        );
+    SignInBaseState.state(
+      email: 'hi@xmartlabs.com',
+      password: 'xmartlabs',
+      error: '',
+    ),
+  );
 
   void changeEmail(String email) => emit(state.copyWith(email: email));
 

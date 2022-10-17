@@ -5,6 +5,9 @@ import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.da
 
 import 'package:flutter_template/ui/signin/signin_cubit.dart';
 
+import '../../core/di/di_provider.dart';
+import '../../core/repository/tip_repository.dart';
+
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -18,6 +21,8 @@ class SignInScreen extends StatelessWidget {
 }
 
 class _SignInContentScreen extends StatelessWidget {
+  final TipRepository _tipRepository = DiProvider.get();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignInCubit, SignInBaseState>(
@@ -34,7 +39,10 @@ class _SignInContentScreen extends StatelessWidget {
                 Text(context.localizations
                     .error(context.read<SignInCubit>().state.error)),
               TextButton(
-                  onPressed: () => context.read<SignInCubit>().signIn(),
+                  onPressed: () async {
+                    print((await _tipRepository.getTips()));
+
+                  },
                   child: Text(context.localizations.sign_in))
             ],
           ),
