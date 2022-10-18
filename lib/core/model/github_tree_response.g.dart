@@ -1,19 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tips_response.dart';
+part of 'github_tree_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TipResponse _$$_TipResponseFromJson(Map<String, dynamic> json) =>
-    _$_TipResponse(
+_$_GitHiubTreeResponse _$$_GitHiubTreeResponseFromJson(
+        Map<String, dynamic> json) =>
+    _$_GitHiubTreeResponse(
       tree: (json['tree'] as List<dynamic>)
-          .map((e) => Tip.fromJson(e as Map<String, dynamic>))
+          .map((e) => GitHubFile.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_TipResponseToJson(_$_TipResponse instance) =>
+Map<String, dynamic> _$$_GitHiubTreeResponseToJson(
+        _$_GitHiubTreeResponse instance) =>
     <String, dynamic>{
       'tree': instance.tree.map((e) => e.toJson()).toList(),
     };

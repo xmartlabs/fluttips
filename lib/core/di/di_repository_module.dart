@@ -8,9 +8,8 @@ import 'package:flutter_template/core/source/common/app_database.dart';
 import 'package:flutter_template/core/source/common/auth_interceptor.dart';
 import 'package:flutter_template/core/source/common/http_service.dart';
 import 'package:flutter_template/core/source/project_remote_source.dart';
+import 'package:flutter_template/core/source/tip_remote_source.dart';
 import 'package:get_it/get_it.dart';
-
-import '../source/tip_remote_source.dart';
 
 class RepositoryDiModule {
   RepositoryDiModule._privateConstructor();
