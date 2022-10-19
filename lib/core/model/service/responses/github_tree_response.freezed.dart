@@ -14,36 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-GitHiubTreeResponse _$GitHiubTreeResponseFromJson(Map<String, dynamic> json) {
+GitHubTreeResponse _$GitHubTreeResponseFromJson(Map<String, dynamic> json) {
   return _GitHiubTreeResponse.fromJson(json);
 }
 
 /// @nodoc
-mixin _$GitHiubTreeResponse {
+mixin _$GitHubTreeResponse {
   List<GitHubFile> get tree => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GitHiubTreeResponseCopyWith<GitHiubTreeResponse> get copyWith =>
+  $GitHubTreeResponseCopyWith<GitHubTreeResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GitHiubTreeResponseCopyWith<$Res> {
-  factory $GitHiubTreeResponseCopyWith(
-          GitHiubTreeResponse value, $Res Function(GitHiubTreeResponse) then) =
-      _$GitHiubTreeResponseCopyWithImpl<$Res>;
+abstract class $GitHubTreeResponseCopyWith<$Res> {
+  factory $GitHubTreeResponseCopyWith(
+          GitHubTreeResponse value, $Res Function(GitHubTreeResponse) then) =
+      _$GitHubTreeResponseCopyWithImpl<$Res>;
   $Res call({List<GitHubFile> tree});
 }
 
 /// @nodoc
-class _$GitHiubTreeResponseCopyWithImpl<$Res>
-    implements $GitHiubTreeResponseCopyWith<$Res> {
-  _$GitHiubTreeResponseCopyWithImpl(this._value, this._then);
+class _$GitHubTreeResponseCopyWithImpl<$Res>
+    implements $GitHubTreeResponseCopyWith<$Res> {
+  _$GitHubTreeResponseCopyWithImpl(this._value, this._then);
 
-  final GitHiubTreeResponse _value;
+  final GitHubTreeResponse _value;
   // ignore: unused_field
-  final $Res Function(GitHiubTreeResponse) _then;
+  final $Res Function(GitHubTreeResponse) _then;
 
   @override
   $Res call({
@@ -60,7 +60,7 @@ class _$GitHiubTreeResponseCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$$_GitHiubTreeResponseCopyWith<$Res>
-    implements $GitHiubTreeResponseCopyWith<$Res> {
+    implements $GitHubTreeResponseCopyWith<$Res> {
   factory _$$_GitHiubTreeResponseCopyWith(_$_GitHiubTreeResponse value,
           $Res Function(_$_GitHiubTreeResponse) then) =
       __$$_GitHiubTreeResponseCopyWithImpl<$Res>;
@@ -70,7 +70,7 @@ abstract class _$$_GitHiubTreeResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_GitHiubTreeResponseCopyWithImpl<$Res>
-    extends _$GitHiubTreeResponseCopyWithImpl<$Res>
+    extends _$GitHubTreeResponseCopyWithImpl<$Res>
     implements _$$_GitHiubTreeResponseCopyWith<$Res> {
   __$$_GitHiubTreeResponseCopyWithImpl(_$_GitHiubTreeResponse _value,
       $Res Function(_$_GitHiubTreeResponse) _then)
@@ -110,7 +110,7 @@ class _$_GitHiubTreeResponse implements _GitHiubTreeResponse {
 
   @override
   String toString() {
-    return 'GitHiubTreeResponse(tree: $tree)';
+    return 'GitHubTreeResponse(tree: $tree)';
   }
 
   @override
@@ -140,7 +140,7 @@ class _$_GitHiubTreeResponse implements _GitHiubTreeResponse {
   }
 }
 
-abstract class _GitHiubTreeResponse implements GitHiubTreeResponse {
+abstract class _GitHiubTreeResponse implements GitHubTreeResponse {
   factory _GitHiubTreeResponse({required final List<GitHubFile> tree}) =
       _$_GitHiubTreeResponse;
 

@@ -9,16 +9,13 @@ import 'package:flutter_template/core/repository/session_repository.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../core/model/tip.dart';
-import '../../core/repository/tip_repository.dart';
-
 part 'welcome_cubit.freezed.dart';
+
 part 'welcome_state.dart';
 
 class WelcomeCubit extends Cubit<WelcomeBaseState> {
   final SessionRepository _sessionRepository = DiProvider.get();
   final ProjectRepository _projectRepository = DiProvider.get();
-  final TipRepository _tipRepository = DiProvider.get();
 
   final GeneralErrorHandler _errorHandler;
 
@@ -34,9 +31,6 @@ class WelcomeCubit extends Cubit<WelcomeBaseState> {
         .filterSuccess(_errorHandler.handleError)
         .listen((projects) => emit(state.copyWith(projects: projects ?? [])));
   }
-
-
-
 
   @override
   Future<void> close() async {

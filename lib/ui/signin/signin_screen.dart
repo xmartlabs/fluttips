@@ -5,9 +5,6 @@ import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.da
 
 import 'package:flutter_template/ui/signin/signin_cubit.dart';
 
-import '../../core/di/di_provider.dart';
-import '../../core/repository/tip_repository.dart';
-
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -21,12 +18,12 @@ class SignInScreen extends StatelessWidget {
 }
 
 class _SignInContentScreen extends StatelessWidget {
-  final TipRepository _tipRepository = DiProvider.get();
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignInCubit, SignInBaseState>(
       builder: (context, state) {
+        var cubit = context
+                  .read<SignInCubit>();
         return Scaffold(
           appBar: AppBar(
             title: Text(context.localizations.sign_in),
@@ -35,14 +32,16 @@ class _SignInContentScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(child: _SignInForm()),
-              if (context.read<SignInCubit>().state.error.isNotEmpty)
+              if (cubit
+                  .state
+                  .error
+                  .isNotEmpty)
                 Text(context.localizations
-                    .error(context.read<SignInCubit>().state.error)),
+                    .error(cubit
+                    .state
+                    .error)),
               TextButton(
-                  onPressed: () async {
-                    print((await _tipRepository.getTips()));
-
-                  },
+                  onPressed: cubit.signIn,
                   child: Text(context.localizations.sign_in))
             ],
           ),
@@ -100,15 +99,15 @@ class _SignInFormState extends State<_SignInForm> {
           padding: const EdgeInsets.all(8.0),
           child: Container(
               child: TextField(
-            obscureText: true,
-            controller: _passwordTextController,
-            onChanged: (String password) =>
-                _signInCubit.changePassword(password),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: context.localizations.password,
-            ),
-          )),
+                obscureText: true,
+                controller: _passwordTextController,
+                onChanged: (String password) =>
+                    _signInCubit.changePassword(password),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: context.localizations.password,
+                ),
+              )),
         ),
       ],
     );

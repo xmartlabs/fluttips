@@ -1,4 +1,3 @@
-import 'package:dartx/dartx.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'github_file_response.freezed.dart';
@@ -23,6 +22,6 @@ enum GitHubFileType {
   tree,
 }
 
-extension GitHubFileExtensions on GitHubFile{
+extension GitHubFileExtensions on GitHubFile {
   bool get isDirectory => type == GitHubFileType.tree;
 }

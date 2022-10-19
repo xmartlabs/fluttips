@@ -23,9 +23,9 @@ mixin _$Tip {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
-  String get codeUrl => throw _privateConstructorUsedError;
-  String get mdUrl => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
+  String? get codeUrl => throw _privateConstructorUsedError;
+  String? get mdUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,9 +40,9 @@ abstract class $TipCopyWith<$Res> {
       {String id,
       String name,
       String url,
-      String imageUrl,
-      String codeUrl,
-      String mdUrl});
+      String? imageUrl,
+      String? codeUrl,
+      String? mdUrl});
 }
 
 /// @nodoc
@@ -78,15 +78,15 @@ class _$TipCopyWithImpl<$Res> implements $TipCopyWith<$Res> {
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       codeUrl: codeUrl == freezed
           ? _value.codeUrl
           : codeUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mdUrl: mdUrl == freezed
           ? _value.mdUrl
           : mdUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -100,9 +100,9 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
       {String id,
       String name,
       String url,
-      String imageUrl,
-      String codeUrl,
-      String mdUrl});
+      String? imageUrl,
+      String? codeUrl,
+      String? mdUrl});
 }
 
 /// @nodoc
@@ -139,15 +139,15 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res>
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       codeUrl: codeUrl == freezed
           ? _value.codeUrl
           : codeUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       mdUrl: mdUrl == freezed
           ? _value.mdUrl
           : mdUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -173,11 +173,11 @@ class _$_Tip implements _Tip {
   @override
   final String url;
   @override
-  final String imageUrl;
+  final String? imageUrl;
   @override
-  final String codeUrl;
+  final String? codeUrl;
   @override
-  final String mdUrl;
+  final String? mdUrl;
 
   @override
   String toString() {
@@ -226,9 +226,9 @@ abstract class _Tip implements Tip {
       {required final String id,
       required final String name,
       required final String url,
-      required final String imageUrl,
-      required final String codeUrl,
-      required final String mdUrl}) = _$_Tip;
+      required final String? imageUrl,
+      required final String? codeUrl,
+      required final String? mdUrl}) = _$_Tip;
 
   factory _Tip.fromJson(Map<String, dynamic> json) = _$_Tip.fromJson;
 
@@ -239,11 +239,11 @@ abstract class _Tip implements Tip {
   @override
   String get url;
   @override
-  String get imageUrl;
+  String? get imageUrl;
   @override
-  String get codeUrl;
+  String? get codeUrl;
   @override
-  String get mdUrl;
+  String? get mdUrl;
   @override
   @JsonKey(ignore: true)
   _$$_TipCopyWith<_$_Tip> get copyWith => throw _privateConstructorUsedError;

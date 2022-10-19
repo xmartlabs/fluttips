@@ -3,7 +3,7 @@ import 'dart:core';
 import 'package:dio/dio.dart';
 import 'package:flutter_template/core/common/config.dart';
 import 'package:flutter_template/core/common/network_exceptions.dart';
-import 'package:flutter_template/core/model/service/service_response.dart';
+import 'package:flutter_template/core/model/service/responses/service_response.dart';
 
 abstract class HttpService {
   Future<Response> get(

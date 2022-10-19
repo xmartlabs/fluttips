@@ -1,4 +1,3 @@
-import 'package:dartx/dartx.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'tip.freezed.dart';
@@ -12,9 +11,9 @@ class Tip with _$Tip {
     required String id,
     required String name,
     required String url,
-    required String imageUrl,
-    required String codeUrl,
-    required String mdUrl,
+    required String? imageUrl,
+    required String? codeUrl,
+    required String? mdUrl,
   }) = _Tip;
 
   factory Tip.fromJson(Map<String, dynamic> json) => _$TipFromJson(json);

@@ -42,9 +42,9 @@ extension _GetItUseCaseDiModuleExtensions on GetIt {
 
   void _setupSources() {
     registerLazySingleton(() => AuthLocalSource(get()));
-    registerLazySingleton(() => TipRemoteSource(get()));
     registerLazySingleton(() => AuthRemoteSource(get()));
-    registerLazySingleton(() => get<AppDatabase>().projectLocalSource);
     registerLazySingleton(() => ProjectRemoteSource(get()));
+    registerLazySingleton(() => TipRemoteSource(get()));
+    registerLazySingleton(() => get<AppDatabase>().projectLocalSource);
   }
 }
