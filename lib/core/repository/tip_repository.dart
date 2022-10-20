@@ -7,5 +7,5 @@ class TipRepository {
   TipRepository(this._tipRemoteSource);
 
   //TODO: change to a stream in next PR with floor
-  Future<List<Tip>> getTips() => _tipRemoteSource.getTips();
+  Future<Iterable<Tip>> getTips() => _tipRemoteSource.getTips();
 }
