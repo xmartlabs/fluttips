@@ -28,7 +28,11 @@ extension EnviromentPath on Environments {
 
 abstract class Config {
   static late String apiBaseUrl;
-  static late String supabaseApiKey;
+  static String imageBaseUrl =
+      'https://raw.githubusercontent.com/vandadnp/flutter-tips-and-tricks/main/';
+  static String prefixUrl =
+      'https://github.com/vandadnp/flutter-tips-and-tricks/blob/main/';
+  static String gitHubTipsNameFolder = 'tipsandtricks/';
 
   static final _environment = enumFromString(
           Environments.values, const String.fromEnvironment('ENV')) ??
@@ -41,18 +45,14 @@ abstract class Config {
 
   static void _initializeEnvVariables() {
     apiBaseUrl = _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_API_BASE_URL)!;
-    supabaseApiKey =
-        _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_SUPABASE_API_KEY)!;
   }
 }
 
 abstract class _EnvConfig {
   static const ENV_KEY_API_BASE_URL = 'API_BASE_URL';
-  static const ENV_KEY_SUPABASE_API_KEY = 'SUPABASE_API_KEY';
 
   static const systemEnv = {
     ENV_KEY_API_BASE_URL: String.fromEnvironment(ENV_KEY_API_BASE_URL),
-    ENV_KEY_SUPABASE_API_KEY: String.fromEnvironment(ENV_KEY_SUPABASE_API_KEY),
   };
 
   static final Map<String, String> _envFileEnv = {};

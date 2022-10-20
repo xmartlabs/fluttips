@@ -11,7 +11,7 @@ class Tip with _$Tip {
     required String id,
     required String name,
     required String url,
-    required String? imageUrl,
+    required String imageUrl,
     required String? codeUrl,
     required String? mdUrl,
   }) = _Tip;

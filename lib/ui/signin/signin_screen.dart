@@ -22,8 +22,6 @@ class _SignInContentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SignInCubit, SignInBaseState>(
       builder: (context, state) {
-        var cubit = context
-                  .read<SignInCubit>();
         return Scaffold(
           appBar: AppBar(
             title: Text(context.localizations.sign_in),
@@ -32,16 +30,11 @@ class _SignInContentScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(child: _SignInForm()),
-              if (cubit
-                  .state
-                  .error
-                  .isNotEmpty)
+              if (context.read<SignInCubit>().state.error.isNotEmpty)
                 Text(context.localizations
-                    .error(cubit
-                    .state
-                    .error)),
+                    .error(context.read<SignInCubit>().state.error)),
               TextButton(
-                  onPressed: cubit.signIn,
+                  onPressed: () => context.read<SignInCubit>().signIn(),
                   child: Text(context.localizations.sign_in))
             ],
           ),
@@ -99,15 +92,15 @@ class _SignInFormState extends State<_SignInForm> {
           padding: const EdgeInsets.all(8.0),
           child: Container(
               child: TextField(
-                obscureText: true,
-                controller: _passwordTextController,
-                onChanged: (String password) =>
-                    _signInCubit.changePassword(password),
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: context.localizations.password,
-                ),
-              )),
+            obscureText: true,
+            controller: _passwordTextController,
+            onChanged: (String password) =>
+                _signInCubit.changePassword(password),
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: context.localizations.password,
+            ),
+          )),
         ),
       ],
     );
