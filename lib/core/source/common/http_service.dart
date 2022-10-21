@@ -3,7 +3,7 @@ import 'dart:core';
 import 'package:dio/dio.dart';
 import 'package:flutter_template/core/common/config.dart';
 import 'package:flutter_template/core/common/network_exceptions.dart';
-import 'package:flutter_template/core/model/service/service_response.dart';
+import 'package:flutter_template/core/model/service/responses/service_response.dart';
 
 abstract class HttpService {
   Future<Response> get(
@@ -51,8 +51,6 @@ class HttpServiceDio implements HttpService {
   HttpServiceDio(List<Interceptor> interceptors) {
     final options = BaseOptions(
       baseUrl: Config.apiBaseUrl,
-      // TODO: Remove api key. It's only needed for Supabase
-      headers: {'apikey': Config.supabaseApiKey},
     );
     _dio = Dio(options);
     _dio.interceptors.addAll(interceptors);
