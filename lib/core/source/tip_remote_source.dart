@@ -32,7 +32,7 @@ class TipRemoteSource {
         .associateBy((file) => FileType.fromPath(file.path));
     return Tip(
       id: key,
-      name: key.split('/').second.replaceAll('-', '  '),
+      name: key.replaceAll('-', '  '),
       url: Config.prefixUrl + tipDir.path,
       imageUrl: Config.imageBaseUrl + files[FileType.image]!.path,
       codeUrl: Config.prefixUrl + (files[FileType.code]?.path ?? ''),

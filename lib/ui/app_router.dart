@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_template/ui/section/section_router.dart';
-import 'package:flutter_template/ui/signin/signin_screen.dart';
+import 'package:flutter_template/ui/tips/tips_screen.dart';
 import 'package:flutter_template/ui/welcome/welcome_screen.dart';
+import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
 
@@ -15,8 +15,8 @@ part 'app_router.gr.dart';
       initial: true,
       children: [
         AutoRoute(
-          path: AppRouter.SIGN_IN_PATH,
-          page: SignInScreen,
+          path: AppRouter.TIPS_PATH,
+          page: TipsScreen,
           initial: true,
         ),
       ],
@@ -35,6 +35,6 @@ part 'app_router.gr.dart';
   ],
 )
 class AppRouter extends _$AppRouter {
-  static const SIGN_IN_PATH = 'signin';
+  static const TIPS_PATH = 'tips';
   static const WELCOME_PATH = 'welcome';
 }

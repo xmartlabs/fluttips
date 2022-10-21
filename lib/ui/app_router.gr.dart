@@ -29,10 +29,10 @@ class _$AppRouter extends RootStackRouter {
         child: SectionRouter(),
       );
     },
-    SignInScreenRoute.name: (routeData) {
+    TipsScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const SignInScreen(),
+        child: const TipsScreen(),
       );
     },
     WelcomeScreenRoute.name: (routeData) {
@@ -53,12 +53,12 @@ class _$AppRouter extends RootStackRouter {
               '#redirect',
               path: '',
               parent: UnauthenticatedRouter.name,
-              redirectTo: 'signin',
+              redirectTo: 'tips',
               fullMatch: true,
             ),
             RouteConfig(
-              SignInScreenRoute.name,
-              path: 'signin',
+              TipsScreenRoute.name,
+              path: 'tips',
               parent: UnauthenticatedRouter.name,
             ),
           ],
@@ -111,15 +111,15 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SignInScreen]
-class SignInScreenRoute extends PageRouteInfo<void> {
-  const SignInScreenRoute()
+/// [TipsScreen]
+class TipsScreenRoute extends PageRouteInfo<void> {
+  const TipsScreenRoute()
       : super(
-          SignInScreenRoute.name,
-          path: 'signin',
+          TipsScreenRoute.name,
+          path: 'tips',
         );
 
-  static const String name = 'SignInScreenRoute';
+  static const String name = 'TipsScreenRoute';
 }
 
 /// generated route for
