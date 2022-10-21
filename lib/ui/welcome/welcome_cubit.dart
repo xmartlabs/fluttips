@@ -10,6 +10,7 @@ import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.da
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'welcome_cubit.freezed.dart';
+
 part 'welcome_state.dart';
 
 class WelcomeCubit extends Cubit<WelcomeBaseState> {

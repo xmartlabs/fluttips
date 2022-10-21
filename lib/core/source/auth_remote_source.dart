@@ -1,5 +1,5 @@
 import 'package:flutter_template/core/model/service/auth_models.dart';
-import 'package:flutter_template/core/model/service/service_response.dart';
+import 'package:flutter_template/core/model/service/responses/service_response.dart';
 import 'package:flutter_template/core/source/common/http_service.dart';
 
 class AuthRemoteSource {
