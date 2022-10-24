@@ -26,7 +26,8 @@ class _TipContentScreen extends StatelessWidget {
             title: Text(context.localizations.sign_in),
           ),
           body: ListView.builder(
-            itemCount: 10,
+            shrinkWrap: true,
+            itemCount: 11,
             itemBuilder: (BuildContext context, int index) =>
                 Image.network(state.tips[index].imageUrl),
           ),
