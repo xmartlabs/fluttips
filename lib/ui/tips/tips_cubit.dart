@@ -12,6 +12,7 @@ part 'tips_cubit.freezed.dart';
 part 'tips_state.dart';
 
 class TipCubit extends Cubit<TipsBaseState> {
+  //ignore: unused_field
   final GeneralErrorHandler _errorHandler;
   final TipRepository _tipRepository = DiProvider.get();
 

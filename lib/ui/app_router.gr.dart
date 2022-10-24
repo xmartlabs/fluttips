@@ -29,16 +29,10 @@ class _$AppRouter extends RootStackRouter {
         child: SectionRouter(),
       );
     },
-    TipsScreenRoute.name: (routeData) {
+    HomeScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const TipsScreen(),
-      );
-    },
-    WelcomeScreenRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: WelcomeScreen(),
+        child: const HomeScreen(),
       );
     },
   };
@@ -47,21 +41,7 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(
           UnauthenticatedRouter.name,
-          path: '/',
-          children: [
-            RouteConfig(
-              '#redirect',
-              path: '',
-              parent: UnauthenticatedRouter.name,
-              redirectTo: 'tips',
-              fullMatch: true,
-            ),
-            RouteConfig(
-              TipsScreenRoute.name,
-              path: 'tips',
-              parent: UnauthenticatedRouter.name,
-            ),
-          ],
+          path: '/section-router',
         ),
         RouteConfig(
           AuthenticatedRouter.name,
@@ -71,12 +51,12 @@ class _$AppRouter extends RootStackRouter {
               '#redirect',
               path: '',
               parent: AuthenticatedRouter.name,
-              redirectTo: 'welcome',
+              redirectTo: 'home',
               fullMatch: true,
             ),
             RouteConfig(
-              WelcomeScreenRoute.name,
-              path: 'welcome',
+              HomeScreenRoute.name,
+              path: 'home',
               parent: AuthenticatedRouter.name,
             ),
           ],
@@ -87,11 +67,10 @@ class _$AppRouter extends RootStackRouter {
 /// generated route for
 /// [SectionRouter]
 class UnauthenticatedRouter extends PageRouteInfo<void> {
-  const UnauthenticatedRouter({List<PageRouteInfo>? children})
+  const UnauthenticatedRouter()
       : super(
           UnauthenticatedRouter.name,
-          path: '/',
-          initialChildren: children,
+          path: '/section-router',
         );
 
   static const String name = 'UnauthenticatedRouter';
@@ -111,25 +90,13 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TipsScreen]
-class TipsScreenRoute extends PageRouteInfo<void> {
-  const TipsScreenRoute()
+/// [HomeScreen]
+class HomeScreenRoute extends PageRouteInfo<void> {
+  const HomeScreenRoute()
       : super(
-          TipsScreenRoute.name,
-          path: 'tips',
+          HomeScreenRoute.name,
+          path: 'home',
         );
 
-  static const String name = 'TipsScreenRoute';
-}
-
-/// generated route for
-/// [WelcomeScreen]
-class WelcomeScreenRoute extends PageRouteInfo<void> {
-  const WelcomeScreenRoute()
-      : super(
-          WelcomeScreenRoute.name,
-          path: 'welcome',
-        );
-
-  static const String name = 'WelcomeScreenRoute';
+  static const String name = 'HomeScreenRoute';
 }

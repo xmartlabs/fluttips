@@ -121,10 +121,11 @@ class __$$_TipsStateCopyWithImpl<$Res> extends _$TipsBaseStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TipsState implements _TipsState {
-  const _$_TipsState({required final List<Tip> tips}) : _tips = tips;
+  const _$_TipsState({final List<Tip> tips = const []}) : _tips = tips;
 
   final List<Tip> _tips;
   @override
+  @JsonKey()
   List<Tip> get tips {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tips);
@@ -210,7 +211,7 @@ class _$_TipsState implements _TipsState {
 }
 
 abstract class _TipsState implements TipsBaseState {
-  const factory _TipsState({required final List<Tip> tips}) = _$_TipsState;
+  const factory _TipsState({final List<Tip> tips}) = _$_TipsState;
 
   @override
   List<Tip> get tips;
