@@ -17,13 +17,13 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    AuthenticatedRouter.name: (routeData) {
+    UnauthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: SectionRouter(),
       );
     },
-    UnauthenticatedRouter.name: (routeData) {
+    AuthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: SectionRouter(),
@@ -46,24 +46,6 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
-          AuthenticatedRouter.name,
-          path: '/section-router',
-          children: [
-            RouteConfig(
-              '#redirect',
-              path: '',
-              parent: AuthenticatedRouter.name,
-              redirectTo: 'signin',
-              fullMatch: true,
-            ),
-            RouteConfig(
-              SignInScreenRoute.name,
-              path: 'signin',
-              parent: AuthenticatedRouter.name,
-            ),
-          ],
-        ),
-        RouteConfig(
           UnauthenticatedRouter.name,
           path: '/section-router',
           children: [
@@ -71,30 +53,35 @@ class _$AppRouter extends RootStackRouter {
               '#redirect',
               path: '',
               parent: UnauthenticatedRouter.name,
+              redirectTo: 'signin',
+              fullMatch: true,
+            ),
+            RouteConfig(
+              SignInScreenRoute.name,
+              path: 'signin',
+              parent: UnauthenticatedRouter.name,
+            ),
+          ],
+        ),
+        RouteConfig(
+          AuthenticatedRouter.name,
+          path: '/section-router',
+          children: [
+            RouteConfig(
+              '#redirect',
+              path: '',
+              parent: AuthenticatedRouter.name,
               redirectTo: 'home',
               fullMatch: true,
             ),
             RouteConfig(
               HomeScreenRoute.name,
               path: 'home',
-              parent: UnauthenticatedRouter.name,
+              parent: AuthenticatedRouter.name,
             ),
           ],
         ),
       ];
-}
-
-/// generated route for
-/// [SectionRouter]
-class AuthenticatedRouter extends PageRouteInfo<void> {
-  const AuthenticatedRouter({List<PageRouteInfo>? children})
-      : super(
-          AuthenticatedRouter.name,
-          path: '/section-router',
-          initialChildren: children,
-        );
-
-  static const String name = 'AuthenticatedRouter';
 }
 
 /// generated route for
@@ -108,6 +95,19 @@ class UnauthenticatedRouter extends PageRouteInfo<void> {
         );
 
   static const String name = 'UnauthenticatedRouter';
+}
+
+/// generated route for
+/// [SectionRouter]
+class AuthenticatedRouter extends PageRouteInfo<void> {
+  const AuthenticatedRouter({List<PageRouteInfo>? children})
+      : super(
+          AuthenticatedRouter.name,
+          path: '/section-router',
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthenticatedRouter';
 }
 
 /// generated route for
