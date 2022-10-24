@@ -25,6 +25,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   }
 
   Future<void> getTips() async {
+    //TODO: transform to stream
     final tips = await _tipRepository.getTips();
     emit(state.copyWith(tips: tips.toList()));
   }
