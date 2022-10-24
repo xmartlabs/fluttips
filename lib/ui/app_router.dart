@@ -11,7 +11,7 @@ part 'app_router.gr.dart';
   replaceInRouteName: 'Page,Route,Screen',
   routes: <AutoRoute>[
     AutoRoute(
-      name: 'AuthenticatedRouter',
+      name: 'UnauthenticatedRouter',
       page: SectionRouter,
       children: [
         AutoRoute(
@@ -22,7 +22,7 @@ part 'app_router.gr.dart';
       ],
     ),
     AutoRoute(
-      name: 'UnauthenticatedRouter',
+      name: 'AuthenticatedRouter',
       page: SectionRouter,
       children: [
         AutoRoute(
