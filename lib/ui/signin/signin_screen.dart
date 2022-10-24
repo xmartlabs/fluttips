@@ -24,7 +24,7 @@ class _SignInContentScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Text(context.localizations.sign_in),
+            title: Text(context.localizations.home),
           ),
           body: Column(
             mainAxisSize: MainAxisSize.min,
@@ -35,7 +35,7 @@ class _SignInContentScreen extends StatelessWidget {
                     .error(context.read<SignInCubit>().state.error)),
               TextButton(
                   onPressed: () => context.read<SignInCubit>().signIn(),
-                  child: Text(context.localizations.sign_in))
+                  child: Text(context.localizations.home))
             ],
           ),
         );
