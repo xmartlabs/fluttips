@@ -7,6 +7,7 @@ part 'home_cubit.freezed.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeBaseState> {
+  //ignore: unused_field
   final GeneralErrorHandler _errorHandler;
 
   HomeCubit(this._errorHandler)
