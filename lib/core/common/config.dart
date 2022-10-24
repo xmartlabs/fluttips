@@ -63,7 +63,6 @@ abstract class _EnvConfig {
   static Future<void> _setupEnv(Environments env) async {
     _envFileEnv
       ..addAll(await loadEnvs(Assets.environments.env))
-      ..addAll(await loadEnvs('${env.path}.env'))
-      ..addAll(await loadEnvs('${env.path}.private.env'));
+      ..addAll(await loadEnvs('${env.path}.env'));
   }
 }

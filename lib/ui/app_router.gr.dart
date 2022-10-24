@@ -17,13 +17,13 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    UnauthenticatedRouter.name: (routeData) {
+    AuthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: SectionRouter(),
       );
     },
-    AuthenticatedRouter.name: (routeData) {
+    UnauthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: SectionRouter(),
@@ -35,34 +35,16 @@ class _$AppRouter extends RootStackRouter {
         child: const SignInScreen(),
       );
     },
-    WelcomeScreenRoute.name: (routeData) {
+    HomeScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: WelcomeScreen(),
+        child: const HomeScreen(),
       );
     },
   };
 
   @override
   List<RouteConfig> get routes => [
-        RouteConfig(
-          UnauthenticatedRouter.name,
-          path: '/',
-          children: [
-            RouteConfig(
-              '#redirect',
-              path: '',
-              parent: UnauthenticatedRouter.name,
-              redirectTo: 'signin',
-              fullMatch: true,
-            ),
-            RouteConfig(
-              SignInScreenRoute.name,
-              path: 'signin',
-              parent: UnauthenticatedRouter.name,
-            ),
-          ],
-        ),
         RouteConfig(
           AuthenticatedRouter.name,
           path: '/section-router',
@@ -71,30 +53,35 @@ class _$AppRouter extends RootStackRouter {
               '#redirect',
               path: '',
               parent: AuthenticatedRouter.name,
-              redirectTo: 'welcome',
+              redirectTo: 'signin',
               fullMatch: true,
             ),
             RouteConfig(
-              WelcomeScreenRoute.name,
-              path: 'welcome',
+              SignInScreenRoute.name,
+              path: 'signin',
               parent: AuthenticatedRouter.name,
             ),
           ],
         ),
-      ];
-}
-
-/// generated route for
-/// [SectionRouter]
-class UnauthenticatedRouter extends PageRouteInfo<void> {
-  const UnauthenticatedRouter({List<PageRouteInfo>? children})
-      : super(
+        RouteConfig(
           UnauthenticatedRouter.name,
-          path: '/',
-          initialChildren: children,
-        );
-
-  static const String name = 'UnauthenticatedRouter';
+          path: '/section-router',
+          children: [
+            RouteConfig(
+              '#redirect',
+              path: '',
+              parent: UnauthenticatedRouter.name,
+              redirectTo: 'home',
+              fullMatch: true,
+            ),
+            RouteConfig(
+              HomeScreenRoute.name,
+              path: 'home',
+              parent: UnauthenticatedRouter.name,
+            ),
+          ],
+        ),
+      ];
 }
 
 /// generated route for
@@ -111,6 +98,19 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SectionRouter]
+class UnauthenticatedRouter extends PageRouteInfo<void> {
+  const UnauthenticatedRouter({List<PageRouteInfo>? children})
+      : super(
+          UnauthenticatedRouter.name,
+          path: '/section-router',
+          initialChildren: children,
+        );
+
+  static const String name = 'UnauthenticatedRouter';
+}
+
+/// generated route for
 /// [SignInScreen]
 class SignInScreenRoute extends PageRouteInfo<void> {
   const SignInScreenRoute()
@@ -123,13 +123,13 @@ class SignInScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [WelcomeScreen]
-class WelcomeScreenRoute extends PageRouteInfo<void> {
-  const WelcomeScreenRoute()
+/// [HomeScreen]
+class HomeScreenRoute extends PageRouteInfo<void> {
+  const HomeScreenRoute()
       : super(
-          WelcomeScreenRoute.name,
-          path: 'welcome',
+          HomeScreenRoute.name,
+          path: 'home',
         );
 
-  static const String name = 'WelcomeScreenRoute';
+  static const String name = 'HomeScreenRoute';
 }
