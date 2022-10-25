@@ -29,12 +29,6 @@ class _$AppRouter extends RootStackRouter {
         child: SectionRouter(),
       );
     },
-    SignInScreenRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const SignInScreen(),
-      );
-    },
     HomeScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -48,20 +42,6 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           UnauthenticatedRouter.name,
           path: '/section-router',
-          children: [
-            RouteConfig(
-              '#redirect',
-              path: '',
-              parent: UnauthenticatedRouter.name,
-              redirectTo: 'signin',
-              fullMatch: true,
-            ),
-            RouteConfig(
-              SignInScreenRoute.name,
-              path: 'signin',
-              parent: UnauthenticatedRouter.name,
-            ),
-          ],
         ),
         RouteConfig(
           AuthenticatedRouter.name,
@@ -87,11 +67,10 @@ class _$AppRouter extends RootStackRouter {
 /// generated route for
 /// [SectionRouter]
 class UnauthenticatedRouter extends PageRouteInfo<void> {
-  const UnauthenticatedRouter({List<PageRouteInfo>? children})
+  const UnauthenticatedRouter()
       : super(
           UnauthenticatedRouter.name,
           path: '/section-router',
-          initialChildren: children,
         );
 
   static const String name = 'UnauthenticatedRouter';
@@ -108,18 +87,6 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
         );
 
   static const String name = 'AuthenticatedRouter';
-}
-
-/// generated route for
-/// [SignInScreen]
-class SignInScreenRoute extends PageRouteInfo<void> {
-  const SignInScreenRoute()
-      : super(
-          SignInScreenRoute.name,
-          path: 'signin',
-        );
-
-  static const String name = 'SignInScreenRoute';
 }
 
 /// generated route for
