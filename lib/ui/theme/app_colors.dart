@@ -10,6 +10,14 @@ class AppColors extends ColorScheme {
   final MaterialColor primary;
   @override
   final MaterialColor surface;
+  @override
+  final MaterialColor tertiary;
+  final MaterialColor warning;
+  final Color onWarning;
+
+  static const _colorOnPrimary = Color(0xffC7E5F6);
+  static const _colorOnSurface = Color(0xff042B59);
+  static const _colorWarning = Color(0xffFFD326);
 
   AppColors({
     required Brightness brightness,
@@ -23,31 +31,40 @@ class AppColors extends ColorScheme {
     required Color onBackground,
     required this.surface,
     required Color onSurface,
+    required this.tertiary,
+    required Color onTertiary,
+    required this.warning,
+    required this.onWarning,
   }) : super(
-          brightness: brightness,
-          primary: primary,
-          onPrimary: onPrimary,
-          secondary: secondary,
-          onSecondary: onSecondary,
-          error: error,
-          onError: onError,
-          background: background,
-          onBackground: onBackground,
-          surface: surface,
-          onSurface: onSurface,
-        );
+            brightness: brightness,
+            primary: primary,
+            onPrimary: onPrimary,
+            secondary: secondary,
+            onSecondary: onSecondary,
+            error: error,
+            onError: onError,
+            background: background,
+            onBackground: onBackground,
+            surface: surface,
+            onSurface: onSurface,
+            tertiary: tertiary,
+            onTertiary: onTertiary);
 
   static AppColors getColorScheme() => AppColors(
         brightness: Brightness.light,
-        primary: generateMaterialColor(color: Color(0xffee1a64)),
-        onPrimary: Colors.white,
-        secondary: generateMaterialColor(color: Color(0xffffd81d)),
-        onSecondary: Colors.black,
-        error: generateMaterialColor(color: Color(0xffF4642C)),
-        onError: Colors.black,
+        primary: generateMaterialColor(color: Color(0xff042B59)),
+        onPrimary: _colorOnPrimary,
+        secondary: generateMaterialColor(color: Color(0xff1CDAC5)),
+        onSecondary: Colors.white,
+        error: generateMaterialColor(color: Color(0xffFF5160)),
+        onError: Colors.white,
         onBackground: Colors.black,
-        surface: generateMaterialColor(color: Color(0xFFE6E9EC)),
-        onSurface: Colors.black,
+        surface: generateMaterialColor(color: Color(0xffE0F4FF)),
+        onSurface: _colorOnSurface,
         background: Colors.white,
+        tertiary: generateMaterialColor(color: Color(0xff6200EE)),
+        onTertiary: Colors.white,
+        warning: generateMaterialColor(color: _colorWarning),
+        onWarning: Colors.white,
       );
 }
