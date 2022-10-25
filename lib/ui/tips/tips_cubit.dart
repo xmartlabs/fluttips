@@ -18,9 +18,7 @@ class TipCubit extends Cubit<TipsBaseState> {
 
   TipCubit(this._errorHandler)
       : super(
-          TipsBaseState.state(
-            tips: [],
-          ),
+          TipsBaseState.state(),
         ) {
     unawaited(getTips());
   }
