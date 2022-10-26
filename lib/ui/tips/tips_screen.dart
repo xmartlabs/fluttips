@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:flutter_template/ui/tips/tips_cubit.dart';
+
+import '../common/text_field.dart';
 
 class TipsScreen extends StatelessWidget {
   const TipsScreen({Key? key}) : super(key: key);
@@ -16,18 +19,25 @@ class TipsScreen extends StatelessWidget {
 }
 
 class _TipContentScreen extends StatelessWidget {
+  final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TipCubit, TipsBaseState>(
       builder: (context, state) {
-        return Scaffold(
-          body: ListView.builder(
+        return  Column(
+          children: [
+            TextFieldScreen(
+              controller: controller,
+            ),
+          ],
+        ); /*ListView.builder(
             shrinkWrap: true,
             itemCount: 11,
             itemBuilder: (BuildContext context, int index) =>
                 Image.network(state.tips[index].imageUrl),
           ),
-        );
+        );*/
       },
     );
   }

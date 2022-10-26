@@ -68,11 +68,6 @@ class AppStyles extends TextTheme {
           fontStyle: FontStyle.normal,
         ),
         textTheme: GoogleFonts.interTextTheme().copyWith(
-          headline1: GoogleFonts.inter(
-            fontSize: 50.sp,
-            fontWeight: FontWeight.w300,
-            fontStyle: FontStyle.normal,
-          ),
           displayLarge: GoogleFonts.roboto(
             fontSize: 57.sp,
             fontWeight: FontWeight.w400,
@@ -129,7 +124,10 @@ class AppStyles extends TextTheme {
             height: 16.sp,
           ),
           labelSmall: GoogleFonts.roboto(
-              fontSize: 11.sp, fontWeight: FontWeight.w500, height: 16.sp),
+            fontSize: 11.sp,
+            fontWeight: FontWeight.w500,
+            height: 16.sp,
+          ),
           bodyLarge: GoogleFonts.roboto(
             fontSize: 16.sp,
             fontWeight: FontWeight.w400,
@@ -143,7 +141,7 @@ class AppStyles extends TextTheme {
           bodySmall: GoogleFonts.roboto(
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
-            height: 16.sp,
+            height: 12.sp,
           ),
         ),
       );
