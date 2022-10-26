@@ -1,8 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_template/ui/section/section_router.dart';
-import 'package:flutter_template/ui/signin/signin_screen.dart';
-import 'package:flutter_template/ui/welcome/welcome_screen.dart';
+import 'package:flutter_template/ui/home/home_screen.dart';
+import 'package:flutter/material.dart';
 
 part 'app_router.gr.dart';
 
@@ -12,22 +11,15 @@ part 'app_router.gr.dart';
     AutoRoute(
       name: 'UnauthenticatedRouter',
       page: SectionRouter,
-      initial: true,
-      children: [
-        AutoRoute(
-          path: AppRouter.SIGN_IN_PATH,
-          page: SignInScreen,
-          initial: true,
-        ),
-      ],
+      children: [],
     ),
     AutoRoute(
       name: 'AuthenticatedRouter',
       page: SectionRouter,
       children: [
         AutoRoute(
-          path: AppRouter.WELCOME_PATH,
-          page: WelcomeScreen,
+          path: AppRouter.HOME_PATH,
+          page: HomeScreen,
           initial: true,
         ),
       ],
@@ -36,5 +28,5 @@ part 'app_router.gr.dart';
 )
 class AppRouter extends _$AppRouter {
   static const SIGN_IN_PATH = 'signin';
-  static const WELCOME_PATH = 'welcome';
+  static const HOME_PATH = 'home';
 }
