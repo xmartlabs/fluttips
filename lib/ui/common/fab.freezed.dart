@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'fab_button.dart';
+part of 'fab.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FavButtonState {
+mixin _$FabState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() notSelected,
@@ -37,75 +37,72 @@ mixin _$FavButtonState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavButtonState value) notSelected,
-    required TResult Function(_FavButtonState value) selected,
+    required TResult Function(_FabNotSelected value) notSelected,
+    required TResult Function(_FabSelected value) selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FavButtonState value)? notSelected,
-    TResult Function(_FavButtonState value)? selected,
+    TResult Function(_FabNotSelected value)? notSelected,
+    TResult Function(_FabSelected value)? selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavButtonState value)? notSelected,
-    TResult Function(_FavButtonState value)? selected,
+    TResult Function(_FabNotSelected value)? notSelected,
+    TResult Function(_FabSelected value)? selected,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavButtonStateCopyWith<$Res> {
-  factory $FavButtonStateCopyWith(
-          FavButtonState value, $Res Function(FavButtonState) then) =
-      _$FavButtonStateCopyWithImpl<$Res>;
+abstract class $FabStateCopyWith<$Res> {
+  factory $FabStateCopyWith(FabState value, $Res Function(FabState) then) =
+      _$FabStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FavButtonStateCopyWithImpl<$Res>
-    implements $FavButtonStateCopyWith<$Res> {
-  _$FavButtonStateCopyWithImpl(this._value, this._then);
+class _$FabStateCopyWithImpl<$Res> implements $FabStateCopyWith<$Res> {
+  _$FabStateCopyWithImpl(this._value, this._then);
 
-  final FavButtonState _value;
+  final FabState _value;
   // ignore: unused_field
-  final $Res Function(FavButtonState) _then;
+  final $Res Function(FabState) _then;
 }
 
 /// @nodoc
-abstract class _$$_FavButtonStateCopyWith<$Res> {
-  factory _$$_FavButtonStateCopyWith(
-          _$_FavButtonState value, $Res Function(_$_FavButtonState) then) =
-      __$$_FavButtonStateCopyWithImpl<$Res>;
+abstract class _$$_FabNotSelectedCopyWith<$Res> {
+  factory _$$_FabNotSelectedCopyWith(
+          _$_FabNotSelected value, $Res Function(_$_FabNotSelected) then) =
+      __$$_FabNotSelectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FavButtonStateCopyWithImpl<$Res>
-    extends _$FavButtonStateCopyWithImpl<$Res>
-    implements _$$_FavButtonStateCopyWith<$Res> {
-  __$$_FavButtonStateCopyWithImpl(
-      _$_FavButtonState _value, $Res Function(_$_FavButtonState) _then)
-      : super(_value, (v) => _then(v as _$_FavButtonState));
+class __$$_FabNotSelectedCopyWithImpl<$Res> extends _$FabStateCopyWithImpl<$Res>
+    implements _$$_FabNotSelectedCopyWith<$Res> {
+  __$$_FabNotSelectedCopyWithImpl(
+      _$_FabNotSelected _value, $Res Function(_$_FabNotSelected) _then)
+      : super(_value, (v) => _then(v as _$_FabNotSelected));
 
   @override
-  _$_FavButtonState get _value => super._value as _$_FavButtonState;
+  _$_FabNotSelected get _value => super._value as _$_FabNotSelected;
 }
 
 /// @nodoc
 
-class _$_FavButtonState implements _FavButtonState {
-  const _$_FavButtonState();
+class _$_FabNotSelected implements _FabNotSelected {
+  const _$_FabNotSelected();
 
   @override
   String toString() {
-    return 'FavButtonState.notSelected()';
+    return 'FabState.notSelected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FavButtonState);
+        (other.runtimeType == runtimeType && other is _$_FabNotSelected);
   }
 
   @override
@@ -145,8 +142,8 @@ class _$_FavButtonState implements _FavButtonState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavButtonState value) notSelected,
-    required TResult Function(_FavButtonState value) selected,
+    required TResult Function(_FabNotSelected value) notSelected,
+    required TResult Function(_FabSelected value) selected,
   }) {
     return notSelected(this);
   }
@@ -154,8 +151,8 @@ class _$_FavButtonState implements _FavButtonState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FavButtonState value)? notSelected,
-    TResult Function(_FavButtonState value)? selected,
+    TResult Function(_FabNotSelected value)? notSelected,
+    TResult Function(_FabSelected value)? selected,
   }) {
     return notSelected?.call(this);
   }
@@ -163,8 +160,8 @@ class _$_FavButtonState implements _FavButtonState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavButtonState value)? notSelected,
-    TResult Function(_FavButtonState value)? selected,
+    TResult Function(_FabNotSelected value)? notSelected,
+    TResult Function(_FabSelected value)? selected,
     required TResult orElse(),
   }) {
     if (notSelected != null) {
@@ -174,43 +171,42 @@ class _$_FavButtonState implements _FavButtonState {
   }
 }
 
-abstract class _FavButtonState implements FavButtonState {
-  const factory _FavButtonState() = _$_FavButtonState;
+abstract class _FabNotSelected implements FabState {
+  const factory _FabNotSelected() = _$_FabNotSelected;
 }
 
 /// @nodoc
-abstract class _$$_FavButtonStateCopyWith<$Res> {
-  factory _$$_FavButtonStateCopyWith(
-          _$_FavButtonState value, $Res Function(_$_FavButtonState) then) =
-      __$$_FavButtonStateCopyWithImpl<$Res>;
+abstract class _$$_FabSelectedCopyWith<$Res> {
+  factory _$$_FabSelectedCopyWith(
+          _$_FabSelected value, $Res Function(_$_FabSelected) then) =
+      __$$_FabSelectedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FavButtonStateCopyWithImpl<$Res>
-    extends _$FavButtonStateCopyWithImpl<$Res>
-    implements _$$_FavButtonStateCopyWith<$Res> {
-  __$$_FavButtonStateCopyWithImpl(
-      _$_FavButtonState _value, $Res Function(_$_FavButtonState) _then)
-      : super(_value, (v) => _then(v as _$_FavButtonState));
+class __$$_FabSelectedCopyWithImpl<$Res> extends _$FabStateCopyWithImpl<$Res>
+    implements _$$_FabSelectedCopyWith<$Res> {
+  __$$_FabSelectedCopyWithImpl(
+      _$_FabSelected _value, $Res Function(_$_FabSelected) _then)
+      : super(_value, (v) => _then(v as _$_FabSelected));
 
   @override
-  _$_FavButtonState get _value => super._value as _$_FavButtonState;
+  _$_FabSelected get _value => super._value as _$_FabSelected;
 }
 
 /// @nodoc
 
-class _$_FavButtonState implements _FavButtonState {
-  const _$_FavButtonState();
+class _$_FabSelected implements _FabSelected {
+  const _$_FabSelected();
 
   @override
   String toString() {
-    return 'FavButtonState.selected()';
+    return 'FabState.selected()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FavButtonState);
+        (other.runtimeType == runtimeType && other is _$_FabSelected);
   }
 
   @override
@@ -250,8 +246,8 @@ class _$_FavButtonState implements _FavButtonState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FavButtonState value) notSelected,
-    required TResult Function(_FavButtonState value) selected,
+    required TResult Function(_FabNotSelected value) notSelected,
+    required TResult Function(_FabSelected value) selected,
   }) {
     return selected(this);
   }
@@ -259,8 +255,8 @@ class _$_FavButtonState implements _FavButtonState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FavButtonState value)? notSelected,
-    TResult Function(_FavButtonState value)? selected,
+    TResult Function(_FabNotSelected value)? notSelected,
+    TResult Function(_FabSelected value)? selected,
   }) {
     return selected?.call(this);
   }
@@ -268,8 +264,8 @@ class _$_FavButtonState implements _FavButtonState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FavButtonState value)? notSelected,
-    TResult Function(_FavButtonState value)? selected,
+    TResult Function(_FabNotSelected value)? notSelected,
+    TResult Function(_FabSelected value)? selected,
     required TResult orElse(),
   }) {
     if (selected != null) {
@@ -279,6 +275,6 @@ class _$_FavButtonState implements _FavButtonState {
   }
 }
 
-abstract class _FavButtonState implements FavButtonState {
-  const factory _FavButtonState() = _$_FavButtonState;
+abstract class _FabSelected implements FabState {
+  const factory _FabSelected() = _$_FabSelected;
 }

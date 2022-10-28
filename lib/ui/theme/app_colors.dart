@@ -52,19 +52,45 @@ class AppColors extends ColorScheme {
 
   static AppColors getColorScheme() => AppColors(
         brightness: Brightness.light,
-        primary: generateMaterialColor(color: Color(0xff042B59)),
+        primary: MaterialColor(0xff042B59, {
+          400: Color(0xff2C649B),
+          300: Color(0xff5798CD),
+          200: Color(0xff93C9EE),
+          100: Color(0xffC7E5F6),
+        }),
         onPrimary: _colorOnPrimary,
-        secondary: generateMaterialColor(color: Color(0xff1CDAC5)),
+        secondary: MaterialColor(
+          0xff1CDAC5,
+          {
+            400: Color(0xff50E8CA),
+            300: Color(0xff74F3CE),
+          },
+        ),
         onSecondary: Colors.white,
-        error: generateMaterialColor(color: Color(0xffFF5160)),
+        error: MaterialColor(
+          0xffFF5160,
+          {
+            200: Color(0xffFF7D7C),
+            300: Color(0xffFFA096),
+          },
+        ),
         onError: Colors.white,
         onBackground: Colors.black,
         surface: generateMaterialColor(color: Color(0xffE0F4FF)),
         onSurface: _colorOnSurface,
         background: Colors.white,
-        tertiary: generateMaterialColor(color: Color(0xff6200EE)),
+        tertiary: MaterialColor(0xff6200EE, {
+          400: Color(0xff903DF4),
+          300: Color(0xffAE63F9),
+        }),
         onTertiary: Colors.white,
-        warning: generateMaterialColor(color: _colorWarning),
+        warning: MaterialColor(
+          0xffFFD326,
+          {
+            300: Color(0xffFFE15C),
+            400: Color(0xffFFEA7C),
+          },
+        ),
         onWarning: Colors.white,
       );
 }

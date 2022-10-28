@@ -14,8 +14,8 @@ Future main() async {
     final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
     await SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
     ]);
     await _initSdks();
     runApp(const MyApp());
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ScreenUtilInit(
-        designSize: Size(360, 812),
+        designSize: Size(812, 360),
         minTextAdapt: false,
         splitScreenMode: false,
         builder: (_a, _b) => MainScreen(),
