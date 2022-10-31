@@ -22,7 +22,7 @@ class SearchBar extends StatelessWidget {
             controller: controller,
             textHint: context.localizations.search,
             actionSecondIcon: controller.clear,
-            action: action,
+            onChanged: action,
           ),
         ),
       );

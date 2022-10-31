@@ -56,7 +56,7 @@ class AppDialog extends StatelessWidget {
                 textAlign: TextAlign.right,
               ),
             ),
-            if (optionTwo is String)
+            if (optionTwo != null)
               TextButton(
                 onPressed: actionTwo,
                 child: Text(

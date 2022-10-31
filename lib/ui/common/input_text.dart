@@ -11,7 +11,7 @@ class InputText extends StatelessWidget {
   final void Function()? actionSecondIcon;
   final Color? backgroundColor;
   final String? error;
-  final Function(String)? action;
+  final Function(String)? onChanged;
 
   const InputText({
     Key? key,
@@ -22,12 +22,12 @@ class InputText extends StatelessWidget {
     this.actionSecondIcon,
     this.backgroundColor,
     this.error,
-    this.action,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => TextField(
-        onChanged: (word) => action!(word),
+        onChanged: onChanged,
         controller: controller,
         decoration: InputDecoration(
           errorText: error,

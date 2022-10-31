@@ -12,13 +12,13 @@ class Fab extends StatelessWidget {
   final IconData iconNotSelected;
   final VoidCallback? action;
 
-  const Fab(
-      {Key? key,
-      required this.state,
-      this.iconSelected,
-      required this.iconNotSelected,
-      this.action})
-      : super(key: key);
+  const Fab({
+    Key? key,
+    required this.state,
+    this.iconSelected,
+    required this.iconNotSelected,
+    this.action,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
