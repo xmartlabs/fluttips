@@ -19,6 +19,9 @@ class AppStyles extends TextTheme {
     labelLarge,
     labelMedium,
     labelSmall,
+    displayLarge,
+    displayMedium,
+    displaySmall,
   }) : super(
           bodyLarge: bodyLarge,
           headlineMedium: headlineMedium,
@@ -30,6 +33,9 @@ class AppStyles extends TextTheme {
           bodySmall: bodySmall,
           labelLarge: labelLarge,
           labelSmall: labelSmall,
+          displayLarge: displayLarge,
+          displayMedium: displayMedium,
+          displaySmall: displaySmall,
         );
 
   factory AppStyles.fromTextTheme({
@@ -50,6 +56,9 @@ class AppStyles extends TextTheme {
         labelLarge: textTheme.labelLarge,
         labelMedium: textTheme.labelMedium,
         labelSmall: textTheme.labelSmall,
+        displayLarge: textTheme.displayLarge,
+        displayMedium: textTheme.displayMedium,
+        displaySmall: textTheme.displaySmall,
       );
 
   static AppStyles getAppStyles() => AppStyles.fromTextTheme(
@@ -59,10 +68,66 @@ class AppStyles extends TextTheme {
           fontStyle: FontStyle.normal,
         ),
         textTheme: GoogleFonts.interTextTheme().copyWith(
-          headline1: GoogleFonts.inter(
-            fontSize: 50.sp,
-            fontWeight: FontWeight.w300,
-            fontStyle: FontStyle.normal,
+          displayLarge: GoogleFonts.roboto(
+            fontSize: 57.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          displayMedium: GoogleFonts.roboto(
+            fontSize: 45.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          displaySmall: GoogleFonts.roboto(
+            fontSize: 36.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          headlineLarge: GoogleFonts.roboto(
+            fontSize: 32.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          headlineMedium: GoogleFonts.roboto(
+            fontSize: 28,
+            fontWeight: FontWeight.w400,
+          ),
+          headlineSmall: GoogleFonts.roboto(
+            fontSize: 24,
+            fontWeight: FontWeight.w400,
+          ),
+          titleLarge: GoogleFonts.roboto(
+            fontSize: 22.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          titleMedium: GoogleFonts.roboto(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          titleSmall: GoogleFonts.roboto(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          labelLarge: GoogleFonts.roboto(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          labelMedium: GoogleFonts.roboto(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          labelSmall: GoogleFonts.roboto(
+            fontSize: 11.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          bodyLarge: GoogleFonts.roboto(
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w400,
+            height: 1.sp,
+          ),
+          bodyMedium: GoogleFonts.roboto(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          bodySmall: GoogleFonts.roboto(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400,
           ),
         ),
       );
