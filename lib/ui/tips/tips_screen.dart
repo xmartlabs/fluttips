@@ -16,17 +16,17 @@ class TipsScreen extends StatelessWidget {
 }
 
 class _TipContentScreen extends StatelessWidget {
+  final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<TipCubit, TipsBaseState>(
       builder: (context, state) {
-        return Scaffold(
-          body: ListView.builder(
-            shrinkWrap: true,
-            itemCount: 11,
-            itemBuilder: (BuildContext context, int index) =>
-                Image.network(state.tips[index].imageUrl),
-          ),
+        return ListView.builder(
+          shrinkWrap: true,
+          itemCount: 11,
+          itemBuilder: (BuildContext context, int index) =>
+              Image.network(state.tips[index].imageUrl),
         );
       },
     );
