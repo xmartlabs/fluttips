@@ -5,31 +5,29 @@ import 'package:flutter_template/ui/theme/app_theme.dart';
 
 class InputText extends StatelessWidget {
   final TextEditingController controller;
-  final double? height;
-  final double? width;
   final IconData? leadingIcon;
   final IconData? trailingIcon;
   final String? textHint;
   final void Function()? actionSecondIcon;
   final Color? backgroundColor;
   final String? error;
+  final Function(String)? action;
 
   const InputText({
     Key? key,
     required this.controller,
-    this.height,
-    this.width,
     this.leadingIcon,
     this.trailingIcon,
     this.textHint,
     this.actionSecondIcon,
     this.backgroundColor,
     this.error,
+    this.action,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => TextField(
-        onChanged: (_) {},
+        onChanged: (word) => action!(word),
         controller: controller,
         decoration: InputDecoration(
           errorText: error,

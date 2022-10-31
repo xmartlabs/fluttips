@@ -6,19 +6,19 @@ import 'package:flutter_template/ui/theme/app_theme.dart';
 class AppDialog extends StatelessWidget {
   final String title;
   final String contentText;
-  final String? negativeOption;
-  final String positiveOption;
-  final VoidCallback negativeAction;
-  final VoidCallback positiveAction;
+  final String optionOne;
+  final String? optionTwo;
+  final VoidCallback actionOne;
+  final VoidCallback? actionTwo;
 
   const AppDialog({
     Key? key,
     required this.title,
     required this.contentText,
-    required this.negativeOption,
-    required this.positiveOption,
-    required this.negativeAction,
-    required this.positiveAction,
+    required this.optionOne,
+    this.optionTwo,
+    required this.actionOne,
+    this.actionTwo,
   }) : super(key: key);
 
   @override
@@ -48,18 +48,18 @@ class AppDialog extends StatelessWidget {
           ),
           actions: [
             TextButton(
-              onPressed: negativeAction,
+              onPressed: actionOne,
               child: Text(
-                negativeOption!,
+                optionOne,
                 style: context.theme.textTheme.labelLarge!
                     .copyWith(color: context.theme.colors.tertiary),
                 textAlign: TextAlign.right,
               ),
             ),
             TextButton(
-              onPressed: positiveAction,
+              onPressed: actionTwo!,
               child: Text(
-                positiveOption,
+                optionTwo!,
                 style: context.theme.textTheme.labelLarge!
                     .copyWith(color: context.theme.colors.tertiary),
                 textAlign: TextAlign.right,
