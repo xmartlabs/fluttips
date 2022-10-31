@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/ui/common/input_text.dart';
 import 'package:flutter_template/ui/extensions/context_extensions.dart';
 
-class Search extends StatelessWidget {
+class SearchBar extends StatelessWidget {
   final TextEditingController controller;
+  final Function(String) action;
 
-  const Search({
+  const SearchBar({
     Key? key,
     required this.controller,
+    required this.action,
   }) : super(key: key);
 
   @override
@@ -20,6 +22,7 @@ class Search extends StatelessWidget {
             controller: controller,
             textHint: context.localizations.search,
             actionSecondIcon: controller.clear,
+            action: action,
           ),
         ),
       );

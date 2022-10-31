@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_color_generator/material_color_generator.dart';
 
 // Colors name extracted from https://www.color-name.com
 @immutable
@@ -18,6 +17,12 @@ class AppColors extends ColorScheme {
   static const _waterColor = Color(0xffC7E5F6);
   static const _prussianBlueColor = Color(0xff042B59);
   static const _sunglowColor = Color(0xffFFD326);
+  static const _surfaceColors = MaterialColor(0xffE0F4FF, {
+    600: Color(0xffA3C4DB),
+    700: Color(0xff7095B7),
+    800: Color(0xff476A93),
+    900: Color(0xff2B4A7A),
+  });
   static const _primaryColors = MaterialColor(0xff042B59, {
     400: Color(0xff2C649B),
     300: Color(0xff5798CD),
@@ -90,7 +95,7 @@ class AppColors extends ColorScheme {
         error: _errorColors,
         onError: Colors.white,
         onBackground: Colors.black,
-        surface: generateMaterialColor(color: Color(0xffE0F4FF)),
+        surface: _surfaceColors,
         onSurface: _prussianBlueColor,
         background: Colors.white,
         tertiary: _tertiaryColors,

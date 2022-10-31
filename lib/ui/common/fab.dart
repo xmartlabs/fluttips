@@ -10,18 +10,20 @@ class Fab extends StatelessWidget {
   final FabState state;
   final IconData? iconSelected;
   final IconData iconNotSelected;
+  final VoidCallback? action;
 
   const Fab(
       {Key? key,
       required this.state,
       this.iconSelected,
-      required this.iconNotSelected})
+      required this.iconNotSelected,
+      this.action})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: action,
       backgroundColor: state.when(
         notSelected: () => context.theme.colors.surface,
         selected: () => context.theme.colors.primary,

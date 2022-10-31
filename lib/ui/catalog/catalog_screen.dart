@@ -2,15 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_template/ui/common/app_button.dart';
 import 'package:flutter_template/ui/common/app_dialog.dart';
 import 'package:flutter_template/ui/common/fab.dart';
-import 'package:flutter_template/ui/common/search.dart';
+import 'package:flutter_template/ui/common/search_bar.dart';
 
-class CatalogScreen extends StatelessWidget {
-  final TextEditingController controller;
+class CatalogScreen extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => CatalogScreenState();
+}
 
-  const CatalogScreen({
-    Key? key,
-    required this.controller,
-  }) : super(key: key);
+class CatalogScreenState extends State<CatalogScreen> {
+  final controllerSearchBar = TextEditingController();
+  final controllerAppButton = TextEditingController();
+
+  @override
+  void dispose() {
+    controllerSearchBar.dispose();
+    controllerAppButton.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) => Column(
@@ -22,26 +35,27 @@ class CatalogScreen extends StatelessWidget {
               builder: (_) => AppDialog(
                 title: 'title',
                 optionOne: 'option1',
-                optionTwo: 'option2',
                 contentText: 'content',
-                actionOne: controller.clear,
-                actionTwo: controller.clear,
+                actionOne: () => print('Option 1 clicked'),
+                actionTwo: () => print('Option 2 clicked'),
               ),
             ),
             child: null,
           ),
-          Search(
-            controller: controller,
+          SearchBar(
+            controller: controllerSearchBar,
+            action: (word) => print('writing'),
           ),
           Container(
             child: AppButton(
               text: 'hello',
-              action: controller.clear,
+              action: controllerAppButton.clear,
             ),
           ),
           Fab(
             state: FabState.notSelected(),
             iconNotSelected: Icons.star_border,
+            action: () => print('Fab clicked'),
           ),
         ],
       );

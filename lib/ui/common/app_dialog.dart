@@ -25,7 +25,7 @@ class AppDialog extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         constraints: BoxConstraints(
           minHeight: 100.h,
-          maxHeight: 400.w,
+          maxHeight: 400.h,
         ),
         child: AlertDialog(
           shape:
@@ -56,15 +56,16 @@ class AppDialog extends StatelessWidget {
                 textAlign: TextAlign.right,
               ),
             ),
-            TextButton(
-              onPressed: actionTwo!,
-              child: Text(
-                optionTwo!,
-                style: context.theme.textTheme.labelLarge!
-                    .copyWith(color: context.theme.colors.tertiary),
-                textAlign: TextAlign.right,
+            if (optionTwo is String)
+              TextButton(
+                onPressed: actionTwo,
+                child: Text(
+                  optionTwo!,
+                  style: context.theme.textTheme.labelLarge!
+                      .copyWith(color: context.theme.colors.tertiary),
+                  textAlign: TextAlign.right,
+                ),
               ),
-            ),
           ],
         ),
       );
