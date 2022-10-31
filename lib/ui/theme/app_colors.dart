@@ -15,9 +15,40 @@ class AppColors extends ColorScheme {
   final MaterialColor warning;
   final Color onWarning;
 
-  static const _colorOnPrimary = Color(0xffC7E5F6);
-  static const _colorOnSurface = Color(0xff042B59);
-  static const _colorWarning = Color(0xffFFD326);
+  static const _waterColor = Color(0xffC7E5F6);
+  static const _prussianBlueColor = Color(0xff042B59);
+  static const _sunglowColor = Color(0xffFFD326);
+  static const _primaryColors = MaterialColor(0xff042B59, {
+    400: Color(0xff2C649B),
+    300: Color(0xff5798CD),
+    200: Color(0xff93C9EE),
+    100: Color(0xffC7E5F6),
+  });
+  static const _secondaryColors = MaterialColor(
+    0xff1CDAC5,
+    {
+      400: Color(0xff50E8CA),
+      300: Color(0xff74F3CE),
+    },
+  );
+  static const _errorColors = MaterialColor(
+    0xffFF5160,
+    {
+      200: Color(0xffFF7D7C),
+      300: Color(0xffFFA096),
+    },
+  );
+  static const _tertiaryColors = MaterialColor(0xff6200EE, {
+    400: Color(0xff903DF4),
+    300: Color(0xffAE63F9),
+  });
+  static const _warningColors = MaterialColor(
+    0xffFFD326,
+    {
+      300: Color(0xffFFE15C),
+      400: Color(0xffFFEA7C),
+    },
+  );
 
   AppColors({
     required Brightness brightness,
@@ -52,45 +83,19 @@ class AppColors extends ColorScheme {
 
   static AppColors getColorScheme() => AppColors(
         brightness: Brightness.light,
-        primary: MaterialColor(0xff042B59, {
-          400: Color(0xff2C649B),
-          300: Color(0xff5798CD),
-          200: Color(0xff93C9EE),
-          100: Color(0xffC7E5F6),
-        }),
-        onPrimary: _colorOnPrimary,
-        secondary: MaterialColor(
-          0xff1CDAC5,
-          {
-            400: Color(0xff50E8CA),
-            300: Color(0xff74F3CE),
-          },
-        ),
+        primary: _primaryColors,
+        onPrimary: _waterColor,
+        secondary: _secondaryColors,
         onSecondary: Colors.white,
-        error: MaterialColor(
-          0xffFF5160,
-          {
-            200: Color(0xffFF7D7C),
-            300: Color(0xffFFA096),
-          },
-        ),
+        error: _errorColors,
         onError: Colors.white,
         onBackground: Colors.black,
         surface: generateMaterialColor(color: Color(0xffE0F4FF)),
-        onSurface: _colorOnSurface,
+        onSurface: _prussianBlueColor,
         background: Colors.white,
-        tertiary: MaterialColor(0xff6200EE, {
-          400: Color(0xff903DF4),
-          300: Color(0xffAE63F9),
-        }),
+        tertiary: _tertiaryColors,
         onTertiary: Colors.white,
-        warning: MaterialColor(
-          0xffFFD326,
-          {
-            300: Color(0xffFFE15C),
-            400: Color(0xffFFEA7C),
-          },
-        ),
-        onWarning: Colors.white,
+        warning: _warningColors,
+        onWarning: _sunglowColor,
       );
 }

@@ -8,23 +8,33 @@ part 'fab.freezed.dart';
 
 class Fab extends StatelessWidget {
   final FabState state;
+  final IconData? iconSelected;
+  final IconData iconNotSelected;
 
-  const Fab({Key? key, required this.state}) : super(key: key);
+  const Fab(
+      {Key? key,
+      required this.state,
+      this.iconSelected,
+      required this.iconNotSelected})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {},
       backgroundColor: state.when(
-          notSelected: () => context.theme.colors.surface,
-          selected: () => context.theme.colors.primary),
+        notSelected: () => context.theme.colors.surface,
+        selected: () => context.theme.colors.primary,
+      ),
       foregroundColor: context.theme.colors.primary,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
       child: state.when(
-        notSelected: () =>
-            Icon(Icons.star_border, color: context.theme.colors.primary,),
+        notSelected: () => Icon(
+          iconNotSelected,
+          color: context.theme.colors.primary,
+        ),
         selected: () =>
-            Icon(Icons.star, color: context.theme.colors.primary.shade100),
+            Icon(iconSelected, color: context.theme.colors.primary.shade100),
       ),
     );
   }
