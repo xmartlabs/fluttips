@@ -110,7 +110,7 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GeneralError with DiagnosticableTreeMixin implements _GeneralError {
+class _$_GeneralError implements _GeneralError {
   const _$_GeneralError({this.title, required this.description, this.cause});
 
   @override
@@ -121,18 +121,8 @@ class _$_GeneralError with DiagnosticableTreeMixin implements _GeneralError {
   final dynamic cause;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'GeneralError(title: $title, description: $description, cause: $cause)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'GeneralError'))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('cause', cause));
   }
 
   @override

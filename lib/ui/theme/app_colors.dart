@@ -72,19 +72,20 @@ class AppColors extends ColorScheme {
     required this.warning,
     required this.onWarning,
   }) : super(
-            brightness: brightness,
-            primary: primary,
-            onPrimary: onPrimary,
-            secondary: secondary,
-            onSecondary: onSecondary,
-            error: error,
-            onError: onError,
-            background: background,
-            onBackground: onBackground,
-            surface: surface,
-            onSurface: onSurface,
-            tertiary: tertiary,
-            onTertiary: onTertiary);
+          brightness: brightness,
+          primary: primary,
+          onPrimary: onPrimary,
+          secondary: secondary,
+          onSecondary: onSecondary,
+          error: error,
+          onError: onError,
+          background: background,
+          onBackground: onBackground,
+          surface: surface,
+          onSurface: onSurface,
+          tertiary: tertiary,
+          onTertiary: onTertiary,
+        );
 
   static AppColors getColorScheme() => AppColors(
         brightness: Brightness.light,
