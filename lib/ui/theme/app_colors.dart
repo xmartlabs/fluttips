@@ -15,6 +15,7 @@ class AppColors extends ColorScheme {
   final Color onWarning;
 
   static const _waterColor = Color(0xffC7E5F6);
+  static const _background = Color(0xff1B1B26);
   static const _prussianBlueColor = Color(0xff042B59);
   static const _sunglowColor = Color(0xffFFD326);
   static const _surfaceColors = MaterialColor(0xffE0F4FF, {
@@ -97,7 +98,7 @@ class AppColors extends ColorScheme {
         onBackground: Colors.black,
         surface: _surfaceColors,
         onSurface: _prussianBlueColor,
-        background: Colors.white,
+        background: _background,
         tertiary: _tertiaryColors,
         onTertiary: Colors.white,
         warning: _warningColors,
