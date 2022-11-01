@@ -3,7 +3,7 @@ RED='\033[0;31m'
 
 echo ':: Sorting translation files ::'
 
-fvm flutter pub run arb_utils:sort lib/l10n/intl_en.arb; 
+fvm flutter pub run arb_utils sort lib/l10n/intl_en.arb;
 
 echo ':: Check code format ::'
 fvm flutter format --set-exit-if-changed . || { 
