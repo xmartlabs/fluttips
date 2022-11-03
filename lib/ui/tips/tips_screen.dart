@@ -17,9 +17,21 @@ class TipsScreen extends StatelessWidget {
   }
 }
 
-class _TipContentScreen extends StatelessWidget {
-  final TextEditingController controller = TextEditingController();
-  final PageController pageController = PageController();
+class _TipContentScreen extends StatefulWidget {
+  @override
+  State<_TipContentScreen> createState() => _TipContentScreenState();
+}
+
+class _TipContentScreenState extends State<_TipContentScreen> {
+  late final TextEditingController controller = TextEditingController();
+  late final PageController pageController = PageController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
