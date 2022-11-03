@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter_template/ui/catalog/catalog_screen.dart';
 import 'package:flutter_template/ui/section/section_router.dart';
 import 'package:flutter_template/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,10 @@ part 'app_router.gr.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route,Screen',
   routes: <AutoRoute>[
+    AutoRoute(
+      name: 'CatalogRouter',
+      page: CatalogScreen,
+    ),
     AutoRoute(
       name: 'UnauthenticatedRouter',
       page: SectionRouter,
@@ -23,7 +28,7 @@ part 'app_router.gr.dart';
           initial: true,
         ),
       ],
-    )
+    ),
   ],
 )
 class AppRouter extends _$AppRouter {

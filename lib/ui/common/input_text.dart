@@ -34,10 +34,11 @@ class InputText extends StatelessWidget {
           filled: true,
           fillColor: backgroundColor ?? context.theme.colors.surface,
           border: OutlineInputBorder(
-              borderSide: error != null
-                  ? BorderSide(color: context.theme.colors.primary.shade300)
-                  : BorderSide(color: context.theme.colors.error),
-              borderRadius: BorderRadius.circular(4.r)),
+            borderSide: error != null
+                ? BorderSide(color: context.theme.colors.primary.shade300)
+                : BorderSide(color: context.theme.colors.error),
+            borderRadius: BorderRadius.circular(4.r),
+          ),
           prefixIcon: Icon(leadingIcon),
           hintText: textHint,
           suffixIcon: error != null

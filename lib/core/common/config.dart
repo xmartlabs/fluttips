@@ -35,7 +35,9 @@ abstract class Config {
   static String gitHubTipsNameFolder = 'tipsandtricks/';
 
   static final _environment = enumFromString(
-          Environments.values, const String.fromEnvironment('ENV')) ??
+        Environments.values,
+        const String.fromEnvironment('ENV'),
+      ) ??
       Environments.development;
 
   static Future<void> initialize() async {

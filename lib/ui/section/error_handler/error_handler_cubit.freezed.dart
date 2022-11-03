@@ -111,20 +111,12 @@ class __$$_InitErrorHandlerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InitErrorHandlerState
-    with DiagnosticableTreeMixin
-    implements _InitErrorHandlerState {
+class _$_InitErrorHandlerState implements _InitErrorHandlerState {
   const _$_InitErrorHandlerState();
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ErrorHandlerState.init()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'ErrorHandlerState.init'));
   }
 
   @override
@@ -257,9 +249,7 @@ class __$$_UnknownErrorHandlerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnknownErrorHandlerState
-    with DiagnosticableTreeMixin
-    implements _UnknownErrorHandlerState {
+class _$_UnknownErrorHandlerState implements _UnknownErrorHandlerState {
   const _$_UnknownErrorHandlerState(this.error, [this.retry]);
 
   @override
@@ -268,17 +258,8 @@ class _$_UnknownErrorHandlerState
   final VoidCallback? retry;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ErrorHandlerState.unknownError(error: $error, retry: $retry)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ErrorHandlerState.unknownError'))
-      ..add(DiagnosticsProperty('error', error))
-      ..add(DiagnosticsProperty('retry', retry));
   }
 
   @override
@@ -427,25 +408,15 @@ class __$$_InternetErrorHandlerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InternetErrorHandlerState
-    with DiagnosticableTreeMixin
-    implements _InternetErrorHandlerState {
+class _$_InternetErrorHandlerState implements _InternetErrorHandlerState {
   const _$_InternetErrorHandlerState([this.retry]);
 
   @override
   final VoidCallback? retry;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ErrorHandlerState.internetError(retry: $retry)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ErrorHandlerState.internetError'))
-      ..add(DiagnosticsProperty('retry', retry));
   }
 
   @override
@@ -600,9 +571,7 @@ class __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GeneralErrorHandlerState
-    with DiagnosticableTreeMixin
-    implements _GeneralErrorHandlerState {
+class _$_GeneralErrorHandlerState implements _GeneralErrorHandlerState {
   const _$_GeneralErrorHandlerState(this.title, this.description, [this.retry]);
 
   @override
@@ -613,18 +582,8 @@ class _$_GeneralErrorHandlerState
   final VoidCallback? retry;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ErrorHandlerState.generalError(title: $title, description: $description, retry: $retry)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ErrorHandlerState.generalError'))
-      ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('retry', retry));
   }
 
   @override
