@@ -1,58 +1,26 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/ui/extensions/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/app_router.dart';
 
-class AppNavBar extends StatelessWidget {
-  final _scaffoldKey = GlobalKey<ScaffoldState>();
+class AppDrawer extends StatelessWidget {
+  final TabsRouter _tabsController;
 
-  @override
-  Widget build(BuildContext context) {
-    return AutoTabsRouter(
-      routes: NavOptions.values.map((e) => e.route).toList(),
-      builder: (context, child, tabsController) {
-        final tabsRouter = AutoTabsRouter.of(context);
-        return Scaffold(
-          extendBody: true,
-          extendBodyBehindAppBar: true,
-          key: _scaffoldKey,
-          floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-          floatingActionButton: FloatingActionButton(
-            foregroundColor: context.theme.colors.primary,
-            backgroundColor: context.theme.colors.primary.shade100,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16.r)),
-            onPressed: () {
-              _scaffoldKey.currentState!.openDrawer();
-            },
-            child: Icon(Icons.arrow_forward_ios),
-          ),
-          backgroundColor: context.theme.colors.background,
-          body: SafeArea(child: child),
-          drawer: _Drawer(
-            tabscontroller: tabsRouter,
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _Drawer extends StatelessWidget {
-  final TabsRouter tabscontroller;
-
-  const _Drawer({
+  const AppDrawer({
     Key? key,
-    required this.tabscontroller,
-  }) : super(key: key);
+    required TabsRouter tabsController,
+  })  : _tabsController = tabsController,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       width: 90.w,
       backgroundColor: context.theme.colors.primary.shade100,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
       child: Column(
         children: [
           SizedBox(height: 30),
@@ -61,10 +29,9 @@ class _Drawer extends StatelessWidget {
               .map((navOption) => _TabOption(
                     icon: navOption.icon,
                     isCurrentIndex:
-                        navOption.index == tabscontroller.activeIndex,
-                    onPress: () {
-                      tabscontroller.setActiveIndex(navOption.index);
-                    },
+                        navOption.index == _tabsController.activeIndex,
+                    onPress: () =>
+                        _tabsController.setActiveIndex(navOption.index),
                   ))
               .toList(),
           SizedBox(height: 30),
@@ -117,8 +84,8 @@ class _TabOption extends StatelessWidget {
 }
 
 enum NavOptions {
-  videos,
   images,
+  videos,
   favourites,
 }
 
@@ -137,12 +104,12 @@ extension NavExtensions on NavOptions {
   PageRouteInfo<dynamic> get route {
     switch (this) {
       case NavOptions.images:
-        return Home();
+        return ImagesScreenRoute();
       case NavOptions.videos:
-        return Video();
+        return VideosScreenRoute();
       // TODO: Remove when implemented other screens
-      default:
-        return Home();
+      case NavOptions.favourites:
+        return ImagesScreenRoute();
     }
   }
 }

@@ -1167,13 +1167,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-  vertical_tabs_flutter:
-    dependency: "direct main"
-    description:
-      name: vertical_tabs_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   vin_decoder:
     dependency: transitive
     description:
