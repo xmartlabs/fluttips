@@ -17,6 +17,12 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CatalogRouter.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: CatalogScreen(),
+      );
+    },
     UnauthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -40,6 +46,10 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
+          CatalogRouter.name,
+          path: '/catalog-screen',
+        ),
+        RouteConfig(
           UnauthenticatedRouter.name,
           path: '/section-router',
         ),
@@ -62,6 +72,18 @@ class _$AppRouter extends RootStackRouter {
           ],
         ),
       ];
+}
+
+/// generated route for
+/// [CatalogScreen]
+class CatalogRouter extends PageRouteInfo<void> {
+  const CatalogRouter()
+      : super(
+          CatalogRouter.name,
+          path: '/catalog-screen',
+        );
+
+  static const String name = 'CatalogRouter';
 }
 
 /// generated route for

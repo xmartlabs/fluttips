@@ -11,5 +11,6 @@ enum FileType {
   final String _pathRegex;
 
   static FileType? fromPath(String path) => FileType.values.firstOrNullWhere(
-      (fileType) => RegExp(fileType._pathRegex).hasMatch(path));
+        (fileType) => RegExp(fileType._pathRegex).hasMatch(path),
+      );
 }
