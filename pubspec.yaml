@@ -43,6 +43,7 @@ dependencies:
   material_color_generator: 1.1.0
   rxdart: 0.27.5
   stock: 1.0.0
+  vertical_tabs_flutter: ^1.0.0
 
 dev_dependencies:
   flutter_test:

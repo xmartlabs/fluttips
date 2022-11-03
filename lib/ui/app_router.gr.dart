@@ -35,10 +35,24 @@ class _$AppRouter extends RootStackRouter {
         child: SectionRouter(),
       );
     },
-    HomeScreenRoute.name: (routeData) {
+    NavBar.name: (routeData) {
+      return CustomPage<dynamic>(
+        routeData: routeData,
+        child: AppNavBar(),
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    Home.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const HomeScreen(),
+        child: const ImagesScreen(),
+      );
+    },
+    Video.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const VideosScreen(),
       );
     },
   };
@@ -58,17 +72,29 @@ class _$AppRouter extends RootStackRouter {
           path: '/section-router',
           children: [
             RouteConfig(
-              '#redirect',
+              NavBar.name,
               path: '',
               parent: AuthenticatedRouter.name,
-              redirectTo: 'home',
-              fullMatch: true,
-            ),
-            RouteConfig(
-              HomeScreenRoute.name,
-              path: 'home',
-              parent: AuthenticatedRouter.name,
-            ),
+              children: [
+                RouteConfig(
+                  '#redirect',
+                  path: '',
+                  parent: NavBar.name,
+                  redirectTo: 'images',
+                  fullMatch: true,
+                ),
+                RouteConfig(
+                  Home.name,
+                  path: 'images',
+                  parent: NavBar.name,
+                ),
+                RouteConfig(
+                  Video.name,
+                  path: 'videos',
+                  parent: NavBar.name,
+                ),
+              ],
+            )
           ],
         ),
       ];
@@ -112,13 +138,38 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomeScreen]
-class HomeScreenRoute extends PageRouteInfo<void> {
-  const HomeScreenRoute()
+/// [AppNavBar]
+class NavBar extends PageRouteInfo<void> {
+  const NavBar({List<PageRouteInfo>? children})
       : super(
-          HomeScreenRoute.name,
-          path: 'home',
+          NavBar.name,
+          path: '',
+          initialChildren: children,
         );
 
-  static const String name = 'HomeScreenRoute';
+  static const String name = 'NavBar';
+}
+
+/// generated route for
+/// [ImagesScreen]
+class Home extends PageRouteInfo<void> {
+  const Home()
+      : super(
+          Home.name,
+          path: 'images',
+        );
+
+  static const String name = 'Home';
+}
+
+/// generated route for
+/// [VideosScreen]
+class Video extends PageRouteInfo<void> {
+  const Video()
+      : super(
+          Video.name,
+          path: 'videos',
+        );
+
+  static const String name = 'Video';
 }
