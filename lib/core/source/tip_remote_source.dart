@@ -14,8 +14,10 @@ class TipRemoteSource {
   TipRemoteSource(this._httpService);
 
   Future<Iterable<Tip>> getTips() => _httpService
-      .getAndProcessResponse(_urlGetGithubFiles,
-          serializer: (file) => GitHubTreeResponse.fromJson(file))
+      .getAndProcessResponse(
+        _urlGetGithubFiles,
+        serializer: (file) => GitHubTreeResponse.fromJson(file),
+      )
       .then((value) => value.getDataOrThrow())
       .then(_processTips);
 
