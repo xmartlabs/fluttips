@@ -20,7 +20,10 @@ class AppDrawer extends StatelessWidget {
     return Drawer(
       width: 90.w,
       backgroundColor: context.theme.colors.primary.shade100,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(16.r),
+              bottomRight: Radius.circular(16.r))),
       child: Column(
         children: [
           SizedBox(height: 30),
