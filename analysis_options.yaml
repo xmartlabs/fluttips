@@ -64,5 +64,7 @@ analyzer:
     - '**/*.g.dart'
     - '**/*.gen.dart'
     - '**/*.freezed.dart'
+    - '**/*.gr.dart'
+    
   errors:
     invalid_annotation_target: ignore
