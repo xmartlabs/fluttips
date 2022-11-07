@@ -38,7 +38,19 @@ class _$AppRouter extends RootStackRouter {
     HomeScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const HomeScreen(),
+        child: HomeScreen(),
+      );
+    },
+    TipsScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const TipsScreen(),
+      );
+    },
+    VideosScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const VideosScreen(),
       );
     },
   };
@@ -58,17 +70,22 @@ class _$AppRouter extends RootStackRouter {
           path: '/section-router',
           children: [
             RouteConfig(
-              '#redirect',
+              HomeScreenRoute.name,
               path: '',
               parent: AuthenticatedRouter.name,
-              redirectTo: 'home',
-              fullMatch: true,
-            ),
-            RouteConfig(
-              HomeScreenRoute.name,
-              path: 'home',
-              parent: AuthenticatedRouter.name,
-            ),
+              children: [
+                RouteConfig(
+                  TipsScreenRoute.name,
+                  path: 'tips',
+                  parent: HomeScreenRoute.name,
+                ),
+                RouteConfig(
+                  VideosScreenRoute.name,
+                  path: 'videos',
+                  parent: HomeScreenRoute.name,
+                ),
+              ],
+            )
           ],
         ),
       ];
@@ -114,11 +131,36 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
 /// generated route for
 /// [HomeScreen]
 class HomeScreenRoute extends PageRouteInfo<void> {
-  const HomeScreenRoute()
+  const HomeScreenRoute({List<PageRouteInfo>? children})
       : super(
           HomeScreenRoute.name,
-          path: 'home',
+          path: '',
+          initialChildren: children,
         );
 
   static const String name = 'HomeScreenRoute';
+}
+
+/// generated route for
+/// [TipsScreen]
+class TipsScreenRoute extends PageRouteInfo<void> {
+  const TipsScreenRoute()
+      : super(
+          TipsScreenRoute.name,
+          path: 'tips',
+        );
+
+  static const String name = 'TipsScreenRoute';
+}
+
+/// generated route for
+/// [VideosScreen]
+class VideosScreenRoute extends PageRouteInfo<void> {
+  const VideosScreenRoute()
+      : super(
+          VideosScreenRoute.name,
+          path: 'videos',
+        );
+
+  static const String name = 'VideosScreenRoute';
 }
