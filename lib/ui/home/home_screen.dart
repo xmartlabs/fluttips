@@ -13,12 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  var hideFab = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  var _hideFab = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, child, tabsController) {
         return Scaffold(
           onDrawerChanged: (stateDrawer) => setState(() {
-            hideFab = stateDrawer;
+            _hideFab = stateDrawer;
           }),
           extendBody: true,
           extendBodyBehindAppBar: true,
@@ -45,14 +40,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget buildFab(BuildContext context) {
-    return Visibility(
-      visible: !hideFab,
+  Widget buildFab(BuildContext context) => Visibility(
+      visible: !_hideFab,
       child: Fab(
         state: FabState.notSelected(),
         iconNotSelected: Icons.arrow_forward_ios,
         action: () => _scaffoldKey.currentState!.openDrawer(),
       ),
     );
-  }
 }
