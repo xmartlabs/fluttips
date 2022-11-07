@@ -61,8 +61,11 @@ dart_code_metrics:
 # https://dart.dev/guides/language/analysis-options
 analyzer:
   exclude:
+    - '**/*.freezed.dart'
     - '**/*.g.dart'
     - '**/*.gen.dart'
-    - '**/*.freezed.dart'
+    - '**/*.gr.dart'
+    
+    
   errors:
     invalid_annotation_target: ignore
