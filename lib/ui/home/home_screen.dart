@@ -41,11 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildFab(BuildContext context) => Visibility(
-      visible: !_hideFab,
-      child: Fab(
-        state: FabState.notSelected(),
-        iconNotSelected: Icons.arrow_forward_ios,
-        action: () => _scaffoldKey.currentState!.openDrawer(),
-      ),
-    );
+        visible: !_hideFab,
+        child: Fab(
+          state: FabState.notSelected(),
+          iconNotSelected: Icons.arrow_forward_ios,
+          action: () => _scaffoldKey.currentState!.openDrawer(),
+        ),
+      );
 }
