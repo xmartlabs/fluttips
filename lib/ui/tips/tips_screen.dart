@@ -5,9 +5,6 @@ import 'package:flutter_template/ui/tips/tips_cubit.dart';
 import 'package:flutter_template/ui/common/custom_scaffold_fab.dart';
 import 'package:flutter_template/ui/common/fab.dart';
 
-import '../common/custom_scaffold_fab.dart';
-import '../common/fab.dart';
-
 class TipsScreen extends StatelessWidget {
   const TipsScreen({Key? key}) : super(key: key);
 

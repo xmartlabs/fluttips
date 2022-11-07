@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/ui/extensions/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/home/drawer.dart';
+
+import 'package:flutter_template/ui/common/fab.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -47,15 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget buildFab(BuildContext context) {
     return Visibility(
       visible: !hideFab,
-      child: FloatingActionButton(
-        foregroundColor: context.theme.colors.primary,
-        backgroundColor: context.theme.colors.primary.shade100,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        onPressed: () {
-          _scaffoldKey.currentState!.openDrawer();
-        },
-        child: Icon(Icons.arrow_forward_ios),
+      child: Fab(
+        state: FabState.notSelected(),
+        iconNotSelected: Icons.arrow_forward_ios,
+        action: () => _scaffoldKey.currentState!.openDrawer(),
       ),
     );
   }
