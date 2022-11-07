@@ -7,10 +7,12 @@ import 'package:flutter_template/ui/app_router.dart';
 
 class AppDrawer extends StatelessWidget {
   final TabsRouter _tabsController;
+  final VoidCallback? action;
 
   const AppDrawer({
     Key? key,
     required TabsRouter tabsController,
+    this.action,
   })  : _tabsController = tabsController,
         super(key: key);
 
@@ -20,14 +22,17 @@ class AppDrawer extends StatelessWidget {
       width: 90.w,
       backgroundColor: context.theme.colors.primary.shade100,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(16.r),
-              bottomRight: Radius.circular(16.r))),
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(16.r),
+          bottomRight: Radius.circular(16.r),
+        ),
+      ),
       child: Column(
         children: [
           SizedBox(height: 30),
+          //TODO: add logo here and delete text
           Text('FLUTTIPS'),
-          ...NavOptions.values
+          ...HomeNavOptions.values
               .map((navOption) => _TabOption(
                     icon: navOption.icon,
                     isCurrentIndex:
@@ -38,7 +43,7 @@ class AppDrawer extends StatelessWidget {
               .toList(),
           SizedBox(height: 30),
           IconButton(
-            onPressed: () {},
+            onPressed: action,
             icon: Icon(Icons.arrow_back_ios_new),
             color: context.theme.colors.surface.shade700,
           ),
@@ -62,22 +67,24 @@ class _TabOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _color = context.theme.colors;
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 350),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
-        color: context.theme.colors.primary.shade100,
+        color: _color.primary.shade100,
       ),
       child: IconButton(
         icon: isCurrentIndex
             ? Icon(
                 icon,
-                color: context.theme.colors.primary,
+                color: _color.primary,
               )
             : Icon(
                 icon,
-                color: context.theme.colors.surface.shade700,
+                color: _color.surface.shade700,
               ),
         onPressed: onPress,
       ),
@@ -85,33 +92,33 @@ class _TabOption extends StatelessWidget {
   }
 }
 
-enum NavOptions {
+enum HomeNavOptions {
   images,
   videos,
   favourites,
 }
 
-extension NavExtensions on NavOptions {
+extension NavExtensions on HomeNavOptions {
   IconData get icon {
     switch (this) {
-      case NavOptions.videos:
+      case HomeNavOptions.videos:
         return Icons.play_circle_outline_outlined;
-      case NavOptions.images:
+      case HomeNavOptions.images:
         return Icons.image_outlined;
-      case NavOptions.favourites:
+      case HomeNavOptions.favourites:
         return Icons.star_border;
     }
   }
 
   PageRouteInfo<dynamic> get route {
     switch (this) {
-      case NavOptions.images:
-        return ImagesScreenRoute();
-      case NavOptions.videos:
+      case HomeNavOptions.images:
+        return TipsScreenRoute();
+      case HomeNavOptions.videos:
         return VideosScreenRoute();
       // TODO: Remove when implemented other screens
-      case NavOptions.favourites:
-        return ImagesScreenRoute();
+      case HomeNavOptions.favourites:
+        return TipsScreenRoute();
     }
   }
 }

@@ -15,9 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // if (true) return Container();
     return AutoTabsRouter(
-      routes: NavOptions.values.map((e) => e.route).toList(),
+      routes: HomeNavOptions.values.map((e) => e.route).toList(),
       builder: (context, child, tabsController) {
         return Scaffold(
           extendBody: true,
@@ -29,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           body: SafeArea(child: child),
           drawer: AppDrawer(
             tabsController: AutoTabsRouter.of(context),
+            action: () => _scaffoldKey.currentState!.closeDrawer(),
           ),
         );
       },
@@ -40,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       foregroundColor: context.theme.colors.primary,
       backgroundColor: context.theme.colors.primary.shade100,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      onPressed: () {
-        _scaffoldKey.currentState!.openDrawer();
-      },
+      onPressed: () => _scaffoldKey.currentState!.openDrawer(),
       child: Icon(Icons.arrow_forward_ios),
     );
   }

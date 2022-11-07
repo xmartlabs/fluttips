@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_template/ui/catalog/catalog_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_template/ui/home/home_screen.dart';
 import 'package:flutter_template/ui/section/section_router.dart';
+import 'package:flutter_template/ui/tips/tips_screen.dart';
 import 'package:flutter_template/ui/videos/videos.dart';
-import 'package:flutter_template/ui/images/images_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -29,8 +29,8 @@ part 'app_router.gr.dart';
           initial: true,
           children: [
             AutoRoute(
-              path: AppRouter.IMAGES_PATH,
-              page: ImagesScreen,
+              path: AppRouter.TIPS_PATH,
+              page: TipsScreen,
             ),
             AutoRoute(
               path: AppRouter.VIDEOS_PATH,
@@ -44,6 +44,6 @@ part 'app_router.gr.dart';
 )
 class AppRouter extends _$AppRouter {
   static const SIGN_IN_PATH = 'signin';
-  static const IMAGES_PATH = 'images';
+  static const TIPS_PATH = 'tips';
   static const VIDEOS_PATH = 'videos';
 }

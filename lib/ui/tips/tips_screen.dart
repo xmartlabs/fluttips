@@ -23,13 +23,13 @@ class _TipContentScreen extends StatefulWidget {
 }
 
 class _TipContentScreenState extends State<_TipContentScreen> {
-  late final TextEditingController controller = TextEditingController();
-  late final PageController pageController = PageController();
+  late final TextEditingController _controller = TextEditingController();
+  late final PageController _pageController = PageController();
 
   @override
   void dispose() {
-    controller.dispose();
-    pageController.dispose();
+    _controller.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
@@ -40,7 +40,7 @@ class _TipContentScreenState extends State<_TipContentScreen> {
         return Container(
           color: context.theme.colors.background,
           child: PageView.builder(
-            controller: pageController,
+            controller: _pageController,
             allowImplicitScrolling: true,
             scrollDirection: Axis.vertical,
             itemCount: state.tips.length,

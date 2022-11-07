@@ -41,10 +41,10 @@ class _$AppRouter extends RootStackRouter {
         child: HomeScreen(),
       );
     },
-    ImagesScreenRoute.name: (routeData) {
+    TipsScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const ImagesScreen(),
+        child: const TipsScreen(),
       );
     },
     VideosScreenRoute.name: (routeData) {
@@ -75,8 +75,8 @@ class _$AppRouter extends RootStackRouter {
               parent: AuthenticatedRouter.name,
               children: [
                 RouteConfig(
-                  ImagesScreenRoute.name,
-                  path: 'images',
+                  TipsScreenRoute.name,
+                  path: 'tips',
                   parent: HomeScreenRoute.name,
                 ),
                 RouteConfig(
@@ -85,7 +85,7 @@ class _$AppRouter extends RootStackRouter {
                   parent: HomeScreenRoute.name,
                 ),
               ],
-            )
+            ),
           ],
         ),
       ];
@@ -142,15 +142,15 @@ class HomeScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ImagesScreen]
-class ImagesScreenRoute extends PageRouteInfo<void> {
-  const ImagesScreenRoute()
+/// [TipsScreen]
+class TipsScreenRoute extends PageRouteInfo<void> {
+  const TipsScreenRoute()
       : super(
-          ImagesScreenRoute.name,
-          path: 'images',
+          TipsScreenRoute.name,
+          path: 'tips',
         );
 
-  static const String name = 'ImagesScreenRoute';
+  static const String name = 'TipsScreenRoute';
 }
 
 /// generated route for
