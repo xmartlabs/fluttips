@@ -12,6 +12,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  var hideFab = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
       routes: HomeNavOptions.values.map((e) => e.route).toList(),
       builder: (context, child, tabsController) {
         return Scaffold(
+          onDrawerChanged: (stateDrawer) => setState(() {
+            hideFab = stateDrawer;
+          }),
           extendBody: true,
           extendBodyBehindAppBar: true,
           key: _scaffoldKey,
@@ -35,13 +44,19 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  FloatingActionButton buildFab(BuildContext context) {
-    return FloatingActionButton(
-      foregroundColor: context.theme.colors.primary,
-      backgroundColor: context.theme.colors.primary.shade100,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-      child: Icon(Icons.arrow_forward_ios),
+  Widget buildFab(BuildContext context) {
+    return Visibility(
+      visible: !hideFab,
+      child: FloatingActionButton(
+        foregroundColor: context.theme.colors.primary,
+        backgroundColor: context.theme.colors.primary.shade100,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        onPressed: () {
+          _scaffoldKey.currentState!.openDrawer();
+        },
+        child: Icon(Icons.arrow_forward_ios),
+      ),
     );
   }
 }
