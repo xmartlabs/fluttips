@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/ui/extensions/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/home/drawer.dart';
+
+import 'package:flutter_template/ui/common/fab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -14,11 +15,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  var hideFab = false;
 
   @override
   Widget build(BuildContext context) => AutoTabsRouter(
         routes: HomeNavOptions.values.map((e) => e.route).toList(),
         builder: (context, child, tabsController) => Scaffold(
+          onDrawerChanged: (stateDrawer) => setState(() {
+            hideFab = stateDrawer;
+          }),
           extendBody: true,
           extendBodyBehindAppBar: true,
           key: _scaffoldKey,
@@ -33,12 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
 
-  FloatingActionButton buildFab(BuildContext context) => FloatingActionButton(
-        foregroundColor: context.theme.colors.primary,
-        backgroundColor: context.theme.colors.primary.shade100,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-        onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-        child: const Icon(Icons.arrow_forward_ios),
+  Widget buildFab(BuildContext context) => Visibility(
+        visible: !hideFab,
+        child: Fab(
+          state: const FabState.notSelected(),
+          iconNotSelected: Icons.arrow_forward_ios,
+          action: () => _scaffoldKey.currentState!.openDrawer(),
+        ),
       );
 }

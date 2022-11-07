@@ -24,7 +24,7 @@ class Fab extends StatelessWidget {
   Widget build(BuildContext context) => FloatingActionButton(
         onPressed: action,
         backgroundColor: state.when(
-          notSelected: () => context.theme.colors.surface,
+          notSelected: () => context.theme.colors.primary.shade100,
           selected: () => context.theme.colors.primary,
         ),
         foregroundColor: context.theme.colors.primary,
