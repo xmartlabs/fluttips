@@ -85,7 +85,7 @@ class _$AppRouter extends RootStackRouter {
                   parent: HomeScreenRoute.name,
                 ),
               ],
-            )
+            ),
           ],
         ),
       ];
