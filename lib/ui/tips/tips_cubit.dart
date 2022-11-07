@@ -26,6 +26,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
 
   void changeFavouriteButton(int index) {
+    //TODO: do this in the repository
     final newList = [...state.tips];
     var tip = newList[index];
     newList[index] = tip.copyWith(favourite: !tip.favourite);
