@@ -9,12 +9,10 @@ class TipsScreen extends StatelessWidget {
   const TipsScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TipCubit(context.read<ErrorHandlerCubit>()),
-      child: _TipContentScreen(),
-    );
-  }
+  Widget build(BuildContext context) => BlocProvider(
+        create: (context) => TipCubit(context.read<ErrorHandlerCubit>()),
+        child: _TipContentScreen(),
+      );
 }
 
 class _TipContentScreen extends StatefulWidget {
@@ -34,10 +32,8 @@ class _TipContentScreenState extends State<_TipContentScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<TipCubit, TipsBaseState>(
-      builder: (context, state) {
-        return Container(
+  Widget build(BuildContext context) => BlocBuilder<TipCubit, TipsBaseState>(
+        builder: (context, state) => Container(
           color: context.theme.colors.background,
           child: PageView.builder(
             controller: _pageController,
@@ -47,8 +43,6 @@ class _TipContentScreenState extends State<_TipContentScreen> {
             itemBuilder: (BuildContext context, int index) =>
                 Image.network(state.tips[index].imageUrl),
           ),
-        );
-      },
-    );
-  }
+        ),
+      );
 }

@@ -1,3 +1,5 @@
+// ignore_for_file: overridden_fields
+
 import 'package:flutter/material.dart';
 
 // Colors name extracted from https://www.color-name.com
@@ -56,7 +58,7 @@ class AppColors extends ColorScheme {
     },
   );
 
-  AppColors({
+  const AppColors({
     required Brightness brightness,
     required this.primary,
     required this.onPrimary,
@@ -88,7 +90,7 @@ class AppColors extends ColorScheme {
           onTertiary: onTertiary,
         );
 
-  static AppColors getColorScheme() => AppColors(
+  static AppColors getColorScheme() => const AppColors(
         brightness: Brightness.light,
         primary: _primaryColors,
         onPrimary: _waterColor,

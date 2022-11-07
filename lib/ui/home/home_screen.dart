@@ -6,6 +6,8 @@ import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/home/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -14,11 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  Widget build(BuildContext context) {
-    return AutoTabsRouter(
-      routes: HomeNavOptions.values.map((e) => e.route).toList(),
-      builder: (context, child, tabsController) {
-        return Scaffold(
+  Widget build(BuildContext context) => AutoTabsRouter(
+        routes: HomeNavOptions.values.map((e) => e.route).toList(),
+        builder: (context, child, tabsController) => Scaffold(
           extendBody: true,
           extendBodyBehindAppBar: true,
           key: _scaffoldKey,
@@ -30,18 +30,15 @@ class _HomeScreenState extends State<HomeScreen> {
             tabsController: AutoTabsRouter.of(context),
             action: () => _scaffoldKey.currentState!.closeDrawer(),
           ),
-        );
-      },
-    );
-  }
+        ),
+      );
 
-  FloatingActionButton buildFab(BuildContext context) {
-    return FloatingActionButton(
-      foregroundColor: context.theme.colors.primary,
-      backgroundColor: context.theme.colors.primary.shade100,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-      child: Icon(Icons.arrow_forward_ios),
-    );
-  }
+  FloatingActionButton buildFab(BuildContext context) => FloatingActionButton(
+        foregroundColor: context.theme.colors.primary,
+        backgroundColor: context.theme.colors.primary.shade100,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        onPressed: () => _scaffoldKey.currentState!.openDrawer(),
+        child: const Icon(Icons.arrow_forward_ios),
+      );
 }

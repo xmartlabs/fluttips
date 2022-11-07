@@ -8,9 +8,9 @@ class AppButton extends StatelessWidget {
   final VoidCallback action;
 
   const AppButton({
-    Key? key,
     required this.text,
     required this.action,
+    Key? key,
   }) : super(key: key);
 
   @override

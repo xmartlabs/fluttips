@@ -14,8 +14,8 @@ class InputText extends StatelessWidget {
   final Function(String)? onChanged;
 
   const InputText({
-    Key? key,
     required this.controller,
+    Key? key,
     this.leadingIcon,
     this.trailingIcon,
     this.textHint,

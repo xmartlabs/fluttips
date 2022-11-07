@@ -7,23 +7,21 @@ class SearchBar extends StatelessWidget {
   final Function(String) action;
 
   const SearchBar({
-    Key? key,
     required this.controller,
     required this.action,
+    Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(
         alignment: Alignment.centerRight,
-        child: Container(
-          child: InputText(
-            leadingIcon: Icons.search,
-            trailingIcon: Icons.highlight_off,
-            controller: controller,
-            textHint: context.localizations.search,
-            actionSecondIcon: controller.clear,
-            onChanged: action,
-          ),
+        child: InputText(
+          leadingIcon: Icons.search,
+          trailingIcon: Icons.highlight_off,
+          controller: controller,
+          textHint: context.localizations.search,
+          actionSecondIcon: controller.clear,
+          onChanged: action,
         ),
       );
 }

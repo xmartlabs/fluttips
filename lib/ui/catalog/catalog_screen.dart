@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:flutter_template/ui/common/app_button.dart';
 import 'package:flutter_template/ui/common/app_dialog.dart';
@@ -5,6 +7,8 @@ import 'package:flutter_template/ui/common/fab.dart';
 import 'package:flutter_template/ui/common/search_bar.dart';
 
 class CatalogScreen extends StatefulWidget {
+  const CatalogScreen({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => CatalogScreenState();
 }
@@ -41,14 +45,12 @@ class CatalogScreenState extends State<CatalogScreen> {
             controller: controllerSearchBar,
             action: (word) => print('writing'),
           ),
-          Container(
-            child: AppButton(
-              text: 'hello',
-              action: controllerAppButton.clear,
-            ),
+          AppButton(
+            text: 'hello',
+            action: controllerAppButton.clear,
           ),
           Fab(
-            state: FabState.notSelected(),
+            state: const FabState.notSelected(),
             iconNotSelected: Icons.star_border,
             action: () => print('Fab clicked'),
           ),

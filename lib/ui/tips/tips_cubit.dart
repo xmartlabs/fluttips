@@ -16,10 +16,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   final GeneralErrorHandler _errorHandler;
   final TipRepository _tipRepository = DiProvider.get();
 
-  TipCubit(this._errorHandler)
-      : super(
-          TipsBaseState.state(),
-        ) {
+  TipCubit(this._errorHandler) : super(const TipsBaseState.state()) {
     unawaited(getTips());
   }
 
