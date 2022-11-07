@@ -14,7 +14,8 @@ class _VideosContentScreen extends StatelessWidget {
   Widget build(BuildContext context) => Center(
         child: Text(
           'VIDEOS',
-          style: TextStyle(color: context.theme.colors.onPrimary),
+          style: context.theme.textStyles.headlineMedium!
+              .copyWith(color: context.theme.colors.onPrimary),
         ),
       );
 }

@@ -15,14 +15,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  var hideFab = false;
+  var _hideFab = false;
 
   @override
   Widget build(BuildContext context) => AutoTabsRouter(
         routes: HomeNavOptions.values.map((e) => e.route).toList(),
         builder: (context, child, tabsController) => Scaffold(
           onDrawerChanged: (stateDrawer) => setState(() {
-            hideFab = stateDrawer;
+            _hideFab = stateDrawer;
           }),
           extendBody: true,
           extendBodyBehindAppBar: true,
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 
   Widget buildFab(BuildContext context) => Visibility(
-        visible: !hideFab,
+        visible: !_hideFab,
         child: Fab(
           state: const FabState.notSelected(),
           iconNotSelected: Icons.arrow_forward_ios,

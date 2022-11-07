@@ -35,7 +35,7 @@ class _TipContentScreenState extends State<_TipContentScreen> {
   Widget build(BuildContext context) {
     final cubit = context.read<TipCubit>();
     return BlocBuilder<TipCubit, TipsBaseState>(
-      builder: (context, state) => CustomScaffoldFab(
+      builder: (context, state) => MainScaffoldWithFab(
         iconNotSelected: Icons.star_border,
         state: state.tips.isNotEmpty && state.tips[state.currentPage].favourite
             ? const FabState.selected()

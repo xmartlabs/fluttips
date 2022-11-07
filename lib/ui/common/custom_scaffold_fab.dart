@@ -3,14 +3,14 @@ import 'package:flutter_template/ui/extensions/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/common/fab.dart';
 
-class CustomScaffoldFab extends StatelessWidget {
+class MainScaffoldWithFab extends StatelessWidget {
   final FabState state;
   final IconData? iconSelected;
   final IconData iconNotSelected;
   final VoidCallback? action;
   final Widget? child;
 
-  const CustomScaffoldFab({
+  const MainScaffoldWithFab({
     required this.state,
     required this.iconNotSelected,
     Key? key,
