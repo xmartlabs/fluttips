@@ -20,7 +20,7 @@ class TipCubit extends Cubit<TipsBaseState> {
       : super(
           TipsBaseState.state(),
         ) {
-    unawaited(getTips());
+    suscribeTipsUpdate();
   }
 
   void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
@@ -33,9 +33,9 @@ class TipCubit extends Cubit<TipsBaseState> {
     emit(state.copyWith(tips: newList));
   }
 
-  Future<void> getTips() async {
-    //TODO: transform to stream
-    final tips = await _tipRepository.getTips();
-    emit(state.copyWith(tips: tips.toList()));
+  void suscribeTipsUpdate() {
+    _tipRepository.getTips().listen((event) {
+      emit(state.copyWith(tips: event));
+    });
   }
 }

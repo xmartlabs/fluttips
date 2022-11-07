@@ -1,8 +1,8 @@
 import 'package:flutter_template/core/model/db/repository_db_entity.dart';
 import 'package:flutter_template/core/model/project.dart';
 import 'package:flutter_template/core/model/serializer/project_serializer.dart';
-import 'package:flutter_template/core/source/project_local_source.dart';
-import 'package:flutter_template/core/source/project_remote_source.dart';
+import 'package:flutter_template/core/source/localSource/project_local_source.dart';
+import 'package:flutter_template/core/source/remoteSource/project_remote_source.dart';
 import 'package:stock/stock.dart';
 
 class ProjectRepository {
