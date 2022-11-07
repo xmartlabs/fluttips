@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/ui/extensions/context_extensions.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/tips/tips_cubit.dart';
+import 'package:flutter_template/ui/common/custom_scaffold_fab.dart';
+import 'package:flutter_template/ui/common/fab.dart';
 
 class TipsScreen extends StatelessWidget {
   const TipsScreen({Key? key}) : super(key: key);
@@ -35,15 +35,24 @@ class _TipContentScreenState extends State<_TipContentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<TipCubit>();
+
     return BlocBuilder<TipCubit, TipsBaseState>(
       builder: (context, state) {
-        return Container(
-          color: context.theme.colors.background,
+        return CustomScaffoldFab(
+          iconNotSelected: Icons.star_border,
+          state:
+              state.tips.isNotEmpty && state.tips[state.currentPage].favourite
+                  ? FabState.selected()
+                  : FabState.notSelected(),
+          action: () => cubit.changeFavouriteButton(state.currentPage),
+          iconSelected: Icons.star,
           child: PageView.builder(
             controller: _pageController,
             allowImplicitScrolling: true,
             scrollDirection: Axis.vertical,
             itemCount: state.tips.length,
+            onPageChanged: (index) => cubit.setCurrentPage(index),
             itemBuilder: (BuildContext context, int index) =>
                 Image.network(state.tips[index].imageUrl),
           ),

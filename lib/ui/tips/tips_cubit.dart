@@ -23,6 +23,15 @@ class TipCubit extends Cubit<TipsBaseState> {
     unawaited(getTips());
   }
 
+  void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
+
+  void changeFavouriteButton(int index) {
+    final newList = [...state.tips];
+    var tip = newList[index];
+    newList[index] = tip.copyWith(favourite: !tip.favourite);
+    emit(state.copyWith(tips: newList));
+  }
+
   Future<void> getTips() async {
     //TODO: transform to stream
     final tips = await _tipRepository.getTips();
