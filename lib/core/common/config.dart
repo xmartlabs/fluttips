@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:async';
 
 import 'package:flutter_template/core/common/extension/string_extensions.dart';
@@ -23,7 +25,7 @@ extension EnviromentPath on Environments {
     }
   }
 
-  String get path => 'assets/environments/' + fileName;
+  String get path => 'assets/environments/$fileName';
 }
 
 abstract class Config {
@@ -35,7 +37,9 @@ abstract class Config {
   static String gitHubTipsNameFolder = 'tipsandtricks/';
 
   static final _environment = enumFromString(
-          Environments.values, const String.fromEnvironment('ENV')) ??
+        Environments.values,
+        const String.fromEnvironment('ENV'),
+      ) ??
       Environments.development;
 
   static Future<void> initialize() async {

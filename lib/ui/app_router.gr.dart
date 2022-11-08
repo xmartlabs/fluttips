@@ -17,16 +17,22 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CatalogRouter.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const CatalogScreen(),
+      );
+    },
     UnauthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: SectionRouter(),
+        child: const SectionRouter(),
       );
     },
     AuthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: SectionRouter(),
+        child: const SectionRouter(),
       );
     },
     HomeScreenRoute.name: (routeData) {
@@ -35,10 +41,26 @@ class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
+    TipsScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const TipsScreen(),
+      );
+    },
+    VideosScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const VideosScreen(),
+      );
+    },
   };
 
   @override
   List<RouteConfig> get routes => [
+        RouteConfig(
+          CatalogRouter.name,
+          path: '/catalog-screen',
+        ),
         RouteConfig(
           UnauthenticatedRouter.name,
           path: '/section-router',
@@ -48,20 +70,37 @@ class _$AppRouter extends RootStackRouter {
           path: '/section-router',
           children: [
             RouteConfig(
-              '#redirect',
+              HomeScreenRoute.name,
               path: '',
               parent: AuthenticatedRouter.name,
-              redirectTo: 'home',
-              fullMatch: true,
-            ),
-            RouteConfig(
-              HomeScreenRoute.name,
-              path: 'home',
-              parent: AuthenticatedRouter.name,
-            ),
+              children: [
+                RouteConfig(
+                  TipsScreenRoute.name,
+                  path: 'tips',
+                  parent: HomeScreenRoute.name,
+                ),
+                RouteConfig(
+                  VideosScreenRoute.name,
+                  path: 'videos',
+                  parent: HomeScreenRoute.name,
+                ),
+              ],
+            )
           ],
         ),
       ];
+}
+
+/// generated route for
+/// [CatalogScreen]
+class CatalogRouter extends PageRouteInfo<void> {
+  const CatalogRouter()
+      : super(
+          CatalogRouter.name,
+          path: '/catalog-screen',
+        );
+
+  static const String name = 'CatalogRouter';
 }
 
 /// generated route for
@@ -92,11 +131,36 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
 /// generated route for
 /// [HomeScreen]
 class HomeScreenRoute extends PageRouteInfo<void> {
-  const HomeScreenRoute()
+  const HomeScreenRoute({List<PageRouteInfo>? children})
       : super(
           HomeScreenRoute.name,
-          path: 'home',
+          path: '',
+          initialChildren: children,
         );
 
   static const String name = 'HomeScreenRoute';
+}
+
+/// generated route for
+/// [TipsScreen]
+class TipsScreenRoute extends PageRouteInfo<void> {
+  const TipsScreenRoute()
+      : super(
+          TipsScreenRoute.name,
+          path: 'tips',
+        );
+
+  static const String name = 'TipsScreenRoute';
+}
+
+/// generated route for
+/// [VideosScreen]
+class VideosScreenRoute extends PageRouteInfo<void> {
+  const VideosScreenRoute()
+      : super(
+          VideosScreenRoute.name,
+          path: 'videos',
+        );
+
+  static const String name = 'VideosScreenRoute';
 }

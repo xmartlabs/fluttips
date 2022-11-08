@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TipsBaseState {
   List<Tip> get tips => throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Tip> tips) state,
+    required TResult Function(List<Tip> tips, int currentPage) state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Tip> tips)? state,
+    TResult Function(List<Tip> tips, int currentPage)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Tip> tips)? state,
+    TResult Function(List<Tip> tips, int currentPage)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +61,7 @@ abstract class $TipsBaseStateCopyWith<$Res> {
   factory $TipsBaseStateCopyWith(
           TipsBaseState value, $Res Function(TipsBaseState) then) =
       _$TipsBaseStateCopyWithImpl<$Res>;
-  $Res call({List<Tip> tips});
+  $Res call({List<Tip> tips, int currentPage});
 }
 
 /// @nodoc
@@ -75,12 +76,17 @@ class _$TipsBaseStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tips = freezed,
+    Object? currentPage = freezed,
   }) {
     return _then(_value.copyWith(
       tips: tips == freezed
           ? _value.tips
           : tips // ignore: cast_nullable_to_non_nullable
               as List<Tip>,
+      currentPage: currentPage == freezed
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -92,7 +98,7 @@ abstract class _$$_TipsStateCopyWith<$Res>
           _$_TipsState value, $Res Function(_$_TipsState) then) =
       __$$_TipsStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Tip> tips});
+  $Res call({List<Tip> tips, int currentPage});
 }
 
 /// @nodoc
@@ -108,12 +114,17 @@ class __$$_TipsStateCopyWithImpl<$Res> extends _$TipsBaseStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? tips = freezed,
+    Object? currentPage = freezed,
   }) {
     return _then(_$_TipsState(
       tips: tips == freezed
           ? _value._tips
           : tips // ignore: cast_nullable_to_non_nullable
               as List<Tip>,
+      currentPage: currentPage == freezed
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -121,7 +132,8 @@ class __$$_TipsStateCopyWithImpl<$Res> extends _$TipsBaseStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TipsState implements _TipsState {
-  const _$_TipsState({final List<Tip> tips = const []}) : _tips = tips;
+  const _$_TipsState({final List<Tip> tips = const [], this.currentPage = 0})
+      : _tips = tips;
 
   final List<Tip> _tips;
   @override
@@ -132,8 +144,12 @@ class _$_TipsState implements _TipsState {
   }
 
   @override
+  @JsonKey()
+  final int currentPage;
+
+  @override
   String toString() {
-    return 'TipsBaseState.state(tips: $tips)';
+    return 'TipsBaseState.state(tips: $tips, currentPage: $currentPage)';
   }
 
   @override
@@ -141,12 +157,16 @@ class _$_TipsState implements _TipsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TipsState &&
-            const DeepCollectionEquality().equals(other._tips, _tips));
+            const DeepCollectionEquality().equals(other._tips, _tips) &&
+            const DeepCollectionEquality()
+                .equals(other.currentPage, currentPage));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tips));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_tips),
+      const DeepCollectionEquality().hash(currentPage));
 
   @JsonKey(ignore: true)
   @override
@@ -156,27 +176,27 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Tip> tips) state,
+    required TResult Function(List<Tip> tips, int currentPage) state,
   }) {
-    return state(tips);
+    return state(tips, currentPage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Tip> tips)? state,
+    TResult Function(List<Tip> tips, int currentPage)? state,
   }) {
-    return state?.call(tips);
+    return state?.call(tips, currentPage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Tip> tips)? state,
+    TResult Function(List<Tip> tips, int currentPage)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
-      return state(tips);
+      return state(tips, currentPage);
     }
     return orElse();
   }
@@ -211,10 +231,13 @@ class _$_TipsState implements _TipsState {
 }
 
 abstract class _TipsState implements TipsBaseState {
-  const factory _TipsState({final List<Tip> tips}) = _$_TipsState;
+  const factory _TipsState({final List<Tip> tips, final int currentPage}) =
+      _$_TipsState;
 
   @override
   List<Tip> get tips;
+  @override
+  int get currentPage;
   @override
   @JsonKey(ignore: true)
   _$$_TipsStateCopyWith<_$_TipsState> get copyWith =>

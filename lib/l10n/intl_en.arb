@@ -15,9 +15,10 @@
   "error_no_internet_connection_error_title": "Error",
   "error_unknown_error_description": "Something went wrong!",
   "error_unknown_error_title": "Ops!",
+  "home": "Home",
   "log_out": "Log out",
   "mail": "Mail",
   "password": "Password",
-  "home": "Home",
+  "search": "Search",
   "xmartlabs_projects": "Xmartlabs' projects"
 }

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_template/core/source/auth_local_source.dart';
+import 'package:flutter_template/core/source/localSource/auth_local_source.dart';
 
 class AuthInterceptor extends Interceptor {
   final AuthLocalSource _authLocalSource;
@@ -22,12 +22,12 @@ class AuthInterceptor extends Interceptor {
 
   @override
   Future onError(
-    DioError error,
+    DioError err,
     ErrorInterceptorHandler handler,
   ) async {
-    if (error.response?.statusCode == HttpStatus.unauthorized) {
+    if (err.response?.statusCode == HttpStatus.unauthorized) {
       await _authLocalSource.saveUserToken(null);
     }
-    handler.next(error);
+    handler.next(err);
   }
 }
