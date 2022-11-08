@@ -29,11 +29,11 @@ part 'app_router.gr.dart';
           initial: true,
           children: [
             AutoRoute(
-              path: AppRouter.TIPS_PATH,
+              path: AppRouter.tipsPath,
               page: TipsScreen,
             ),
             AutoRoute(
-              path: AppRouter.VIDEOS_PATH,
+              path: AppRouter.videosPath,
               page: VideosScreen,
             ),
           ],
@@ -43,7 +43,7 @@ part 'app_router.gr.dart';
   ],
 )
 class AppRouter extends _$AppRouter {
-  static const SIGN_IN_PATH = 'signin';
-  static const TIPS_PATH = 'tips';
-  static const VIDEOS_PATH = 'videos';
+  static const signInPath = 'signin';
+  static const tipsPath = 'tips';
+  static const videosPath = 'videos';
 }

@@ -16,10 +16,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   final GeneralErrorHandler _errorHandler;
   final TipRepository _tipRepository = DiProvider.get();
 
-  TipCubit(this._errorHandler)
-      : super(
-          TipsBaseState.state(),
-        ) {
+  TipCubit(this._errorHandler) : super(const TipsBaseState.state()) {
     unawaited(getTips());
   }
 
@@ -28,7 +25,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   void changeFavouriteButton(int index) {
     //TODO: do this in the repository
     final newList = [...state.tips];
-    var tip = newList[index];
+    final tip = newList[index];
     newList[index] = tip.copyWith(favourite: !tip.favourite);
     emit(state.copyWith(tips: newList));
   }
