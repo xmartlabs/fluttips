@@ -15,7 +15,7 @@ abstract class TipsLocalSource {
   Stream<TipDbEntity?> findTipByName(String name);
 
   @Insert(onConflict: OnConflictStrategy.replace)
-  Future<void> insertTips(Iterable<TipDbEntity> tips);
+  Future<void> insertTips(List<TipDbEntity> tips);
 
   @Query('DELETE FROM tips')
   Future<void> deleteAllTips();
@@ -25,7 +25,7 @@ abstract class TipsLocalSource {
     final oldTips = await getTips().first;
     final mergedList = tips?.map((value) => updateTip(value, oldTips));
     if (mergedList != null) {
-      await insertTips(mergedList);
+      await insertTips(mergedList.toList());
     }
     if (tips == null || tips.isEmpty) {
       changeListener.add('tips');

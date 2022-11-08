@@ -130,22 +130,6 @@ class _$TipsLocalSource extends TipsLocalSource {
 
   @override
   Stream<List<TipDbEntity>> getTips() {
-    return _queryAdapter.queryListStream('SELECT * FROM tips',
-        mapper: (Map<String, Object?> row) => TipDbEntity(
-            id: row['id'] as String,
-            name: row['name'] as String,
-            url: row['url'] as String,
-            imageUrl: row['imageUrl'] as String,
-            codeUrl: row['codeUrl'] as String?,
-            mdUrl: row['mdUrl'] as String?,
-            favourite: (row['favourite'] as int) != 0,
-            randomId: row['randomId'] as int),
-        queryableName: 'tips',
-        isView: false);
-  }
-
-  @override
-  Stream<List<TipDbEntity>> getTips2() {
     return _queryAdapter.queryListStream('SELECT * FROM tips ORDER BY randomId',
         mapper: (Map<String, Object?> row) => TipDbEntity(
             id: row['id'] as String,
