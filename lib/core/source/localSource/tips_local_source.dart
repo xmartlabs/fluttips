@@ -5,7 +5,6 @@ import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 
 @dao
 abstract class TipsLocalSource {
-
   late final StreamController<String> changeListener;
 
   @Query('SELECT * FROM tips')
@@ -31,5 +30,3 @@ abstract class TipsLocalSource {
     }
   }
 }
-
-

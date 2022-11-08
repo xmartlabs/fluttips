@@ -1,17 +1,14 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_template/core/repository/project_repository.dart';
 import 'package:flutter_template/core/repository/session_repository.dart';
 import 'package:flutter_template/core/repository/tip_repository.dart';
 import 'package:flutter_template/core/source/localSource/auth_local_source.dart';
 import 'package:flutter_template/core/source/remoteSource/auth_remote_source.dart';
 import 'package:flutter_template/core/source/common/auth_interceptor.dart';
 import 'package:flutter_template/core/source/common/http_service.dart';
-import 'package:flutter_template/core/source/remoteSource/project_remote_source.dart';
 import 'package:flutter_template/core/source/remoteSource/tip_remote_source.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:flutter_template/core/source/database.dart';
-
 
 class RepositoryDiModule {
   RepositoryDiModule._privateConstructor();
@@ -39,14 +36,12 @@ extension _GetItUseCaseDiModuleExtensions on GetIt {
 
   void _setupRepositories() {
     registerLazySingleton(() => SessionRepository(get(), get(), get()));
-    registerLazySingleton(() => ProjectRepository(get(), get()));
-    registerLazySingleton(() => TipRepository(get(),get()));
+    registerLazySingleton(() => TipRepository(get(), get()));
   }
 
   void _setupSources() {
     registerLazySingleton(() => AuthLocalSource(get()));
     registerLazySingleton(() => AuthRemoteSource(get()));
-    registerLazySingleton(() => ProjectRemoteSource(get()));
     registerLazySingleton(() => TipRemoteSource(get()));
     registerLazySingleton(() => get<AppDatabase>().tipsLocalSource);
   }

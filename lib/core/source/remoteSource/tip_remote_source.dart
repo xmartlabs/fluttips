@@ -25,7 +25,8 @@ class TipRemoteSource {
       .where((element) => element.path.contains(Config.gitHubTipsNameFolder))
       .groupBy((element) => element.path.split('/').second)
       .entries
-      .map((entry) => _createTip(entry.key, entry.value)).toList();
+      .map((entry) => _createTip(entry.key, entry.value))
+      .toList();
 
   Tip _createTip(String key, List<GitHubFile> groupFiles) {
     final tipDir = groupFiles.firstWhere((element) => element.isDirectory);
