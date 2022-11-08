@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GeneralError {
-  String? get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String? get title => throw _privateConstructorUsedError;
   dynamic get cause => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -30,7 +30,7 @@ abstract class $GeneralErrorCopyWith<$Res> {
   factory $GeneralErrorCopyWith(
           GeneralError value, $Res Function(GeneralError) then) =
       _$GeneralErrorCopyWithImpl<$Res>;
-  $Res call({String? title, String description, dynamic cause});
+  $Res call({String description, String? title, dynamic cause});
 }
 
 /// @nodoc
@@ -43,19 +43,19 @@ class _$GeneralErrorCopyWithImpl<$Res> implements $GeneralErrorCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? title = freezed,
     Object? description = freezed,
+    Object? title = freezed,
     Object? cause = freezed,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       cause: cause == freezed
           ? _value.cause
           : cause // ignore: cast_nullable_to_non_nullable
@@ -71,7 +71,7 @@ abstract class _$$_GeneralErrorCopyWith<$Res>
           _$_GeneralError value, $Res Function(_$_GeneralError) then) =
       __$$_GeneralErrorCopyWithImpl<$Res>;
   @override
-  $Res call({String? title, String description, dynamic cause});
+  $Res call({String description, String? title, dynamic cause});
 }
 
 /// @nodoc
@@ -87,19 +87,19 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? title = freezed,
     Object? description = freezed,
+    Object? title = freezed,
     Object? cause = freezed,
   }) {
     return _then(_$_GeneralError(
-      title: title == freezed
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
       cause: cause == freezed
           ? _value.cause
           : cause // ignore: cast_nullable_to_non_nullable
@@ -111,18 +111,18 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GeneralError implements _GeneralError {
-  const _$_GeneralError({this.title, required this.description, this.cause});
+  const _$_GeneralError({required this.description, this.title, this.cause});
 
   @override
-  final String? title;
-  @override
   final String description;
+  @override
+  final String? title;
   @override
   final dynamic cause;
 
   @override
   String toString() {
-    return 'GeneralError(title: $title, description: $description, cause: $cause)';
+    return 'GeneralError(description: $description, title: $title, cause: $cause)';
   }
 
   @override
@@ -130,17 +130,17 @@ class _$_GeneralError implements _GeneralError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GeneralError &&
-            const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.cause, cause));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(cause));
 
   @JsonKey(ignore: true)
@@ -151,14 +151,14 @@ class _$_GeneralError implements _GeneralError {
 
 abstract class _GeneralError implements GeneralError {
   const factory _GeneralError(
-      {final String? title,
-      required final String description,
+      {required final String description,
+      final String? title,
       final dynamic cause}) = _$_GeneralError;
 
   @override
-  String? get title;
-  @override
   String get description;
+  @override
+  String? get title;
   @override
   dynamic get cause;
   @override

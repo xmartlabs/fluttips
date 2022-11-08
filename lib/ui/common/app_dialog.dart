@@ -12,12 +12,12 @@ class AppDialog extends StatelessWidget {
   final VoidCallback? actionTwo;
 
   const AppDialog({
-    Key? key,
     required this.title,
     required this.contentText,
     required this.optionOne,
-    this.optionTwo,
     required this.actionOne,
+    Key? key,
+    this.optionTwo,
     this.actionTwo,
   }) : super(key: key);
 
@@ -33,8 +33,8 @@ class AppDialog extends StatelessWidget {
           backgroundColor: context.theme.colors.primary.shade100,
           title: Column(
             children: [
-              Icon(Icons.mobile_friendly_outlined),
-              SizedBox(height: 20),
+              const Icon(Icons.mobile_friendly_outlined),
+              const SizedBox(height: 20),
               Text(
                 title,
                 textAlign: TextAlign.center,

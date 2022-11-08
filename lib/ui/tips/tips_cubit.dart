@@ -21,14 +21,14 @@ class TipCubit extends Cubit<TipsBaseState> {
 
   TipCubit(this._errorHandler)
       : super(
-          TipsBaseState.state(),
+          const TipsBaseState.state(),
         ) {
     suscribeTipsUpdate();
   }
 
   @override
-  Future<void> close() {
-    tips.cancel();
+  Future<void> close() async {
+    await tips.cancel();
     return super.close();
   }
 
@@ -37,7 +37,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   void changeFavouriteButton(int index) {
     //TODO: do this in the repository
     final newList = [...state.tips];
-    var tip = newList[index];
+    final tip = newList[index];
     newList[index] = tip.copyWith(favourite: !tip.favourite);
     emit(state.copyWith(tips: newList));
   }

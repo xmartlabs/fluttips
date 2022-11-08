@@ -20,25 +20,25 @@ class _$AppRouter extends RootStackRouter {
     CatalogRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: CatalogScreen(),
+        child: const CatalogScreen(),
       );
     },
     UnauthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: SectionRouter(),
+        child: const SectionRouter(),
       );
     },
     AuthenticatedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: SectionRouter(),
+        child: const SectionRouter(),
       );
     },
     HomeScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: HomeScreen(),
+        child: const HomeScreen(),
       );
     },
     TipsScreenRoute.name: (routeData) {

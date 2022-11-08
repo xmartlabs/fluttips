@@ -11,10 +11,10 @@ class MainScaffoldWithFab extends StatelessWidget {
   final Widget? child;
 
   const MainScaffoldWithFab({
-    Key? key,
     required this.state,
-    this.iconSelected,
     required this.iconNotSelected,
+    Key? key,
+    this.iconSelected,
     this.action,
     this.child,
   }) : super(key: key);

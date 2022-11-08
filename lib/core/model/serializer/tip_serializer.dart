@@ -5,25 +5,25 @@ import 'package:flutter_template/core/model/tip.dart';
 
 class TipStockTypeMapper extends StockTypeMapper<TipDbEntity, Tip> {
   @override
-  TipDbEntity fromOutput(Tip commonModel) => TipDbEntity(
-        id: commonModel.id,
-        name: commonModel.name,
-        url: commonModel.url,
-        imageUrl: commonModel.imageUrl,
-        codeUrl: commonModel.codeUrl,
-        mdUrl: commonModel.mdUrl,
-        favourite: commonModel.favourite,
+  TipDbEntity fromOutput(Tip value) => TipDbEntity(
+        id: value.id,
+        name: value.name,
+        url: value.url,
+        imageUrl: value.imageUrl,
+        codeUrl: value.codeUrl,
+        mdUrl: value.mdUrl,
+        favourite: value.favourite,
       );
 
   @override
-  Tip fromInput(TipDbEntity serviceModel) => Tip(
-        id: serviceModel.id,
-        name: serviceModel.name,
-        url: serviceModel.url,
-        imageUrl: serviceModel.imageUrl,
-        codeUrl: serviceModel.codeUrl,
-        mdUrl: serviceModel.mdUrl,
-        favourite: serviceModel.favourite,
+  Tip fromInput(TipDbEntity value) => Tip(
+        id: value.id,
+        name: value.name,
+        url: value.url,
+        imageUrl: value.imageUrl,
+        codeUrl: value.codeUrl,
+        mdUrl: value.mdUrl,
+        favourite: value.favourite,
       );
 }
 
@@ -32,10 +32,10 @@ class TipListStockTypeMapper
   final _tipSerializer = TipStockTypeMapper();
 
   @override
-  List<Tip> fromInput(List<TipDbEntity> databaseModel) =>
-      databaseModel.map(_tipSerializer.fromInput).toList();
+  List<Tip> fromInput(List<TipDbEntity> value) =>
+      value.map(_tipSerializer.fromInput).toList();
 
   @override
-  List<TipDbEntity> fromOutput(List<Tip> commonModel) =>
-      commonModel.map(_tipSerializer.fromOutput).toList();
+  List<TipDbEntity> fromOutput(List<Tip> value) =>
+      value.map(_tipSerializer.fromOutput).toList();
 }
