@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'app_database.dart';
+part of 'database.dart';
 
 // **************************************************************************
 // FloorGenerator
@@ -61,7 +61,7 @@ class _$AppDatabase extends AppDatabase {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  ProjectLocalSource? _projectLocalSourceInstance;
+  TipsLocalSource? _tipsLocalSourceInstance;
 
   Future<sqflite.Database> open(
     String path,
@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `projects` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `description` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `language` TEXT NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -94,27 +94,28 @@ class _$AppDatabase extends AppDatabase {
   }
 
   @override
-  ProjectLocalSource get projectLocalSource {
-    return _projectLocalSourceInstance ??=
-        _$ProjectLocalSource(database, changeListener);
+  TipsLocalSource get tipsLocalSource {
+    return _tipsLocalSourceInstance ??=
+        _$TipsLocalSource(database, changeListener);
   }
 }
 
-class _$ProjectLocalSource extends ProjectLocalSource {
-  _$ProjectLocalSource(
+class _$TipsLocalSource extends TipsLocalSource {
+  _$TipsLocalSource(
     this.database,
     this.changeListener,
   )   : _queryAdapter = QueryAdapter(database, changeListener),
-        _projectDbEntityInsertionAdapter = InsertionAdapter(
+        _tipDbEntityInsertionAdapter = InsertionAdapter(
             database,
-            'projects',
-            (ProjectDbEntity item) => <String, Object?>{
+            'tips',
+            (TipDbEntity item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
-                  'description': item.description,
                   'url': item.url,
                   'imageUrl': item.imageUrl,
-                  'language': item.language
+                  'codeUrl': item.codeUrl,
+                  'mdUrl': item.mdUrl,
+                  'favourite': item.favourite ? 1 : 0
                 },
             changeListener);
 
@@ -124,43 +125,60 @@ class _$ProjectLocalSource extends ProjectLocalSource {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<ProjectDbEntity> _projectDbEntityInsertionAdapter;
+  final InsertionAdapter<TipDbEntity> _tipDbEntityInsertionAdapter;
 
   @override
-  Stream<List<ProjectDbEntity>> getProjects() {
-    return _queryAdapter.queryListStream('SELECT * FROM projects',
-        mapper: (Map<String, Object?> row) => ProjectDbEntity(
-            id: row['id'] as int,
+  Stream<List<TipDbEntity>> getTips() {
+    return _queryAdapter.queryListStream('SELECT * FROM tips',
+        mapper: (Map<String, Object?> row) => TipDbEntity(
+            id: row['id'] as String,
             name: row['name'] as String,
-            description: row['description'] as String,
             url: row['url'] as String,
             imageUrl: row['imageUrl'] as String,
-            language: row['language'] as String),
-        queryableName: 'projects',
+            codeUrl: row['codeUrl'] as String?,
+            mdUrl: row['mdUrl'] as String?,
+            favourite: (row['favourite'] as int) != 0),
+        queryableName: 'tips',
         isView: false);
   }
 
   @override
-  Future<void> deleteAllProjects() async {
-    await _queryAdapter.queryNoReturn('DELETE FROM projects');
+  Stream<TipDbEntity?> findTipByName(String name) {
+    return _queryAdapter.queryStream('SELECT * FROM tips WHERE name = ?1',
+        mapper: (Map<String, Object?> row) => TipDbEntity(
+            id: row['id'] as String,
+            name: row['name'] as String,
+            url: row['url'] as String,
+            imageUrl: row['imageUrl'] as String,
+            codeUrl: row['codeUrl'] as String?,
+            mdUrl: row['mdUrl'] as String?,
+            favourite: (row['favourite'] as int) != 0),
+        arguments: [name],
+        queryableName: 'tips',
+        isView: false);
   }
 
   @override
-  Future<void> insertProjects(List<ProjectDbEntity> projects) async {
-    await _projectDbEntityInsertionAdapter.insertList(
-        projects, OnConflictStrategy.replace);
+  Future<void> deleteAllTips() async {
+    await _queryAdapter.queryNoReturn('DELETE FROM tips');
   }
 
   @override
-  Future<void> replaceProjects(List<ProjectDbEntity>? projects) async {
+  Future<void> insertTips(List<TipDbEntity> tips) async {
+    await _tipDbEntityInsertionAdapter.insertList(
+        tips, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> replaceTips(List<TipDbEntity>? tips) async {
     if (database is sqflite.Transaction) {
-      await super.replaceProjects(projects);
+      await super.replaceTips(tips);
     } else {
       await (database as sqflite.Database)
           .transaction<void>((transaction) async {
         final transactionDatabase = _$AppDatabase(changeListener)
           ..database = transaction;
-        await transactionDatabase.projectLocalSource.replaceProjects(projects);
+        await transactionDatabase.tipsLocalSource.replaceTips(tips);
       });
     }
   }

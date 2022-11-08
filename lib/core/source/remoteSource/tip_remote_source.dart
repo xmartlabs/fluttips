@@ -13,7 +13,7 @@ class TipRemoteSource {
 
   TipRemoteSource(this._httpService);
 
-  Future<Iterable<Tip>> getTips() => _httpService
+  Future<List<Tip>> getTips() => _httpService
       .getAndProcessResponse(
         _urlGetGithubFiles,
         serializer: (file) => GitHubTreeResponse.fromJson(file),
@@ -21,11 +21,12 @@ class TipRemoteSource {
       .then((value) => value.getDataOrThrow())
       .then(_processTips);
 
-  Iterable<Tip> _processTips(GitHubTreeResponse response) => response.tree
+  List<Tip> _processTips(GitHubTreeResponse response) => response.tree
       .where((element) => element.path.contains(Config.gitHubTipsNameFolder))
       .groupBy((element) => element.path.split('/').second)
       .entries
-      .map((entry) => _createTip(entry.key, entry.value));
+      .map((entry) => _createTip(entry.key, entry.value))
+      .toList();
 
   Tip _createTip(String key, List<GitHubFile> groupFiles) {
     final tipDir = groupFiles.firstWhere((element) => element.isDirectory);
