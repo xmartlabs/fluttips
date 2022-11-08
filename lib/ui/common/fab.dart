@@ -13,33 +13,32 @@ class Fab extends StatelessWidget {
   final VoidCallback? action;
 
   const Fab({
-    Key? key,
     required this.state,
-    this.iconSelected,
     required this.iconNotSelected,
+    Key? key,
+    this.iconSelected,
     this.action,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: action,
-      backgroundColor: state.when(
-        notSelected: () => context.theme.colors.primary.shade100,
-        selected: () => context.theme.colors.primary,
-      ),
-      foregroundColor: context.theme.colors.primary,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
-      child: state.when(
-        notSelected: () => Icon(
-          iconNotSelected,
-          color: context.theme.colors.primary,
+  Widget build(BuildContext context) => FloatingActionButton(
+        onPressed: action,
+        backgroundColor: state.when(
+          notSelected: () => context.theme.colors.primary.shade100,
+          selected: () => context.theme.colors.primary,
         ),
-        selected: () =>
-            Icon(iconSelected, color: context.theme.colors.primary.shade100),
-      ),
-    );
-  }
+        foregroundColor: context.theme.colors.primary,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        child: state.when(
+          notSelected: () => Icon(
+            iconNotSelected,
+            color: context.theme.colors.primary,
+          ),
+          selected: () =>
+              Icon(iconSelected, color: context.theme.colors.primary.shade100),
+        ),
+      );
 }
 
 @freezed

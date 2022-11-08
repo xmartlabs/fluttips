@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_template/core/common/logger.dart';
 import 'package:flutter_template/core/di/di_provider.dart';
 import 'package:flutter_template/core/model/authentication_status.dart';
 import 'package:flutter_template/ui/app_router.dart';
@@ -14,21 +15,18 @@ class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => MainCubit(),
-      child: _SplashContentScreen(),
-    );
-  }
+  Widget build(BuildContext context) => BlocProvider(
+        create: (_) => MainCubit(),
+        child: _SplashContentScreen(),
+      );
 }
 
 class _SplashContentScreen extends StatelessWidget {
   final router = DiProvider.get<AppRouter>();
 
   @override
-  Widget build(BuildContext context) =>
-      BlocBuilder<MainCubit, MainBaseState>(builder: (context, state) {
-        return MaterialApp.router(
+  Widget build(BuildContext context) => BlocBuilder<MainCubit, MainBaseState>(
+        builder: (context, state) => MaterialApp.router(
           theme: AppTheme.provideAppTheme(context),
           routerDelegate: AutoRouterDelegate.declarative(
             router,
@@ -36,7 +34,7 @@ class _SplashContentScreen extends StatelessWidget {
           ),
           routeInformationParser:
               router.defaultRouteParser(includePrefixMatches: true),
-          localizationsDelegates: [
+          localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -47,16 +45,16 @@ class _SplashContentScreen extends StatelessWidget {
             Resources.setup(context);
             return child!;
           },
-        );
-      });
+        ),
+      );
 
   List<PageRouteInfo<dynamic>> provideRoutes(MainBaseState state) {
-    print(state.authenticationStatus);
+    Logger.d("Routes: Authenticated state ${state.authenticationStatus}");
     switch (state.authenticationStatus) {
       // TODO: Fix redirection to implement the Onboarding
       case AuthenticationStatus.unauthenticated:
       case AuthenticationStatus.authenticated:
-        return [AuthenticatedRouter()];
+        return [const AuthenticatedRouter()];
       case null:
         return [];
     }

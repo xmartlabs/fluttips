@@ -9,12 +9,10 @@ class TipsScreen extends StatelessWidget {
   const TipsScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => TipCubit(context.read<ErrorHandlerCubit>()),
-      child: _TipContentScreen(),
-    );
-  }
+  Widget build(BuildContext context) => BlocProvider(
+        create: (context) => TipCubit(context.read<ErrorHandlerCubit>()),
+        child: _TipContentScreen(),
+      );
 }
 
 class _TipContentScreen extends StatefulWidget {
@@ -36,28 +34,24 @@ class _TipContentScreenState extends State<_TipContentScreen> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<TipCubit>();
-
     return BlocBuilder<TipCubit, TipsBaseState>(
-      builder: (context, state) {
-        return MainScaffoldWithFab(
-          iconNotSelected: Icons.star_border,
-          state:
-              state.tips.isNotEmpty && state.tips[state.currentPage].favourite
-                  ? FabState.selected()
-                  : FabState.notSelected(),
-          action: () => cubit.changeFavouriteButton(state.currentPage),
-          iconSelected: Icons.star,
-          child: PageView.builder(
-            controller: _pageController,
-            allowImplicitScrolling: true,
-            scrollDirection: Axis.vertical,
-            itemCount: state.tips.length,
-            onPageChanged: (index) => cubit.setCurrentPage(index),
-            itemBuilder: (BuildContext context, int index) =>
-                Image.network(state.tips[index].imageUrl),
-          ),
-        );
-      },
+      builder: (context, state) => MainScaffoldWithFab(
+        iconNotSelected: Icons.star_border,
+        state: state.tips.isNotEmpty && state.tips[state.currentPage].favourite
+            ? const FabState.selected()
+            : const FabState.notSelected(),
+        action: () => cubit.changeFavouriteButton(state.currentPage),
+        iconSelected: Icons.star,
+        child: PageView.builder(
+          controller: _pageController,
+          allowImplicitScrolling: true,
+          scrollDirection: Axis.vertical,
+          itemCount: state.tips.length,
+          onPageChanged: (index) => cubit.setCurrentPage(index),
+          itemBuilder: (BuildContext context, int index) =>
+              Image.network(state.tips[index].imageUrl),
+        ),
+      ),
     );
   }
 }

@@ -7,6 +7,8 @@ import 'package:flutter_template/ui/home/drawer.dart';
 import 'package:flutter_template/ui/common/fab.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -16,11 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
   var _hideFab = false;
 
   @override
-  Widget build(BuildContext context) {
-    return AutoTabsRouter(
-      routes: HomeNavOptions.values.map((e) => e.route).toList(),
-      builder: (context, child, tabsController) {
-        return Scaffold(
+  Widget build(BuildContext context) => AutoTabsRouter(
+        routes: HomeNavOptions.values.map((e) => e.route).toList(),
+        builder: (context, child, tabsController) => Scaffold(
           onDrawerChanged: (stateDrawer) => setState(() {
             _hideFab = stateDrawer;
           }),
@@ -35,15 +35,13 @@ class _HomeScreenState extends State<HomeScreen> {
             tabsController: AutoTabsRouter.of(context),
             action: () => _scaffoldKey.currentState!.closeDrawer(),
           ),
-        );
-      },
-    );
-  }
+        ),
+      );
 
   Widget buildFab(BuildContext context) => Visibility(
         visible: !_hideFab,
         child: Fab(
-          state: FabState.notSelected(),
+          state: const FabState.notSelected(),
           iconNotSelected: Icons.arrow_forward_ios,
           action: () => _scaffoldKey.currentState!.openDrawer(),
         ),
