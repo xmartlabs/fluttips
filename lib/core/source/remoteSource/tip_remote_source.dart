@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dartx/dartx.dart';
 import 'package:flutter_template/core/model/service/responses/github_file_response.dart';
 import 'package:flutter_template/core/model/service/responses/service_response.dart';
@@ -21,14 +23,17 @@ class TipRemoteSource {
       .then((value) => value.getDataOrThrow())
       .then(_processTips);
 
-  List<Tip> _processTips(GitHubTreeResponse response) => response.tree
-      .where((element) => element.path.contains(Config.gitHubTipsNameFolder))
-      .groupBy((element) => element.path.split('/').second)
-      .entries
-      .map((entry) => _createTip(entry.key, entry.value))
-      .toList();
+  List<Tip> _processTips(GitHubTreeResponse response) {
+    final Random random = Random();
+    return response.tree
+        .where((element) => element.path.contains(Config.gitHubTipsNameFolder))
+        .groupBy((element) => element.path.split('/').second)
+        .entries
+        .map((entry) => _createTip(entry.key, entry.value, random))
+        .toList();
+  }
 
-  Tip _createTip(String key, List<GitHubFile> groupFiles) {
+  Tip _createTip(String key, List<GitHubFile> groupFiles, Random random) {
     final tipDir = groupFiles.firstWhere((element) => element.isDirectory);
     final files = groupFiles
         .whereNot((element) => element.isDirectory)
@@ -40,6 +45,7 @@ class TipRemoteSource {
       imageUrl: Config.imageBaseUrl + files[FileType.image]!.path,
       codeUrl: Config.prefixUrl + (files[FileType.code]?.path ?? ''),
       mdUrl: Config.prefixUrl + (files[FileType.md]?.path ?? ''),
+      randomId: random.nextInt(2147483647),
     );
   }
 }
