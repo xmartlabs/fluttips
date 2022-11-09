@@ -1,5 +1,4 @@
 import 'package:floor/floor.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 @Entity(tableName: 'tips')
 class TipDbEntity {
@@ -10,9 +9,7 @@ class TipDbEntity {
   final String imageUrl;
   final String? codeUrl;
   final String? mdUrl;
-  @Default(false)
   bool favourite;
-  @Default(0)
   int randomId;
 
   TipDbEntity({
@@ -22,7 +19,7 @@ class TipDbEntity {
     required this.imageUrl,
     required this.codeUrl,
     required this.mdUrl,
-    required this.favourite,
     required this.randomId,
+    this.favourite = false,
   });
 }

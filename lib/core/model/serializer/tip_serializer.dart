@@ -25,6 +25,7 @@ class TipStockTypeMapper extends StockTypeMapper<TipDbEntity, Tip> {
         codeUrl: value.codeUrl,
         mdUrl: value.mdUrl,
         favourite: value.favourite,
+        randomId: value.randomId,
       );
 }
 

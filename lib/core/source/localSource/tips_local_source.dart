@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dartx/dartx.dart';
 import 'package:floor/floor.dart';
 import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 
@@ -22,26 +23,24 @@ abstract class TipsLocalSource {
   @transaction
   Future<void> replaceAndUpdateTips(List<TipDbEntity> tips) async {
     final oldTips = await getTips().first;
-    var mapTips = <String, TipDbEntity>{};
-    mapTips = Map.fromIterable(oldTips, key: (e) => e.id);
+    final mapTips = oldTips.associateBy((e) => e.id);
+    final mergedList = tips
+        .map((value) => mergeTipData(newTip: value, oldTip: mapTips[value.id]));
 
-    final mergedList = tips.map((value) => updateTip(value, mapTips[value.id]));
-
+    await deleteAllTips();
     if (mergedList.isNotEmpty) {
-      await deleteAllTips();
       await insertTips(mergedList.toList());
     }
-    if (mergedList.isEmpty) {
+    if (mergedList.isEmpty && oldTips.isNotEmpty) {
       changeListener.add('tips');
     }
   }
 
-  TipDbEntity updateTip(TipDbEntity newTip, TipDbEntity? oldTip) {
-    if (oldTip != null) {
+  TipDbEntity mergeTipData({
+    required TipDbEntity newTip,
+    TipDbEntity? oldTip,
+  }) =>
       newTip
-        ..randomId = oldTip.randomId
-        ..favourite = oldTip.favourite;
-    }
-    return newTip;
-  }
+        ..randomId = oldTip?.randomId ?? newTip.randomId
+        ..favourite = oldTip?.favourite ?? newTip.favourite;
 }
