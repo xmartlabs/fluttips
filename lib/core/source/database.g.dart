@@ -173,7 +173,7 @@ class _$TipsLocalSource extends TipsLocalSource {
   }
 
   @override
-  Future<void> replaceAndUpdateTips(List<TipDbEntity>? tips) async {
+  Future<void> replaceAndUpdateTips(List<TipDbEntity> tips) async {
     if (database is sqflite.Transaction) {
       await super.replaceAndUpdateTips(tips);
     } else {

@@ -11,6 +11,9 @@ import 'package:flutter_template/core/model/common/file_type.dart';
 
 class TipRemoteSource {
   static const _urlGetGithubFiles = '/git/trees/main?recursive=All';
+  //The max number of SQL Lite is explain here
+  // https://es.quora.com/Qu%C3%A9-volumen-de-datos-puede-manejar-SQLite
+  static const _maxNumber = 2147483647;
   final HttpServiceDio _httpService;
 
   TipRemoteSource(this._httpService);
@@ -45,7 +48,7 @@ class TipRemoteSource {
       imageUrl: Config.imageBaseUrl + files[FileType.image]!.path,
       codeUrl: Config.prefixUrl + (files[FileType.code]?.path ?? ''),
       mdUrl: Config.prefixUrl + (files[FileType.md]?.path ?? ''),
-      randomId: random.nextInt(2147483647),
+      randomId: random.nextInt(_maxNumber),
     );
   }
 }
