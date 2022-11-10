@@ -14,6 +14,7 @@ class Tip with _$Tip {
     required String imageUrl,
     required String? codeUrl,
     required String? mdUrl,
+    required int randomId,
     @Default(false) bool favourite,
   }) = _Tip;
 

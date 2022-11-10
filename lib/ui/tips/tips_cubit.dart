@@ -19,10 +19,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   late StreamSubscription<List<Tip>> tips;
   final TipRepository _tipRepository = DiProvider.get();
 
-  TipCubit(this._errorHandler)
-      : super(
-          const TipsBaseState.state(),
-        ) {
+  TipCubit(this._errorHandler) : super(const TipsBaseState.state()) {
     suscribeTipsUpdate();
   }
 

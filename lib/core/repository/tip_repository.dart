@@ -17,7 +17,7 @@ class TipRepository {
           fetcher: Fetcher.ofFuture((_) => _tipRemoteSource.getTips()),
           sourceOfTruth: SourceOfTruth<dynamic, List<TipDbEntity>>(
             reader: (_) => _tipsLocalSource.getTips(),
-            writer: (_, value) => _tipsLocalSource.replaceTips(value),
+            writer: (_, value) => _tipsLocalSource.replaceAndUpdateTips(value!),
           ).mapToUsingMapper(TipListStockTypeMapper()),
         );
 

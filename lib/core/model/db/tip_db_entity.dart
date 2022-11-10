@@ -9,7 +9,8 @@ class TipDbEntity {
   final String imageUrl;
   final String? codeUrl;
   final String? mdUrl;
-  final bool favourite;
+  bool favourite;
+  int randomId;
 
   TipDbEntity({
     required this.id,
@@ -18,6 +19,7 @@ class TipDbEntity {
     required this.imageUrl,
     required this.codeUrl,
     required this.mdUrl,
-    required this.favourite,
+    required this.randomId,
+    this.favourite = false,
   });
 }
