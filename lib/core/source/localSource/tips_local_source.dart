@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dartx/dartx.dart';
 import 'package:floor/floor.dart';
 import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 
@@ -7,7 +8,7 @@ import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 abstract class TipsLocalSource {
   late final StreamController<String> changeListener;
 
-  @Query('SELECT * FROM tips')
+  @Query('SELECT * FROM tips ORDER BY randomId')
   Stream<List<TipDbEntity>> getTips();
 
   @Query('SELECT * FROM tips WHERE name = :name')
@@ -20,13 +21,26 @@ abstract class TipsLocalSource {
   Future<void> deleteAllTips();
 
   @transaction
-  Future<void> replaceTips(List<TipDbEntity>? tips) async {
+  Future<void> replaceAndUpdateTips(List<TipDbEntity> tips) async {
+    final oldTips = await getTips().first;
+    final mapTips = oldTips.associateBy((e) => e.id);
+    final mergedList = tips
+        .map((value) => mergeTipData(newTip: value, oldTip: mapTips[value.id]));
+
     await deleteAllTips();
-    if (tips != null) {
-      await insertTips(tips);
+    if (mergedList.isNotEmpty) {
+      await insertTips(mergedList.toList());
     }
-    if (tips == null || tips.isEmpty) {
+    if (mergedList.isEmpty && oldTips.isNotEmpty) {
       changeListener.add('tips');
     }
   }
+
+  TipDbEntity mergeTipData({
+    required TipDbEntity newTip,
+    TipDbEntity? oldTip,
+  }) =>
+      newTip
+        ..randomId = oldTip?.randomId ?? newTip.randomId
+        ..favourite = oldTip?.favourite ?? newTip.favourite;
 }

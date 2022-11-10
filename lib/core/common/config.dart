@@ -30,6 +30,7 @@ extension EnviromentPath on Environments {
 
 abstract class Config {
   static late String apiBaseUrl;
+  static const int maxNumber = 2 ^ 32 - 1;
   static String imageBaseUrl =
       'https://raw.githubusercontent.com/vandadnp/flutter-tips-and-tricks/main/';
   static String prefixUrl =

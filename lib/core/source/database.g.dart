@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -115,7 +115,8 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'imageUrl': item.imageUrl,
                   'codeUrl': item.codeUrl,
                   'mdUrl': item.mdUrl,
-                  'favourite': item.favourite ? 1 : 0
+                  'favourite': item.favourite ? 1 : 0,
+                  'randomId': item.randomId
                 },
             changeListener);
 
@@ -129,7 +130,7 @@ class _$TipsLocalSource extends TipsLocalSource {
 
   @override
   Stream<List<TipDbEntity>> getTips() {
-    return _queryAdapter.queryListStream('SELECT * FROM tips',
+    return _queryAdapter.queryListStream('SELECT * FROM tips ORDER BY randomId',
         mapper: (Map<String, Object?> row) => TipDbEntity(
             id: row['id'] as String,
             name: row['name'] as String,
@@ -137,6 +138,7 @@ class _$TipsLocalSource extends TipsLocalSource {
             imageUrl: row['imageUrl'] as String,
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
+            randomId: row['randomId'] as int,
             favourite: (row['favourite'] as int) != 0),
         queryableName: 'tips',
         isView: false);
@@ -152,6 +154,7 @@ class _$TipsLocalSource extends TipsLocalSource {
             imageUrl: row['imageUrl'] as String,
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
+            randomId: row['randomId'] as int,
             favourite: (row['favourite'] as int) != 0),
         arguments: [name],
         queryableName: 'tips',
@@ -170,15 +173,15 @@ class _$TipsLocalSource extends TipsLocalSource {
   }
 
   @override
-  Future<void> replaceTips(List<TipDbEntity>? tips) async {
+  Future<void> replaceAndUpdateTips(List<TipDbEntity> tips) async {
     if (database is sqflite.Transaction) {
-      await super.replaceTips(tips);
+      await super.replaceAndUpdateTips(tips);
     } else {
       await (database as sqflite.Database)
           .transaction<void>((transaction) async {
         final transactionDatabase = _$AppDatabase(changeListener)
           ..database = transaction;
-        await transactionDatabase.tipsLocalSource.replaceTips(tips);
+        await transactionDatabase.tipsLocalSource.replaceAndUpdateTips(tips);
       });
     }
   }
