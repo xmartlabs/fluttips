@@ -138,8 +138,8 @@ class _$TipsLocalSource extends TipsLocalSource {
             imageUrl: row['imageUrl'] as String,
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
-            favourite: (row['favourite'] as int) != 0,
-            randomId: row['randomId'] as int),
+            randomId: row['randomId'] as int,
+            favourite: (row['favourite'] as int) != 0),
         queryableName: 'tips',
         isView: false);
   }
@@ -154,8 +154,8 @@ class _$TipsLocalSource extends TipsLocalSource {
             imageUrl: row['imageUrl'] as String,
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
-            favourite: (row['favourite'] as int) != 0,
-            randomId: row['randomId'] as int),
+            randomId: row['randomId'] as int,
+            favourite: (row['favourite'] as int) != 0),
         arguments: [name],
         queryableName: 'tips',
         isView: false);
