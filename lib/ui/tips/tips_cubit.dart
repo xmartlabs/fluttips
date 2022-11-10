@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartx/dartx.dart';
 import 'package:flutter_template/core/common/extension/stream_future_extensions.dart';
 import 'package:flutter_template/core/di/di_provider.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
@@ -31,12 +32,18 @@ class TipCubit extends Cubit<TipsBaseState> {
 
   void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
 
+  void changeAmountViews(Tip tip) {
+    //TODO: do this in the repository
+    _tipRepository.changeAmountsTip(tip);
+    //emit(state.copyWith(tips: newList));
+  }
+
   void changeFavouriteButton(int index) {
     //TODO: do this in the repository
     final newList = [...state.tips];
     final tip = newList[index];
     newList[index] = tip.copyWith(favourite: !tip.favourite);
-    emit(state.copyWith(tips: newList));
+    // emit(state.copyWith(tips: newList));
   }
 
   void suscribeTipsUpdate() {
@@ -45,8 +52,12 @@ class TipCubit extends Cubit<TipsBaseState> {
         .filterSuccess(_errorHandler.handleError)
         .where((event) => event.isData)
         .map((event) => event.requireData())
-        .listen((event) {
-      emit(state.copyWith(tips: event));
+        .listen((tips) {
+          print(tips.joinToString());
+          if (tips.isNotEmpty){
+            _tipRepository.changeAmountsTip(tips.first);
+          }
+      emit(state.copyWith(tips: tips));
     });
   }
 }

@@ -1,6 +1,6 @@
 import 'package:floor/floor.dart';
 
-@Entity(tableName: 'tips')
+@Entity(tableName: 'Tips')
 class TipDbEntity {
   @primaryKey
   final String id;
@@ -11,6 +11,7 @@ class TipDbEntity {
   final String? mdUrl;
   bool favourite;
   int randomId;
+  int amountViews;
 
   TipDbEntity({
     required this.id,
@@ -21,5 +22,6 @@ class TipDbEntity {
     required this.mdUrl,
     required this.randomId,
     this.favourite = false,
+    this.amountViews = 0,
   });
 }

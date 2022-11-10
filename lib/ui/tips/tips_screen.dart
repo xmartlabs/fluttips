@@ -47,7 +47,11 @@ class _TipContentScreenState extends State<_TipContentScreen> {
           allowImplicitScrolling: true,
           scrollDirection: Axis.vertical,
           itemCount: state.tips.length,
-          onPageChanged: (index) => cubit.setCurrentPage(index),
+          onPageChanged: (index) {
+            cubit
+              ..changeAmountViews(state.tips[index])
+              ..setCurrentPage(index);
+          },
           itemBuilder: (BuildContext context, int index) =>
               Image.network(state.tips[index].imageUrl),
         ),

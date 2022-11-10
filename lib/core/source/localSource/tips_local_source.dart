@@ -32,7 +32,7 @@ abstract class TipsLocalSource {
       await insertTips(mergedList.toList());
     }
     if (mergedList.isEmpty && oldTips.isNotEmpty) {
-      changeListener.add('tips');
+      changeListener.add('Tips');
     }
   }
 
@@ -42,5 +42,6 @@ abstract class TipsLocalSource {
   }) =>
       newTip
         ..randomId = oldTip?.randomId ?? newTip.randomId
+        ..amountViews = oldTip?.amountViews ?? newTip.amountViews
         ..favourite = oldTip?.favourite ?? newTip.favourite;
 }

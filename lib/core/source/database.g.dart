@@ -63,6 +63,8 @@ class _$AppDatabase extends AppDatabase {
 
   TipsLocalSource? _tipsLocalSourceInstance;
 
+  AmountViewsLocalSource? _amountLocalSourceInstance;
+
   Future<sqflite.Database> open(
     String path,
     List<Migration> migrations, [
@@ -85,7 +87,9 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, `amountViews` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+        await database.execute(
+            'CREATE TABLE IF NOT EXISTS `AmountViews` (`id` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -98,6 +102,12 @@ class _$AppDatabase extends AppDatabase {
     return _tipsLocalSourceInstance ??=
         _$TipsLocalSource(database, changeListener);
   }
+
+  @override
+  AmountViewsLocalSource get amountLocalSource {
+    return _amountLocalSourceInstance ??=
+        _$AmountViewsLocalSource(database, changeListener);
+  }
 }
 
 class _$TipsLocalSource extends TipsLocalSource {
@@ -107,7 +117,7 @@ class _$TipsLocalSource extends TipsLocalSource {
   )   : _queryAdapter = QueryAdapter(database, changeListener),
         _tipDbEntityInsertionAdapter = InsertionAdapter(
             database,
-            'tips',
+            'Tips',
             (TipDbEntity item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
@@ -116,7 +126,8 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'codeUrl': item.codeUrl,
                   'mdUrl': item.mdUrl,
                   'favourite': item.favourite ? 1 : 0,
-                  'randomId': item.randomId
+                  'randomId': item.randomId,
+                  'amountViews': item.amountViews
                 },
             changeListener);
 
@@ -139,8 +150,9 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favourite: (row['favourite'] as int) != 0),
-        queryableName: 'tips',
+            favourite: (row['favourite'] as int) != 0,
+            amountViews: row['amountViews'] as int),
+        queryableName: 'Tips',
         isView: false);
   }
 
@@ -155,9 +167,10 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favourite: (row['favourite'] as int) != 0),
+            favourite: (row['favourite'] as int) != 0,
+            amountViews: row['amountViews'] as int),
         arguments: [name],
-        queryableName: 'tips',
+        queryableName: 'Tips',
         isView: false);
   }
 
@@ -182,6 +195,81 @@ class _$TipsLocalSource extends TipsLocalSource {
         final transactionDatabase = _$AppDatabase(changeListener)
           ..database = transaction;
         await transactionDatabase.tipsLocalSource.replaceAndUpdateTips(tips);
+      });
+    }
+  }
+}
+
+class _$AmountViewsLocalSource extends AmountViewsLocalSource {
+  _$AmountViewsLocalSource(
+    this.database,
+    this.changeListener,
+  )   : _queryAdapter = QueryAdapter(database, changeListener),
+        _amountViewsDbEntityInsertionAdapter = InsertionAdapter(
+            database,
+            'AmountViews',
+            (AmountViewsDbEntity item) => <String, Object?>{
+                  'id': item.id,
+                  'amountViews': item.amountViews
+                },
+            changeListener);
+
+  final sqflite.DatabaseExecutor database;
+
+  final StreamController<String> changeListener;
+
+  final QueryAdapter _queryAdapter;
+
+  final InsertionAdapter<AmountViewsDbEntity>
+      _amountViewsDbEntityInsertionAdapter;
+
+  @override
+  Stream<List<AmountViewsDbEntity>> getAmountsView() {
+    return _queryAdapter.queryListStream(
+        'SELECT * FROM AmountViews ORDER BY amountViews',
+        mapper: (Map<String, Object?> row) => AmountViewsDbEntity(
+            id: row['id'] as String, amountViews: row['amountViews'] as int),
+        queryableName: 'AmountViews',
+        isView: false);
+  }
+
+  @override
+  Future<List<AmountViewsDbEntity>> getAmountsViewById(String id) async {
+    return _queryAdapter.queryList('SELECT * FROM AmountViews WHERE id = ?1',
+        mapper: (Map<String, Object?> row) => AmountViewsDbEntity(
+            id: row['id'] as String, amountViews: row['amountViews'] as int),
+        arguments: [id]);
+  }
+
+  @override
+  Future<void> deleteAllAmounts() async {
+    await _queryAdapter.queryNoReturn('DELETE FROM AmountViews');
+  }
+
+  @override
+  Future<void> insertAmounts(List<AmountViewsDbEntity> tips) async {
+    await _amountViewsDbEntityInsertionAdapter.insertList(
+        tips, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> insertAmount(AmountViewsDbEntity amountView) async {
+    await _amountViewsDbEntityInsertionAdapter.insert(
+        amountView, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> replaceAndUpdateAmounts(
+      List<AmountViewsDbEntity> amounts) async {
+    if (database is sqflite.Transaction) {
+      await super.replaceAndUpdateAmounts(amounts);
+    } else {
+      await (database as sqflite.Database)
+          .transaction<void>((transaction) async {
+        final transactionDatabase = _$AppDatabase(changeListener)
+          ..database = transaction;
+        await transactionDatabase.amountLocalSource
+            .replaceAndUpdateAmounts(amounts);
       });
     }
   }
