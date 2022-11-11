@@ -87,9 +87,9 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`tipId`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `AmountViews` (`id` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -140,7 +140,7 @@ class _$TipsLocalSource extends TipsLocalSource {
 
   @override
   Stream<List<TipDbEntity>> getTips() {
-    return _queryAdapter.queryListStream('SELECT * FROM tips ORDER BY randomId',
+    return _queryAdapter.queryListStream('SELECT * FROM Tips ORDER BY randomId',
         mapper: (Map<String, Object?> row) => TipDbEntity(
             id: row['id'] as String,
             name: row['name'] as String,
@@ -156,7 +156,7 @@ class _$TipsLocalSource extends TipsLocalSource {
 
   @override
   Stream<TipDbEntity?> findTipByName(String name) {
-    return _queryAdapter.queryStream('SELECT * FROM tips WHERE name = ?1',
+    return _queryAdapter.queryStream('SELECT * FROM Tips WHERE name = ?1',
         mapper: (Map<String, Object?> row) => TipDbEntity(
             id: row['id'] as String,
             name: row['name'] as String,
@@ -173,7 +173,7 @@ class _$TipsLocalSource extends TipsLocalSource {
 
   @override
   Future<void> deleteAllTips() async {
-    await _queryAdapter.queryNoReturn('DELETE FROM tips');
+    await _queryAdapter.queryNoReturn('DELETE FROM Tips');
   }
 
   @override
@@ -202,11 +202,11 @@ class _$AmountViewsLocalSource extends AmountViewsLocalSource {
     this.database,
     this.changeListener,
   )   : _queryAdapter = QueryAdapter(database, changeListener),
-        _amountViewsDbEntityInsertionAdapter = InsertionAdapter(
+        _tipAmountViewsDbEntityInsertionAdapter = InsertionAdapter(
             database,
-            'AmountViews',
-            (AmountViewsDbEntity item) => <String, Object?>{
-                  'id': item.id,
+            'TipsAmountViews',
+            (TipAmountViewsDbEntity item) => <String, Object?>{
+                  'tipId': item.tipId,
                   'amountViews': item.amountViews
                 },
             changeListener);
@@ -217,57 +217,33 @@ class _$AmountViewsLocalSource extends AmountViewsLocalSource {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<AmountViewsDbEntity>
-      _amountViewsDbEntityInsertionAdapter;
+  final InsertionAdapter<TipAmountViewsDbEntity>
+      _tipAmountViewsDbEntityInsertionAdapter;
 
   @override
-  Stream<List<AmountViewsDbEntity>> getAmountsView() {
+  Stream<List<TipAmountViewsDbEntity>> getAmountsView() {
     return _queryAdapter.queryListStream(
-        'SELECT * FROM AmountViews ORDER BY amountViews',
-        mapper: (Map<String, Object?> row) => AmountViewsDbEntity(
-            id: row['id'] as String, amountViews: row['amountViews'] as int),
-        queryableName: 'AmountViews',
+        'SELECT * FROM TipsAmountViews ORDER BY amountViews',
+        mapper: (Map<String, Object?> row) => TipAmountViewsDbEntity(
+            tipId: row['tipId'] as String,
+            amountViews: row['amountViews'] as int),
+        queryableName: 'TipsAmountViews',
         isView: false);
   }
 
   @override
-  Future<List<AmountViewsDbEntity>> getAmountsViewById(String id) async {
-    return _queryAdapter.queryList('SELECT * FROM AmountViews WHERE id = ?1',
-        mapper: (Map<String, Object?> row) => AmountViewsDbEntity(
-            id: row['id'] as String, amountViews: row['amountViews'] as int),
+  Future<List<TipAmountViewsDbEntity>> getAmountsViewById(String id) async {
+    return _queryAdapter.queryList(
+        'SELECT * FROM TipsAmountViews WHERE tipId = ?1',
+        mapper: (Map<String, Object?> row) => TipAmountViewsDbEntity(
+            tipId: row['tipId'] as String,
+            amountViews: row['amountViews'] as int),
         arguments: [id]);
   }
 
   @override
-  Future<void> deleteAllAmounts() async {
-    await _queryAdapter.queryNoReturn('DELETE FROM AmountViews');
-  }
-
-  @override
-  Future<void> insertAmounts(List<AmountViewsDbEntity> tips) async {
-    await _amountViewsDbEntityInsertionAdapter.insertList(
-        tips, OnConflictStrategy.replace);
-  }
-
-  @override
-  Future<void> insertAmount(AmountViewsDbEntity amountView) async {
-    await _amountViewsDbEntityInsertionAdapter.insert(
+  Future<void> insertAmount(TipAmountViewsDbEntity amountView) async {
+    await _tipAmountViewsDbEntityInsertionAdapter.insert(
         amountView, OnConflictStrategy.replace);
-  }
-
-  @override
-  Future<void> replaceAndUpdateAmounts(
-      List<AmountViewsDbEntity> amounts) async {
-    if (database is sqflite.Transaction) {
-      await super.replaceAndUpdateAmounts(amounts);
-    } else {
-      await (database as sqflite.Database)
-          .transaction<void>((transaction) async {
-        final transactionDatabase = _$AppDatabase(changeListener)
-          ..database = transaction;
-        await transactionDatabase.amountLocalSource
-            .replaceAndUpdateAmounts(amounts);
-      });
-    }
   }
 }

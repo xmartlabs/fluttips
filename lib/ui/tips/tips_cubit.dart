@@ -16,22 +16,22 @@ part 'tips_state.dart';
 class TipCubit extends Cubit<TipsBaseState> {
   //ignore: unused_field
   final GeneralErrorHandler _errorHandler;
-  late StreamSubscription<List<Tip>> tips;
+  late StreamSubscription<List<Tip>> suscriptionToTips;
   final TipRepository _tipRepository = DiProvider.get();
 
   TipCubit(this._errorHandler) : super(const TipsBaseState.state()) {
-    suscribeToTips();
+    _suscribeToTips();
   }
 
   @override
   Future<void> close() async {
-    await tips.cancel();
+    await suscriptionToTips.cancel();
     return super.close();
   }
 
   void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
 
-  void changeAmountViews(Tip tip) {
+  void onTipDisplayed(Tip tip) {
     _tipRepository.changeAmountsTip(tip);
   }
 
@@ -40,18 +40,18 @@ class TipCubit extends Cubit<TipsBaseState> {
     final newList = [...state.tips];
     final tip = newList[index];
     newList[index] = tip.copyWith(favourite: !tip.favourite);
-    // emit(state.copyWith(tips: newList));
+    emit(state.copyWith(tips: newList));
   }
 
-  void suscribeToTips() {
-    tips = _tipRepository
+  void _suscribeToTips() {
+    suscriptionToTips = _tipRepository
         .getTips()
         .filterSuccess(_errorHandler.handleError)
         .where((event) => event.isData)
         .map((event) => event.requireData())
         .listen((tips) {
       if (tips.isNotEmpty) {
-        changeAmountViews(tips.first);
+        onTipDisplayed(tips.first);
       }
       emit(state.copyWith(tips: tips));
     });

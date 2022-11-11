@@ -8,16 +8,16 @@ import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 abstract class TipsLocalSource {
   late final StreamController<String> changeListener;
 
-  @Query('SELECT * FROM tips ORDER BY randomId')
+  @Query('SELECT * FROM ${TipDbEntity.tableName} ORDER BY randomId')
   Stream<List<TipDbEntity>> getTips();
 
-  @Query('SELECT * FROM tips WHERE name = :name')
+  @Query('SELECT * FROM ${TipDbEntity.tableName} WHERE name = :name')
   Stream<TipDbEntity?> findTipByName(String name);
 
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertTips(List<TipDbEntity> tips);
 
-  @Query('DELETE FROM tips')
+  @Query('DELETE FROM ${TipDbEntity.tableName}')
   Future<void> deleteAllTips();
 
   @transaction
@@ -32,7 +32,7 @@ abstract class TipsLocalSource {
       await insertTips(mergedList.toList());
     }
     if (mergedList.isEmpty && oldTips.isNotEmpty) {
-      changeListener.add('Tips');
+      changeListener.add(TipDbEntity.tableName);
     }
   }
 
