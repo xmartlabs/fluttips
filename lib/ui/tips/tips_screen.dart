@@ -37,7 +37,8 @@ class _TipContentScreenState extends State<_TipContentScreen> {
     return BlocBuilder<TipCubit, TipsBaseState>(
       builder: (context, state) => MainScaffoldWithFab(
         iconNotSelected: Icons.star_border,
-        state: state.tips.isNotEmpty && state.tips[state.currentPage].favourite
+        state: state.tips.isNotEmpty &&
+                state.tips[state.currentPage].favourite != null
             ? const FabState.selected()
             : const FabState.notSelected(),
         action: () => cubit.changeFavouriteButton(

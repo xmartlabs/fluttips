@@ -27,7 +27,7 @@ mixin _$Tip {
   String? get codeUrl => throw _privateConstructorUsedError;
   String? get mdUrl => throw _privateConstructorUsedError;
   int get randomId => throw _privateConstructorUsedError;
-  bool get favourite => throw _privateConstructorUsedError;
+  String? get favourite => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +46,7 @@ abstract class $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      bool favourite});
+      String? favourite});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class _$TipCopyWithImpl<$Res> implements $TipCopyWith<$Res> {
       favourite: favourite == freezed
           ? _value.favourite
           : favourite // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String?,
     ));
   }
 }
@@ -118,7 +118,7 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      bool favourite});
+      String? favourite});
 }
 
 /// @nodoc
@@ -173,7 +173,7 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res>
       favourite: favourite == freezed
           ? _value.favourite
           : favourite // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as String?,
     ));
   }
 }
@@ -190,7 +190,7 @@ class _$_Tip implements _Tip {
       required this.codeUrl,
       required this.mdUrl,
       required this.randomId,
-      this.favourite = false});
+      this.favourite = null});
 
   factory _$_Tip.fromJson(Map<String, dynamic> json) => _$$_TipFromJson(json);
 
@@ -210,7 +210,7 @@ class _$_Tip implements _Tip {
   final int randomId;
   @override
   @JsonKey()
-  final bool favourite;
+  final String? favourite;
 
   @override
   String toString() {
@@ -267,7 +267,7 @@ abstract class _Tip implements Tip {
       required final String? codeUrl,
       required final String? mdUrl,
       required final int randomId,
-      final bool favourite}) = _$_Tip;
+      final String? favourite}) = _$_Tip;
 
   factory _Tip.fromJson(Map<String, dynamic> json) = _$_Tip.fromJson;
 
@@ -286,7 +286,7 @@ abstract class _Tip implements Tip {
   @override
   int get randomId;
   @override
-  bool get favourite;
+  String? get favourite;
   @override
   @JsonKey(ignore: true)
   _$$_TipCopyWith<_$_Tip> get copyWith => throw _privateConstructorUsedError;

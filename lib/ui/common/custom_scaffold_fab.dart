@@ -23,11 +23,14 @@ class MainScaffoldWithFab extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: context.theme.colors.background,
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-        floatingActionButton: Fab(
-          state: state,
-          iconNotSelected: iconNotSelected,
-          action: action,
-          iconSelected: iconSelected,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 15.0),
+          child: Fab(
+            state: state,
+            iconNotSelected: iconNotSelected,
+            action: action,
+            iconSelected: iconSelected,
+          ),
         ),
         body: child,
       );

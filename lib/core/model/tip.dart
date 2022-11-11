@@ -15,7 +15,7 @@ class Tip with _$Tip {
     required String? codeUrl,
     required String? mdUrl,
     required int randomId,
-    @Default(false) bool favourite,
+    @Default(null) String? favourite,
   }) = _Tip;
 
   factory Tip.fromJson(Map<String, dynamic> json) => _$TipFromJson(json);

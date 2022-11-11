@@ -10,6 +10,7 @@ import 'package:flutter_template/core/model/serializer/tip_serializer.dart';
 class TipRepository {
   //ignore: unused_field
   final TipRemoteSource _tipRemoteSource;
+
   //ignore: unused_field
   final TipsLocalSource _tipsLocalSource;
   final Stock<dynamic, List<Tip>> _tipListStore;
@@ -25,10 +26,12 @@ class TipRepository {
 
   Stream<StockResponse<List<Tip>>> getTips() => _tipListStore.stream(null);
 
-  Future<void> changeFavouriteTip(Tip tip) async{
+  Future<void> changeFavouriteTip(Tip tip) async {
     final tips = await _tipsLocalSource.getTipById(tip.id);
     final tipToUpdate = tips.first;
-    tipToUpdate.favourite = !tipToUpdate.favourite;
+    tipToUpdate.favourite != null
+        ? tipToUpdate.favourite = DateTime.now().toString()
+        : tipToUpdate.favourite = null;
     await _tipsLocalSource.insertTips([tipToUpdate]);
   }
 }
