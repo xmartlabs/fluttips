@@ -87,7 +87,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, `amountViews` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `AmountViews` (`id` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
@@ -126,8 +126,7 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'codeUrl': item.codeUrl,
                   'mdUrl': item.mdUrl,
                   'favourite': item.favourite ? 1 : 0,
-                  'randomId': item.randomId,
-                  'amountViews': item.amountViews
+                  'randomId': item.randomId
                 },
             changeListener);
 
@@ -150,8 +149,7 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favourite: (row['favourite'] as int) != 0,
-            amountViews: row['amountViews'] as int),
+            favourite: (row['favourite'] as int) != 0),
         queryableName: 'Tips',
         isView: false);
   }
@@ -167,8 +165,7 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favourite: (row['favourite'] as int) != 0,
-            amountViews: row['amountViews'] as int),
+            favourite: (row['favourite'] as int) != 0),
         arguments: [name],
         queryableName: 'Tips',
         isView: false);

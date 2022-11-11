@@ -40,23 +40,24 @@ class TipRepository {
 
   Stream<StockResponse<List<Tip>>> getTips() async* {
     final visited = await getVisited();
+    late List<Tip> sortData;
     yield* _tipListStore.stream(null).map(
-          (event) {
-            if (event.isData){
-              final requireData = event.requireData();
-              final sortData =  event.requireData().sortedBy((e) => visited[e.id] ?? 0).thenBy((element) => element.randomId).toList();
-              final sortData2 =  event.requireData().sortedBy((e) => visited[e.id] ?? 0).thenBy((element) => element.randomId).toList();
-              final sortData3 =  event.requireData().sortedBy((e) => visited[e.id] ?? 0);
-
-            }
-            return (event.isData)
-              ? StockResponse.data(
-                  event.origin,
-              event.requireData().sortedBy((e) => visited[e.id] ?? 0).thenBy((element) => element.randomId),
-                )
-              : event;
-          },
-        );
+      (event) {
+        if (event.isData) {
+          sortData = event
+              .requireData()
+              .sortedBy((e) => visited[e.id] ?? 0)
+              .thenBy((element) => element.randomId)
+              .toList();
+        }
+        return (event.isData)
+            ? StockResponse.data(
+                event.origin,
+                sortData,
+              )
+            : event;
+      },
+    );
   }
 
   Future<void> changeAmountsTip(Tip tip) async {

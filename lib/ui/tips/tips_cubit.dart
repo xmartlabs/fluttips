@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:dartx/dartx.dart';
 import 'package:flutter_template/core/common/extension/stream_future_extensions.dart';
 import 'package:flutter_template/core/di/di_provider.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
@@ -21,7 +20,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   final TipRepository _tipRepository = DiProvider.get();
 
   TipCubit(this._errorHandler) : super(const TipsBaseState.state()) {
-    suscribeTipsUpdate();
+    suscribeToTips();
   }
 
   @override
@@ -33,9 +32,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
 
   void changeAmountViews(Tip tip) {
-    //TODO: do this in the repository
     _tipRepository.changeAmountsTip(tip);
-    //emit(state.copyWith(tips: newList));
   }
 
   void changeFavouriteButton(int index) {
@@ -46,17 +43,16 @@ class TipCubit extends Cubit<TipsBaseState> {
     // emit(state.copyWith(tips: newList));
   }
 
-  void suscribeTipsUpdate() {
+  void suscribeToTips() {
     tips = _tipRepository
         .getTips()
         .filterSuccess(_errorHandler.handleError)
         .where((event) => event.isData)
         .map((event) => event.requireData())
         .listen((tips) {
-          print(tips.joinToString());
-          if (tips.isNotEmpty){
-            _tipRepository.changeAmountsTip(tips.first);
-          }
+      if (tips.isNotEmpty) {
+        changeAmountViews(tips.first);
+      }
       emit(state.copyWith(tips: tips));
     });
   }

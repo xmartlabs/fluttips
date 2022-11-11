@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter_template/core/common/extension/string_extensions.dart';
 import 'package:flutter_template/core/common/helper/enum_helpers.dart';
@@ -30,7 +31,7 @@ extension EnviromentPath on Environments {
 
 abstract class Config {
   static late String apiBaseUrl;
-  static const int maxNumber = 2 ^ 32 - 1;
+  static final num maxNumber = pow(2, 32);
   static String imageBaseUrl =
       'https://raw.githubusercontent.com/vandadnp/flutter-tips-and-tricks/main/';
   static String prefixUrl =

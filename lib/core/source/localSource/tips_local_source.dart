@@ -42,6 +42,5 @@ abstract class TipsLocalSource {
   }) =>
       newTip
         ..randomId = oldTip?.randomId ?? newTip.randomId
-        ..amountViews = oldTip?.amountViews ?? newTip.amountViews
         ..favourite = oldTip?.favourite ?? newTip.favourite;
 }
