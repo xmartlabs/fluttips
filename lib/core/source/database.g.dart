@@ -145,6 +145,21 @@ class _$TipsLocalSource extends TipsLocalSource {
   }
 
   @override
+  Future<List<TipDbEntity>> getTipById(String id) async {
+    return _queryAdapter.queryList('SELECT * FROM tips WHERE id = ?1',
+        mapper: (Map<String, Object?> row) => TipDbEntity(
+            id: row['id'] as String,
+            name: row['name'] as String,
+            url: row['url'] as String,
+            imageUrl: row['imageUrl'] as String,
+            codeUrl: row['codeUrl'] as String?,
+            mdUrl: row['mdUrl'] as String?,
+            randomId: row['randomId'] as int,
+            favourite: (row['favourite'] as int) != 0),
+        arguments: [id]);
+  }
+
+  @override
   Stream<TipDbEntity?> findTipByName(String name) {
     return _queryAdapter.queryStream('SELECT * FROM tips WHERE name = ?1',
         mapper: (Map<String, Object?> row) => TipDbEntity(

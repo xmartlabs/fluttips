@@ -40,7 +40,10 @@ class _TipContentScreenState extends State<_TipContentScreen> {
         state: state.tips.isNotEmpty && state.tips[state.currentPage].favourite
             ? const FabState.selected()
             : const FabState.notSelected(),
-        action: () => cubit.changeFavouriteButton(state.currentPage),
+        action: () => cubit.changeFavouriteButton(
+          state.tips,
+          state.currentPage,
+        ),
         iconSelected: Icons.star,
         child: PageView.builder(
           controller: _pageController,

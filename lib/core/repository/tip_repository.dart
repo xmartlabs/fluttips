@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_template/core/model/tip.dart';
 import 'package:flutter_template/core/source/remoteSource/tip_remote_source.dart';
 import 'package:stock/stock.dart';
@@ -22,4 +24,11 @@ class TipRepository {
         );
 
   Stream<StockResponse<List<Tip>>> getTips() => _tipListStore.stream(null);
+
+  Future<void> changeFavouriteTip(Tip tip) async{
+    final tips = await _tipsLocalSource.getTipById(tip.id);
+    final tipToUpdate = tips.first;
+    tipToUpdate.favourite = !tipToUpdate.favourite;
+    await _tipsLocalSource.insertTips([tipToUpdate]);
+  }
 }
