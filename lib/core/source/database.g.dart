@@ -87,7 +87,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, PRIMARY KEY (`tipId`))');
+            'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`tipId`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
@@ -232,9 +232,8 @@ class _$AmountViewsLocalSource extends AmountViewsLocalSource {
   }
 
   @override
-  Future<List<TipAmountViewsDbEntity>> getAmountsViewById(String id) async {
-    return _queryAdapter.queryList(
-        'SELECT * FROM TipsAmountViews WHERE tipId = ?1',
+  Future<TipAmountViewsDbEntity?> getAmountsViewById(String id) async {
+    return _queryAdapter.query('SELECT * FROM TipsAmountViews WHERE tipId = ?1',
         mapper: (Map<String, Object?> row) => TipAmountViewsDbEntity(
             tipId: row['tipId'] as String,
             amountViews: row['amountViews'] as int),

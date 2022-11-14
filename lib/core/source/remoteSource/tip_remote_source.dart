@@ -45,7 +45,7 @@ class TipRemoteSource {
       imageUrl: Config.imageBaseUrl + files[FileType.image]!.path,
       codeUrl: Config.prefixUrl + (files[FileType.code]?.path ?? ''),
       mdUrl: Config.prefixUrl + (files[FileType.md]?.path ?? ''),
-      randomId: random.nextInt(Config.randomIdMaxValue.toInt()),
+      randomId: random.nextInt(Config.maxDatabaseIntValue.toInt()),
     );
   }
 }

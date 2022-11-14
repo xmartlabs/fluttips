@@ -44,7 +44,7 @@ extension _GetItUseCaseDiModuleExtensions on GetIt {
     registerLazySingleton(() => AuthLocalSource(get()));
     registerLazySingleton(() => AuthRemoteSource(get()));
     registerLazySingleton(() => TipRemoteSource(get()));
-    registerLazySingleton(() => get<AppDatabase>().tipsLocalSource);
     registerLazySingleton(() => get<AppDatabase>().amountLocalSource);
+    registerLazySingleton(() => get<AppDatabase>().tipsLocalSource);
   }
 }

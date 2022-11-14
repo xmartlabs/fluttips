@@ -55,7 +55,7 @@ class TipRepository {
         );
   }
 
-  Future<void> changeAmountsTip(Tip tip) async {
+  Future<void> setTipAsViewedInSession(Tip tip) async {
     if (!_tipsAlreadyVisited.contains(tip.id)) {
       _tipsAlreadyVisited.add(tip.id);
       var amountViewToUpdate =
