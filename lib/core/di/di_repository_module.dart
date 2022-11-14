@@ -37,13 +37,14 @@ extension _GetItUseCaseDiModuleExtensions on GetIt {
 
   void _setupRepositories() {
     registerLazySingleton(() => SessionRepository(get(), get(), get()));
-    registerLazySingleton(() => TipRepository(get(), get()));
+    registerLazySingleton(() => TipRepository(get(), get(), get()));
   }
 
   void _setupSources() {
     registerLazySingleton(() => AuthLocalSource(get()));
     registerLazySingleton(() => AuthRemoteSource(get()));
     registerLazySingleton(() => TipRemoteSource(get()));
+    registerLazySingleton(() => get<AppDatabase>().amountLocalSource);
     registerLazySingleton(() => get<AppDatabase>().tipsLocalSource);
   }
 }

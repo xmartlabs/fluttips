@@ -1,7 +1,8 @@
 import 'package:floor/floor.dart';
 
-@Entity(tableName: 'tips')
+@Entity(tableName: TipDbEntity.tableName)
 class TipDbEntity {
+  static const String tableName = 'Tips';
   @primaryKey
   final String id;
   final String name;
