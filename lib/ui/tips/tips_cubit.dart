@@ -16,23 +16,23 @@ part 'tips_state.dart';
 class TipCubit extends Cubit<TipsBaseState> {
   //ignore: unused_field
   final GeneralErrorHandler _errorHandler;
-  late StreamSubscription<List<Tip>> suscriptionToTips;
+  late StreamSubscription<List<Tip>> subscriptionToTips;
   final TipRepository _tipRepository = DiProvider.get();
 
   TipCubit(this._errorHandler) : super(const TipsBaseState.state()) {
-    _suscribeToTips();
+    _subscribeToTips();
   }
 
   @override
   Future<void> close() async {
-    await suscriptionToTips.cancel();
+    await subscriptionToTips.cancel();
     return super.close();
   }
 
   void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
 
-  void onTipDisplayed(Tip tip) {
-    _tipRepository.changeAmountsTip(tip);
+  Future<void> onTipDisplayed(Tip tip) async {
+    await _tipRepository.changeAmountsTip(tip);
   }
 
   void changeFavouriteButton(int index) {
@@ -43,8 +43,8 @@ class TipCubit extends Cubit<TipsBaseState> {
     emit(state.copyWith(tips: newList));
   }
 
-  void _suscribeToTips() {
-    suscriptionToTips = _tipRepository
+  void _subscribeToTips() {
+    subscriptionToTips = _tipRepository
         .getTips()
         .filterSuccess(_errorHandler.handleError)
         .where((event) => event.isData)

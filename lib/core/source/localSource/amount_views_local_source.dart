@@ -11,7 +11,7 @@ abstract class AmountViewsLocalSource {
   Stream<List<TipAmountViewsDbEntity>> getAmountsView();
 
   @Query('SELECT * FROM ${TipAmountViewsDbEntity.tableName} WHERE tipId = :id')
-  Future<List<TipAmountViewsDbEntity>> getAmountsViewById(String id);
+  Future<TipAmountViewsDbEntity?> getAmountsViewById(String id);
 
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertAmount(TipAmountViewsDbEntity amountView);

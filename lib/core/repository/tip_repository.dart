@@ -11,11 +11,12 @@ import 'package:flutter_template/core/model/serializer/tip_serializer.dart';
 class TipRepository {
   //ignore: unused_field
   final TipRemoteSource _tipRemoteSource;
-  Set<String> tipsAlreadyVisited = {};
   final AmountViewsLocalSource _amountViewsLocalSource;
 
   //ignore: unused_field
   final TipsLocalSource _tipsLocalSource;
+
+  final Set<String> _tipsAlreadyVisited = {};
   final Stock<dynamic, List<Tip>> _tipListStore;
 
   TipRepository(
@@ -41,31 +42,31 @@ class TipRepository {
   Stream<StockResponse<List<Tip>>> getTips() async* {
     final visited = await getVisited();
     yield* _tipListStore.stream(null).map(
-          (event) => (event.isData)
+          (response) => (response.isData)
               ? StockResponse.data(
-                  event.origin,
-                  event
+                  response.origin,
+                  response
                       .requireData()
                       .sortedBy((e) => visited[e.id] ?? 0)
                       .thenBy((element) => element.randomId)
                       .toList(),
                 )
-              : event,
+              : response,
         );
   }
 
   Future<void> changeAmountsTip(Tip tip) async {
-    if (!tipsAlreadyVisited.contains(tip.id)) {
-      tipsAlreadyVisited.add(tip.id);
-      final amountViewToUpdate =
+    if (!_tipsAlreadyVisited.contains(tip.id)) {
+      _tipsAlreadyVisited.add(tip.id);
+      var amountViewToUpdate =
           await _amountViewsLocalSource.getAmountsViewById(tip.id);
-      var newAmount = amountViewToUpdate.firstOrNull;
-      if (newAmount != null) {
-        newAmount.amountViews++;
+      if (amountViewToUpdate != null) {
+        amountViewToUpdate.amountViews++;
       } else {
-        newAmount = TipAmountViewsDbEntity(tipId: tip.id, amountViews: 1);
+        amountViewToUpdate =
+            TipAmountViewsDbEntity(tipId: tip.id, amountViews: 1);
       }
-      await _amountViewsLocalSource.insertAmount(newAmount);
+      await _amountViewsLocalSource.insertAmount(amountViewToUpdate);
     }
   }
 }
