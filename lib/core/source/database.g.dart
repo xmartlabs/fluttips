@@ -89,7 +89,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`tipId`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favourite` INTEGER NOT NULL, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favouriteDate` TEXT, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -125,7 +125,22 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'imageUrl': item.imageUrl,
                   'codeUrl': item.codeUrl,
                   'mdUrl': item.mdUrl,
-                  'favourite': item.favourite ? 1 : 0,
+                  'favouriteDate': item.favouriteDate,
+                  'randomId': item.randomId
+                },
+            changeListener),
+        _tipDbEntityUpdateAdapter = UpdateAdapter(
+            database,
+            'Tips',
+            ['id'],
+            (TipDbEntity item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'url': item.url,
+                  'imageUrl': item.imageUrl,
+                  'codeUrl': item.codeUrl,
+                  'mdUrl': item.mdUrl,
+                  'favouriteDate': item.favouriteDate,
                   'randomId': item.randomId
                 },
             changeListener);
@@ -138,6 +153,8 @@ class _$TipsLocalSource extends TipsLocalSource {
 
   final InsertionAdapter<TipDbEntity> _tipDbEntityInsertionAdapter;
 
+  final UpdateAdapter<TipDbEntity> _tipDbEntityUpdateAdapter;
+
   @override
   Stream<List<TipDbEntity>> getTips() {
     return _queryAdapter.queryListStream('SELECT * FROM Tips ORDER BY randomId',
@@ -149,9 +166,24 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favourite: (row['favourite'] as int) != 0),
+            favouriteDate: row['favouriteDate'] as String?),
         queryableName: 'Tips',
         isView: false);
+  }
+
+  @override
+  Future<List<TipDbEntity>> getTipById(String id) async {
+    return _queryAdapter.queryList('SELECT * FROM Tips WHERE id = ?1',
+        mapper: (Map<String, Object?> row) => TipDbEntity(
+            id: row['id'] as String,
+            name: row['name'] as String,
+            url: row['url'] as String,
+            imageUrl: row['imageUrl'] as String,
+            codeUrl: row['codeUrl'] as String?,
+            mdUrl: row['mdUrl'] as String?,
+            randomId: row['randomId'] as int,
+            favouriteDate: row['favouriteDate'] as String?),
+        arguments: [id]);
   }
 
   @override
@@ -165,7 +197,7 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favourite: (row['favourite'] as int) != 0),
+            favouriteDate: row['favouriteDate'] as String?),
         arguments: [name],
         queryableName: 'Tips',
         isView: false);
@@ -180,6 +212,11 @@ class _$TipsLocalSource extends TipsLocalSource {
   Future<void> insertTips(List<TipDbEntity> tips) async {
     await _tipDbEntityInsertionAdapter.insertList(
         tips, OnConflictStrategy.replace);
+  }
+
+  @override
+  Future<void> updateTip(TipDbEntity tip) async {
+    await _tipDbEntityUpdateAdapter.update(tip, OnConflictStrategy.replace);
   }
 
   @override
