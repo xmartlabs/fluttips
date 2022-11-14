@@ -35,18 +35,13 @@ android {
     productFlavors {
         dev {
             dimension "flavor-type"
-            applicationId "com.xmartlabs.template.dev"
-            resValue "string", "app_name", "Template Dev"
+            applicationId "com.xmartlabs.fluttips.dev"
+            resValue "string", "app_name", "Fluttips Dev"
         }
         prod {
             dimension "flavor-type"
-            applicationId "com.xmartlabs.template"
-            resValue "string", "app_name", "Template"
-        }
-        staging {
-            dimension "flavor-type"
-            applicationId "com.xmartlabs.template.sta"
-            resValue "string", "app_name", "Template Sta"
+            applicationId "com.xmartlabs.fluttips"
+            resValue "string", "app_name", "Fluttips"
         }
     }
 

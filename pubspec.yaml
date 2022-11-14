@@ -74,31 +74,21 @@ flavorizr:
   flavors:
     dev:
       app:
-        name: 'Template Dev'
+        name: 'Fluttips Dev'
       android:
-        applicationId: 'com.xmartlabs.template.dev'
+        applicationId: 'com.xmartlabs.fluttips.dev'
       ios:
-        bundleId: 'com.xmartlabs.template.dev'
+        bundleId: 'com.xmartlabs.fluttips.dev'
         variables:
           FLUTTER_TARGET:
             value: 'lib/main.dart'
     prod:
       app:
-        name: 'Template'
+        name: 'Fluttips'
       android:
-        applicationId: 'com.xmartlabs.template'
+        applicationId: 'com.xmartlabs.fluttips'
       ios:
-        bundleId: 'com.xmartlabs.template'
-        variables:
-          FLUTTER_TARGET:
-            value: 'lib/main.dart'
-    staging:
-      app:
-        name: 'Template Sta'
-      android:
-        applicationId: 'com.xmartlabs.template.sta'
-      ios:
-        bundleId: 'com.xmartlabs.template.sta'
+        bundleId: 'com.xmartlabs.fluttips'
         variables:
           FLUTTER_TARGET:
             value: 'lib/main.dart'
