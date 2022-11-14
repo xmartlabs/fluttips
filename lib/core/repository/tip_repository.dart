@@ -29,9 +29,9 @@ class TipRepository {
   Future<void> changeFavouriteTip(Tip tip) async {
     final tips = await _tipsLocalSource.getTipById(tip.id);
     final tipToUpdate = tips.first;
-    tipToUpdate.favourite != null
-        ? tipToUpdate.favourite = DateTime.now().toString()
-        : tipToUpdate.favourite = null;
-    await _tipsLocalSource.insertTips([tipToUpdate]);
+    tipToUpdate.favouriteDate != null
+        ? tipToUpdate.favouriteDate = null
+        : tipToUpdate.favouriteDate = DateTime.now().toString();
+    await _tipsLocalSource.updateTip(tipToUpdate);
   }
 }

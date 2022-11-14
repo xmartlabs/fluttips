@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_template/core/model/tip_extension.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:flutter_template/ui/tips/tips_cubit.dart';
 import 'package:flutter_template/ui/common/custom_scaffold_fab.dart';
@@ -37,14 +38,12 @@ class _TipContentScreenState extends State<_TipContentScreen> {
     return BlocBuilder<TipCubit, TipsBaseState>(
       builder: (context, state) => MainScaffoldWithFab(
         iconNotSelected: Icons.star_border,
-        state: state.tips.isNotEmpty &&
-                state.tips[state.currentPage].favourite != null
-            ? const FabState.selected()
-            : const FabState.notSelected(),
-        action: () => cubit.changeFavouriteButton(
-          state.tips,
-          state.currentPage,
-        ),
+        state:
+            state.tips.isNotEmpty && state.tips[state.currentPage].isFavourite
+                ? const FabState.selected()
+                : const FabState.notSelected(),
+        action: () =>
+            cubit.changeFavouriteButton(state.tips[state.currentPage]),
         iconSelected: Icons.star,
         child: PageView.builder(
           controller: _pageController,

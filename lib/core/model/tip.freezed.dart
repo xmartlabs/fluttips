@@ -27,7 +27,7 @@ mixin _$Tip {
   String? get codeUrl => throw _privateConstructorUsedError;
   String? get mdUrl => throw _privateConstructorUsedError;
   int get randomId => throw _privateConstructorUsedError;
-  String? get favourite => throw _privateConstructorUsedError;
+  String? get favouriteDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +46,7 @@ abstract class $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      String? favourite});
+      String? favouriteDate});
 }
 
 /// @nodoc
@@ -66,7 +66,7 @@ class _$TipCopyWithImpl<$Res> implements $TipCopyWith<$Res> {
     Object? codeUrl = freezed,
     Object? mdUrl = freezed,
     Object? randomId = freezed,
-    Object? favourite = freezed,
+    Object? favouriteDate = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -97,9 +97,9 @@ class _$TipCopyWithImpl<$Res> implements $TipCopyWith<$Res> {
           ? _value.randomId
           : randomId // ignore: cast_nullable_to_non_nullable
               as int,
-      favourite: favourite == freezed
-          ? _value.favourite
-          : favourite // ignore: cast_nullable_to_non_nullable
+      favouriteDate: favouriteDate == freezed
+          ? _value.favouriteDate
+          : favouriteDate // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -118,7 +118,7 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      String? favourite});
+      String? favouriteDate});
 }
 
 /// @nodoc
@@ -139,7 +139,7 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res>
     Object? codeUrl = freezed,
     Object? mdUrl = freezed,
     Object? randomId = freezed,
-    Object? favourite = freezed,
+    Object? favouriteDate = freezed,
   }) {
     return _then(_$_Tip(
       id: id == freezed
@@ -170,9 +170,9 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res>
           ? _value.randomId
           : randomId // ignore: cast_nullable_to_non_nullable
               as int,
-      favourite: favourite == freezed
-          ? _value.favourite
-          : favourite // ignore: cast_nullable_to_non_nullable
+      favouriteDate: favouriteDate == freezed
+          ? _value.favouriteDate
+          : favouriteDate // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -190,7 +190,7 @@ class _$_Tip implements _Tip {
       required this.codeUrl,
       required this.mdUrl,
       required this.randomId,
-      this.favourite = null});
+      this.favouriteDate});
 
   factory _$_Tip.fromJson(Map<String, dynamic> json) => _$$_TipFromJson(json);
 
@@ -209,12 +209,11 @@ class _$_Tip implements _Tip {
   @override
   final int randomId;
   @override
-  @JsonKey()
-  final String? favourite;
+  final String? favouriteDate;
 
   @override
   String toString() {
-    return 'Tip(id: $id, name: $name, url: $url, imageUrl: $imageUrl, codeUrl: $codeUrl, mdUrl: $mdUrl, randomId: $randomId, favourite: $favourite)';
+    return 'Tip(id: $id, name: $name, url: $url, imageUrl: $imageUrl, codeUrl: $codeUrl, mdUrl: $mdUrl, randomId: $randomId, favouriteDate: $favouriteDate)';
   }
 
   @override
@@ -229,7 +228,8 @@ class _$_Tip implements _Tip {
             const DeepCollectionEquality().equals(other.codeUrl, codeUrl) &&
             const DeepCollectionEquality().equals(other.mdUrl, mdUrl) &&
             const DeepCollectionEquality().equals(other.randomId, randomId) &&
-            const DeepCollectionEquality().equals(other.favourite, favourite));
+            const DeepCollectionEquality()
+                .equals(other.favouriteDate, favouriteDate));
   }
 
   @JsonKey(ignore: true)
@@ -243,7 +243,7 @@ class _$_Tip implements _Tip {
       const DeepCollectionEquality().hash(codeUrl),
       const DeepCollectionEquality().hash(mdUrl),
       const DeepCollectionEquality().hash(randomId),
-      const DeepCollectionEquality().hash(favourite));
+      const DeepCollectionEquality().hash(favouriteDate));
 
   @JsonKey(ignore: true)
   @override
@@ -267,7 +267,7 @@ abstract class _Tip implements Tip {
       required final String? codeUrl,
       required final String? mdUrl,
       required final int randomId,
-      final String? favourite}) = _$_Tip;
+      final String? favouriteDate}) = _$_Tip;
 
   factory _Tip.fromJson(Map<String, dynamic> json) = _$_Tip.fromJson;
 
@@ -286,7 +286,7 @@ abstract class _Tip implements Tip {
   @override
   int get randomId;
   @override
-  String? get favourite;
+  String? get favouriteDate;
   @override
   @JsonKey(ignore: true)
   _$$_TipCopyWith<_$_Tip> get copyWith => throw _privateConstructorUsedError;

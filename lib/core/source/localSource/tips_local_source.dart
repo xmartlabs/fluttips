@@ -20,6 +20,9 @@ abstract class TipsLocalSource {
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertTips(List<TipDbEntity> tips);
 
+  @Update(onConflict: OnConflictStrategy.replace)
+  Future<void> updateTip(TipDbEntity tip);
+
   @Query('DELETE FROM tips')
   Future<void> deleteAllTips();
 
@@ -45,5 +48,5 @@ abstract class TipsLocalSource {
   }) =>
       newTip
         ..randomId = oldTip?.randomId ?? newTip.randomId
-        ..favourite = oldTip?.favourite ?? newTip.favourite;
+        ..favouriteDate = oldTip?.favouriteDate ?? newTip.favouriteDate;
 }
