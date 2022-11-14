@@ -69,4 +69,13 @@ class TipRepository {
       await _amountViewsLocalSource.insertAmount(amountViewToUpdate);
     }
   }
+
+  Future<void> changeFavouriteTip(Tip tip) async {
+    final tips = await _tipsLocalSource.getTipById(tip.id);
+    final tipToUpdate = tips.first;
+    tipToUpdate.favouriteDate != null
+        ? tipToUpdate.favouriteDate = null
+        : tipToUpdate.favouriteDate = DateTime.now().toString();
+    await _tipsLocalSource.updateTip(tipToUpdate);
+  }
 }
