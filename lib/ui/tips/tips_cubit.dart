@@ -34,13 +34,8 @@ class TipCubit extends Cubit<TipsBaseState> {
   Future<void> onTipDisplayed(Tip tip) =>
       _tipRepository.setTipAsViewedInSession(tip);
 
-  void changeFavouriteButton(int index) {
-    //TODO: do this in the repository
-    final newList = [...state.tips];
-    final tip = newList[index];
-    newList[index] = tip.copyWith(favourite: !tip.favourite);
-    emit(state.copyWith(tips: newList));
-  }
+  Future<void> changeFavouriteButton(Tip tip) =>
+      _tipRepository.toggleFavouriteTip(tip);
 
   void _subscribeToTips() {
     subscriptionToTips = _tipRepository
