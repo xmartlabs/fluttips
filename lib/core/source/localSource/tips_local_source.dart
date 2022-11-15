@@ -20,7 +20,7 @@ abstract class TipsLocalSource {
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertTips(List<TipDbEntity> tips);
 
-  @Update(onConflict: OnConflictStrategy.replace)
+  @Update(onConflict: OnConflictStrategy.abort)
   Future<void> updateTip(TipDbEntity tip);
 
   @Query('DELETE FROM ${TipDbEntity.tableName}')

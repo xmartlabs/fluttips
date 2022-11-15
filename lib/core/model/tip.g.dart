@@ -14,7 +14,9 @@ _$_Tip _$$_TipFromJson(Map<String, dynamic> json) => _$_Tip(
       codeUrl: json['code_url'] as String?,
       mdUrl: json['md_url'] as String?,
       randomId: json['random_id'] as int,
-      favouriteDate: json['favourite_date'] as String?,
+      favouriteDate: json['favourite_date'] == null
+          ? null
+          : DateTime.parse(json['favourite_date'] as String),
     );
 
 Map<String, dynamic> _$$_TipToJson(_$_Tip instance) => <String, dynamic>{
@@ -25,5 +27,5 @@ Map<String, dynamic> _$$_TipToJson(_$_Tip instance) => <String, dynamic>{
       'code_url': instance.codeUrl,
       'md_url': instance.mdUrl,
       'random_id': instance.randomId,
-      'favourite_date': instance.favouriteDate,
+      'favourite_date': instance.favouriteDate?.toIso8601String(),
     };

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/core/model/tip_extension.dart';
+import 'package:flutter_template/core/model/extensions/tip_extension.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:flutter_template/ui/tips/tips_cubit.dart';
 import 'package:flutter_template/ui/common/custom_scaffold_fab.dart';

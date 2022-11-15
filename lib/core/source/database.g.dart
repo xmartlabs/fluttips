@@ -89,7 +89,7 @@ class _$AppDatabase extends AppDatabase {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`tipId`))');
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favouriteDate` TEXT, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favouriteDate` INTEGER, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -125,7 +125,8 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'imageUrl': item.imageUrl,
                   'codeUrl': item.codeUrl,
                   'mdUrl': item.mdUrl,
-                  'favouriteDate': item.favouriteDate,
+                  'favouriteDate':
+                      _dateTimeConverter.encode(item.favouriteDate),
                   'randomId': item.randomId
                 },
             changeListener),
@@ -140,7 +141,8 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'imageUrl': item.imageUrl,
                   'codeUrl': item.codeUrl,
                   'mdUrl': item.mdUrl,
-                  'favouriteDate': item.favouriteDate,
+                  'favouriteDate':
+                      _dateTimeConverter.encode(item.favouriteDate),
                   'randomId': item.randomId
                 },
             changeListener);
@@ -166,7 +168,8 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favouriteDate: row['favouriteDate'] as String?),
+            favouriteDate:
+                _dateTimeConverter.decode(row['favouriteDate'] as int?)),
         queryableName: 'Tips',
         isView: false);
   }
@@ -182,7 +185,8 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favouriteDate: row['favouriteDate'] as String?),
+            favouriteDate:
+                _dateTimeConverter.decode(row['favouriteDate'] as int?)),
         arguments: [id]);
   }
 
@@ -197,7 +201,8 @@ class _$TipsLocalSource extends TipsLocalSource {
             codeUrl: row['codeUrl'] as String?,
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
-            favouriteDate: row['favouriteDate'] as String?),
+            favouriteDate:
+                _dateTimeConverter.decode(row['favouriteDate'] as int?)),
         arguments: [name],
         queryableName: 'Tips',
         isView: false);
@@ -216,7 +221,7 @@ class _$TipsLocalSource extends TipsLocalSource {
 
   @override
   Future<void> updateTip(TipDbEntity tip) async {
-    await _tipDbEntityUpdateAdapter.update(tip, OnConflictStrategy.replace);
+    await _tipDbEntityUpdateAdapter.update(tip, OnConflictStrategy.abort);
   }
 
   @override
@@ -283,3 +288,6 @@ class _$AmountViewsLocalSource extends AmountViewsLocalSource {
         amountView, OnConflictStrategy.replace);
   }
 }
+
+// ignore_for_file: unused_element
+final _dateTimeConverter = DateTimeConverter();

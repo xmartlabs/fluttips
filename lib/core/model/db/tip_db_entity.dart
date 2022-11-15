@@ -10,7 +10,7 @@ class TipDbEntity {
   final String imageUrl;
   final String? codeUrl;
   final String? mdUrl;
-  String? favouriteDate;
+  DateTime? favouriteDate;
   int randomId;
 
   TipDbEntity({

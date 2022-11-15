@@ -27,7 +27,7 @@ mixin _$Tip {
   String? get codeUrl => throw _privateConstructorUsedError;
   String? get mdUrl => throw _privateConstructorUsedError;
   int get randomId => throw _privateConstructorUsedError;
-  String? get favouriteDate => throw _privateConstructorUsedError;
+  DateTime? get favouriteDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +46,7 @@ abstract class $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      String? favouriteDate});
+      DateTime? favouriteDate});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class _$TipCopyWithImpl<$Res> implements $TipCopyWith<$Res> {
       favouriteDate: favouriteDate == freezed
           ? _value.favouriteDate
           : favouriteDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ));
   }
 }
@@ -118,7 +118,7 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      String? favouriteDate});
+      DateTime? favouriteDate});
 }
 
 /// @nodoc
@@ -173,7 +173,7 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res>
       favouriteDate: favouriteDate == freezed
           ? _value.favouriteDate
           : favouriteDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
     ));
   }
 }
@@ -209,7 +209,7 @@ class _$_Tip implements _Tip {
   @override
   final int randomId;
   @override
-  final String? favouriteDate;
+  final DateTime? favouriteDate;
 
   @override
   String toString() {
@@ -267,7 +267,7 @@ abstract class _Tip implements Tip {
       required final String? codeUrl,
       required final String? mdUrl,
       required final int randomId,
-      final String? favouriteDate}) = _$_Tip;
+      final DateTime? favouriteDate}) = _$_Tip;
 
   factory _Tip.fromJson(Map<String, dynamic> json) = _$_Tip.fromJson;
 
@@ -286,7 +286,7 @@ abstract class _Tip implements Tip {
   @override
   int get randomId;
   @override
-  String? get favouriteDate;
+  DateTime? get favouriteDate;
   @override
   @JsonKey(ignore: true)
   _$$_TipCopyWith<_$_Tip> get copyWith => throw _privateConstructorUsedError;
