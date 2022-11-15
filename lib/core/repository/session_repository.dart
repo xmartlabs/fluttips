@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_template/core/model/authentication_status.dart';
 import 'package:flutter_template/core/model/user.dart';
-import 'package:flutter_template/core/source/localSource/auth_local_source.dart';
-import 'package:flutter_template/core/source/remoteSource/auth_remote_source.dart';
+import 'package:flutter_template/core/source/local_source/auth_local_source.dart';
+import 'package:flutter_template/core/source/remote_source/auth_remote_source.dart';
 
 import 'package:flutter_template/core/source/database.dart';
 

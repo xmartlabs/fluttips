@@ -12,7 +12,7 @@ class TipStockTypeMapper extends StockTypeMapper<TipDbEntity, Tip> {
         imageUrl: value.imageUrl,
         codeUrl: value.codeUrl,
         mdUrl: value.mdUrl,
-        favourite: value.favourite,
+        favouriteDate: value.favouriteDate,
         randomId: value.randomId,
       );
 
@@ -24,7 +24,7 @@ class TipStockTypeMapper extends StockTypeMapper<TipDbEntity, Tip> {
         imageUrl: value.imageUrl,
         codeUrl: value.codeUrl,
         mdUrl: value.mdUrl,
-        favourite: value.favourite,
+        favouriteDate: value.favouriteDate,
         randomId: value.randomId,
       );
 }
