@@ -1,10 +1,10 @@
 import 'package:dartx/dartx.dart';
 import 'package:flutter_template/core/model/db/tip_amount_views_db_entity.dart';
 import 'package:flutter_template/core/model/tip.dart';
-import 'package:flutter_template/core/source/localSource/amount_views_local_source.dart';
-import 'package:flutter_template/core/source/remoteSource/tip_remote_source.dart';
+import 'package:flutter_template/core/source/local_source/amount_views_local_source.dart';
+import 'package:flutter_template/core/source/remote_source/tip_remote_source.dart';
 import 'package:stock/stock.dart';
-import 'package:flutter_template/core/source/localSource/tips_local_source.dart';
+import 'package:flutter_template/core/source/local_source/tips_local_source.dart';
 import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 import 'package:flutter_template/core/model/serializer/tip_serializer.dart';
 
