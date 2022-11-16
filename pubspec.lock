@@ -253,6 +253,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  cupertino_lists:
+    dependency: "direct main"
+    description:
+      name: cupertino_lists
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1"
   dart_code_metrics:
     dependency: "direct dev"
     description:
@@ -480,6 +487,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
+  flutter_slidable:
+    dependency: "direct main"
+    description:
+      name: flutter_slidable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter

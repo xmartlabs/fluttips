@@ -40,7 +40,7 @@ class TipRemoteSource {
         .associateBy((file) => FileType.fromPath(file.path));
     return Tip(
       id: key,
-      name: key.replaceAll('-', '  '),
+      name: refactorName(key),
       url: Config.prefixUrl + tipDir.path,
       imageUrl: Config.imageBaseUrl + files[FileType.image]!.path,
       codeUrl: Config.prefixUrl + (files[FileType.code]?.path ?? ''),
@@ -48,4 +48,14 @@ class TipRemoteSource {
       randomId: random.nextInt(Config.maxDatabaseIntValue.toInt()),
     );
   }
+
+  String refactorName(String key) => key
+      .replaceAll('---', ' <endash> ')
+      .replaceAll('--', ' <endash> ')
+      .replaceAll('-', ' ')
+      .replaceAll('<endash>', '-')
+      .trim()
+      .capitalize()
+      .replaceAll('flutter', 'Flutter')
+      .replaceAll('dart', 'Dart');
 }

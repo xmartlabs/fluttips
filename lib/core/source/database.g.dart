@@ -191,8 +191,9 @@ class _$TipsLocalSource extends TipsLocalSource {
   }
 
   @override
-  Stream<TipDbEntity?> findTipByName(String name) {
-    return _queryAdapter.queryStream('SELECT * FROM Tips WHERE name = ?1',
+  Stream<List<TipDbEntity>> getFavouritesTips() {
+    return _queryAdapter.queryListStream(
+        'SELECT * FROM Tips WHERE favouriteDate IS NOT NULL',
         mapper: (Map<String, Object?> row) => TipDbEntity(
             id: row['id'] as String,
             name: row['name'] as String,
@@ -203,7 +204,6 @@ class _$TipsLocalSource extends TipsLocalSource {
             randomId: row['randomId'] as int,
             favouriteDate:
                 _dateTimeConverter.decode(row['favouriteDate'] as int?)),
-        arguments: [name],
         queryableName: 'Tips',
         isView: false);
   }

@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         visible: !_hideFab,
         child: Fab(
           state: const FabState.notSelected(),
+          border: const CircleBorder(),
           iconNotSelected: Icons.arrow_forward_ios,
           action: () => _scaffoldKey.currentState!.openDrawer(),
         ),

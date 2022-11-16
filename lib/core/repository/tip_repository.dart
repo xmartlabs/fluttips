@@ -17,20 +17,38 @@ class TipRepository {
   final TipsLocalSource _tipsLocalSource;
 
   final Set<String> _tipsAlreadyVisited = {};
-  final Stock<dynamic, List<Tip>> _tipListStore;
+
+  //ignore: unused_field
+  final Stock<dynamic, List<Tip>> _tipListStock;
+  final Stock<dynamic, List<Tip>> _favouritesTipListStock;
 
   TipRepository(
     this._tipsLocalSource,
     this._tipRemoteSource,
     this._amountViewsLocalSource,
-  ) : _tipListStore = Stock(
-          fetcher: Fetcher.ofFuture((_) => _tipRemoteSource.getTips()),
-          sourceOfTruth: SourceOfTruth<dynamic, List<TipDbEntity>>(
-            reader: (_) => _tipsLocalSource.getTips(),
-            writer: (_, value) =>
-                _tipsLocalSource.replaceAndUpdateTips(value ?? []),
-          ).mapToUsingMapper(TipListStockTypeMapper()),
+  )   : _tipListStock =
+            _generateTipListStock(_tipRemoteSource, _tipsLocalSource),
+        _favouritesTipListStock = Stock(
+          fetcher: Fetcher.ofStream(
+            (_) => _tipsLocalSource.getFavouritesTips().map(
+                  TipListStockTypeMapper().fromInput,
+                ),
+          ),
+          sourceOfTruth: CachedSourceOfTruth(),
         );
+
+  static Stock<dynamic, List<Tip>> _generateTipListStock(
+    TipRemoteSource tipRemoteSource,
+    TipsLocalSource tipsLocalSource,
+  ) =>
+      Stock(
+        fetcher: Fetcher.ofFuture((_) => tipRemoteSource.getTips()),
+        sourceOfTruth: SourceOfTruth<dynamic, List<TipDbEntity>>(
+          reader: (_) => tipsLocalSource.getTips(),
+          writer: (_, value) =>
+              tipsLocalSource.replaceAndUpdateTips(value ?? []),
+        ).mapToUsingMapper(TipListStockTypeMapper()),
+      );
 
   Future<Map<String, int>> getVisited() =>
       _amountViewsLocalSource.getAmountsView().first.then(
@@ -41,7 +59,7 @@ class TipRepository {
 
   Stream<StockResponse<List<Tip>>> getTips() async* {
     final visited = await getVisited();
-    yield* _tipListStore.stream(null).map(
+    yield* _tipListStock.stream(null).map(
           (response) => (response.isData)
               ? StockResponse.data(
                   response.origin,
@@ -54,6 +72,19 @@ class TipRepository {
               : response,
         );
   }
+
+  Stream<StockResponse<List<Tip>>> getFavouritesTips() =>
+      _favouritesTipListStock.stream(null).map(
+            (response) => (response.isData)
+                ? StockResponse.data(
+                    response.origin,
+                    response
+                        .requireData()
+                        .sortedBy((e) => e.favouriteDate!)
+                        .toList(),
+                  )
+                : response,
+          );
 
   Future<void> setTipAsViewedInSession(Tip tip) async {
     if (!_tipsAlreadyVisited.contains(tip.id)) {
