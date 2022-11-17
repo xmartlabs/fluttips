@@ -193,7 +193,7 @@ class _$TipsLocalSource extends TipsLocalSource {
   @override
   Stream<List<TipDbEntity>> getFavouritesTips() {
     return _queryAdapter.queryListStream(
-        'SELECT * FROM Tips WHERE favouriteDate IS NOT NULL',
+        'SELECT * FROM Tips WHERE favouriteDate IS NOT NULL ORDER BY favouriteDate ASC',
         mapper: (Map<String, Object?> row) => TipDbEntity(
             id: row['id'] as String,
             name: row['name'] as String,

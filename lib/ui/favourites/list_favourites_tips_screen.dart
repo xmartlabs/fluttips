@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/ui/extensions/context_extensions.dart';
+import 'package:flutter_template/ui/common/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/tips/tips_screen.dart';
 import 'package:flutter_template/ui/tips/show_tips_type.dart';
@@ -41,7 +41,7 @@ class ListFavouritesTipsScreen extends StatelessWidget {
               ),
               child: const Icon(Icons.arrow_back_ios),
             ),
-          )
+          ),
         ],
       );
 }

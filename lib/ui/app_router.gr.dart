@@ -116,7 +116,7 @@ class _$AppRouter extends RootStackRouter {
             ),
             RouteConfig(
               ListFavouritesTipsScreenRoute.name,
-              path: 'favourite',
+              path: 'list_favourite',
               parent: AuthenticatedRouter.name,
             ),
           ],
@@ -185,7 +185,7 @@ class ListFavouritesTipsScreenRoute
     Key? key,
   }) : super(
           ListFavouritesTipsScreenRoute.name,
-          path: 'favourite',
+          path: 'list_favourite',
           args: ListFavouritesTipsScreenRouteArgs(
             showTipType: showTipType,
             action: action,

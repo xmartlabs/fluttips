@@ -40,7 +40,7 @@ class TipRemoteSource {
         .associateBy((file) => FileType.fromPath(file.path));
     return Tip(
       id: key,
-      name: refactorName(key),
+      name: _generateTipName(key),
       url: Config.prefixUrl + tipDir.path,
       imageUrl: Config.imageBaseUrl + files[FileType.image]!.path,
       codeUrl: Config.prefixUrl + (files[FileType.code]?.path ?? ''),
@@ -49,7 +49,8 @@ class TipRemoteSource {
     );
   }
 
-  String refactorName(String key) => key
+  //TODO: this name should be taken from the README.md file
+  String _generateTipName(String tipId) => tipId
       .replaceAll('---', ' <endash> ')
       .replaceAll('--', ' <endash> ')
       .replaceAll('-', ' ')

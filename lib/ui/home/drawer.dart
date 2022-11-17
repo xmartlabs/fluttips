@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_template/ui/extensions/context_extensions.dart';
+import 'package:flutter_template/ui/common/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/app_router.dart';
 import 'package:flutter_template/ui/tips/show_tips_type.dart';

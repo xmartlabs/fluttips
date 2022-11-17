@@ -51,7 +51,7 @@ part 'app_router.gr.dart';
           ],
         ),
         AutoRoute(
-          path: AppRouter.favouritesTipsPath,
+          path: AppRouter.listFavouritesTipsPath,
           page: ListFavouritesTipsScreen,
         ),
       ],
@@ -63,4 +63,5 @@ class AppRouter extends _$AppRouter {
   static const tipsPath = 'tips';
   static const videosPath = 'videos';
   static const favouritesTipsPath = 'favourite';
+  static const listFavouritesTipsPath = 'list_favourite';
 }

@@ -64,14 +64,11 @@ class TipCubit extends Cubit<TipsBaseState> {
       : _getAllTips();
 
   Stream<List<Tip>> _getFavouritesTipStream() => _tipRepository
-          .getFavouritesTips()
-          .filterSuccessStockResponseData(_errorHandler.handleError)
-          .scan(
-        (acc, current, index) => _combineBothLists(acc, current, index),
-        [],
-      );
+      .getFavouritesTips()
+      .filterSuccessStockResponseData(_errorHandler.handleError)
+      .scan((acc, current, index) => _appendLists(acc, current), []);
 
-  List<Tip> _combineBothLists(List<Tip> acc, List<Tip> current, int index) {
+  List<Tip> _appendLists(List<Tip> acc, List<Tip> current) {
     if (acc.isEmpty) {
       return current;
     }

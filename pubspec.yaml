@@ -45,8 +45,6 @@ dependencies:
   sqflite: 2.2.0+3
   stack_trace: 1.10.0
   stock: 1.0.0
-  flutter_slidable: ^2.0.0
-  cupertino_lists: ^1.0.1
 
 dev_dependencies:
   flutter_test:

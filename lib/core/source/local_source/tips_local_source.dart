@@ -15,7 +15,8 @@ abstract class TipsLocalSource {
   Future<List<TipDbEntity>> getTipById(String id);
 
   @Query(
-    'SELECT * FROM ${TipDbEntity.tableName} WHERE favouriteDate IS NOT NULL',
+    'SELECT * FROM ${TipDbEntity.tableName} WHERE favouriteDate IS NOT NULL '
+    'ORDER BY favouriteDate ASC',
   )
   Stream<List<TipDbEntity>> getFavouritesTips();
 

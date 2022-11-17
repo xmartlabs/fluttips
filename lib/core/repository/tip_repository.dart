@@ -8,6 +8,8 @@ import 'package:flutter_template/core/source/local_source/tips_local_source.dart
 import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 import 'package:flutter_template/core/model/serializer/tip_serializer.dart';
 
+import 'package:flutter_template/core/model/extensions/stock_extensions.dart';
+
 class TipRepository {
   //ignore: unused_field
   final TipRemoteSource _tipRemoteSource;
@@ -18,7 +20,6 @@ class TipRepository {
 
   final Set<String> _tipsAlreadyVisited = {};
 
-  //ignore: unused_field
   final Stock<dynamic, List<Tip>> _tipListStock;
   final Stock<dynamic, List<Tip>> _favouritesTipListStock;
 
@@ -59,31 +60,15 @@ class TipRepository {
 
   Stream<StockResponse<List<Tip>>> getTips() async* {
     final visited = await getVisited();
-    yield* _tipListStock.stream(null).map(
-          (response) => (response.isData)
-              ? StockResponse.data(
-                  response.origin,
-                  response
-                      .requireData()
-                      .sortedBy((e) => visited[e.id] ?? 0)
-                      .thenBy((element) => element.randomId)
-                      .toList(),
-                )
-              : response,
+    yield* _tipListStock.stream(null).getTipsStream(
+          sorted: (e) => visited[e.id] ?? 0,
+          sortedThenBy: (element) => element.randomId,
         );
   }
 
   Stream<StockResponse<List<Tip>>> getFavouritesTips() =>
-      _favouritesTipListStock.stream(null).map(
-            (response) => (response.isData)
-                ? StockResponse.data(
-                    response.origin,
-                    response
-                        .requireData()
-                        .sortedBy((e) => e.favouriteDate!)
-                        .toList(),
-                  )
-                : response,
+      _favouritesTipListStock.stream(null).getTipsStream(
+            sorted: (element) => element.favouriteDate!,
           );
 
   Future<void> setTipAsViewedInSession(Tip tip) async {
