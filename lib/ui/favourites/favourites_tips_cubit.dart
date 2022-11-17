@@ -17,10 +17,12 @@ part 'favourites_tips_state.dart';
 
 class FavouritesTipsCubit extends Cubit<FavouritesTipsBaseState> {
   //ignore: unused_field
-  final GeneralErrorHandler _errorHandler;
-  late StreamSubscription<List<Tip>> subscriptionToTips;
-  final TipRepository _tipRepository = DiProvider.get();
   final AppRouter _router = DiProvider.get();
+  final TipRepository _tipRepository = DiProvider.get();
+
+  final GeneralErrorHandler _errorHandler;
+
+  late StreamSubscription<List<Tip>> subscriptionToTips;
 
   FavouritesTipsCubit(this._errorHandler)
       : super(const FavouritesTipsBaseState.state()) {
