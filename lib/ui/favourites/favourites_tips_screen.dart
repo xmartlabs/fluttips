@@ -31,7 +31,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
               alignment: Alignment.centerLeft,
               child: Text(
-                'My Favorites',
+                context.localizations.myFavorites,
                 style: TextStyle(
                   color: context.theme.colors.primary.shade100,
                 ),
@@ -41,7 +41,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
                 ? Expanded(
                     child: Center(
                       child: Text(
-                        "You don't have any favorites yet :(",
+                        context.localizations.messageEmptyFavoritesScreen,
                         style: context.theme.textStyles.titleLarge!.copyWith(
                           color: context.theme.colors.surface.shade800,
                         ),

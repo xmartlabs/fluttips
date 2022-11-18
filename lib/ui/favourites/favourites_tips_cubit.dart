@@ -42,7 +42,6 @@ class FavouritesTipsCubit extends Cubit<FavouritesTipsBaseState> {
       ListFavouritesTipsScreenRoute(
         showTipType: ShowTipsType.favourite,
         tip: tip,
-        action: _router.navigateBack,
       ),
     );
   }

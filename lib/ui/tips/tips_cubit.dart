@@ -75,9 +75,8 @@ class TipCubit extends Cubit<TipsBaseState> {
     final Map<String, Tip> currentValues = current.associateBy((tip) => tip.id);
     return acc
         .map(
-          (tip) => tip.copyWith(
-            favouriteDate: currentValues[tip.id]?.favouriteDate,
-          ),
+          (tip) =>
+              tip.copyWith(favouriteDate: currentValues[tip.id]?.favouriteDate),
         )
         .toList();
   }

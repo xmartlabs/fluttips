@@ -47,7 +47,6 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: ListFavouritesTipsScreen(
           showTipType: args.showTipType,
-          action: args.action,
           tip: args.tip,
           key: args.key,
         ),
@@ -180,7 +179,6 @@ class ListFavouritesTipsScreenRoute
     extends PageRouteInfo<ListFavouritesTipsScreenRouteArgs> {
   ListFavouritesTipsScreenRoute({
     required ShowTipsType showTipType,
-    required void Function() action,
     Tip? tip,
     Key? key,
   }) : super(
@@ -188,7 +186,6 @@ class ListFavouritesTipsScreenRoute
           path: 'list_favourite',
           args: ListFavouritesTipsScreenRouteArgs(
             showTipType: showTipType,
-            action: action,
             tip: tip,
             key: key,
           ),
@@ -200,14 +197,11 @@ class ListFavouritesTipsScreenRoute
 class ListFavouritesTipsScreenRouteArgs {
   const ListFavouritesTipsScreenRouteArgs({
     required this.showTipType,
-    required this.action,
     this.tip,
     this.key,
   });
 
   final ShowTipsType showTipType;
-
-  final void Function() action;
 
   final Tip? tip;
 
@@ -215,7 +209,7 @@ class ListFavouritesTipsScreenRouteArgs {
 
   @override
   String toString() {
-    return 'ListFavouritesTipsScreenRouteArgs{showTipType: $showTipType, action: $action, tip: $tip, key: $key}';
+    return 'ListFavouritesTipsScreenRouteArgs{showTipType: $showTipType, tip: $tip, key: $key}';
   }
 }
 

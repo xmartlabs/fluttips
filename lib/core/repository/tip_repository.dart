@@ -8,8 +8,6 @@ import 'package:flutter_template/core/source/local_source/tips_local_source.dart
 import 'package:flutter_template/core/model/db/tip_db_entity.dart';
 import 'package:flutter_template/core/model/serializer/tip_serializer.dart';
 
-import 'package:flutter_template/core/model/extensions/stock_extensions.dart';
-
 class TipRepository {
   //ignore: unused_field
   final TipRemoteSource _tipRemoteSource;
@@ -29,14 +27,8 @@ class TipRepository {
     this._amountViewsLocalSource,
   )   : _tipListStock =
             _generateTipListStock(_tipRemoteSource, _tipsLocalSource),
-        _favouritesTipListStock = Stock(
-          fetcher: Fetcher.ofStream(
-            (_) => _tipsLocalSource.getFavouritesTips().map(
-                  TipListStockTypeMapper().fromInput,
-                ),
-          ),
-          sourceOfTruth: CachedSourceOfTruth(),
-        );
+        _favouritesTipListStock =
+            _generateFavouriteTipListStock(_tipsLocalSource);
 
   static Stock<dynamic, List<Tip>> _generateTipListStock(
     TipRemoteSource tipRemoteSource,
@@ -51,6 +43,18 @@ class TipRepository {
         ).mapToUsingMapper(TipListStockTypeMapper()),
       );
 
+  static Stock<dynamic, List<Tip>> _generateFavouriteTipListStock(
+    TipsLocalSource tipsLocalSource,
+  ) =>
+      Stock(
+        fetcher: Fetcher.ofStream(
+          (_) => tipsLocalSource.getFavouritesTips().map(
+                TipListStockTypeMapper().fromInput,
+              ),
+        ),
+        sourceOfTruth: CachedSourceOfTruth(),
+      );
+
   Future<Map<String, int>> getVisited() =>
       _amountViewsLocalSource.getAmountsView().first.then(
             (values) => values.associate(
@@ -60,15 +64,21 @@ class TipRepository {
 
   Stream<StockResponse<List<Tip>>> getTips() async* {
     final visited = await getVisited();
-    yield* _tipListStock.stream(null).getTipsStream(
-          sorted: (e) => visited[e.id] ?? 0,
-          sortedThenBy: (element) => element.randomId,
+    yield* _tipListStock.stream(null).map(
+          (response) => response.mapData(
+            (tips) => tips.value
+                .sortedBy((e) => visited[e.id] ?? 0)
+                .thenBy((element) => element.randomId)
+                .toList(),
+          ),
         );
   }
 
   Stream<StockResponse<List<Tip>>> getFavouritesTips() =>
-      _favouritesTipListStock.stream(null).getTipsStream(
-            sorted: (element) => element.favouriteDate!,
+      _favouritesTipListStock.stream(null).map(
+            (response) => response.mapData(
+              (tips) => tips.value.sortedBy((e) => e.favouriteDate!),
+            ),
           );
 
   Future<void> setTipAsViewedInSession(Tip tip) async {
