@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttips/ui/extensions/context_extensions.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,10 +10,12 @@ class Fab extends StatelessWidget {
   final IconData? iconSelected;
   final IconData iconNotSelected;
   final VoidCallback? action;
+  final ShapeBorder border;
 
   const Fab({
     required this.state,
     required this.iconNotSelected,
+    required this.border,
     Key? key,
     this.iconSelected,
     this.action,
@@ -28,8 +29,7 @@ class Fab extends StatelessWidget {
           selected: () => context.theme.colors.primary,
         ),
         foregroundColor: context.theme.colors.primary,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape: border,
         child: state.when(
           notSelected: () => Icon(
             iconNotSelected,

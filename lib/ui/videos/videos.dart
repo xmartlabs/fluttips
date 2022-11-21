@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttips/ui/extensions/context_extensions.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 
 class VideosScreen extends StatelessWidget {

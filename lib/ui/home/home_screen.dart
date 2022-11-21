@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttips/ui/extensions/context_extensions.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/home/drawer.dart';
 
@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
         visible: !_hideFab,
         child: Fab(
           state: const FabState.notSelected(),
+          border: const CircleBorder(),
           iconNotSelected: Icons.arrow_forward_ios,
           action: () => _scaffoldKey.currentState!.openDrawer(),
         ),

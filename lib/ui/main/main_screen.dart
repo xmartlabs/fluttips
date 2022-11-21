@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:fluttips/core/common/logger.dart';
 import 'package:fluttips/core/di/di_provider.dart';
 import 'package:fluttips/core/model/authentication_status.dart';
 import 'package:fluttips/ui/app_router.dart';
@@ -49,7 +48,6 @@ class _SplashContentScreen extends StatelessWidget {
       );
 
   List<PageRouteInfo<dynamic>> provideRoutes(MainBaseState state) {
-    Logger.d("Routes: Authenticated state ${state.authenticationStatus}");
     switch (state.authenticationStatus) {
       // TODO: Fix redirection to implement the Onboarding
       case AuthenticationStatus.unauthenticated:

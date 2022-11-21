@@ -1,32 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttips/core/model/extensions/tip_extension.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/ui/tips/tips_cubit.dart';
 import 'package:fluttips/ui/common/custom_scaffold_fab.dart';
 import 'package:fluttips/ui/common/fab.dart';
+import 'package:fluttips/core/model/tip.dart';
+import 'package:fluttips/ui/tips/display_tips.dart';
 
 class TipsScreen extends StatelessWidget {
-  const TipsScreen({Key? key}) : super(key: key);
+  final ShowTipsType showTipType;
+  final Tip? tip;
+
+  const TipsScreen({
+    required this.showTipType,
+    this.tip,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) => TipCubit(context.read<ErrorHandlerCubit>()),
-        child: _TipContentScreen(),
+        create: (context) =>
+            TipCubit(showTipType, context.read<ErrorHandlerCubit>(), tip),
+        child: const _TipContentScreen(),
       );
 }
 
 class _TipContentScreen extends StatefulWidget {
+  const _TipContentScreen();
+
   @override
   State<_TipContentScreen> createState() => _TipContentScreenState();
 }
 
 class _TipContentScreenState extends State<_TipContentScreen> {
-  late final TextEditingController _controller = TextEditingController();
   late final PageController _pageController = PageController();
 
   @override
   void dispose() {
-    _controller.dispose();
     _pageController.dispose();
     super.dispose();
   }
@@ -34,13 +47,24 @@ class _TipContentScreenState extends State<_TipContentScreen> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<TipCubit>();
-    return BlocBuilder<TipCubit, TipsBaseState>(
+    return BlocConsumer<TipCubit, TipsBaseState>(
+      listener: (context, state) {
+        if (state.currentPage != _pageController.page?.toInt() &&
+            state.currentPage > 0) {
+          _pageController.jumpToPage(state.currentPage);
+        }
+      },
       builder: (context, state) => MainScaffoldWithFab(
+        border: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.r)),
+        ),
         iconNotSelected: Icons.star_border,
-        state: state.tips.isNotEmpty && state.tips[state.currentPage].favourite
-            ? const FabState.selected()
-            : const FabState.notSelected(),
-        action: () => cubit.changeFavouriteButton(state.currentPage),
+        state:
+            state.tips.isNotEmpty && state.tips[state.currentPage].isFavourite
+                ? const FabState.selected()
+                : const FabState.notSelected(),
+        action: () =>
+            cubit.changeFavouriteButton(state.tips[state.currentPage]),
         iconSelected: Icons.star,
         child: PageView.builder(
           controller: _pageController,
@@ -50,8 +74,9 @@ class _TipContentScreenState extends State<_TipContentScreen> {
           onPageChanged: (index) => cubit
             ..onTipDisplayed(state.tips[index])
             ..setCurrentPage(index),
-          itemBuilder: (BuildContext context, int index) =>
-              Image.network(state.tips[index].imageUrl),
+          itemBuilder: (BuildContext context, int index) => DisplayTipWidget(
+            tip: state.tips[index],
+          ),
         ),
       ),
     );

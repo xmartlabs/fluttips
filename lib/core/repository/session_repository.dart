@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:fluttips/core/model/authentication_status.dart';
 import 'package:fluttips/core/model/user.dart';
-import 'package:fluttips/core/source/localSource/auth_local_source.dart';
-import 'package:fluttips/core/source/remoteSource/auth_remote_source.dart';
+import 'package:fluttips/core/source/local_source/auth_local_source.dart';
+import 'package:fluttips/core/source/remote_source/auth_remote_source.dart';
 
 import 'package:fluttips/core/source/database.dart';
 

@@ -52,6 +52,7 @@ class CatalogScreenState extends State<CatalogScreen> {
           Fab(
             state: const FabState.notSelected(),
             iconNotSelected: Icons.star_border,
+            border: const CircleBorder(),
             action: () => print('Fab clicked'),
           ),
         ],
