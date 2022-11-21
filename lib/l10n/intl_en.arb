@@ -18,6 +18,8 @@
   "home": "Home",
   "log_out": "Log out",
   "mail": "Mail",
+  "messageEmptyFavoritesScreen": "You don't have any favorites yet :(",
+  "myFavorites": "My Favorites",
   "password": "Password",
   "search": "Search",
   "xmartlabs_projects": "Xmartlabs' projects"

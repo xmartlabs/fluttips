@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/ui/common/input_text.dart';
-import 'package:flutter_template/ui/extensions/context_extensions.dart';
+import 'package:flutter_template/ui/common/context_extensions.dart';
 
 class SearchBar extends StatelessWidget {
   final TextEditingController controller;
