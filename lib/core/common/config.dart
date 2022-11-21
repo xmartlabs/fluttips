@@ -61,70 +61,36 @@ abstract class Config {
 
   static void _initializeEnvVariables() {
     apiBaseUrl = _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_API_BASE_URL)!;
-    if (_environment == Environments.production) {
-      _initializeFirebaseProdEnvVariables();
-    } else {
-      _initializeFirebaseDevEnvVariables();
-    }
+    _initializeFirebaseEnvVariables();
   }
 
-  static void _initializeFirebaseDevEnvVariables() {
+  static void _initializeFirebaseEnvVariables() {
     firebaseProjectId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_DEV_PROJECT_ID,
+      _EnvConfig.ENV_KEY_FIREBASE_PROJECT_ID,
     );
     firebaseMessagingSenderId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID,
+      _EnvConfig.ENV_KEY_FIREBASE_MESSAGE_SENDER_ID,
     );
     firebaseStorageBucket = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET,
+      _EnvConfig.ENV_KEY_FIREBASE_STORAGE_BUCKET,
     );
     firebaseIosApiKey = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_API_KEY,
+      _EnvConfig.ENV_KEY_FIREBASE_IOS_API_KEY,
     );
     firebaseIosAppId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_APP_ID,
+      _EnvConfig.ENV_KEY_FIREBASE_IOS_APP_ID,
     );
     firebaseIosIosClientId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID,
+      _EnvConfig.ENV_KEY_FIREBASE_IOS_IOS_CLIENT_ID,
     );
     firebaseIosIosBundleId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID,
+      _EnvConfig.ENV_KEY_FIREBASE_IOS_IOS_BUNDLE_ID,
     );
     firebaseAndroidApiKey = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY,
+      _EnvConfig.ENV_KEY_FIREBASE_ANDROID_API_KEY,
     );
     firebaseAndroidAppId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID,
-    );
-  }
-
-  static void _initializeFirebaseProdEnvVariables() {
-    firebaseProjectId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_PROD_PROJECT_ID,
-    );
-    firebaseMessagingSenderId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID,
-    );
-    firebaseStorageBucket = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET,
-    );
-    firebaseIosApiKey = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_API_KEY,
-    );
-    firebaseIosAppId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_APP_ID,
-    );
-    firebaseIosIosClientId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID,
-    );
-    firebaseIosIosBundleId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID,
-    );
-    firebaseAndroidApiKey = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY,
-    );
-    firebaseAndroidAppId = _EnvConfig.getEnvVariable(
-      _EnvConfig.ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID,
+      _EnvConfig.ENV_KEY_FIREBASE_ANDROID_APP_ID,
     );
   }
 }
@@ -132,102 +98,53 @@ abstract class Config {
 abstract class _EnvConfig {
   static const ENV_KEY_API_BASE_URL = 'API_BASE_URL';
 
-  // Firebase IOS Production
-  static const ENV_KEY_FIREBASE_PROD_PROJECT_ID =
-      'ENV_KEY_FIREBASE_PROD_PROJECT_ID';
-  static const ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID =
-      'ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID';
-  static const ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET =
-      'ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET';
+  // Firebase Common
+  static const ENV_KEY_FIREBASE_PROJECT_ID = 'ENV_KEY_FIREBASE_PROJECT_ID';
+  static const ENV_KEY_FIREBASE_MESSAGE_SENDER_ID =
+      'ENV_KEY_FIREBASE_MESSAGE_SENDER_ID';
+  static const ENV_KEY_FIREBASE_STORAGE_BUCKET =
+      'ENV_KEY_FIREBASE_STORAGE_BUCKET';
 
-  static const ENV_KEY_FIREBASE_IOS_PROD_API_KEY =
-      'ENV_KEY_FIREBASE_IOS_PROD_API_KEY';
-  static const ENV_KEY_FIREBASE_IOS_PROD_APP_ID =
-      'ENV_KEY_FIREBASE_IOS_PROD_APP_ID';
-  static const ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID =
-      'ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID';
-  static const ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID =
-      'ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID';
+  // Firebase IOs
+  static const ENV_KEY_FIREBASE_IOS_API_KEY = 'ENV_KEY_FIREBASE_IOS_API_KEY';
+  static const ENV_KEY_FIREBASE_IOS_APP_ID = 'ENV_KEY_FIREBASE_IOS_APP_ID';
+  static const ENV_KEY_FIREBASE_IOS_IOS_CLIENT_ID =
+      'ENV_KEY_FIREBASE_IOS_IOS_CLIENT_ID';
+  static const ENV_KEY_FIREBASE_IOS_IOS_BUNDLE_ID =
+      'ENV_KEY_FIREBASE_IOS_IOS_BUNDLE_ID';
 
-  // Firebase Android Production
-  static const ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY =
-      'ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY';
-  static const ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID =
-      'ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID';
-
-  // Firebase IOS Dev
-  static const ENV_KEY_FIREBASE_DEV_PROJECT_ID =
-      'ENV_KEY_FIREBASE_DEV_PROJECT_ID';
-  static const ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID =
-      'ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID';
-  static const ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET =
-      'ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET';
-
-  static const ENV_KEY_FIREBASE_IOS_DEV_API_KEY =
-      'ENV_KEY_FIREBASE_IOS_DEV_API_KEY';
-  static const ENV_KEY_FIREBASE_IOS_DEV_APP_ID =
-      'ENV_KEY_FIREBASE_IOS_DEV_APP_ID';
-  static const ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID =
-      'ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID';
-  static const ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID =
-      'ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID';
-
-  // Firebase Android Dev
-  static const ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY =
-      'ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY';
-  static const ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID =
-      'ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID';
+  // Firebase Android
+  static const ENV_KEY_FIREBASE_ANDROID_API_KEY =
+      'ENV_KEY_FIREBASE_ANDROID_API_KEY';
+  static const ENV_KEY_FIREBASE_ANDROID_APP_ID =
+      'ENV_KEY_FIREBASE_ANDROID_APP_ID';
 
   static const systemEnv = {
     ENV_KEY_API_BASE_URL: String.fromEnvironment(ENV_KEY_API_BASE_URL),
 
     // Firebase Common
-    ENV_KEY_FIREBASE_PROD_PROJECT_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_PROD_PROJECT_ID),
-    ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID),
-    ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET:
-        String.fromEnvironment(ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET),
+    ENV_KEY_FIREBASE_PROJECT_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_PROJECT_ID),
+    ENV_KEY_FIREBASE_MESSAGE_SENDER_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_MESSAGE_SENDER_ID),
+    ENV_KEY_FIREBASE_STORAGE_BUCKET:
+        String.fromEnvironment(ENV_KEY_FIREBASE_STORAGE_BUCKET),
 
-    // Firebase Prod IOS
-    ENV_KEY_FIREBASE_IOS_PROD_API_KEY:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_API_KEY),
-    ENV_KEY_FIREBASE_IOS_PROD_APP_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_APP_ID),
-    ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID),
-    ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID),
+    // Firebase IOS
+    ENV_KEY_FIREBASE_IOS_API_KEY:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_API_KEY),
+    ENV_KEY_FIREBASE_IOS_APP_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_APP_ID),
+    ENV_KEY_FIREBASE_IOS_IOS_CLIENT_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_IOS_CLIENT_ID),
+    ENV_KEY_FIREBASE_IOS_IOS_BUNDLE_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_IOS_BUNDLE_ID),
 
-    // Firebase Prod Android
-    ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY:
-        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY),
-    ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID),
-
-    // Firebase Dev Common
-    ENV_KEY_FIREBASE_DEV_PROJECT_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_DEV_PROJECT_ID),
-    ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID),
-    ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET:
-        String.fromEnvironment(ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET),
-
-    // Firebase Dev IOS
-    ENV_KEY_FIREBASE_IOS_DEV_API_KEY:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_API_KEY),
-    ENV_KEY_FIREBASE_IOS_DEV_APP_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_APP_ID),
-    ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID),
-    ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID),
-
-    // Firebase Dev Android
-    ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY:
-        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY),
-    ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID:
-        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID),
+    // Firebase Android
+    ENV_KEY_FIREBASE_ANDROID_API_KEY:
+        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_API_KEY),
+    ENV_KEY_FIREBASE_ANDROID_APP_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_APP_ID),
   };
 
   static final Map<String, String> _envFileEnv = {};
