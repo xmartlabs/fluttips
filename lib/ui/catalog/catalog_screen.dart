@@ -1,10 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:flutter_template/ui/common/app_button.dart';
-import 'package:flutter_template/ui/common/app_dialog.dart';
-import 'package:flutter_template/ui/common/fab.dart';
-import 'package:flutter_template/ui/common/search_bar.dart';
+import 'package:fluttips/ui/common/app_button.dart';
+import 'package:fluttips/ui/common/app_dialog.dart';
+import 'package:fluttips/ui/common/fab.dart';
+import 'package:fluttips/ui/common/search_bar.dart';
 
 class CatalogScreen extends StatefulWidget {
   const CatalogScreen({Key? key}) : super(key: key);

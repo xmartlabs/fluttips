@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_template/core/common/logger.dart';
+import 'package:fluttips/core/common/logger.dart';
 
 Future<Map<String, String>> loadEnvs(
   String path, [

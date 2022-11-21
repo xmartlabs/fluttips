@@ -1,14 +1,14 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_template/core/repository/session_repository.dart';
-import 'package:flutter_template/core/repository/tip_repository.dart';
-import 'package:flutter_template/core/source/localSource/auth_local_source.dart';
-import 'package:flutter_template/core/source/remoteSource/auth_remote_source.dart';
-import 'package:flutter_template/core/source/common/auth_interceptor.dart';
-import 'package:flutter_template/core/source/common/http_service.dart';
-import 'package:flutter_template/core/source/remoteSource/tip_remote_source.dart';
+import 'package:fluttips/core/repository/session_repository.dart';
+import 'package:fluttips/core/repository/tip_repository.dart';
+import 'package:fluttips/core/source/localSource/auth_local_source.dart';
+import 'package:fluttips/core/source/remoteSource/auth_remote_source.dart';
+import 'package:fluttips/core/source/common/auth_interceptor.dart';
+import 'package:fluttips/core/source/common/http_service.dart';
+import 'package:fluttips/core/source/remoteSource/tip_remote_source.dart';
 import 'package:get_it/get_it.dart';
 
-import 'package:flutter_template/core/source/database.dart';
+import 'package:fluttips/core/source/database.dart';
 
 class RepositoryDiModule {
   RepositoryDiModule._privateConstructor();

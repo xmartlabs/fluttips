@@ -3,14 +3,14 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter_template/core/common/extension/string_extensions.dart';
-import 'package:flutter_template/core/common/helper/enum_helpers.dart';
-import 'package:flutter_template/core/common/helper/env_helper.dart';
-import 'package:flutter_template/gen/assets.gen.dart';
+import 'package:flutter/foundation.dart';
+import 'package:fluttips/core/common/extension/string_extensions.dart';
+import 'package:fluttips/core/common/helper/enum_helpers.dart';
+import 'package:fluttips/core/common/helper/env_helper.dart';
+import 'package:fluttips/gen/assets.gen.dart';
 
 enum Environments {
   development,
-  staging,
   production,
 }
 
@@ -18,11 +18,9 @@ extension EnviromentPath on Environments {
   String get fileName {
     switch (this) {
       case Environments.development:
-        return 'development';
-      case Environments.staging:
-        return 'staging';
+        return 'dev';
       case Environments.production:
-        return 'production';
+        return 'prod';
     }
   }
 
@@ -38,6 +36,19 @@ abstract class Config {
       'https://github.com/vandadnp/flutter-tips-and-tricks/blob/main/';
   static String gitHubTipsNameFolder = 'tipsandtricks/';
 
+
+  static bool get debugMode => kDebugMode;
+
+  static String? firebaseMessagingSenderId;
+  static String? firebaseProjectId;
+  static String? firebaseStorageBucket;
+  static String? firebaseIosApiKey;
+  static String? firebaseIosAppId;
+  static String? firebaseIosIosClientId;
+  static String? firebaseIosIosBundleId;
+  static String? firebaseAndroidApiKey;
+  static String? firebaseAndroidAppId;
+
   static final _environment = enumFromString(
         Environments.values,
         const String.fromEnvironment('ENV'),
@@ -51,14 +62,169 @@ abstract class Config {
 
   static void _initializeEnvVariables() {
     apiBaseUrl = _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_API_BASE_URL)!;
+    _initializeFirebaseEnvVariables();
+  }
+
+  static void _initializeFirebaseEnvVariables() {
+    if (_environment == Environments.production) {
+      firebaseProjectId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_PROD_PROJECT_ID,
+      );
+      firebaseMessagingSenderId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID,
+      );
+      firebaseStorageBucket = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET,
+      );
+      firebaseIosApiKey = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_API_KEY,
+      );
+      firebaseIosAppId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_APP_ID,
+      );
+      firebaseIosIosClientId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID,
+      );
+      firebaseIosIosBundleId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID,
+      );
+      firebaseAndroidApiKey = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY,
+      );
+      firebaseAndroidAppId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID,
+      );
+    } else {
+      firebaseProjectId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_DEV_PROJECT_ID,
+      );
+      firebaseMessagingSenderId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID,
+      );
+      firebaseStorageBucket = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET,
+      );
+      firebaseIosApiKey = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_API_KEY,
+      );
+      firebaseIosAppId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_APP_ID,
+      );
+      firebaseIosIosClientId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID,
+      );
+      firebaseIosIosBundleId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID,
+      );
+      firebaseAndroidApiKey = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY,
+      );
+      firebaseAndroidAppId = _EnvConfig.getEnvVariable(
+        _EnvConfig.ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID,
+      );
+    }
   }
 }
 
 abstract class _EnvConfig {
   static const ENV_KEY_API_BASE_URL = 'API_BASE_URL';
 
+  // Firebase IOS Production
+  static const ENV_KEY_FIREBASE_PROD_PROJECT_ID =
+      'ENV_KEY_FIREBASE_PROD_PROJECT_ID';
+  static const ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID =
+      'ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID';
+  static const ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET =
+      'ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET';
+
+  static const ENV_KEY_FIREBASE_IOS_PROD_API_KEY =
+      'ENV_KEY_FIREBASE_IOS_PROD_API_KEY';
+  static const ENV_KEY_FIREBASE_IOS_PROD_APP_ID =
+      'ENV_KEY_FIREBASE_IOS_PROD_APP_ID';
+  static const ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID =
+      'ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID';
+  static const ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID =
+      'ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID';
+
+  // Firebase Android Production
+  static const ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY =
+      'ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY';
+  static const ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID =
+      'ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID';
+
+  // Firebase IOS Dev
+  static const ENV_KEY_FIREBASE_DEV_PROJECT_ID =
+      'ENV_KEY_FIREBASE_DEV_PROJECT_ID';
+  static const ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID =
+      'ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID';
+  static const ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET =
+      'ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET';
+
+  static const ENV_KEY_FIREBASE_IOS_DEV_API_KEY =
+      'ENV_KEY_FIREBASE_IOS_DEV_API_KEY';
+  static const ENV_KEY_FIREBASE_IOS_DEV_APP_ID =
+      'ENV_KEY_FIREBASE_IOS_DEV_APP_ID';
+  static const ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID =
+      'ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID';
+  static const ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID =
+      'ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID';
+
+  // Firebase Android Dev
+  static const ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY =
+      'ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY';
+  static const ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID =
+      'ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID';
+
   static const systemEnv = {
     ENV_KEY_API_BASE_URL: String.fromEnvironment(ENV_KEY_API_BASE_URL),
+
+    // Firebase Common
+    ENV_KEY_FIREBASE_PROD_PROJECT_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_PROD_PROJECT_ID),
+    ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_PROD_MESSAGE_SENDER_ID),
+    ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET:
+        String.fromEnvironment(ENV_KEY_FIREBASE_PROD_STORAGE_BUCKET),
+
+    // Firebase Prod IOS
+    ENV_KEY_FIREBASE_IOS_PROD_API_KEY:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_API_KEY),
+    ENV_KEY_FIREBASE_IOS_PROD_APP_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_APP_ID),
+    ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_IOS_CLIENT_ID),
+    ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_PROD_IOS_BUNDLE_ID),
+
+    // Firebase Prod Android
+    ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY:
+        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_PROD_API_KEY),
+    ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_PROD_APP_ID),
+
+    // Firebase Dev Common
+    ENV_KEY_FIREBASE_DEV_PROJECT_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_DEV_PROJECT_ID),
+    ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_DEV_MESSAGE_SENDER_ID),
+    ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET:
+        String.fromEnvironment(ENV_KEY_FIREBASE_DEV_STORAGE_BUCKET),
+
+    // Firebase Dev IOS
+    ENV_KEY_FIREBASE_IOS_DEV_API_KEY:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_API_KEY),
+    ENV_KEY_FIREBASE_IOS_DEV_APP_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_APP_ID),
+    ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_IOS_CLIENT_ID),
+    ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_IOS_DEV_IOS_BUNDLE_ID),
+
+    // Firebase Dev Android
+    ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY:
+        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_DEV_API_KEY),
+    ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_DEV_APP_ID),
   };
 
   static final Map<String, String> _envFileEnv = {};

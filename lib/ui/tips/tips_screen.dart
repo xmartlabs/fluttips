@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:flutter_template/ui/tips/tips_cubit.dart';
-import 'package:flutter_template/ui/common/custom_scaffold_fab.dart';
-import 'package:flutter_template/ui/common/fab.dart';
+import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:fluttips/ui/tips/tips_cubit.dart';
+import 'package:fluttips/ui/common/custom_scaffold_fab.dart';
+import 'package:fluttips/ui/common/fab.dart';
 
 class TipsScreen extends StatelessWidget {
   const TipsScreen({Key? key}) : super(key: key);

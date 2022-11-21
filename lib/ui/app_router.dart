@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_template/ui/catalog/catalog_screen.dart';
-import 'package:flutter_template/ui/home/home_screen.dart';
-import 'package:flutter_template/ui/section/section_router.dart';
-import 'package:flutter_template/ui/tips/tips_screen.dart';
-import 'package:flutter_template/ui/videos/videos.dart';
+import 'package:fluttips/ui/catalog/catalog_screen.dart';
+import 'package:fluttips/ui/home/home_screen.dart';
+import 'package:fluttips/ui/section/section_router.dart';
+import 'package:fluttips/ui/tips/tips_screen.dart';
+import 'package:fluttips/ui/videos/videos.dart';
 
 part 'app_router.gr.dart';
 

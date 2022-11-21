@@ -1,4 +1,4 @@
-import 'package:flutter_template/core/common/network_exceptions.dart';
+import 'package:fluttips/core/common/network_exceptions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'service_response.freezed.dart';

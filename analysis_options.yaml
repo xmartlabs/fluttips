@@ -135,5 +135,6 @@ analyzer:
     - '**/*.gen.dart'
     - '**/*.gr.dart'
     - 'lib/generated_plugin_registrant.dart'
+    - 'lib/firebase_options_*.dart'
   errors:
     invalid_annotation_target: ignore

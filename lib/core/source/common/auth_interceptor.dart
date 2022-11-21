@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_template/core/source/localSource/auth_local_source.dart';
+import 'package:fluttips/core/source/localSource/auth_local_source.dart';
 
 class AuthInterceptor extends Interceptor {
   final AuthLocalSource _authLocalSource;

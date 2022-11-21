@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_template/ui/extensions/context_extensions.dart';
-import 'package:flutter_template/ui/theme/app_theme.dart';
-import 'package:flutter_template/ui/home/drawer.dart';
+import 'package:fluttips/ui/extensions/context_extensions.dart';
+import 'package:fluttips/ui/theme/app_theme.dart';
+import 'package:fluttips/ui/home/drawer.dart';
 
-import 'package:flutter_template/ui/common/fab.dart';
+import 'package:fluttips/ui/common/fab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

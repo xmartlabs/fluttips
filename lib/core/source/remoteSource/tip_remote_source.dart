@@ -1,13 +1,13 @@
 import 'dart:math';
 
 import 'package:dartx/dartx.dart';
-import 'package:flutter_template/core/model/service/responses/github_file_response.dart';
-import 'package:flutter_template/core/model/service/responses/service_response.dart';
-import 'package:flutter_template/core/model/tip.dart';
-import 'package:flutter_template/core/source/common/http_service.dart';
-import 'package:flutter_template/core/model/service/responses/github_tree_response.dart';
-import 'package:flutter_template/core/common/config.dart';
-import 'package:flutter_template/core/model/common/file_type.dart';
+import 'package:fluttips/core/model/service/responses/github_file_response.dart';
+import 'package:fluttips/core/model/service/responses/service_response.dart';
+import 'package:fluttips/core/model/tip.dart';
+import 'package:fluttips/core/source/common/http_service.dart';
+import 'package:fluttips/core/model/service/responses/github_tree_response.dart';
+import 'package:fluttips/core/common/config.dart';
+import 'package:fluttips/core/model/common/file_type.dart';
 
 class TipRemoteSource {
   static const _urlGetGithubFiles = '/git/trees/main?recursive=All';

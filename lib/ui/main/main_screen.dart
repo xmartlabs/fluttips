@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_template/core/common/logger.dart';
-import 'package:flutter_template/core/di/di_provider.dart';
-import 'package:flutter_template/core/model/authentication_status.dart';
-import 'package:flutter_template/ui/app_router.dart';
-import 'package:flutter_template/ui/main/main_cubit.dart';
-import 'package:flutter_template/ui/resources.dart';
-import 'package:flutter_template/ui/theme/app_theme.dart';
+import 'package:fluttips/core/common/logger.dart';
+import 'package:fluttips/core/di/di_provider.dart';
+import 'package:fluttips/core/model/authentication_status.dart';
+import 'package:fluttips/ui/app_router.dart';
+import 'package:fluttips/ui/main/main_cubit.dart';
+import 'package:fluttips/ui/resources.dart';
+import 'package:fluttips/ui/theme/app_theme.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
