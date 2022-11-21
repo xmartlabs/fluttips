@@ -10,6 +10,7 @@ class MainScaffoldWithFab extends StatelessWidget {
   final VoidCallback? action;
   final Widget? child;
   final ShapeBorder border;
+  final bool? visibility;
 
   const MainScaffoldWithFab({
     required this.state,
@@ -19,6 +20,7 @@ class MainScaffoldWithFab extends StatelessWidget {
     this.iconSelected,
     this.action,
     this.child,
+    this.visibility,
   }) : super(key: key);
 
   @override
@@ -27,12 +29,15 @@ class MainScaffoldWithFab extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(bottom: 15.0),
-          child: Fab(
-            state: state,
-            iconNotSelected: iconNotSelected,
-            action: action,
-            iconSelected: iconSelected,
-            border: border,
+          child: Visibility(
+            visible: visibility ?? true,
+            child: Fab(
+              state: state,
+              iconNotSelected: iconNotSelected,
+              action: action,
+              iconSelected: iconSelected,
+              border: border,
+            ),
           ),
         ),
         body: child,

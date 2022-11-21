@@ -45,6 +45,7 @@ dependencies:
   sqflite: 2.2.0+3
   stack_trace: 1.10.0
   stock: 1.0.1
+  photo_view: ^0.14.0
 
 dev_dependencies:
   flutter_test:
