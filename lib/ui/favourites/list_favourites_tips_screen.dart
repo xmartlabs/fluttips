@@ -38,7 +38,10 @@ class ListFavouritesTipsScreen extends StatelessWidget {
                 backgroundColor: context.theme.colors.primary.shade100,
                 alignment: Alignment.center,
               ),
-              child: const Icon(Icons.arrow_back_ios, size: 20,),
+              child: const Icon(
+                Icons.arrow_back_ios,
+                size: 20,
+              ),
             ),
           ),
         ],
