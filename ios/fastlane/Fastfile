@@ -4,8 +4,8 @@ PLIST_FILE = 'export_options.plist'
 PROD_ENV = 'prod'
 DEV_ENV = 'dev'
 DEFAULT_ENV = PROD_ENV
-DEV_BUNDLE_ID = "com.xmartlabs.fluttips.dev"
 PROD_BUNDLE_ID = "com.xmartlabs.fluttips"
+DEV_BUNDLE_ID = "#{PROD_BUNDLE_ID}.dev"
 
 default_platform(:ios)
 
@@ -41,15 +41,16 @@ platform :ios do
   "* **`APPLE_TEAM_ID`**: The apple team id"
   private_lane :setup_provisioning do |options|
     env = options[:env] || DEFAULT_ENV
-
     app_identifier = options[:env] == DEV_ENV ? DEV_BUNDLE_ID : PROD_BUNDLE_ID
+    adhoc = options[:adhoc] || false
+    profile_type_name = adhoc ? 'AdHoc' : 'AppStore'
 
     get_provisioning_profile(
-      adhoc: options[:adhoc] || false,
+      adhoc: adhoc,
       team_id: ENV['APPLE_TEAM_ID'],
       force: true,
       include_all_certificates: true,
-      provisioning_name: provisioning_name,
+      provisioning_name: '#{provisioning_name}-#{profile_type_name}-#{env}',
       app_identifier: app_identifier,
     )
     update_code_signing_settings(
@@ -66,7 +67,7 @@ platform :ios do
 	update_project_provisioning(
 	  xcodeproj: "Runner.xcodeproj",
  	  build_configuration: "Release-#{env}",
-	  profile: "./AdHoc_#{app_identifier}.mobileprovision",
+	  profile: "./#{profile_type_name}_#{app_identifier}.mobileprovision",
       code_signing_identity: "Apple Distribution"
 	)
   end
