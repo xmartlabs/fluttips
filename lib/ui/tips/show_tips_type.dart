@@ -1,0 +1,1 @@
+enum ShowTipsType { all, favourite }

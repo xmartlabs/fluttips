@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/ui/extensions/context_extensions.dart';
+import 'package:flutter_template/ui/common/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/common/fab.dart';
 
@@ -9,10 +9,12 @@ class MainScaffoldWithFab extends StatelessWidget {
   final IconData iconNotSelected;
   final VoidCallback? action;
   final Widget? child;
+  final ShapeBorder border;
 
   const MainScaffoldWithFab({
     required this.state,
     required this.iconNotSelected,
+    required this.border,
     Key? key,
     this.iconSelected,
     this.action,
@@ -30,6 +32,7 @@ class MainScaffoldWithFab extends StatelessWidget {
             iconNotSelected: iconNotSelected,
             action: action,
             iconSelected: iconSelected,
+            border: border,
           ),
         ),
         body: child,

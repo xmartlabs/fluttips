@@ -41,16 +41,38 @@ class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
-    TipsScreenRoute.name: (routeData) {
+    ListFavouritesTipsScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<ListFavouritesTipsScreenRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const TipsScreen(),
+        child: ListFavouritesTipsScreen(
+          showTipType: args.showTipType,
+          tip: args.tip,
+          key: args.key,
+        ),
       );
     },
-    VideosScreenRoute.name: (routeData) {
+    HomeTipsScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeTipsScreenRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: TipsScreen(
+          showTipType: args.showTipType,
+          tip: args.tip,
+          key: args.key,
+        ),
+      );
+    },
+    HomeVideosScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const VideosScreen(),
+      );
+    },
+    HomeFavouritesTipsScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const FavouritesTipsScreen(),
       );
     },
   };
@@ -75,17 +97,27 @@ class _$AppRouter extends RootStackRouter {
               parent: AuthenticatedRouter.name,
               children: [
                 RouteConfig(
-                  TipsScreenRoute.name,
+                  HomeTipsScreenRoute.name,
                   path: 'tips',
                   parent: HomeScreenRoute.name,
                 ),
                 RouteConfig(
-                  VideosScreenRoute.name,
+                  HomeVideosScreenRoute.name,
                   path: 'videos',
                   parent: HomeScreenRoute.name,
                 ),
+                RouteConfig(
+                  HomeFavouritesTipsScreenRoute.name,
+                  path: 'favourite',
+                  parent: HomeScreenRoute.name,
+                ),
               ],
-            )
+            ),
+            RouteConfig(
+              ListFavouritesTipsScreenRoute.name,
+              path: 'list_favourite',
+              parent: AuthenticatedRouter.name,
+            ),
           ],
         ),
       ];
@@ -142,25 +174,104 @@ class HomeScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TipsScreen]
-class TipsScreenRoute extends PageRouteInfo<void> {
-  const TipsScreenRoute()
-      : super(
-          TipsScreenRoute.name,
-          path: 'tips',
+/// [ListFavouritesTipsScreen]
+class ListFavouritesTipsScreenRoute
+    extends PageRouteInfo<ListFavouritesTipsScreenRouteArgs> {
+  ListFavouritesTipsScreenRoute({
+    required ShowTipsType showTipType,
+    Tip? tip,
+    Key? key,
+  }) : super(
+          ListFavouritesTipsScreenRoute.name,
+          path: 'list_favourite',
+          args: ListFavouritesTipsScreenRouteArgs(
+            showTipType: showTipType,
+            tip: tip,
+            key: key,
+          ),
         );
 
-  static const String name = 'TipsScreenRoute';
+  static const String name = 'ListFavouritesTipsScreenRoute';
+}
+
+class ListFavouritesTipsScreenRouteArgs {
+  const ListFavouritesTipsScreenRouteArgs({
+    required this.showTipType,
+    this.tip,
+    this.key,
+  });
+
+  final ShowTipsType showTipType;
+
+  final Tip? tip;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ListFavouritesTipsScreenRouteArgs{showTipType: $showTipType, tip: $tip, key: $key}';
+  }
+}
+
+/// generated route for
+/// [TipsScreen]
+class HomeTipsScreenRoute extends PageRouteInfo<HomeTipsScreenRouteArgs> {
+  HomeTipsScreenRoute({
+    required ShowTipsType showTipType,
+    Tip? tip,
+    Key? key,
+  }) : super(
+          HomeTipsScreenRoute.name,
+          path: 'tips',
+          args: HomeTipsScreenRouteArgs(
+            showTipType: showTipType,
+            tip: tip,
+            key: key,
+          ),
+        );
+
+  static const String name = 'HomeTipsScreenRoute';
+}
+
+class HomeTipsScreenRouteArgs {
+  const HomeTipsScreenRouteArgs({
+    required this.showTipType,
+    this.tip,
+    this.key,
+  });
+
+  final ShowTipsType showTipType;
+
+  final Tip? tip;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'HomeTipsScreenRouteArgs{showTipType: $showTipType, tip: $tip, key: $key}';
+  }
 }
 
 /// generated route for
 /// [VideosScreen]
-class VideosScreenRoute extends PageRouteInfo<void> {
-  const VideosScreenRoute()
+class HomeVideosScreenRoute extends PageRouteInfo<void> {
+  const HomeVideosScreenRoute()
       : super(
-          VideosScreenRoute.name,
+          HomeVideosScreenRoute.name,
           path: 'videos',
         );
 
-  static const String name = 'VideosScreenRoute';
+  static const String name = 'HomeVideosScreenRoute';
+}
+
+/// generated route for
+/// [FavouritesTipsScreen]
+class HomeFavouritesTipsScreenRoute extends PageRouteInfo<void> {
+  const HomeFavouritesTipsScreenRoute()
+      : super(
+          HomeFavouritesTipsScreenRoute.name,
+          path: 'favourite',
+        );
+
+  static const String name = 'HomeFavouritesTipsScreenRoute';
 }

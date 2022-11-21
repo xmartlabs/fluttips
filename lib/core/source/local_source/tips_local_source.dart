@@ -14,8 +14,11 @@ abstract class TipsLocalSource {
   @Query('SELECT * FROM ${TipDbEntity.tableName} WHERE id = :id')
   Future<List<TipDbEntity>> getTipById(String id);
 
-  @Query('SELECT * FROM ${TipDbEntity.tableName} WHERE name = :name')
-  Stream<TipDbEntity?> findTipByName(String name);
+  @Query(
+    'SELECT * FROM ${TipDbEntity.tableName} WHERE favouriteDate IS NOT NULL '
+    'ORDER BY favouriteDate ASC',
+  )
+  Stream<List<TipDbEntity>> getFavouritesTips();
 
   @Insert(onConflict: OnConflictStrategy.replace)
   Future<void> insertTips(List<TipDbEntity> tips);

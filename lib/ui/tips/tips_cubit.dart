@@ -1,25 +1,30 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_template/core/common/extension/stream_future_extensions.dart';
+import 'package:dartx/dartx.dart';
 import 'package:flutter_template/core/di/di_provider.dart';
+import 'package:flutter_template/core/model/extensions/stock_extensions.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:flutter_template/ui/tips/show_tips_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_template/core/repository/tip_repository.dart';
 import 'package:flutter_template/core/model/tip.dart';
-import 'package:stock/stock.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'tips_cubit.freezed.dart';
 
 part 'tips_state.dart';
 
 class TipCubit extends Cubit<TipsBaseState> {
-  //ignore: unused_field
-  final GeneralErrorHandler _errorHandler;
-  late StreamSubscription<List<Tip>> subscriptionToTips;
   final TipRepository _tipRepository = DiProvider.get();
 
-  TipCubit(this._errorHandler) : super(const TipsBaseState.state()) {
+  final GeneralErrorHandler _errorHandler;
+  final ShowTipsType _showTipsType;
+  final Tip? tip;
+  late StreamSubscription<List<Tip>> subscriptionToTips;
+
+  TipCubit(this._showTipsType, this._errorHandler, this.tip)
+      : super(const TipsBaseState.state()) {
     _subscribeToTips();
   }
 
@@ -38,16 +43,46 @@ class TipCubit extends Cubit<TipsBaseState> {
       _tipRepository.toggleFavouriteTip(tip);
 
   void _subscribeToTips() {
-    subscriptionToTips = _tipRepository
-        .getTips()
-        .filterSuccess(_errorHandler.handleError)
-        .where((event) => event.isData)
-        .map((event) => event.requireData())
-        .listen((tips) {
+    subscriptionToTips = _getTipStream().listen((tips) {
       if (tips.isNotEmpty) {
         onTipDisplayed(tips.first);
+        if (tip != null) {
+          emit(
+            state.copyWith(
+              currentPage:
+                  state.tips.indexWhere((element) => element.id == tip?.id),
+            ),
+          );
+        }
       }
       emit(state.copyWith(tips: tips));
     });
   }
+
+  Stream<List<Tip>> _getTipStream() => _showTipsType == ShowTipsType.favourite
+      ? _getFavouritesTipStream()
+      : _getAllTips();
+
+  Stream<List<Tip>> _getFavouritesTipStream() => _tipRepository
+      .getFavouritesTips()
+      .filterSuccessStockResponseData(_errorHandler.handleError)
+      .scan((acc, current, index) => _mergeTipLists(acc, current), []);
+
+  List<Tip> _mergeTipLists(
+    List<Tip> originalFavoutiteTips,
+    List<Tip> currentFavouriteTips,
+  ) {
+    if (originalFavoutiteTips.isEmpty) {
+      return currentFavouriteTips;
+    }
+    final Map<String, DateTime?> tipFavouriteDates = currentFavouriteTips
+        .associate((tip) => MapEntry(tip.id, tip.favouriteDate));
+    return originalFavoutiteTips
+        .map((tip) => tip.copyWith(favouriteDate: tipFavouriteDates[tip.id]))
+        .toList();
+  }
+
+  Stream<List<Tip>> _getAllTips() => _tipRepository
+      .getTips()
+      .filterSuccessStockResponseData(_errorHandler.handleError);
 }
