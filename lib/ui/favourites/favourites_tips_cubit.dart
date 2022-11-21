@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter_template/core/di/di_provider.dart';
 import 'package:flutter_template/core/model/extensions/stock_extensions.dart';
@@ -15,11 +14,10 @@ part 'favourites_tips_cubit.freezed.dart';
 part 'favourites_tips_state.dart';
 
 class FavouritesTipsCubit extends Cubit<FavouritesTipsBaseState> {
-  final GeneralErrorHandler _errorHandler;
-
-  late StreamSubscription<List<Tip>> subscriptionToTips;
   final TipRepository _tipRepository = DiProvider.get();
   final AppRouter _router = DiProvider.get();
+  final GeneralErrorHandler _errorHandler;
+  late StreamSubscription<List<Tip>> subscriptionToTips;
 
   FavouritesTipsCubit(this._errorHandler)
       : super(const FavouritesTipsBaseState.state()) {

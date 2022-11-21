@@ -66,18 +66,19 @@ class TipCubit extends Cubit<TipsBaseState> {
   Stream<List<Tip>> _getFavouritesTipStream() => _tipRepository
       .getFavouritesTips()
       .filterSuccessStockResponseData(_errorHandler.handleError)
-      .scan((acc, current, index) => _appendLists(acc, current), []);
+      .scan((acc, current, index) => _mergeTipLists(acc, current), []);
 
-  List<Tip> _appendLists(List<Tip> acc, List<Tip> current) {
-    if (acc.isEmpty) {
-      return current;
+  List<Tip> _mergeTipLists(
+    List<Tip> originalFavoutiteTips,
+    List<Tip> currentFavouriteTips,
+  ) {
+    if (originalFavoutiteTips.isEmpty) {
+      return currentFavouriteTips;
     }
-    final Map<String, Tip> currentValues = current.associateBy((tip) => tip.id);
-    return acc
-        .map(
-          (tip) =>
-              tip.copyWith(favouriteDate: currentValues[tip.id]?.favouriteDate),
-        )
+    final Map<String, DateTime?> tipFavouriteDates = currentFavouriteTips
+        .associate((tip) => MapEntry(tip.id, tip.favouriteDate));
+    return originalFavoutiteTips
+        .map((tip) => tip.copyWith(favouriteDate: tipFavouriteDates[tip.id]))
         .toList();
   }
 

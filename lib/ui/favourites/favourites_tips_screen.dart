@@ -6,6 +6,8 @@ import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.da
 import 'package:flutter_template/ui/favourites/favourites_tips_cubit.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 
+import 'package:flutter_template/ui/favourites/display_list_favorites_tips_screen.dart';
+
 class FavouritesTipsScreen extends StatelessWidget {
   const FavouritesTipsScreen({Key? key}) : super(key: key);
 
@@ -38,57 +40,43 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
               ),
             ),
             state.tips.isEmpty
-                ? Expanded(
-                    child: Center(
-                      child: Text(
-                        context.localizations.messageEmptyFavoritesScreen,
-                        style: context.theme.textStyles.titleLarge!.copyWith(
-                          color: context.theme.colors.surface.shade800,
-                        ),
-                      ),
-                    ),
-                  )
-                : Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 2,
-                      childAspectRatio: 5,
-                      mainAxisSpacing: 5,
-                      crossAxisSpacing: 5,
-                      children: state.tips
-                          .map(
-                            (tip) => InkWell(
-                              borderRadius: BorderRadius.circular(15.r),
-                              onTap: () => cubit.navigateToTip(tip),
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                padding: const EdgeInsets.only(left: 10),
-                                margin: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.r),
-                                  color: Colors.transparent,
-                                  border: Border.all(
-                                    color:
-                                        context.theme.colors.primary.shade100,
-                                  ),
-                                ),
-                                child: Text(
-                                  tip.name,
-                                  textAlign: TextAlign.center,
-                                  style: context.theme.textStyles.bodySmall!
-                                      .copyWith(
-                                    color:
-                                        context.theme.colors.primary.shade100,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
+                ? emptyFavouriteScreen(context)
+                : displayFavouritesTips(state, cubit),
           ],
         ),
       ),
     );
   }
+
+  Expanded displayFavouritesTips(
+    FavouritesTipsBaseState state,
+    FavouritesTipsCubit cubit,
+  ) =>
+      Expanded(
+        child: GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 5,
+          mainAxisSpacing: 5,
+          crossAxisSpacing: 5,
+          children: state.tips
+              .map(
+                (tip) => DisplayListFavoritesTipsScreen(
+                  tip: tip,
+                  onTipAppendCallback: () => cubit.navigateToTip(tip),
+                ),
+              )
+              .toList(),
+        ),
+      );
+
+  Expanded emptyFavouriteScreen(BuildContext context) => Expanded(
+        child: Center(
+          child: Text(
+            context.localizations.messageEmptyFavoritesScreen,
+            style: context.theme.textStyles.titleLarge!.copyWith(
+              color: context.theme.colors.surface.shade800,
+            ),
+          ),
+        ),
+      );
 }

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_template/ui/common/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
@@ -5,15 +6,11 @@ import 'package:flutter_template/ui/tips/tips_screen.dart';
 import 'package:flutter_template/ui/tips/show_tips_type.dart';
 import 'package:flutter_template/core/model/tip.dart';
 
-import 'package:flutter_template/core/di/di_provider.dart';
-import 'package:flutter_template/ui/app_router.dart';
-
 class ListFavouritesTipsScreen extends StatelessWidget {
   final ShowTipsType showTipType;
   final Tip? tip;
-  final router = DiProvider.get<AppRouter>();
 
-  ListFavouritesTipsScreen({
+  const ListFavouritesTipsScreen({
     required this.showTipType,
     this.tip,
     Key? key,
@@ -29,7 +26,7 @@ class ListFavouritesTipsScreen extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(left: 20, top: 10),
             child: TextButton(
-              onPressed: router.navigateBack,
+              onPressed: context.router.navigateBack,
               style: TextButton.styleFrom(
                 padding: const EdgeInsets.only(
                   top: 5,
@@ -41,7 +38,7 @@ class ListFavouritesTipsScreen extends StatelessWidget {
                 backgroundColor: context.theme.colors.primary.shade100,
                 alignment: Alignment.center,
               ),
-              child: const Icon(Icons.arrow_back_ios),
+              child: const Icon(Icons.arrow_back_ios, size: 20,),
             ),
           ),
         ],
