@@ -28,13 +28,14 @@ extension EnviromentPath on Environments {
 }
 
 abstract class Config {
-  static late String apiBaseUrl;
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
-  static String imageBaseUrl =
+  static const apiBaseUrl =
+      'https://api.github.com/repos/vandadnp/flutter-tips-and-tricks';
+  static const String imageBaseUrl =
       'https://raw.githubusercontent.com/vandadnp/flutter-tips-and-tricks/main/';
-  static String prefixUrl =
+  static const String prefixUrl =
       'https://github.com/vandadnp/flutter-tips-and-tricks/blob/main/';
-  static String gitHubTipsNameFolder = 'tipsandtricks/';
+  static const String gitHubTipsNameFolder = 'tipsandtricks/';
 
   static bool get debugMode => kDebugMode;
 
@@ -60,7 +61,6 @@ abstract class Config {
   }
 
   static void _initializeEnvVariables() {
-    apiBaseUrl = _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_API_BASE_URL)!;
     _initializeFirebaseEnvVariables();
   }
 
@@ -96,8 +96,6 @@ abstract class Config {
 }
 
 abstract class _EnvConfig {
-  static const ENV_KEY_API_BASE_URL = 'API_BASE_URL';
-
   // Firebase Common
   static const ENV_KEY_FIREBASE_PROJECT_ID = 'FIREBASE_PROJECT_ID';
   static const ENV_KEY_FIREBASE_MESSAGE_SENDER_ID =
@@ -117,8 +115,6 @@ abstract class _EnvConfig {
   static const ENV_KEY_FIREBASE_ANDROID_APP_ID = 'FIREBASE_ANDROID_APP_ID';
 
   static const systemEnv = {
-    ENV_KEY_API_BASE_URL: String.fromEnvironment(ENV_KEY_API_BASE_URL),
-
     // Firebase Common
     ENV_KEY_FIREBASE_PROJECT_ID:
         String.fromEnvironment(ENV_KEY_FIREBASE_PROJECT_ID),
