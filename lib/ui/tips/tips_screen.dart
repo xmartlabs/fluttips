@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/core/model/extensions/tip_extension.dart';
 import 'package:flutter_template/ui/common/context_extensions.dart';
-import 'package:flutter_template/ui/home/home_cubit.dart';
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:flutter_template/ui/section/global_ui/global_ui_cubit.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/tips/show_tips_type.dart';
 import 'package:flutter_template/ui/tips/tips_cubit.dart';
@@ -17,9 +17,11 @@ import 'package:photo_view/photo_view_gallery.dart';
 class TipsScreen extends StatelessWidget {
   final ShowTipsType showTipType;
   final Tip? tip;
+  final bool hideFab;
 
   const TipsScreen({
     required this.showTipType,
+    required this.hideFab,
     this.tip,
     Key? key,
   }) : super(key: key);
@@ -28,12 +30,14 @@ class TipsScreen extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) =>
             TipCubit(showTipType, context.read<ErrorHandlerCubit>(), tip),
-        child: const _TipContentScreen(),
+        child: _TipContentScreen(hideFab),
       );
 }
 
 class _TipContentScreen extends StatefulWidget {
-  const _TipContentScreen();
+  final bool hideFab;
+
+  const _TipContentScreen(this.hideFab);
 
   @override
   State<_TipContentScreen> createState() => _TipContentScreenState();
@@ -41,6 +45,8 @@ class _TipContentScreen extends StatefulWidget {
 
 class _TipContentScreenState extends State<_TipContentScreen> {
   late final PageController _pageController = PageController();
+
+  _TipContentScreenState();
 
   @override
   void dispose() {
@@ -50,6 +56,7 @@ class _TipContentScreenState extends State<_TipContentScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final globalCubit = context.read<GlobalUICubit>();
     final cubit = context.read<TipCubit>();
     return BlocConsumer<TipCubit, TipsBaseState>(
       listener: (context, state) {
@@ -58,41 +65,37 @@ class _TipContentScreenState extends State<_TipContentScreen> {
           _pageController.jumpToPage(state.currentPage);
         }
       },
-      builder: (context, state) => BlocBuilder<HomeCubit, HomeBaseState>(
-        builder: (homeContext, homesState) => MainScaffoldWithFab(
-          border: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(16.r)),
+      builder: (context, state) => MainScaffoldWithFab(
+        border: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16.r)),
+        ),
+        iconNotSelected: Icons.star_border,
+        state:
+            state.tips.isNotEmpty && state.tips[state.currentPage].isFavourite
+                ? const FabState.selected()
+                : const FabState.notSelected(),
+        action: () => cubit.changeFavouriteButton(),
+        iconSelected: Icons.star,
+        visibility: !widget.hideFab,
+        child: PhotoViewGallery.builder(
+          backgroundDecoration:
+              BoxDecoration(color: context.theme.colors.background),
+          scrollPhysics: const BouncingScrollPhysics(),
+          builder: (BuildContext context, int index) =>
+              PhotoViewGalleryPageOptions(
+            imageProvider: NetworkImage(state.tips[index].imageUrl),
+            initialScale: PhotoViewComputedScale.contained,
+            minScale: PhotoViewComputedScale.contained,
+            maxScale: PhotoViewComputedScale.covered * 1.5,
+            onTapUp: (context, __, ___) => globalCubit.toggleFabState(),
           ),
-          iconNotSelected: Icons.star_border,
-          state:
-              state.tips.isNotEmpty && state.tips[state.currentPage].isFavourite
-                  ? const FabState.selected()
-                  : const FabState.notSelected(),
-          action: () =>
-              cubit.changeFavouriteButton(state.tips[state.currentPage]),
-          iconSelected: Icons.star,
-          visibility: homesState.hideFavouriteFab,
-          child: PhotoViewGallery.builder(
-            backgroundDecoration:
-                BoxDecoration(color: context.theme.colors.background),
-            scrollPhysics: const BouncingScrollPhysics(),
-            builder: (BuildContext context, int index) =>
-                PhotoViewGalleryPageOptions(
-              imageProvider: NetworkImage(state.tips[index].imageUrl),
-              initialScale: PhotoViewComputedScale.contained,
-              minScale: PhotoViewComputedScale.contained,
-              maxScale: PhotoViewComputedScale.covered * 1.5,
-              onTapUp: (context, __, ___) =>
-                  context.read<HomeCubit>().setToggleState(),
-            ),
-            itemCount: state.tips.length,
-            pageController: _pageController,
-            onPageChanged: (index) => cubit
-              ..onTipDisplayed(state.tips[index])
-              ..setCurrentPage(index),
-            scrollDirection: Axis.vertical,
-            allowImplicitScrolling: true,
-          ),
+          itemCount: state.tips.length,
+          pageController: _pageController,
+          onPageChanged: (index) => cubit
+            ..onTipDisplayed(state.tips[index])
+            ..setCurrentPage(index),
+          scrollDirection: Axis.vertical,
+          allowImplicitScrolling: true,
         ),
       ),
     );

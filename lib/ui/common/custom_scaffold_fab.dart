@@ -29,14 +29,18 @@ class MainScaffoldWithFab extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(bottom: 15.0),
-          child: Visibility(
-            visible: visibility ?? true,
-            child: Fab(
-              state: state,
-              iconNotSelected: iconNotSelected,
-              action: action,
-              iconSelected: iconSelected,
-              border: border,
+          child: AnimatedOpacity(
+            opacity: visibility! ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 10),
+            child: Visibility(
+              visible: visibility ?? true,
+              child: Fab(
+                state: state,
+                iconNotSelected: iconNotSelected,
+                action: action,
+                iconSelected: iconSelected,
+                border: border,
+              ),
             ),
           ),
         ),

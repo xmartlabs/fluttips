@@ -12,12 +12,4 @@ class HomeCubit extends Cubit<HomeBaseState> {
   final GeneralErrorHandler _errorHandler;
 
   HomeCubit(this._errorHandler) : super(const HomeBaseState.state());
-
-  void setHomeFabState(bool stateDrawer) =>
-      emit(state.copyWith(hideFabMenu: stateDrawer));
-
-  void setToggleState() {
-    emit(state.copyWith(hideFabMenu: !state.hideFabMenu));
-    emit(state.copyWith(hideFavouriteFab: !state.hideFavouriteFab));
-  }
 }

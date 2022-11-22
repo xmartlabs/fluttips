@@ -56,9 +56,8 @@ class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<HomeTipsScreenRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: TipsScreen(
-          showTipType: args.showTipType,
-          tip: args.tip,
+        child: ScrollableTipScreen(
+          args.showTipType,
           key: args.key,
         ),
       );
@@ -214,18 +213,16 @@ class ListFavouritesTipsScreenRouteArgs {
 }
 
 /// generated route for
-/// [TipsScreen]
+/// [ScrollableTipScreen]
 class HomeTipsScreenRoute extends PageRouteInfo<HomeTipsScreenRouteArgs> {
   HomeTipsScreenRoute({
     required ShowTipsType showTipType,
-    Tip? tip,
     Key? key,
   }) : super(
           HomeTipsScreenRoute.name,
           path: 'tips',
           args: HomeTipsScreenRouteArgs(
             showTipType: showTipType,
-            tip: tip,
             key: key,
           ),
         );
@@ -236,19 +233,16 @@ class HomeTipsScreenRoute extends PageRouteInfo<HomeTipsScreenRouteArgs> {
 class HomeTipsScreenRouteArgs {
   const HomeTipsScreenRouteArgs({
     required this.showTipType,
-    this.tip,
     this.key,
   });
 
   final ShowTipsType showTipType;
 
-  final Tip? tip;
-
   final Key? key;
 
   @override
   String toString() {
-    return 'HomeTipsScreenRouteArgs{showTipType: $showTipType, tip: $tip, key: $key}';
+    return 'HomeTipsScreenRouteArgs{showTipType: $showTipType, key: $key}';
   }
 }
 

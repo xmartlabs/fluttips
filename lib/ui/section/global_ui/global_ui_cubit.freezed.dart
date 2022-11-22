@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'home_cubit.dart';
+part of 'global_ui_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$HomeBaseState {
+mixin _$GlobalUIState {
   bool get hideFabMenu => throw _privateConstructorUsedError;
   bool get hideFavouriteFab => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,42 +36,42 @@ mixin _$HomeBaseState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeState value) state,
+    required TResult Function(_GlobalUIState value) state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeState value)? state,
+    TResult Function(_GlobalUIState value)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeState value)? state,
+    TResult Function(_GlobalUIState value)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $HomeBaseStateCopyWith<HomeBaseState> get copyWith =>
+  $GlobalUIStateCopyWith<GlobalUIState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $HomeBaseStateCopyWith<$Res> {
-  factory $HomeBaseStateCopyWith(
-          HomeBaseState value, $Res Function(HomeBaseState) then) =
-      _$HomeBaseStateCopyWithImpl<$Res>;
+abstract class $GlobalUIStateCopyWith<$Res> {
+  factory $GlobalUIStateCopyWith(
+          GlobalUIState value, $Res Function(GlobalUIState) then) =
+      _$GlobalUIStateCopyWithImpl<$Res>;
   $Res call({bool hideFabMenu, bool hideFavouriteFab});
 }
 
 /// @nodoc
-class _$HomeBaseStateCopyWithImpl<$Res>
-    implements $HomeBaseStateCopyWith<$Res> {
-  _$HomeBaseStateCopyWithImpl(this._value, this._then);
+class _$GlobalUIStateCopyWithImpl<$Res>
+    implements $GlobalUIStateCopyWith<$Res> {
+  _$GlobalUIStateCopyWithImpl(this._value, this._then);
 
-  final HomeBaseState _value;
+  final GlobalUIState _value;
   // ignore: unused_field
-  final $Res Function(HomeBaseState) _then;
+  final $Res Function(GlobalUIState) _then;
 
   @override
   $Res call({
@@ -92,31 +92,32 @@ class _$HomeBaseStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_HomeStateCopyWith<$Res>
-    implements $HomeBaseStateCopyWith<$Res> {
-  factory _$$_HomeStateCopyWith(
-          _$_HomeState value, $Res Function(_$_HomeState) then) =
-      __$$_HomeStateCopyWithImpl<$Res>;
+abstract class _$$_GlobalUIStateCopyWith<$Res>
+    implements $GlobalUIStateCopyWith<$Res> {
+  factory _$$_GlobalUIStateCopyWith(
+          _$_GlobalUIState value, $Res Function(_$_GlobalUIState) then) =
+      __$$_GlobalUIStateCopyWithImpl<$Res>;
   @override
   $Res call({bool hideFabMenu, bool hideFavouriteFab});
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeBaseStateCopyWithImpl<$Res>
-    implements _$$_HomeStateCopyWith<$Res> {
-  __$$_HomeStateCopyWithImpl(
-      _$_HomeState _value, $Res Function(_$_HomeState) _then)
-      : super(_value, (v) => _then(v as _$_HomeState));
+class __$$_GlobalUIStateCopyWithImpl<$Res>
+    extends _$GlobalUIStateCopyWithImpl<$Res>
+    implements _$$_GlobalUIStateCopyWith<$Res> {
+  __$$_GlobalUIStateCopyWithImpl(
+      _$_GlobalUIState _value, $Res Function(_$_GlobalUIState) _then)
+      : super(_value, (v) => _then(v as _$_GlobalUIState));
 
   @override
-  _$_HomeState get _value => super._value as _$_HomeState;
+  _$_GlobalUIState get _value => super._value as _$_GlobalUIState;
 
   @override
   $Res call({
     Object? hideFabMenu = freezed,
     Object? hideFavouriteFab = freezed,
   }) {
-    return _then(_$_HomeState(
+    return _then(_$_GlobalUIState(
       hideFabMenu: hideFabMenu == freezed
           ? _value.hideFabMenu
           : hideFabMenu // ignore: cast_nullable_to_non_nullable
@@ -131,8 +132,9 @@ class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeBaseStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeState implements _HomeState {
-  const _$_HomeState({this.hideFabMenu = false, this.hideFavouriteFab = false});
+class _$_GlobalUIState implements _GlobalUIState {
+  const _$_GlobalUIState(
+      {this.hideFabMenu = false, this.hideFavouriteFab = false});
 
   @override
   @JsonKey()
@@ -143,14 +145,14 @@ class _$_HomeState implements _HomeState {
 
   @override
   String toString() {
-    return 'HomeBaseState.state(hideFabMenu: $hideFabMenu, hideFavouriteFab: $hideFavouriteFab)';
+    return 'GlobalUIState.state(hideFabMenu: $hideFabMenu, hideFavouriteFab: $hideFavouriteFab)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeState &&
+            other is _$_GlobalUIState &&
             const DeepCollectionEquality()
                 .equals(other.hideFabMenu, hideFabMenu) &&
             const DeepCollectionEquality()
@@ -165,8 +167,8 @@ class _$_HomeState implements _HomeState {
 
   @JsonKey(ignore: true)
   @override
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
-      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
+  _$$_GlobalUIStateCopyWith<_$_GlobalUIState> get copyWith =>
+      __$$_GlobalUIStateCopyWithImpl<_$_GlobalUIState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -199,7 +201,7 @@ class _$_HomeState implements _HomeState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_HomeState value) state,
+    required TResult Function(_GlobalUIState value) state,
   }) {
     return state(this);
   }
@@ -207,7 +209,7 @@ class _$_HomeState implements _HomeState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeState value)? state,
+    TResult Function(_GlobalUIState value)? state,
   }) {
     return state?.call(this);
   }
@@ -215,7 +217,7 @@ class _$_HomeState implements _HomeState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_HomeState value)? state,
+    TResult Function(_GlobalUIState value)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
@@ -225,9 +227,9 @@ class _$_HomeState implements _HomeState {
   }
 }
 
-abstract class _HomeState implements HomeBaseState {
-  const factory _HomeState(
-      {final bool hideFabMenu, final bool hideFavouriteFab}) = _$_HomeState;
+abstract class _GlobalUIState implements GlobalUIState {
+  const factory _GlobalUIState(
+      {final bool hideFabMenu, final bool hideFavouriteFab}) = _$_GlobalUIState;
 
   @override
   bool get hideFabMenu;
@@ -235,6 +237,6 @@ abstract class _HomeState implements HomeBaseState {
   bool get hideFavouriteFab;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+  _$$_GlobalUIStateCopyWith<_$_GlobalUIState> get copyWith =>
       throw _privateConstructorUsedError;
 }

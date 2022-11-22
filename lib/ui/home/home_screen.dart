@@ -10,14 +10,21 @@ import 'package:flutter_template/ui/home/home_cubit.dart';
 
 import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
 
+import 'package:flutter_template/ui/section/global_ui/global_ui_cubit.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => BlocProvider(
-        create: (context) => HomeCubit(context.read<ErrorHandlerCubit>()),
+  Widget build(BuildContext context) => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => HomeCubit(context.read<ErrorHandlerCubit>()),
+          ),
+          BlocProvider(create: (context) => GlobalUICubit()),
+        ],
         child: const HomeContentScreen(),
       );
 }
@@ -34,11 +41,11 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<HomeCubit>();
+    final globalCubit = context.read<GlobalUICubit>();
     return AutoTabsRouter(
       routes: HomeNavOptions.values.map((e) => e.route).toList(),
-      builder: (context, child, tabsController) => Scaffold(
-        onDrawerChanged: (stateDrawer) => cubit.setHomeFabState(stateDrawer),
+      builder: (context, child, _) => Scaffold(
+        onDrawerChanged: (_) => globalCubit.toggleFabState(),
         extendBody: true,
         extendBodyBehindAppBar: true,
         key: _scaffoldKey,
@@ -54,14 +61,18 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
     );
   }
 
-  Widget _buildFab() => BlocBuilder<HomeCubit, HomeBaseState>(
-        builder: (context, state) => Visibility(
-          visible: !state.hideFabMenu,
-          child: Fab(
-            state: const FabState.notSelected(),
-            border: const CircleBorder(),
-            iconNotSelected: Icons.arrow_forward_ios,
-            action: () => _scaffoldKey.currentState!.openDrawer(),
+  Widget _buildFab() => BlocBuilder<GlobalUICubit, GlobalUIState>(
+        builder: (context, state) => AnimatedOpacity(
+          opacity: !state.hideFabMenu ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 10),
+          child: Visibility(
+            visible: !state.hideFabMenu,
+            child: Fab(
+              state: const FabState.notSelected(),
+              border: const CircleBorder(),
+              iconNotSelected: Icons.arrow_forward_ios,
+              action: () => _scaffoldKey.currentState!.openDrawer(),
+            ),
           ),
         ),
       );

@@ -3,9 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_template/ui/catalog/catalog_screen.dart';
 import 'package:flutter_template/ui/favourites/list_favourites_tips_screen.dart';
 import 'package:flutter_template/ui/home/home_screen.dart';
+import 'package:flutter_template/ui/scrollable_tip_screen/scrollable_tip_screen.dart';
 import 'package:flutter_template/ui/section/section_router.dart';
 import 'package:flutter_template/ui/tips/show_tips_type.dart';
-import 'package:flutter_template/ui/tips/tips_screen.dart';
 import 'package:flutter_template/ui/videos/videos.dart';
 import 'package:flutter_template/ui/favourites/favourites_tips_screen.dart';
 
@@ -36,7 +36,7 @@ part 'app_router.gr.dart';
             AutoRoute(
               path: AppRouter.tipsPath,
               name: 'HomeTipsScreenRoute',
-              page: TipsScreen,
+              page: ScrollableTipScreen,
             ),
             AutoRoute(
               path: AppRouter.videosPath,

@@ -4,6 +4,6 @@ part of 'home_cubit.dart';
 class HomeBaseState with _$HomeBaseState {
   const factory HomeBaseState.state({
     @Default(false) bool hideFabMenu,
-    @Default(true) bool hideFavouriteFab,
+    @Default(false) bool hideFavouriteFab,
   }) = _HomeState;
 }
