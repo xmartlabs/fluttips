@@ -1,8 +1,9 @@
 opt_out_usage
+fastlane_require 'dotenv'
 
 def compilation_envs
-  if File.file?('../.env')
-    Dotenv.parse('../.env')
+  if File.file?("#{root_path}/.env")
+    Dotenv.parse("#{root_path}/.env")
       .map { |key, value| "--dart-define=#{key}=#{value}" }
       .join(' ')
   else
