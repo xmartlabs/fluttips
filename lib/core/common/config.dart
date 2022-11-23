@@ -29,6 +29,8 @@ extension EnviromentPath on Environments {
 
 abstract class Config {
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
+  static const int durationAnimation = 150;
+
   static const apiBaseUrl =
       'https://api.github.com/repos/vandadnp/flutter-tips-and-tricks';
   static const String imageBaseUrl =

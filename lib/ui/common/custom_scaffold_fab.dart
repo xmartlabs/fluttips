@@ -3,6 +3,8 @@ import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/common/fab.dart';
 
+import 'package:fluttips/core/common/config.dart';
+
 class MainScaffoldWithFab extends StatelessWidget {
   final FabState state;
   final IconData? iconSelected;
@@ -10,6 +12,7 @@ class MainScaffoldWithFab extends StatelessWidget {
   final VoidCallback? action;
   final Widget? child;
   final ShapeBorder border;
+  final bool? visibility;
 
   const MainScaffoldWithFab({
     required this.state,
@@ -19,6 +22,7 @@ class MainScaffoldWithFab extends StatelessWidget {
     this.iconSelected,
     this.action,
     this.child,
+    this.visibility,
   }) : super(key: key);
 
   @override
@@ -27,12 +31,19 @@ class MainScaffoldWithFab extends StatelessWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
         floatingActionButton: Padding(
           padding: const EdgeInsets.only(bottom: 15.0),
-          child: Fab(
-            state: state,
-            iconNotSelected: iconNotSelected,
-            action: action,
-            iconSelected: iconSelected,
-            border: border,
+          child: AnimatedOpacity(
+            opacity: visibility! ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: Config.durationAnimation),
+            child: Visibility(
+              visible: visibility ?? true,
+              child: Fab(
+                state: state,
+                iconNotSelected: iconNotSelected,
+                action: action,
+                iconSelected: iconSelected,
+                border: border,
+              ),
+            ),
           ),
         ),
         body: child,
