@@ -1,4 +1,4 @@
-import 'package:flutter_template/core/model/tip.dart';
+import 'package:fluttips/core/model/tip.dart';
 
 extension TipExtensions on Tip {
   bool get isFavourite => favouriteDate != null;

@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 
 part 'home_cubit.freezed.dart';
 
