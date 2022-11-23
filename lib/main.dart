@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,7 +10,14 @@ import 'package:flutter_template/core/common/logger.dart';
 import 'package:flutter_template/core/di/di_provider.dart';
 import 'package:flutter_template/ui/main/main_screen.dart';
 
-Future main() async {
+import 'package:bugsee_flutter/bugsee.dart';
+
+Future<void> launchBugsee(
+  void Function(bool isBugseeLaunched) appRunner,
+) =>
+    Bugsee.launch(Config.tokenBugsee, appRunCallback: appRunner);
+
+Future<void> main() async {
   await runZonedGuarded(
     () async {
       final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +27,13 @@ Future main() async {
         DeviceOrientation.landscapeRight,
       ]);
       await _initSdks();
-      runApp(const MyApp());
+
+      Config.debugMood
+          ? await launchBugsee((bool isBueLaunched) async {
+              runApp(const MyApp());
+            })
+          : runApp(const MyApp());
+
       FlutterNativeSplash.remove();
     },
     (exception, stackTrace) =>
