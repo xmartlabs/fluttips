@@ -8,6 +8,7 @@
 .buildlog/
 .history
 .svn/
+service-account.json
 
 # IntelliJ related
 *.iml
@@ -48,6 +49,9 @@ app.*.map.json
 # Environment files
 *.env
 *.env.default
+/android/secrets/
+/android/fastlane/.env.default
+
 
 # Fvm
 .fvm/flutter_sdk
