@@ -8,10 +8,9 @@ part 'global_ui_state.dart';
 class GlobalUICubit extends Cubit<GlobalUIState> {
   GlobalUICubit() : super(const GlobalUIState.state());
 
-  void toggleFabState() => emit(
+  void toggleUIActionComponentState() => emit(
         state.copyWith(
-          hideFabMenu: !state.hideFabMenu,
-          hideFavouriteFab: !state.hideFavouriteFab,
+          showUIActionComponent: !state.showUIActionComponent,
         ),
       );
 }

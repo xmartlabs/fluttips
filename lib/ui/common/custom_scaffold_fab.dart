@@ -3,6 +3,8 @@ import 'package:flutter_template/ui/common/context_extensions.dart';
 import 'package:flutter_template/ui/theme/app_theme.dart';
 import 'package:flutter_template/ui/common/fab.dart';
 
+import 'package:flutter_template/core/common/config.dart';
+
 class MainScaffoldWithFab extends StatelessWidget {
   final FabState state;
   final IconData? iconSelected;
@@ -31,7 +33,7 @@ class MainScaffoldWithFab extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 15.0),
           child: AnimatedOpacity(
             opacity: visibility! ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 10),
+            duration: const Duration(milliseconds: Config.durationAnimation),
             child: Visibility(
               visible: visibility ?? true,
               child: Fab(

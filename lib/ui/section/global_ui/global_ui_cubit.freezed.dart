@@ -16,21 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$GlobalUIState {
-  bool get hideFabMenu => throw _privateConstructorUsedError;
-  bool get hideFavouriteFab => throw _privateConstructorUsedError;
+  bool get showUIActionComponent => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool hideFabMenu, bool hideFavouriteFab) state,
+    required TResult Function(bool showUIActionComponent) state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool hideFabMenu, bool hideFavouriteFab)? state,
+    TResult Function(bool showUIActionComponent)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool hideFabMenu, bool hideFavouriteFab)? state,
+    TResult Function(bool showUIActionComponent)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +60,7 @@ abstract class $GlobalUIStateCopyWith<$Res> {
   factory $GlobalUIStateCopyWith(
           GlobalUIState value, $Res Function(GlobalUIState) then) =
       _$GlobalUIStateCopyWithImpl<$Res>;
-  $Res call({bool hideFabMenu, bool hideFavouriteFab});
+  $Res call({bool showUIActionComponent});
 }
 
 /// @nodoc
@@ -75,17 +74,12 @@ class _$GlobalUIStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? hideFabMenu = freezed,
-    Object? hideFavouriteFab = freezed,
+    Object? showUIActionComponent = freezed,
   }) {
     return _then(_value.copyWith(
-      hideFabMenu: hideFabMenu == freezed
-          ? _value.hideFabMenu
-          : hideFabMenu // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hideFavouriteFab: hideFavouriteFab == freezed
-          ? _value.hideFavouriteFab
-          : hideFavouriteFab // ignore: cast_nullable_to_non_nullable
+      showUIActionComponent: showUIActionComponent == freezed
+          ? _value.showUIActionComponent
+          : showUIActionComponent // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -98,7 +92,7 @@ abstract class _$$_GlobalUIStateCopyWith<$Res>
           _$_GlobalUIState value, $Res Function(_$_GlobalUIState) then) =
       __$$_GlobalUIStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool hideFabMenu, bool hideFavouriteFab});
+  $Res call({bool showUIActionComponent});
 }
 
 /// @nodoc
@@ -114,17 +108,12 @@ class __$$_GlobalUIStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? hideFabMenu = freezed,
-    Object? hideFavouriteFab = freezed,
+    Object? showUIActionComponent = freezed,
   }) {
     return _then(_$_GlobalUIState(
-      hideFabMenu: hideFabMenu == freezed
-          ? _value.hideFabMenu
-          : hideFabMenu // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hideFavouriteFab: hideFavouriteFab == freezed
-          ? _value.hideFavouriteFab
-          : hideFavouriteFab // ignore: cast_nullable_to_non_nullable
+      showUIActionComponent: showUIActionComponent == freezed
+          ? _value.showUIActionComponent
+          : showUIActionComponent // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -133,19 +122,15 @@ class __$$_GlobalUIStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GlobalUIState implements _GlobalUIState {
-  const _$_GlobalUIState(
-      {this.hideFabMenu = false, this.hideFavouriteFab = false});
+  const _$_GlobalUIState({this.showUIActionComponent = true});
 
   @override
   @JsonKey()
-  final bool hideFabMenu;
-  @override
-  @JsonKey()
-  final bool hideFavouriteFab;
+  final bool showUIActionComponent;
 
   @override
   String toString() {
-    return 'GlobalUIState.state(hideFabMenu: $hideFabMenu, hideFavouriteFab: $hideFavouriteFab)';
+    return 'GlobalUIState.state(showUIActionComponent: $showUIActionComponent)';
   }
 
   @override
@@ -154,16 +139,12 @@ class _$_GlobalUIState implements _GlobalUIState {
         (other.runtimeType == runtimeType &&
             other is _$_GlobalUIState &&
             const DeepCollectionEquality()
-                .equals(other.hideFabMenu, hideFabMenu) &&
-            const DeepCollectionEquality()
-                .equals(other.hideFavouriteFab, hideFavouriteFab));
+                .equals(other.showUIActionComponent, showUIActionComponent));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(hideFabMenu),
-      const DeepCollectionEquality().hash(hideFavouriteFab));
+      runtimeType, const DeepCollectionEquality().hash(showUIActionComponent));
 
   @JsonKey(ignore: true)
   @override
@@ -173,27 +154,27 @@ class _$_GlobalUIState implements _GlobalUIState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool hideFabMenu, bool hideFavouriteFab) state,
+    required TResult Function(bool showUIActionComponent) state,
   }) {
-    return state(hideFabMenu, hideFavouriteFab);
+    return state(showUIActionComponent);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool hideFabMenu, bool hideFavouriteFab)? state,
+    TResult Function(bool showUIActionComponent)? state,
   }) {
-    return state?.call(hideFabMenu, hideFavouriteFab);
+    return state?.call(showUIActionComponent);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool hideFabMenu, bool hideFavouriteFab)? state,
+    TResult Function(bool showUIActionComponent)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
-      return state(hideFabMenu, hideFavouriteFab);
+      return state(showUIActionComponent);
     }
     return orElse();
   }
@@ -228,13 +209,11 @@ class _$_GlobalUIState implements _GlobalUIState {
 }
 
 abstract class _GlobalUIState implements GlobalUIState {
-  const factory _GlobalUIState(
-      {final bool hideFabMenu, final bool hideFavouriteFab}) = _$_GlobalUIState;
+  const factory _GlobalUIState({final bool showUIActionComponent}) =
+      _$_GlobalUIState;
 
   @override
-  bool get hideFabMenu;
-  @override
-  bool get hideFavouriteFab;
+  bool get showUIActionComponent;
   @override
   @JsonKey(ignore: true)
   _$$_GlobalUIStateCopyWith<_$_GlobalUIState> get copyWith =>

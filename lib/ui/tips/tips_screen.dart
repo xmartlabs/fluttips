@@ -17,11 +17,9 @@ import 'package:photo_view/photo_view_gallery.dart';
 class TipsScreen extends StatelessWidget {
   final ShowTipsType showTipType;
   final Tip? tip;
-  final bool hideFab;
 
   const TipsScreen({
     required this.showTipType,
-    required this.hideFab,
     this.tip,
     Key? key,
   }) : super(key: key);
@@ -30,21 +28,19 @@ class TipsScreen extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         create: (context) =>
             TipCubit(showTipType, context.read<ErrorHandlerCubit>(), tip),
-        child: _TipContentScreen(hideFab),
+        child: const _TipContentScreen(),
       );
 }
 
 class _TipContentScreen extends StatefulWidget {
-  final bool hideFab;
-
-  const _TipContentScreen(this.hideFab);
+  const _TipContentScreen();
 
   @override
   State<_TipContentScreen> createState() => _TipContentScreenState();
 }
 
 class _TipContentScreenState extends State<_TipContentScreen> {
-  late final PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
   _TipContentScreenState();
 
@@ -76,7 +72,10 @@ class _TipContentScreenState extends State<_TipContentScreen> {
                 : const FabState.notSelected(),
         action: () => cubit.changeFavouriteButton(),
         iconSelected: Icons.star,
-        visibility: !widget.hideFab,
+        visibility: context.select(
+          (GlobalUICubit globalUICubit) =>
+              globalUICubit.state.showUIActionComponent,
+        ),
         child: PhotoViewGallery.builder(
           backgroundDecoration:
               BoxDecoration(color: context.theme.colors.background),
@@ -87,7 +86,8 @@ class _TipContentScreenState extends State<_TipContentScreen> {
             initialScale: PhotoViewComputedScale.contained,
             minScale: PhotoViewComputedScale.contained,
             maxScale: PhotoViewComputedScale.covered * 1.5,
-            onTapUp: (context, __, ___) => globalCubit.toggleFabState(),
+            onTapUp: (context, _, __) =>
+                globalCubit.toggleUIActionComponentState(),
           ),
           itemCount: state.tips.length,
           pageController: _pageController,
