@@ -123,7 +123,7 @@ lane :build_flutter do |options|
     export_method = "--export-method #{export_method}"
   end
 
-  flutter_command(command: "build #{build_platform} --suppress-analytics #{sign_param} #{config_param} --flavor #{flavor} --dart-define=ENV=#{flavor} --build-name #{version_name} #{export_method} #{compilation_envs}")
+  flutter_command(command: "build #{build_platform} #{build_type} --suppress-analytics #{sign_param} #{config_param} --flavor #{flavor} --dart-define=ENV=#{flavor} --build-name #{version_name} #{export_method} #{compilation_envs}")
 end
 
 private_lane :calculate_version_name do |options|
