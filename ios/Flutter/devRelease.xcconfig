@@ -2,5 +2,5 @@
 
 FLUTTER_TARGET=lib/main.dart
 ASSET_PREFIX=dev
-BUNDLE_NAME=Template Dev
-BUNDLE_DISPLAY_NAME=Template Dev
+BUNDLE_NAME=Fluttips Dev
+BUNDLE_DISPLAY_NAME=Fluttips Dev

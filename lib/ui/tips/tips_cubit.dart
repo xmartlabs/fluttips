@@ -2,14 +2,16 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartx/dartx.dart';
-import 'package:flutter_template/core/di/di_provider.dart';
-import 'package:flutter_template/core/model/extensions/stock_extensions.dart';
-import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:flutter_template/ui/tips/show_tips_type.dart';
+import 'package:fluttips/core/di/di_provider.dart';
+import 'package:fluttips/core/model/extensions/stock_extensions.dart';
+import 'package:fluttips/core/model/extensions/tip_extension.dart';
+import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_template/core/repository/tip_repository.dart';
-import 'package:flutter_template/core/model/tip.dart';
+import 'package:fluttips/core/repository/tip_repository.dart';
+import 'package:fluttips/core/model/tip.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:fluttips/ui/common/fab.dart';
 
 part 'tips_cubit.freezed.dart';
 
@@ -21,6 +23,7 @@ class TipCubit extends Cubit<TipsBaseState> {
   final GeneralErrorHandler _errorHandler;
   final ShowTipsType _showTipsType;
   final Tip? tip;
+
   late StreamSubscription<List<Tip>> subscriptionToTips;
 
   TipCubit(this._showTipsType, this._errorHandler, this.tip)
@@ -39,8 +42,8 @@ class TipCubit extends Cubit<TipsBaseState> {
   Future<void> onTipDisplayed(Tip tip) =>
       _tipRepository.setTipAsViewedInSession(tip);
 
-  Future<void> changeFavouriteButton(Tip tip) =>
-      _tipRepository.toggleFavouriteTip(tip);
+  Future<void> changeFavouriteButton() =>
+      _tipRepository.toggleFavouriteTip(state.tips[state.currentPage]);
 
   void _subscribeToTips() {
     subscriptionToTips = _getTipStream().listen((tips) {
@@ -85,4 +88,9 @@ class TipCubit extends Cubit<TipsBaseState> {
   Stream<List<Tip>> _getAllTips() => _tipRepository
       .getTips()
       .filterSuccessStockResponseData(_errorHandler.handleError);
+
+  FabState changeState() =>
+      state.tips.isNotEmpty && state.tips[state.currentPage].isFavourite
+          ? const FabState.selected()
+          : const FabState.notSelected();
 }

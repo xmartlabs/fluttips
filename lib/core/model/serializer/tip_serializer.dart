@@ -1,7 +1,7 @@
 import 'package:stock/stock.dart';
 
-import 'package:flutter_template/core/model/db/tip_db_entity.dart';
-import 'package:flutter_template/core/model/tip.dart';
+import 'package:fluttips/core/model/db/tip_db_entity.dart';
+import 'package:fluttips/core/model/tip.dart';
 
 class TipStockTypeMapper extends StockTypeMapper<TipDbEntity, Tip> {
   @override

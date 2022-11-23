@@ -1,5 +1,5 @@
-import 'package:flutter_template/core/di/di_repository_module.dart';
-import 'package:flutter_template/core/di/di_utils_module.dart';
+import 'package:fluttips/core/di/di_repository_module.dart';
+import 'package:fluttips/core/di/di_utils_module.dart';
 import 'package:get_it/get_it.dart';
 
 abstract class DiProvider {

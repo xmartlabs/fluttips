@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_template/core/common/extension/stream_future_extensions.dart';
-import 'package:flutter_template/core/di/di_provider.dart';
-import 'package:flutter_template/core/model/authentication_status.dart';
-import 'package:flutter_template/core/repository/session_repository.dart';
+import 'package:fluttips/core/common/extension/stream_future_extensions.dart';
+import 'package:fluttips/core/di/di_provider.dart';
+import 'package:fluttips/core/model/authentication_status.dart';
+import 'package:fluttips/core/repository/session_repository.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'main_cubit.freezed.dart';

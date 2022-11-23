@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:floor/floor.dart';
-import 'package:flutter_template/core/model/db/tip_amount_views_db_entity.dart';
+import 'package:fluttips/core/model/db/tip_amount_views_db_entity.dart';
 
 @dao
 abstract class AmountViewsLocalSource {

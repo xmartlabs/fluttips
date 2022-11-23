@@ -32,3 +32,17 @@ Runner/GeneratedPluginRegistrant.*
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
+
+# Certificates & Profiles
+*.certSigningRequest
+*.cer
+*.p12
+*.mobileprovision
+
+# Ipa
+/Runner.app.dSYM.zip
+/Runner.ipa
+
+# Firebase
+**/GoogleService-Info*.plist
+/firebase_app_id_file.json
