@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:dartx/dartx.dart';
 import 'package:floor/floor.dart';
-import 'package:flutter_template/core/model/db/tip_db_entity.dart';
+import 'package:fluttips/core/model/db/tip_db_entity.dart';
 
 @dao
 abstract class TipsLocalSource {

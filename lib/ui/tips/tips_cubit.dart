@@ -2,17 +2,16 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartx/dartx.dart';
-import 'package:flutter_template/core/di/di_provider.dart';
-import 'package:flutter_template/core/model/extensions/stock_extensions.dart';
-import 'package:flutter_template/core/model/extensions/tip_extension.dart';
-import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:flutter_template/ui/tips/show_tips_type.dart';
+import 'package:fluttips/core/di/di_provider.dart';
+import 'package:fluttips/core/model/extensions/stock_extensions.dart';
+import 'package:fluttips/core/model/extensions/tip_extension.dart';
+import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_template/core/repository/tip_repository.dart';
-import 'package:flutter_template/core/model/tip.dart';
+import 'package:fluttips/core/repository/tip_repository.dart';
+import 'package:fluttips/core/model/tip.dart';
 import 'package:rxdart/rxdart.dart';
-
-import 'package:flutter_template/ui/common/fab.dart';
+import 'package:fluttips/ui/common/fab.dart';
 
 part 'tips_cubit.freezed.dart';
 

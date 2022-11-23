@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:flutter_template/core/common/store/secure_storage_cached_source.dart';
-import 'package:flutter_template/core/model/user.dart';
+import 'package:fluttips/core/common/store/secure_storage_cached_source.dart';
+import 'package:fluttips/core/model/user.dart';
 import 'package:stock/stock.dart';
 
 class AuthLocalSource {

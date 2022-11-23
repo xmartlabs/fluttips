@@ -27,6 +27,12 @@ jobs:
           key: ${{ runner.os }}-pub-cache
       - name: Install FVM && Flutter
         run: dart pub global activate fvm --verbose && fvm install --verbose && fvm use --force --verbose
+      - name: Create google-services.json
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'google-services.json'
+          fileDir: 'android/app/'
+          encodedString: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON_BASE_64 }}
       - name: Get dependencies
         uses: maierj/fastlane-action@v2.3.0
         with:

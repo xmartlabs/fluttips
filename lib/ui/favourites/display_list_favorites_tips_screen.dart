@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_template/ui/common/context_extensions.dart';
-import 'package:flutter_template/ui/theme/app_theme.dart';
-import 'package:flutter_template/core/model/tip.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
+import 'package:fluttips/ui/theme/app_theme.dart';
+import 'package:fluttips/core/model/tip.dart';
 
 class DisplayListFavoritesTipsScreen extends StatelessWidget {
   final Tip tip;
