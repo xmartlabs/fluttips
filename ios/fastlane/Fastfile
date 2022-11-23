@@ -121,7 +121,8 @@ platform :ios do
       )
       build_flutter(
         build_platform: 'ipa',
-        build_type: env,
+        build_type: 'release',
+        flavor: env,
         include_git_version_suffix: true,
         export_method: build_export_method,
       )
