@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,11 +13,6 @@ import 'package:fluttips/ui/main/main_screen.dart';
 
 import 'package:bugsee_flutter/bugsee.dart';
 
-Future<void> launchBugsee(
-  void Function(bool isBugseeLaunched) appRunner,
-) =>
-    Bugsee.launch(Config.tokenBugsee!, appRunCallback: appRunner);
-
 Future<void> main() async {
   await runZonedGuarded(
     () async {
@@ -30,10 +24,8 @@ Future<void> main() async {
       ]);
       await _initSdks();
 
-      Config.debugMood
-          ? await launchBugsee((bool isBueLaunched) async {
-              runApp(const MyApp());
-            })
+      Config.bugseeEnabled
+          ? await _launchBugsee((_) => runApp(const MyApp()))
           : runApp(const MyApp());
 
       FlutterNativeSplash.remove();
@@ -42,6 +34,9 @@ Future<void> main() async {
         Logger.fatal(error: exception, stackTrace: stackTrace),
   );
 }
+
+Future<void> _launchBugsee(void Function(bool isBugseeLaunched) appRunner) =>
+    Bugsee.launch(Config.bugseeAPIKey!, appRunCallback: appRunner);
 
 Future _initSdks() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +51,7 @@ Future _initSdks() async {
 }
 
 Future<void> _initFirebaseCore() async {
-  if (!Config.debugMode) {
+  if (!Config.bugseeEnabled) {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );

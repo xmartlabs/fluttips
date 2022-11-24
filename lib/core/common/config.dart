@@ -31,7 +31,7 @@ extension EnviromentPath on Environments {
 abstract class Config {
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const int durationAnimation = 150;
-  static const debugMood = kDebugMode;
+  static const debugMode = kDebugMode;
   static const apiBaseUrl =
       'https://api.github.com/repos/vandadnp/flutter-tips-and-tricks';
   static const String imageBaseUrl =
@@ -40,8 +40,8 @@ abstract class Config {
       'https://github.com/vandadnp/flutter-tips-and-tricks/blob/main/';
   static const String gitHubTipsNameFolder = 'tipsandtricks/';
 
-  static bool get debugMode => kDebugMode;
-  static String? tokenBugsee;
+  static const bool bugseeEnabled = !debugMode;
+  static String? bugseeAPIKey;
 
   static String? firebaseMessagingSenderId;
   static String? firebaseProjectId;
@@ -65,10 +65,10 @@ abstract class Config {
 
   static void _initializeEnvVariables() {
     if (Platform.isAndroid) {
-      tokenBugsee =
-      _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY);
+      bugseeAPIKey =
+          _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY);
     } else if (Platform.isIOS) {
-      tokenBugsee =
+      bugseeAPIKey =
           _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_IOS_API_KEY);
     }
     _initializeFirebaseEnvVariables();
@@ -129,9 +129,9 @@ abstract class _EnvConfig {
 
   static const systemEnv = {
     ENV_KEY_BUGSEE_IOS_API_KEY:
-    String.fromEnvironment(ENV_KEY_BUGSEE_IOS_API_KEY),
+        String.fromEnvironment(ENV_KEY_BUGSEE_IOS_API_KEY),
     ENV_KEY_BUGSEE_ANDROID_API_KEY:
-    String.fromEnvironment(ENV_KEY_BUGSEE_ANDROID_API_KEY),
+        String.fromEnvironment(ENV_KEY_BUGSEE_ANDROID_API_KEY),
 
     // Firebase Common
     ENV_KEY_FIREBASE_PROJECT_ID:
@@ -167,7 +167,6 @@ abstract class _EnvConfig {
     _envFileEnv
       ..addAll(await loadEnvs(Assets.environments.env))
       ..addAll(await loadEnvs('${env.path}.env'))
-      ..addAll(await loadEnvs('${env.path}.private.env'))
-    ;
+      ..addAll(await loadEnvs('${env.path}.private.env'));
   }
 }
