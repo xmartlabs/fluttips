@@ -10,24 +10,25 @@ import 'package:fluttips/core/common/helper/env_helper.dart';
 import 'package:fluttips/gen/assets.gen.dart';
 
 enum Environments {
-  development,
-  production,
+  dev,
+  prod,
 }
 
 extension EnviromentPath on Environments {
   String get fileName {
     switch (this) {
-      case Environments.development:
+      case Environments.dev:
         return 'dev';
-      case Environments.production:
+      case Environments.prod:
         return 'prod';
     }
   }
 
-  String get path => 'assets/environments/$fileName';
+  String get path => '${Config._environmentFolder}/$fileName';
 }
 
 abstract class Config {
+  static const String _environmentFolder = 'environments';
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const int durationAnimation = 150;
 
@@ -55,7 +56,7 @@ abstract class Config {
         Environments.values,
         const String.fromEnvironment('ENV'),
       ) ??
-      Environments.development;
+      Environments.dev;
 
   static Future<void> initialize() async {
     await _EnvConfig._setupEnv(_environment);
@@ -149,7 +150,8 @@ abstract class _EnvConfig {
 
   static Future<void> _setupEnv(Environments env) async {
     _envFileEnv
-      ..addAll(await loadEnvs(Assets.environments.env))
-      ..addAll(await loadEnvs('${env.path}.env'));
+      ..addAll(await loadEnvs('${Config._environmentFolder}/default.env'))
+      ..addAll(await loadEnvs('${env.path}.env'))
+      ..addAll(await loadEnvs('${env.path}.private.env'));
   }
 }
