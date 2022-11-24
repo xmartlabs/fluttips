@@ -1,4 +1,4 @@
-import 'package:flutter_template/core/common/crash_report_tool.dart';
+import 'package:fluttips/core/common/crash_report_tool.dart';
 import 'package:logger/logger.dart' as dart_log;
 import 'package:logger/logger.dart';
 import 'package:stack_trace/stack_trace.dart';

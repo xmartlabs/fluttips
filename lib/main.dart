@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_template/core/common/config.dart';
-import 'package:flutter_template/core/common/logger.dart';
-import 'package:flutter_template/core/di/di_provider.dart';
-import 'package:flutter_template/ui/main/main_screen.dart';
+import 'package:fluttips/core/common/config.dart';
+import 'package:fluttips/core/common/logger.dart';
+import 'package:fluttips/core/di/di_provider.dart';
+import 'package:fluttips/firebase_options.dart';
+import 'package:fluttips/ui/main/main_screen.dart';
 
 import 'package:bugsee_flutter/bugsee.dart';
 
@@ -45,11 +47,20 @@ Future _initSdks() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Logger.init();
   await Config.initialize();
+  await _initFirebaseCore();
 
   await Future.wait([
     DiProvider.init(),
     _initFirebaseSdks(),
   ]);
+}
+
+Future<void> _initFirebaseCore() async {
+  if (!Config.debugMode) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
 }
 
 // ignore: avoid-redundant-async

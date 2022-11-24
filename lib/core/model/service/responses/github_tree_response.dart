@@ -1,4 +1,4 @@
-import 'package:flutter_template/core/model/service/responses/github_file_response.dart';
+import 'package:fluttips/core/model/service/responses/github_file_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'github_tree_response.freezed.dart';

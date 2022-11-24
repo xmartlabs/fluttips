@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/ui/theme/app_colors.dart';
-import 'package:flutter_template/ui/theme/dimensions.dart';
-import 'package:flutter_template/ui/theme/text_styles.dart';
+import 'package:fluttips/ui/theme/app_colors.dart';
+import 'package:fluttips/ui/theme/dimensions.dart';
+import 'package:fluttips/ui/theme/text_styles.dart';
 
 late AppColors _colors;
 late AppDimens _dimensions;

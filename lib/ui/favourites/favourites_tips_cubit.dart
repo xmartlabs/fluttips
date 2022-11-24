@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:flutter_template/core/di/di_provider.dart';
-import 'package:flutter_template/core/model/extensions/stock_extensions.dart';
-import 'package:flutter_template/ui/app_router.dart';
-import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:fluttips/core/di/di_provider.dart';
+import 'package:fluttips/core/model/extensions/stock_extensions.dart';
+import 'package:fluttips/ui/app_router.dart';
+import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter_template/core/repository/tip_repository.dart';
-import 'package:flutter_template/core/model/tip.dart';
-import 'package:flutter_template/ui/tips/show_tips_type.dart';
+import 'package:fluttips/core/repository/tip_repository.dart';
+import 'package:fluttips/core/model/tip.dart';
+import 'package:fluttips/ui/tips/show_tips_type.dart';
 
 part 'favourites_tips_cubit.freezed.dart';
 

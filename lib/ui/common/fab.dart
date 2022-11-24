@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/ui/common/context_extensions.dart';
-import 'package:flutter_template/ui/theme/app_theme.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
+import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'fab.freezed.dart';

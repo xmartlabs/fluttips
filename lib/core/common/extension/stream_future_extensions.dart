@@ -1,5 +1,5 @@
-import 'package:flutter_template/core/common/logger.dart';
-import 'package:flutter_template/core/common/result.dart';
+import 'package:fluttips/core/common/logger.dart';
+import 'package:fluttips/core/common/result.dart';
 import 'package:rxdart/rxdart.dart';
 
 extension StreamExtensions<T> on Stream<T> {

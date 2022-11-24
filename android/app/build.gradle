@@ -24,6 +24,9 @@ if (flutterVersionName == null) {
 }
 
 apply plugin: 'com.android.application'
+// START: FlutterFire Configuration
+apply plugin: 'com.google.gms.google-services'
+// END: FlutterFire Configuration
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
@@ -35,18 +38,13 @@ android {
     productFlavors {
         dev {
             dimension "flavor-type"
-            applicationId "com.xmartlabs.template.dev"
-            resValue "string", "app_name", "Template Dev"
+            applicationId "com.xmartlabs.fluttips.dev"
+            resValue "string", "app_name", "Fluttips Dev"
         }
         prod {
             dimension "flavor-type"
-            applicationId "com.xmartlabs.template"
-            resValue "string", "app_name", "Template"
-        }
-        staging {
-            dimension "flavor-type"
-            applicationId "com.xmartlabs.template.sta"
-            resValue "string", "app_name", "Template Sta"
+            applicationId "com.xmartlabs.fluttips"
+            resValue "string", "app_name", "Fluttips"
         }
     }
 
@@ -68,7 +66,7 @@ android {
     }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.xmartlabs.flutter_template"
+        applicationId "com.xmartlabs.fluttips"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()

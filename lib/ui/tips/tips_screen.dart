@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_template/core/model/extensions/tip_extension.dart';
-import 'package:flutter_template/ui/common/context_extensions.dart';
-import 'package:flutter_template/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:flutter_template/ui/section/global_ui/global_ui_cubit.dart';
-import 'package:flutter_template/ui/theme/app_theme.dart';
-import 'package:flutter_template/ui/tips/show_tips_type.dart';
-import 'package:flutter_template/ui/tips/tips_cubit.dart';
-import 'package:flutter_template/ui/common/custom_scaffold_fab.dart';
-import 'package:flutter_template/ui/common/fab.dart';
-import 'package:flutter_template/core/model/tip.dart';
+import 'package:fluttips/core/model/extensions/tip_extension.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
+import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
+import 'package:fluttips/ui/section/global_ui/global_ui_cubit.dart';
+import 'package:fluttips/ui/theme/app_theme.dart';
+import 'package:fluttips/ui/tips/show_tips_type.dart';
+import 'package:fluttips/ui/tips/tips_cubit.dart';
+import 'package:fluttips/ui/common/custom_scaffold_fab.dart';
+import 'package:fluttips/ui/common/fab.dart';
+import 'package:fluttips/core/model/tip.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 

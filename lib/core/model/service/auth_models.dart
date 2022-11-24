@@ -1,4 +1,4 @@
-import 'package:flutter_template/core/model/user.dart';
+import 'package:fluttips/core/model/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_models.freezed.dart';
