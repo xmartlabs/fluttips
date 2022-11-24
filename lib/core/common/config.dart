@@ -7,7 +7,6 @@ import 'package:flutter/foundation.dart';
 import 'package:fluttips/core/common/extension/string_extensions.dart';
 import 'package:fluttips/core/common/helper/enum_helpers.dart';
 import 'package:fluttips/core/common/helper/env_helper.dart';
-import 'package:fluttips/gen/assets.gen.dart';
 
 enum Environments {
   dev,

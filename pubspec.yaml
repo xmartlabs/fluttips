@@ -76,6 +76,7 @@ flutter_gen:
   assets:
     exclude:
       - environments/*
+      - assets/README.md
 
 flavorizr:
   flavors:
