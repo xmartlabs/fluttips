@@ -17,7 +17,7 @@ import 'package:bugsee_flutter/bugsee.dart';
 Future<void> launchBugsee(
   void Function(bool isBugseeLaunched) appRunner,
 ) =>
-    Bugsee.launch(Config.tokenBugsee, appRunCallback: appRunner);
+    Bugsee.launch(Config.tokenBugsee!, appRunCallback: appRunner);
 
 Future<void> main() async {
   await runZonedGuarded(

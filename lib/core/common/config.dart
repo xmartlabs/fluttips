@@ -11,16 +11,16 @@ import 'package:fluttips/core/common/helper/env_helper.dart';
 import 'package:fluttips/gen/assets.gen.dart';
 
 enum Environments {
-  development,
-  production,
+  dev,
+  prod,
 }
 
 extension EnviromentPath on Environments {
   String get fileName {
     switch (this) {
-      case Environments.development:
+      case Environments.dev:
         return 'dev';
-      case Environments.production:
+      case Environments.prod:
         return 'prod';
     }
   }
@@ -29,7 +29,6 @@ extension EnviromentPath on Environments {
 }
 
 abstract class Config {
-  static late String tokenBugsee;
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const int durationAnimation = 150;
   static const debugMood = kDebugMode;
@@ -42,6 +41,7 @@ abstract class Config {
   static const String gitHubTipsNameFolder = 'tipsandtricks/';
 
   static bool get debugMode => kDebugMode;
+  static String? tokenBugsee;
 
   static String? firebaseMessagingSenderId;
   static String? firebaseProjectId;
@@ -52,12 +52,11 @@ abstract class Config {
   static String? firebaseIosIosBundleId;
   static String? firebaseAndroidApiKey;
   static String? firebaseAndroidAppId;
-
   static final _environment = enumFromString(
         Environments.values,
         const String.fromEnvironment('ENV'),
       ) ??
-      Environments.development;
+      Environments.dev;
 
   static Future<void> initialize() async {
     await _EnvConfig._setupEnv(_environment);
@@ -67,10 +66,10 @@ abstract class Config {
   static void _initializeEnvVariables() {
     if (Platform.isAndroid) {
       tokenBugsee =
-      _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY)!;
+      _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY);
     } else if (Platform.isIOS) {
       tokenBugsee =
-          _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_IOS_API_KEY)!;
+          _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_IOS_API_KEY);
     }
     _initializeFirebaseEnvVariables();
   }

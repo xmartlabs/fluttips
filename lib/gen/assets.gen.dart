@@ -15,12 +15,11 @@ class $AssetsEnvironmentsGen {
   /// File path: assets/environments/.env
   String get env => 'assets/environments/.env';
 
-  /// File path: assets/environments/development.private.env
-  String get developmentPrivate =>
-      'assets/environments/development.private.env';
+  /// File path: assets/environments/dev.private.env
+  String get devPrivate => 'assets/environments/dev.private.env';
 
   /// List of all assets
-  List<String> get values => [env, developmentPrivate];
+  List<String> get values => [env, devPrivate];
 }
 
 class Assets {
