@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		162402D72926C01800252288 /* GoogleService-Info-dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 162402D62926C01800252288 /* GoogleService-Info-dev.plist */; };
-		165268392922E06400EA841F /* (null) in Resources */ = {isa = PBXBuildFile; };
+		165268392922E06400EA841F /* BuildFile in Resources */ = {isa = PBXBuildFile; };
 		169164D72927C74B00A31368 /* GoogleService-Info-prod.plist in Resources */ = {isa = PBXBuildFile; fileRef = 169164D62927C74B00A31368 /* GoogleService-Info-prod.plist */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -244,7 +244,7 @@
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				169164D72927C74B00A31368 /* GoogleService-Info-prod.plist in Resources */,
-				165268392922E06400EA841F /* (null) in Resources */,
+				165268392922E06400EA841F /* BuildFile in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
 				162402D72926C01800252288 /* GoogleService-Info-dev.plist in Resources */,
