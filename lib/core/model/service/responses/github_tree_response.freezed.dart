@@ -32,29 +32,32 @@ mixin _$GitHubTreeResponse {
 abstract class $GitHubTreeResponseCopyWith<$Res> {
   factory $GitHubTreeResponseCopyWith(
           GitHubTreeResponse value, $Res Function(GitHubTreeResponse) then) =
-      _$GitHubTreeResponseCopyWithImpl<$Res>;
+      _$GitHubTreeResponseCopyWithImpl<$Res, GitHubTreeResponse>;
+  @useResult
   $Res call({List<GitHubFile> tree});
 }
 
 /// @nodoc
-class _$GitHubTreeResponseCopyWithImpl<$Res>
+class _$GitHubTreeResponseCopyWithImpl<$Res, $Val extends GitHubTreeResponse>
     implements $GitHubTreeResponseCopyWith<$Res> {
   _$GitHubTreeResponseCopyWithImpl(this._value, this._then);
 
-  final GitHubTreeResponse _value;
   // ignore: unused_field
-  final $Res Function(GitHubTreeResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tree = freezed,
+    Object? tree = null,
   }) {
     return _then(_value.copyWith(
-      tree: tree == freezed
+      tree: null == tree
           ? _value.tree
           : tree // ignore: cast_nullable_to_non_nullable
               as List<GitHubFile>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,26 +68,25 @@ abstract class _$$_GitHiubTreeResponseCopyWith<$Res>
           $Res Function(_$_GitHiubTreeResponse) then) =
       __$$_GitHiubTreeResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<GitHubFile> tree});
 }
 
 /// @nodoc
 class __$$_GitHiubTreeResponseCopyWithImpl<$Res>
-    extends _$GitHubTreeResponseCopyWithImpl<$Res>
+    extends _$GitHubTreeResponseCopyWithImpl<$Res, _$_GitHiubTreeResponse>
     implements _$$_GitHiubTreeResponseCopyWith<$Res> {
   __$$_GitHiubTreeResponseCopyWithImpl(_$_GitHiubTreeResponse _value,
       $Res Function(_$_GitHiubTreeResponse) _then)
-      : super(_value, (v) => _then(v as _$_GitHiubTreeResponse));
+      : super(_value, _then);
 
-  @override
-  _$_GitHiubTreeResponse get _value => super._value as _$_GitHiubTreeResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tree = freezed,
+    Object? tree = null,
   }) {
     return _then(_$_GitHiubTreeResponse(
-      tree: tree == freezed
+      tree: null == tree
           ? _value._tree
           : tree // ignore: cast_nullable_to_non_nullable
               as List<GitHubFile>,
@@ -128,6 +130,7 @@ class _$_GitHiubTreeResponse implements _GitHiubTreeResponse {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GitHiubTreeResponseCopyWith<_$_GitHiubTreeResponse> get copyWith =>
       __$$_GitHiubTreeResponseCopyWithImpl<_$_GitHiubTreeResponse>(
           this, _$identity);

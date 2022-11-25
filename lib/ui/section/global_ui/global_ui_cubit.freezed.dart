@@ -24,7 +24,7 @@ mixin _$GlobalUIState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool showUIActionComponent)? state,
+    TResult? Function(bool showUIActionComponent)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$GlobalUIState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GlobalUIState value)? state,
+    TResult? Function(_GlobalUIState value)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,29 +59,32 @@ mixin _$GlobalUIState {
 abstract class $GlobalUIStateCopyWith<$Res> {
   factory $GlobalUIStateCopyWith(
           GlobalUIState value, $Res Function(GlobalUIState) then) =
-      _$GlobalUIStateCopyWithImpl<$Res>;
+      _$GlobalUIStateCopyWithImpl<$Res, GlobalUIState>;
+  @useResult
   $Res call({bool showUIActionComponent});
 }
 
 /// @nodoc
-class _$GlobalUIStateCopyWithImpl<$Res>
+class _$GlobalUIStateCopyWithImpl<$Res, $Val extends GlobalUIState>
     implements $GlobalUIStateCopyWith<$Res> {
   _$GlobalUIStateCopyWithImpl(this._value, this._then);
 
-  final GlobalUIState _value;
   // ignore: unused_field
-  final $Res Function(GlobalUIState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? showUIActionComponent = freezed,
+    Object? showUIActionComponent = null,
   }) {
     return _then(_value.copyWith(
-      showUIActionComponent: showUIActionComponent == freezed
+      showUIActionComponent: null == showUIActionComponent
           ? _value.showUIActionComponent
           : showUIActionComponent // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -92,26 +95,25 @@ abstract class _$$_GlobalUIStateCopyWith<$Res>
           _$_GlobalUIState value, $Res Function(_$_GlobalUIState) then) =
       __$$_GlobalUIStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool showUIActionComponent});
 }
 
 /// @nodoc
 class __$$_GlobalUIStateCopyWithImpl<$Res>
-    extends _$GlobalUIStateCopyWithImpl<$Res>
+    extends _$GlobalUIStateCopyWithImpl<$Res, _$_GlobalUIState>
     implements _$$_GlobalUIStateCopyWith<$Res> {
   __$$_GlobalUIStateCopyWithImpl(
       _$_GlobalUIState _value, $Res Function(_$_GlobalUIState) _then)
-      : super(_value, (v) => _then(v as _$_GlobalUIState));
+      : super(_value, _then);
 
-  @override
-  _$_GlobalUIState get _value => super._value as _$_GlobalUIState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? showUIActionComponent = freezed,
+    Object? showUIActionComponent = null,
   }) {
     return _then(_$_GlobalUIState(
-      showUIActionComponent: showUIActionComponent == freezed
+      showUIActionComponent: null == showUIActionComponent
           ? _value.showUIActionComponent
           : showUIActionComponent // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -138,16 +140,16 @@ class _$_GlobalUIState implements _GlobalUIState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GlobalUIState &&
-            const DeepCollectionEquality()
-                .equals(other.showUIActionComponent, showUIActionComponent));
+            (identical(other.showUIActionComponent, showUIActionComponent) ||
+                other.showUIActionComponent == showUIActionComponent));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(showUIActionComponent));
+  int get hashCode => Object.hash(runtimeType, showUIActionComponent);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GlobalUIStateCopyWith<_$_GlobalUIState> get copyWith =>
       __$$_GlobalUIStateCopyWithImpl<_$_GlobalUIState>(this, _$identity);
 
@@ -162,7 +164,7 @@ class _$_GlobalUIState implements _GlobalUIState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool showUIActionComponent)? state,
+    TResult? Function(bool showUIActionComponent)? state,
   }) {
     return state?.call(showUIActionComponent);
   }
@@ -190,7 +192,7 @@ class _$_GlobalUIState implements _GlobalUIState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_GlobalUIState value)? state,
+    TResult? Function(_GlobalUIState value)? state,
   }) {
     return state?.call(this);
   }

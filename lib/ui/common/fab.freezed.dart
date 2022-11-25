@@ -24,8 +24,8 @@ mixin _$FabState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? notSelected,
-    TResult Function()? selected,
+    TResult? Function()? notSelected,
+    TResult? Function()? selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$FabState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FabNotSelected value)? notSelected,
-    TResult Function(_FabSelected value)? selected,
+    TResult? Function(_FabNotSelected value)? notSelected,
+    TResult? Function(_FabSelected value)? selected,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,16 +59,18 @@ mixin _$FabState {
 /// @nodoc
 abstract class $FabStateCopyWith<$Res> {
   factory $FabStateCopyWith(FabState value, $Res Function(FabState) then) =
-      _$FabStateCopyWithImpl<$Res>;
+      _$FabStateCopyWithImpl<$Res, FabState>;
 }
 
 /// @nodoc
-class _$FabStateCopyWithImpl<$Res> implements $FabStateCopyWith<$Res> {
+class _$FabStateCopyWithImpl<$Res, $Val extends FabState>
+    implements $FabStateCopyWith<$Res> {
   _$FabStateCopyWithImpl(this._value, this._then);
 
-  final FabState _value;
   // ignore: unused_field
-  final $Res Function(FabState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -79,14 +81,12 @@ abstract class _$$_FabNotSelectedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FabNotSelectedCopyWithImpl<$Res> extends _$FabStateCopyWithImpl<$Res>
+class __$$_FabNotSelectedCopyWithImpl<$Res>
+    extends _$FabStateCopyWithImpl<$Res, _$_FabNotSelected>
     implements _$$_FabNotSelectedCopyWith<$Res> {
   __$$_FabNotSelectedCopyWithImpl(
       _$_FabNotSelected _value, $Res Function(_$_FabNotSelected) _then)
-      : super(_value, (v) => _then(v as _$_FabNotSelected));
-
-  @override
-  _$_FabNotSelected get _value => super._value as _$_FabNotSelected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -120,8 +120,8 @@ class _$_FabNotSelected implements _FabNotSelected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? notSelected,
-    TResult Function()? selected,
+    TResult? Function()? notSelected,
+    TResult? Function()? selected,
   }) {
     return notSelected?.call();
   }
@@ -151,8 +151,8 @@ class _$_FabNotSelected implements _FabNotSelected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FabNotSelected value)? notSelected,
-    TResult Function(_FabSelected value)? selected,
+    TResult? Function(_FabNotSelected value)? notSelected,
+    TResult? Function(_FabSelected value)? selected,
   }) {
     return notSelected?.call(this);
   }
@@ -183,14 +183,12 @@ abstract class _$$_FabSelectedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_FabSelectedCopyWithImpl<$Res> extends _$FabStateCopyWithImpl<$Res>
+class __$$_FabSelectedCopyWithImpl<$Res>
+    extends _$FabStateCopyWithImpl<$Res, _$_FabSelected>
     implements _$$_FabSelectedCopyWith<$Res> {
   __$$_FabSelectedCopyWithImpl(
       _$_FabSelected _value, $Res Function(_$_FabSelected) _then)
-      : super(_value, (v) => _then(v as _$_FabSelected));
-
-  @override
-  _$_FabSelected get _value => super._value as _$_FabSelected;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -224,8 +222,8 @@ class _$_FabSelected implements _FabSelected {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? notSelected,
-    TResult Function()? selected,
+    TResult? Function()? notSelected,
+    TResult? Function()? selected,
   }) {
     return selected?.call();
   }
@@ -255,8 +253,8 @@ class _$_FabSelected implements _FabSelected {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_FabNotSelected value)? notSelected,
-    TResult Function(_FabSelected value)? selected,
+    TResult? Function(_FabNotSelected value)? notSelected,
+    TResult? Function(_FabSelected value)? selected,
   }) {
     return selected?.call(this);
   }

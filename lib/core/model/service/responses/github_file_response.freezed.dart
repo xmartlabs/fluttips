@@ -34,38 +34,42 @@ mixin _$GitHubFile {
 abstract class $GitHubFileCopyWith<$Res> {
   factory $GitHubFileCopyWith(
           GitHubFile value, $Res Function(GitHubFile) then) =
-      _$GitHubFileCopyWithImpl<$Res>;
+      _$GitHubFileCopyWithImpl<$Res, GitHubFile>;
+  @useResult
   $Res call({String path, String url, GitHubFileType type});
 }
 
 /// @nodoc
-class _$GitHubFileCopyWithImpl<$Res> implements $GitHubFileCopyWith<$Res> {
+class _$GitHubFileCopyWithImpl<$Res, $Val extends GitHubFile>
+    implements $GitHubFileCopyWith<$Res> {
   _$GitHubFileCopyWithImpl(this._value, this._then);
 
-  final GitHubFile _value;
   // ignore: unused_field
-  final $Res Function(GitHubFile) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? path = freezed,
-    Object? url = freezed,
-    Object? type = freezed,
+    Object? path = null,
+    Object? url = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as GitHubFileType,
-    ));
+    ) as $Val);
   }
 }
 
@@ -76,35 +80,35 @@ abstract class _$$_GitHubFileCopyWith<$Res>
           _$_GitHubFile value, $Res Function(_$_GitHubFile) then) =
       __$$_GitHubFileCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String path, String url, GitHubFileType type});
 }
 
 /// @nodoc
-class __$$_GitHubFileCopyWithImpl<$Res> extends _$GitHubFileCopyWithImpl<$Res>
+class __$$_GitHubFileCopyWithImpl<$Res>
+    extends _$GitHubFileCopyWithImpl<$Res, _$_GitHubFile>
     implements _$$_GitHubFileCopyWith<$Res> {
   __$$_GitHubFileCopyWithImpl(
       _$_GitHubFile _value, $Res Function(_$_GitHubFile) _then)
-      : super(_value, (v) => _then(v as _$_GitHubFile));
+      : super(_value, _then);
 
-  @override
-  _$_GitHubFile get _value => super._value as _$_GitHubFile;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? path = freezed,
-    Object? url = freezed,
-    Object? type = freezed,
+    Object? path = null,
+    Object? url = null,
+    Object? type = null,
   }) {
     return _then(_$_GitHubFile(
-      path: path == freezed
+      path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      type: type == freezed
+      type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as GitHubFileType,
@@ -138,21 +142,18 @@ class _$_GitHubFile implements _GitHubFile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GitHubFile &&
-            const DeepCollectionEquality().equals(other.path, path) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.type, type));
+            (identical(other.path, path) || other.path == path) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(path),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(type));
+  int get hashCode => Object.hash(runtimeType, path, url, type);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_GitHubFileCopyWith<_$_GitHubFile> get copyWith =>
       __$$_GitHubFileCopyWithImpl<_$_GitHubFile>(this, _$identity);
 
