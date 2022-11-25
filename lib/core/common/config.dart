@@ -40,7 +40,7 @@ abstract class Config {
       'https://github.com/vandadnp/flutter-tips-and-tricks/blob/main/';
   static const String gitHubTipsNameFolder = 'tipsandtricks/';
 
-  static const bool bugseeEnabled = !debugMode;
+  static bool bugseeEnabled = !debugMode && _environment == Environments.dev;
   static String? bugseeAPIKey;
 
   static String? firebaseMessagingSenderId;

@@ -51,7 +51,7 @@ Future _initSdks() async {
 }
 
 Future<void> _initFirebaseCore() async {
-  if (!Config.bugseeEnabled) {
+  if (!Config.debugMode) {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
