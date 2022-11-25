@@ -100,3 +100,5 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
+android.buildTypes.release.ndk.debugSymbolLevel = 'FULL'
+
