@@ -29,6 +29,12 @@ These components are injected in the Cubits using [get_it][get_it].
 
 ## Project Setup
 
+## Environment setup
+The environment variables are defined in the `default.env` file located in `/environments/` folder.
+You can define different environments for different environments, for example, you can have a `dev.env` for development and a `prod.env` for production.
+If you need to add a privete environment variable, you can create a `${env}.private.env` file in the environments folder and it will be ignored by git.
+
+## Firebase Setup
 To run this project, you need to config the Firebase project. 
 You can do it by executing the following command:
 
