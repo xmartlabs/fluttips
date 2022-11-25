@@ -143,6 +143,21 @@ Build deploy version
 [bundle exec] fastlane ios publish_dev_firebase
 ```
 
+Push a new beta build to Firebase
+
+#### Envs:
+* **`setup_signing`**: if true, `set_signing` is called.
+* **`APPLE_TEAM_ID`**: The apple team id
+* **`APPSTORE_CONNECT_API_KEY_ID`**: The connect api key id
+* **`APPSTORE_CONNECT_API_KEY_ISSUER_ID`**: The connect api key issuer id
+* **`APPSTORE_CONNECT_API_KEY_BASE_64_CONTENT`**: The api key base64 content
+
+### ios publish_prod_testflight
+
+```sh
+[bundle exec] fastlane ios publish_prod_testflight
+```
+
 Push a new beta build to TestFlight
 
 #### Envs:
