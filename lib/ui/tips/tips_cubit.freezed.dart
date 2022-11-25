@@ -25,7 +25,7 @@ mixin _$TipsBaseState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Tip> tips, int currentPage)? state,
+    TResult? Function(List<Tip> tips, int currentPage)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,7 +41,7 @@ mixin _$TipsBaseState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_TipsState value)? state,
+    TResult? Function(_TipsState value)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,34 +60,37 @@ mixin _$TipsBaseState {
 abstract class $TipsBaseStateCopyWith<$Res> {
   factory $TipsBaseStateCopyWith(
           TipsBaseState value, $Res Function(TipsBaseState) then) =
-      _$TipsBaseStateCopyWithImpl<$Res>;
+      _$TipsBaseStateCopyWithImpl<$Res, TipsBaseState>;
+  @useResult
   $Res call({List<Tip> tips, int currentPage});
 }
 
 /// @nodoc
-class _$TipsBaseStateCopyWithImpl<$Res>
+class _$TipsBaseStateCopyWithImpl<$Res, $Val extends TipsBaseState>
     implements $TipsBaseStateCopyWith<$Res> {
   _$TipsBaseStateCopyWithImpl(this._value, this._then);
 
-  final TipsBaseState _value;
   // ignore: unused_field
-  final $Res Function(TipsBaseState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tips = freezed,
-    Object? currentPage = freezed,
+    Object? tips = null,
+    Object? currentPage = null,
   }) {
     return _then(_value.copyWith(
-      tips: tips == freezed
+      tips: null == tips
           ? _value.tips
           : tips // ignore: cast_nullable_to_non_nullable
               as List<Tip>,
-      currentPage: currentPage == freezed
+      currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -98,30 +101,30 @@ abstract class _$$_TipsStateCopyWith<$Res>
           _$_TipsState value, $Res Function(_$_TipsState) then) =
       __$$_TipsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<Tip> tips, int currentPage});
 }
 
 /// @nodoc
-class __$$_TipsStateCopyWithImpl<$Res> extends _$TipsBaseStateCopyWithImpl<$Res>
+class __$$_TipsStateCopyWithImpl<$Res>
+    extends _$TipsBaseStateCopyWithImpl<$Res, _$_TipsState>
     implements _$$_TipsStateCopyWith<$Res> {
   __$$_TipsStateCopyWithImpl(
       _$_TipsState _value, $Res Function(_$_TipsState) _then)
-      : super(_value, (v) => _then(v as _$_TipsState));
+      : super(_value, _then);
 
-  @override
-  _$_TipsState get _value => super._value as _$_TipsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tips = freezed,
-    Object? currentPage = freezed,
+    Object? tips = null,
+    Object? currentPage = null,
   }) {
     return _then(_$_TipsState(
-      tips: tips == freezed
+      tips: null == tips
           ? _value._tips
           : tips // ignore: cast_nullable_to_non_nullable
               as List<Tip>,
-      currentPage: currentPage == freezed
+      currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
@@ -158,18 +161,17 @@ class _$_TipsState implements _TipsState {
         (other.runtimeType == runtimeType &&
             other is _$_TipsState &&
             const DeepCollectionEquality().equals(other._tips, _tips) &&
-            const DeepCollectionEquality()
-                .equals(other.currentPage, currentPage));
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_tips),
-      const DeepCollectionEquality().hash(currentPage));
+      runtimeType, const DeepCollectionEquality().hash(_tips), currentPage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TipsStateCopyWith<_$_TipsState> get copyWith =>
       __$$_TipsStateCopyWithImpl<_$_TipsState>(this, _$identity);
 
@@ -184,7 +186,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<Tip> tips, int currentPage)? state,
+    TResult? Function(List<Tip> tips, int currentPage)? state,
   }) {
     return state?.call(tips, currentPage);
   }
@@ -212,7 +214,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_TipsState value)? state,
+    TResult? Function(_TipsState value)? state,
   }) {
     return state?.call(this);
   }

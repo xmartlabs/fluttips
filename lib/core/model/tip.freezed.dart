@@ -37,7 +37,8 @@ mixin _$Tip {
 /// @nodoc
 abstract class $TipCopyWith<$Res> {
   factory $TipCopyWith(Tip value, $Res Function(Tip) then) =
-      _$TipCopyWithImpl<$Res>;
+      _$TipCopyWithImpl<$Res, Tip>;
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -50,58 +51,60 @@ abstract class $TipCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TipCopyWithImpl<$Res> implements $TipCopyWith<$Res> {
+class _$TipCopyWithImpl<$Res, $Val extends Tip> implements $TipCopyWith<$Res> {
   _$TipCopyWithImpl(this._value, this._then);
 
-  final Tip _value;
   // ignore: unused_field
-  final $Res Function(Tip) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? url = freezed,
-    Object? imageUrl = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? url = null,
+    Object? imageUrl = null,
     Object? codeUrl = freezed,
     Object? mdUrl = freezed,
-    Object? randomId = freezed,
+    Object? randomId = null,
     Object? favouriteDate = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      codeUrl: codeUrl == freezed
+      codeUrl: freezed == codeUrl
           ? _value.codeUrl
           : codeUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      mdUrl: mdUrl == freezed
+      mdUrl: freezed == mdUrl
           ? _value.mdUrl
           : mdUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      randomId: randomId == freezed
+      randomId: null == randomId
           ? _value.randomId
           : randomId // ignore: cast_nullable_to_non_nullable
               as int,
-      favouriteDate: favouriteDate == freezed
+      favouriteDate: freezed == favouriteDate
           ? _value.favouriteDate
           : favouriteDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -110,6 +113,7 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
   factory _$$_TipCopyWith(_$_Tip value, $Res Function(_$_Tip) then) =
       __$$_TipCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -122,55 +126,53 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res>
+class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$_Tip>
     implements _$$_TipCopyWith<$Res> {
   __$$_TipCopyWithImpl(_$_Tip _value, $Res Function(_$_Tip) _then)
-      : super(_value, (v) => _then(v as _$_Tip));
+      : super(_value, _then);
 
-  @override
-  _$_Tip get _value => super._value as _$_Tip;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? url = freezed,
-    Object? imageUrl = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? url = null,
+    Object? imageUrl = null,
     Object? codeUrl = freezed,
     Object? mdUrl = freezed,
-    Object? randomId = freezed,
+    Object? randomId = null,
     Object? favouriteDate = freezed,
   }) {
     return _then(_$_Tip(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: imageUrl == freezed
+      imageUrl: null == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      codeUrl: codeUrl == freezed
+      codeUrl: freezed == codeUrl
           ? _value.codeUrl
           : codeUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      mdUrl: mdUrl == freezed
+      mdUrl: freezed == mdUrl
           ? _value.mdUrl
           : mdUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      randomId: randomId == freezed
+      randomId: null == randomId
           ? _value.randomId
           : randomId // ignore: cast_nullable_to_non_nullable
               as int,
-      favouriteDate: favouriteDate == freezed
+      favouriteDate: freezed == favouriteDate
           ? _value.favouriteDate
           : favouriteDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
@@ -221,32 +223,27 @@ class _$_Tip implements _Tip {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Tip &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.codeUrl, codeUrl) &&
-            const DeepCollectionEquality().equals(other.mdUrl, mdUrl) &&
-            const DeepCollectionEquality().equals(other.randomId, randomId) &&
-            const DeepCollectionEquality()
-                .equals(other.favouriteDate, favouriteDate));
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.codeUrl, codeUrl) || other.codeUrl == codeUrl) &&
+            (identical(other.mdUrl, mdUrl) || other.mdUrl == mdUrl) &&
+            (identical(other.randomId, randomId) ||
+                other.randomId == randomId) &&
+            (identical(other.favouriteDate, favouriteDate) ||
+                other.favouriteDate == favouriteDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(codeUrl),
-      const DeepCollectionEquality().hash(mdUrl),
-      const DeepCollectionEquality().hash(randomId),
-      const DeepCollectionEquality().hash(favouriteDate));
+  int get hashCode => Object.hash(runtimeType, id, name, url, imageUrl, codeUrl,
+      mdUrl, randomId, favouriteDate);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TipCopyWith<_$_Tip> get copyWith =>
       __$$_TipCopyWithImpl<_$_Tip>(this, _$identity);
 

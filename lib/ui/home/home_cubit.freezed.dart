@@ -25,7 +25,7 @@ mixin _$HomeBaseState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool hideFabMenu, bool hideFavouriteFab)? state,
+    TResult? Function(bool hideFabMenu, bool hideFavouriteFab)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,7 +41,7 @@ mixin _$HomeBaseState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeState value)? state,
+    TResult? Function(_HomeState value)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,34 +60,37 @@ mixin _$HomeBaseState {
 abstract class $HomeBaseStateCopyWith<$Res> {
   factory $HomeBaseStateCopyWith(
           HomeBaseState value, $Res Function(HomeBaseState) then) =
-      _$HomeBaseStateCopyWithImpl<$Res>;
+      _$HomeBaseStateCopyWithImpl<$Res, HomeBaseState>;
+  @useResult
   $Res call({bool hideFabMenu, bool hideFavouriteFab});
 }
 
 /// @nodoc
-class _$HomeBaseStateCopyWithImpl<$Res>
+class _$HomeBaseStateCopyWithImpl<$Res, $Val extends HomeBaseState>
     implements $HomeBaseStateCopyWith<$Res> {
   _$HomeBaseStateCopyWithImpl(this._value, this._then);
 
-  final HomeBaseState _value;
   // ignore: unused_field
-  final $Res Function(HomeBaseState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? hideFabMenu = freezed,
-    Object? hideFavouriteFab = freezed,
+    Object? hideFabMenu = null,
+    Object? hideFavouriteFab = null,
   }) {
     return _then(_value.copyWith(
-      hideFabMenu: hideFabMenu == freezed
+      hideFabMenu: null == hideFabMenu
           ? _value.hideFabMenu
           : hideFabMenu // ignore: cast_nullable_to_non_nullable
               as bool,
-      hideFavouriteFab: hideFavouriteFab == freezed
+      hideFavouriteFab: null == hideFavouriteFab
           ? _value.hideFavouriteFab
           : hideFavouriteFab // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -98,30 +101,30 @@ abstract class _$$_HomeStateCopyWith<$Res>
           _$_HomeState value, $Res Function(_$_HomeState) then) =
       __$$_HomeStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool hideFabMenu, bool hideFavouriteFab});
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res> extends _$HomeBaseStateCopyWithImpl<$Res>
+class __$$_HomeStateCopyWithImpl<$Res>
+    extends _$HomeBaseStateCopyWithImpl<$Res, _$_HomeState>
     implements _$$_HomeStateCopyWith<$Res> {
   __$$_HomeStateCopyWithImpl(
       _$_HomeState _value, $Res Function(_$_HomeState) _then)
-      : super(_value, (v) => _then(v as _$_HomeState));
+      : super(_value, _then);
 
-  @override
-  _$_HomeState get _value => super._value as _$_HomeState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? hideFabMenu = freezed,
-    Object? hideFavouriteFab = freezed,
+    Object? hideFabMenu = null,
+    Object? hideFavouriteFab = null,
   }) {
     return _then(_$_HomeState(
-      hideFabMenu: hideFabMenu == freezed
+      hideFabMenu: null == hideFabMenu
           ? _value.hideFabMenu
           : hideFabMenu // ignore: cast_nullable_to_non_nullable
               as bool,
-      hideFavouriteFab: hideFavouriteFab == freezed
+      hideFavouriteFab: null == hideFavouriteFab
           ? _value.hideFavouriteFab
           : hideFavouriteFab // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -151,20 +154,18 @@ class _$_HomeState implements _HomeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_HomeState &&
-            const DeepCollectionEquality()
-                .equals(other.hideFabMenu, hideFabMenu) &&
-            const DeepCollectionEquality()
-                .equals(other.hideFavouriteFab, hideFavouriteFab));
+            (identical(other.hideFabMenu, hideFabMenu) ||
+                other.hideFabMenu == hideFabMenu) &&
+            (identical(other.hideFavouriteFab, hideFavouriteFab) ||
+                other.hideFavouriteFab == hideFavouriteFab));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(hideFabMenu),
-      const DeepCollectionEquality().hash(hideFavouriteFab));
+  int get hashCode => Object.hash(runtimeType, hideFabMenu, hideFavouriteFab);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
       __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
 
@@ -179,7 +180,7 @@ class _$_HomeState implements _HomeState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(bool hideFabMenu, bool hideFavouriteFab)? state,
+    TResult? Function(bool hideFabMenu, bool hideFavouriteFab)? state,
   }) {
     return state?.call(hideFabMenu, hideFavouriteFab);
   }
@@ -207,7 +208,7 @@ class _$_HomeState implements _HomeState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_HomeState value)? state,
+    TResult? Function(_HomeState value)? state,
   }) {
     return state?.call(this);
   }
