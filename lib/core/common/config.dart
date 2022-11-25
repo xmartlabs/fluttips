@@ -8,7 +8,6 @@ import 'package:flutter/foundation.dart';
 import 'package:fluttips/core/common/extension/string_extensions.dart';
 import 'package:fluttips/core/common/helper/enum_helpers.dart';
 import 'package:fluttips/core/common/helper/env_helper.dart';
-import 'package:fluttips/gen/assets.gen.dart';
 
 enum Environments {
   dev,
@@ -25,10 +24,11 @@ extension EnviromentPath on Environments {
     }
   }
 
-  String get path => 'assets/environments/$fileName';
+  String get path => '${Config._environmentFolder}/$fileName';
 }
 
 abstract class Config {
+  static const String _environmentFolder = 'environments';
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const int durationAnimation = 150;
   static const debugMode = kDebugMode;
@@ -165,7 +165,7 @@ abstract class _EnvConfig {
 
   static Future<void> _setupEnv(Environments env) async {
     _envFileEnv
-      ..addAll(await loadEnvs(Assets.environments.env))
+      ..addAll(await loadEnvs('${Config._environmentFolder}/default.env'))
       ..addAll(await loadEnvs('${env.path}.env'))
       ..addAll(await loadEnvs('${env.path}.private.env'));
   }
