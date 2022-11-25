@@ -51,7 +51,7 @@ platform :ios do
       team_id: ENV['APPLE_TEAM_ID'],
       force: true,
       include_all_certificates: true,
-      provisioning_name: '#{provisioning_name}-#{profile_type_name}-#{env}',
+      provisioning_name: "#{provisioning_name}-#{profile_type_name}-#{env}",
       app_identifier: app_identifier,
     )
     update_code_signing_settings(
@@ -181,7 +181,7 @@ platform :ios do
   lane :publish_prod_testflight do |options|
     generate_release_ipa(
       env: 'prod',
-      build_export_method: 'ad-hoc',
+      build_export_method: 'app-store',
     )
     upload_to_testflight(skip_waiting_for_build_processing: true)
     
