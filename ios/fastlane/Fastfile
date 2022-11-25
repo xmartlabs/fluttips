@@ -51,7 +51,7 @@ platform :ios do
       team_id: ENV['APPLE_TEAM_ID'],
       force: true,
       include_all_certificates: true,
-      provisioning_name: '#{provisioning_name}-#{profile_type_name}-#{env}',
+      provisioning_name: "#{provisioning_name}-#{profile_type_name}-#{env}",
       app_identifier: app_identifier,
     )
     update_code_signing_settings(
@@ -75,10 +75,6 @@ platform :ios do
 
   private_lane :rollback_provisioning_setup do |options|
     env = options[:env] || DEFAULT_ENV
-    update_project_team(
-      path: "Runner.xcodeproj",
-      teamid: '',
-    )
     update_code_signing_settings(
       use_automatic_signing: true,
       path: "Runner.xcodeproj",
