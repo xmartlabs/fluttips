@@ -1,6 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
@@ -30,7 +31,7 @@ abstract class Config {
   static const String _environmentFolder = 'environments';
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const int durationAnimation = 150;
-
+  static const debugMode = kDebugMode;
   static const apiBaseUrl =
       'https://api.github.com/repos/vandadnp/flutter-tips-and-tricks';
   static const String imageBaseUrl =
@@ -39,7 +40,8 @@ abstract class Config {
       'https://github.com/vandadnp/flutter-tips-and-tricks/blob/main/';
   static const String gitHubTipsNameFolder = 'tipsandtricks/';
 
-  static bool get debugMode => kDebugMode;
+  static bool bugseeEnabled = !debugMode && _environment == Environments.dev;
+  static String? bugseeAPIKey;
 
   static String? firebaseMessagingSenderId;
   static String? firebaseProjectId;
@@ -50,7 +52,6 @@ abstract class Config {
   static String? firebaseIosIosBundleId;
   static String? firebaseAndroidApiKey;
   static String? firebaseAndroidAppId;
-
   static final _environment = enumFromString(
         Environments.values,
         const String.fromEnvironment('ENV'),
@@ -63,6 +64,13 @@ abstract class Config {
   }
 
   static void _initializeEnvVariables() {
+    if (Platform.isAndroid) {
+      bugseeAPIKey =
+          _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY);
+    } else if (Platform.isIOS) {
+      bugseeAPIKey =
+          _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_IOS_API_KEY);
+    }
     _initializeFirebaseEnvVariables();
   }
 
@@ -98,6 +106,9 @@ abstract class Config {
 }
 
 abstract class _EnvConfig {
+  static const ENV_KEY_BUGSEE_IOS_API_KEY = 'BUGSEE_IOS_API_KEY';
+  static const ENV_KEY_BUGSEE_ANDROID_API_KEY = 'BUGSEE_ANDROID_API_KEY';
+
   // Firebase Common
   static const ENV_KEY_FIREBASE_PROJECT_ID = 'FIREBASE_PROJECT_ID';
   static const ENV_KEY_FIREBASE_MESSAGE_SENDER_ID =
@@ -117,6 +128,11 @@ abstract class _EnvConfig {
   static const ENV_KEY_FIREBASE_ANDROID_APP_ID = 'FIREBASE_ANDROID_APP_ID';
 
   static const systemEnv = {
+    ENV_KEY_BUGSEE_IOS_API_KEY:
+        String.fromEnvironment(ENV_KEY_BUGSEE_IOS_API_KEY),
+    ENV_KEY_BUGSEE_ANDROID_API_KEY:
+        String.fromEnvironment(ENV_KEY_BUGSEE_ANDROID_API_KEY),
+
     // Firebase Common
     ENV_KEY_FIREBASE_PROJECT_ID:
         String.fromEnvironment(ENV_KEY_FIREBASE_PROJECT_ID),

@@ -11,7 +11,9 @@ import 'package:fluttips/core/di/di_provider.dart';
 import 'package:fluttips/firebase_options.dart';
 import 'package:fluttips/ui/main/main_screen.dart';
 
-Future main() async {
+import 'package:bugsee_flutter/bugsee.dart';
+
+Future<void> main() async {
   await runZonedGuarded(
     () async {
       final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -21,13 +23,20 @@ Future main() async {
         DeviceOrientation.landscapeRight,
       ]);
       await _initSdks();
-      runApp(const MyApp());
+
+      Config.bugseeEnabled
+          ? await _launchBugsee((_) => runApp(const MyApp()))
+          : runApp(const MyApp());
+
       FlutterNativeSplash.remove();
     },
     (exception, stackTrace) =>
         Logger.fatal(error: exception, stackTrace: stackTrace),
   );
 }
+
+Future<void> _launchBugsee(void Function(bool isBugseeLaunched) appRunner) =>
+    Bugsee.launch(Config.bugseeAPIKey!, appRunCallback: appRunner);
 
 Future _initSdks() async {
   WidgetsFlutterBinding.ensureInitialized();
