@@ -127,7 +127,7 @@ flutter_icons:
     generate: false
 
 flutter_native_splash:
-  color: '#1B1B26'
+  color: '#1b1b26'
   image: 'icons/splash_logo.png'
   branding: 'icons/splash_branding.png'
   android_12:
