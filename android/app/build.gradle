@@ -71,14 +71,17 @@ android {
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        ndk {
+            debugSymbolLevel 'FULL'
+        }
     }
 
     signingConfigs {
         release {
-            storeFile getEnvVariable('KEYSTORE_FILE') == null ? null : file(getEnvVariable('KEYSTORE_FILE'))
-            storePassword getEnvVariable('KEYSTORE_PASSWORD')
-            keyAlias getEnvVariable('KEYSTORE_KEY_ALIAS')
-            keyPassword getEnvVariable('KEYSTORE_KEY_PASSWORD')
+            storeFile getEnvVariable('RELEASE_STORE_FILE') == null ? null : file(getEnvVariable('RELEASE_STORE_FILE'))
+            storePassword getEnvVariable('RELEASE_STORE_PASSWORD')
+            keyAlias getEnvVariable('RELEASE_KEY_ALIAS')
+            keyPassword getEnvVariable('RELEASE_KEY_PASSWORD')
         }
     }
 
@@ -99,3 +102,4 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
