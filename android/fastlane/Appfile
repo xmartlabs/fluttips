@@ -1,2 +1,1 @@
-# TODO: Change it
-package_name("com.xmartlabs.template")
+package_name("com.xmartlabs.fluttips")

@@ -88,7 +88,7 @@ platform :android do
   lane :deploy_prod do
     build_appbundle(env: 'prod')
     upload_to_play_store(
-      track: ENV['GOOGLE_PLAY_TRACK'] || 'internal',
+      track: 'internal',
       json_key: ENV['GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_FILE'],
       json_key_data: ENV['GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_CONTENT'],
       aab_paths: ["#{root_path}/build/app/outputs/bundle/prodRelease/app-prod-release.aab"],
