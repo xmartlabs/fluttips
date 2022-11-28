@@ -146,7 +146,7 @@ platform :ios do
     end
   end
 
-  desc "Push a new beta build to TestFlight"
+  desc "Push a new beta build to Firebase"
   desc "#### Envs:\n" +
     "* **`setup_signing`**: if true, `set_signing` is called.\n" +
     "* **`APPLE_TEAM_ID`**: The apple team id\n" +
@@ -168,6 +168,22 @@ platform :ios do
       release_notes: generate_snapshot_changelog,
       apk_path: "../Runner.ipa",
     )
+  end
+
+
+  desc "Push a new beta build to TestFlight"
+  desc "#### Envs:\n" +
+    "* **`setup_signing`**: if true, `set_signing` is called.\n" +
+    "* **`APPLE_TEAM_ID`**: The apple team id\n" +
+    "* **`APPSTORE_CONNECT_API_KEY_ID`**: The connect api key id\n" +
+    "* **`APPSTORE_CONNECT_API_KEY_ISSUER_ID`**: The connect api key issuer id\n" +
+    "* **`APPSTORE_CONNECT_API_KEY_BASE_64_CONTENT`**: The api key base64 content"
+  lane :publish_prod_testflight do |options|
+    generate_release_ipa(
+      env: 'prod',
+      build_export_method: 'app-store',
+    )
+    upload_to_testflight(skip_waiting_for_build_processing: true)
   end
 
   private_lane :safe_delete_keychain do
