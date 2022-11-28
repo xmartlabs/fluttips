@@ -32,6 +32,13 @@ abstract class Config {
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const int durationAnimation = 150;
   static const debugMode = kDebugMode;
+
+  static const firebaseEnabled = !debugMode;
+  static const analyticsEnabled = !debugMode;
+  static const crashlyticsEnabled = !debugMode;
+
+  static bool bugseeEnabled = !debugMode && _environment == Environments.dev;
+
   static const apiBaseUrl =
       'https://api.github.com/repos/vandadnp/flutter-tips-and-tricks';
   static const String imageBaseUrl =
@@ -40,7 +47,6 @@ abstract class Config {
       'https://github.com/vandadnp/flutter-tips-and-tricks/blob/main/';
   static const String gitHubTipsNameFolder = 'tipsandtricks/';
 
-  static bool bugseeEnabled = !debugMode && _environment == Environments.dev;
   static String? bugseeAPIKey;
 
   static String? firebaseMessagingSenderId;

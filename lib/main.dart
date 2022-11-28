@@ -40,9 +40,9 @@ Future<void> _launchBugsee(void Function(bool isBugseeLaunched) appRunner) =>
 
 Future _initSdks() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Logger.init();
   await Config.initialize();
   await _initFirebaseCore();
+  await Logger.init();
 
   await Future.wait([
     DiProvider.init(),
@@ -51,7 +51,7 @@ Future _initSdks() async {
 }
 
 Future<void> _initFirebaseCore() async {
-  if (!Config.debugMode) {
+  if (Config.firebaseEnabled) {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
