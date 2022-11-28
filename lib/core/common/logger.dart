@@ -1,11 +1,13 @@
+import 'package:fluttips/core/common/config.dart';
 import 'package:fluttips/core/common/crash_report_tool.dart';
 import 'package:logger/logger.dart' as dart_log;
 import 'package:logger/logger.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 abstract class Logger {
-  // TODO: Setup the report tool
-  static final CrashReportTool _crashReportTool = NoOpsCrashReportTool();
+  static final CrashReportTool _crashReportTool = Config.firebaseEnabled
+      ? CrashlyticsCrashReportTool()
+      : NoOpsCrashReportTool();
 
   static final dart_log.Logger _instance = dart_log.Logger(
     printer: _CrashReportWrappedPrinter(PrettyPrinter(), _crashReportTool),

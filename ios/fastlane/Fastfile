@@ -95,6 +95,7 @@ platform :ios do
     "* **`APPSTORE_CONNECT_API_KEY_ISSUER_ID`**: The connect api key issuer id\n" +
     "* **`APPSTORE_CONNECT_API_KEY_BASE_64_CONTENT`**: The api key base64 content"
   lane :generate_release_ipa do |options|
+    upload_symbols = options[:upload_symbols] || true
     sign_enabled = options[:setup_signing] || true
     if sign_enabled
        set_signing
@@ -136,7 +137,9 @@ platform :ios do
           signingStyle: "manual",
         },
       )
-
+       if upload_symbols
+         upload_symbols_to_crashlytics(app_id: options[:firebase_app_id], debug: true)
+       end
     ensure
       rollback_provisioning_setup(env: env)
       safe_delete_keychain
@@ -154,6 +157,7 @@ platform :ios do
     generate_release_ipa(
       env: 'dev',
       build_export_method: 'ad-hoc',
+      firebase_app_id: ENV['FIREBASE_APP_ID_DEV'],
     )
 
     firebase_app_distribution(
