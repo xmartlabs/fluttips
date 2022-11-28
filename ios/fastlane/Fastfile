@@ -184,8 +184,6 @@ platform :ios do
       build_export_method: 'app-store',
     )
     upload_to_testflight(skip_waiting_for_build_processing: true)
-    
-   
   end
 
   private_lane :safe_delete_keychain do
