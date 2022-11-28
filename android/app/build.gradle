@@ -83,13 +83,6 @@ android {
             keyAlias getEnvVariable('RELEASE_KEY_ALIAS')
             keyPassword getEnvVariable('RELEASE_KEY_PASSWORD')
         }
-
-        staging {
-            storeFile getEnvVariable('KEYSTORE_FILE') == null ? null : file(getEnvVariable('KEYSTORE_FILE'))
-            storePassword getEnvVariable('KEYSTORE_PASSWORD')
-            keyAlias getEnvVariable('KEYSTORE_KEY_ALIAS')
-            keyPassword getEnvVariable('KEYSTORE_KEY_PASSWORD')
-        }
     }
 
     buildTypes {
