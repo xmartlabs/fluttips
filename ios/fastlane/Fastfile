@@ -130,6 +130,7 @@ platform :ios do
         scheme: env,
         export_team_id: ENV['APPLE_TEAM_ID'],
         export_method: build_export_method,
+        xcargs: "-allowProvisioningUpdates",
         export_options: {
           compileBitcode: true,
           uploadBitcode: true,
