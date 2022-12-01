@@ -51,6 +51,7 @@ class _SplashContentScreen extends StatelessWidget {
     switch (state.authenticationStatus) {
       // TODO: Fix redirection to implement the Onboarding
       case AuthenticationStatus.unauthenticated:
+        return [const UnauthenticatedRouter()];
       case AuthenticationStatus.authenticated:
         return [const AuthenticatedRouter()];
       case null:

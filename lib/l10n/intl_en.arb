@@ -16,11 +16,13 @@
   "error_unknown_error_description": "Something went wrong!",
   "error_unknown_error_title": "Ops!",
   "home": "Home",
+  "letsGo": "Lets go!",
   "log_out": "Log out",
   "mail": "Mail",
   "messageEmptyFavoritesScreen": "You don't have any favorites yet :(",
   "myFavorites": "My Favorites",
   "password": "Password",
   "search": "Search",
+  "skip": "Skip",
   "xmartlabs_projects": "Xmartlabs' projects"
 }

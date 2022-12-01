@@ -82,7 +82,7 @@ class AppColors extends ColorScheme {
           onSecondary: onSecondary,
           error: error,
           onError: onError,
-          background: background,
+          background: _background,
           onBackground: onBackground,
           surface: surface,
           onSurface: onSurface,

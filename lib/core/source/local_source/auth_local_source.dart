@@ -19,7 +19,10 @@ class AuthLocalSource {
     _userStorage = secureStorage.mapToUsingMapper(UserStockTypeMapper());
   }
 
-  Stream<String?> getUserToken() => _userTokenStorage.reader(_keyToken);
+  Stream<String?> getUserToken() {
+    print(_keyToken);
+    return _userTokenStorage.reader(_keyToken);
+  }
 
   Stream<User?> getUser() => _userStorage.reader(_keyUser);
 

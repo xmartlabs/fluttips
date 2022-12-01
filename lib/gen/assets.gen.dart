@@ -9,8 +9,30 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/onboarding_describeApp.png
+  AssetGenImage get onboardingDescribeApp =>
+      const AssetGenImage('assets/images/onboarding_describeApp.png');
+
+  /// File path: assets/images/onboarding_favourite.png
+  AssetGenImage get onboardingFavourite =>
+      const AssetGenImage('assets/images/onboarding_favourite.png');
+
+  /// File path: assets/images/onboarding_gestures.png
+  AssetGenImage get onboardingGestures =>
+      const AssetGenImage('assets/images/onboarding_gestures.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [onboardingDescribeApp, onboardingFavourite, onboardingGestures];
+}
+
 class Assets {
   Assets._();
+
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {

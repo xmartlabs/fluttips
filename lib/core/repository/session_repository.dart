@@ -41,4 +41,7 @@ class SessionRepository {
     await _authLocalSource.saveUserToken(null);
     await _authLocalSource.saveUserInfo(null);
   }
+
+  Future<void> authenticateUser() async =>
+      await _authLocalSource.saveUserToken("authenticate");
 }

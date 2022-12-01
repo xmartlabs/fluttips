@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:fluttips/ui/catalog/catalog_screen.dart';
 import 'package:fluttips/ui/favourites/list_favourites_tips_screen.dart';
 import 'package:fluttips/ui/home/home_screen.dart';
+import 'package:fluttips/ui/onboarding/onboarding_screen.dart';
 import 'package:fluttips/ui/section/section_router.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/ui/tips/tips_screen.dart';
@@ -22,7 +23,13 @@ part 'app_router.gr.dart';
     AutoRoute(
       name: 'UnauthenticatedRouter',
       page: SectionRouter,
-      children: [],
+      children: [
+        AutoRoute(
+          initial: true,
+          name: 'Onboarding',
+          page: OnboardingScreen,
+        ),
+      ],
     ),
     AutoRoute(
       name: 'AuthenticatedRouter',

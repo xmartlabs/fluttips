@@ -29,7 +29,7 @@ class RepositoryDiModule {
 extension _GetItUseCaseDiModuleExtensions on GetIt {
   void _setupProvidersAndUtils() {
     registerLazySingleton(FlutterSecureStorage.new);
-    registerLazySingleton(() => HttpServiceDio([AuthInterceptor(get())]));
+    registerLazySingleton(() => HttpServiceDio([]));
     registerSingletonAsync(
       () => $FloorAppDatabase.databaseBuilder('database.db').build(),
     );

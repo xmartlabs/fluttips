@@ -35,6 +35,12 @@ class _$AppRouter extends RootStackRouter {
         child: const SectionRouter(),
       );
     },
+    Onboarding.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const OnboardingScreen(),
+      );
+    },
     HomeScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -86,6 +92,13 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           UnauthenticatedRouter.name,
           path: '/section-router',
+          children: [
+            RouteConfig(
+              Onboarding.name,
+              path: '',
+              parent: UnauthenticatedRouter.name,
+            )
+          ],
         ),
         RouteConfig(
           AuthenticatedRouter.name,
@@ -138,10 +151,11 @@ class CatalogRouter extends PageRouteInfo<void> {
 /// generated route for
 /// [SectionRouter]
 class UnauthenticatedRouter extends PageRouteInfo<void> {
-  const UnauthenticatedRouter()
+  const UnauthenticatedRouter({List<PageRouteInfo>? children})
       : super(
           UnauthenticatedRouter.name,
           path: '/section-router',
+          initialChildren: children,
         );
 
   static const String name = 'UnauthenticatedRouter';
@@ -158,6 +172,18 @@ class AuthenticatedRouter extends PageRouteInfo<void> {
         );
 
   static const String name = 'AuthenticatedRouter';
+}
+
+/// generated route for
+/// [OnboardingScreen]
+class Onboarding extends PageRouteInfo<void> {
+  const Onboarding()
+      : super(
+          Onboarding.name,
+          path: '',
+        );
+
+  static const String name = 'Onboarding';
 }
 
 /// generated route for
