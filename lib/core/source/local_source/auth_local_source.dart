@@ -1,41 +1,44 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fluttips/core/common/helper/enum_helpers.dart';
 import 'package:fluttips/core/common/store/secure_storage_cached_source.dart';
-import 'package:fluttips/core/model/user.dart';
+import 'package:fluttips/core/model/onboarding_status.dart';
 import 'package:stock/stock.dart';
 
 class AuthLocalSource {
   static const _storageAuthPrefix = 'AuthLocalSource';
-  static const _keyToken = '$_storageAuthPrefix.token';
-  static const _keyUser = '$_storageAuthPrefix.user';
+  static const _keyOnboarding = '$_storageAuthPrefix.hasCompletedOnboarding';
 
-  late SourceOfTruth<String, String> _userTokenStorage;
-  late SourceOfTruth<String, User> _userStorage;
+  late SourceOfTruth<String, AppSessionStatus> _userOnboardedStorage;
 
   AuthLocalSource(FlutterSecureStorage storage) {
     final secureStorage = SecuredStorageSourceOfTruth(storage);
-    _userTokenStorage = secureStorage;
-    _userStorage = secureStorage.mapToUsingMapper(UserStockTypeMapper());
+    _userOnboardedStorage =
+        secureStorage.mapToUsingMapper(_AppSessionStatusStockTypeMapper());
   }
 
-  Stream<String?> getUserToken() {
-    print(_keyToken);
-    return _userTokenStorage.reader(_keyToken);
+  Stream<AppSessionStatus?> getSessionStatus()  =>
+      _userOnboardedStorage.reader(_keyOnboarding);
+
+  Future<void> setSessionStatus(AppSessionStatus status) async {
+    await _userOnboardedStorage.write(_keyOnboarding, status);
   }
 
-  Stream<User?> getUser() => _userStorage.reader(_keyUser);
-
-  Future<void> saveUserToken(String? token) =>
-      _userTokenStorage.write(_keyToken, token);
-
-  Future<void> saveUserInfo(User? user) => _userStorage.write(_keyUser, user);
 }
 
-class UserStockTypeMapper extends StockTypeMapper<String, User> {
+class _AppSessionStatusStockTypeMapper
+    extends StockTypeMapper<String, AppSessionStatus> {
   @override
-  User fromInput(String value) => User.fromJson(json.decode(value));
+  AppSessionStatus fromInput(String value) {
+    print('value $value');
+    return enumFromString(AppSessionStatus.values, value) ??
+      AppSessionStatus.notOnboarded;
+  }
 
   @override
-  String fromOutput(User value) => json.encode(value.toJson());
+  String fromOutput(AppSessionStatus value) {
+    print('value2 $value');
+    return value.toString();
+  }
 }

@@ -1,0 +1,4 @@
+enum AppSessionStatus {
+  notOnboarded,
+  onboarded,
+}

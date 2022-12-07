@@ -16,13 +16,19 @@
   "error_unknown_error_description": "Something went wrong!",
   "error_unknown_error_title": "Ops!",
   "home": "Home",
-  "letsGo": "Lets go!",
   "log_out": "Log out",
   "mail": "Mail",
   "messageEmptyFavoritesScreen": "You don't have any favorites yet :(",
   "myFavorites": "My Favorites",
   "password": "Password",
   "search": "Search",
-  "skip": "Skip",
-  "xmartlabs_projects": "Xmartlabs' projects"
+  "xmartlabs_projects": "Xmartlabs' projects",
+  "onboarding_tips_and_tricks_first_text": "Find lots of tips and tricks",
+  "onboarding_tips_and_trick_second_text": "for Flutter development",
+  "onboarding_favourite_first_text": "Save your favorite tips",
+  "onboarding_favourite_second_text": "to have all of them together",
+  "onboarding_gestures_first_text": "Navigate through the tip pages",
+  "onboarding_gestures_second_text": "swiping up and down",
+  "button_lets_go": "Let's go!",
+  "button_skip": "Skip"
 }

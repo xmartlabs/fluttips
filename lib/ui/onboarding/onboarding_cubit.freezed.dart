@@ -16,28 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$OnboardingBaseState {
-  int get currentPage => throw _privateConstructorUsedError;
-  bool get isStartButtonPressed => throw _privateConstructorUsedError;
-  String get buttonText => throw _privateConstructorUsedError;
+  OnboardingStep get onboardingStep => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            int currentPage, bool isStartButtonPressed, String buttonText)
-        state,
+    required TResult Function(OnboardingStep onboardingStep) state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            int currentPage, bool isStartButtonPressed, String buttonText)?
-        state,
+    TResult? Function(OnboardingStep onboardingStep)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int currentPage, bool isStartButtonPressed, String buttonText)?
-        state,
+    TResult Function(OnboardingStep onboardingStep)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,7 +61,7 @@ abstract class $OnboardingBaseStateCopyWith<$Res> {
           OnboardingBaseState value, $Res Function(OnboardingBaseState) then) =
       _$OnboardingBaseStateCopyWithImpl<$Res, OnboardingBaseState>;
   @useResult
-  $Res call({int currentPage, bool isStartButtonPressed, String buttonText});
+  $Res call({OnboardingStep onboardingStep});
 }
 
 /// @nodoc
@@ -85,23 +77,13 @@ class _$OnboardingBaseStateCopyWithImpl<$Res, $Val extends OnboardingBaseState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentPage = null,
-    Object? isStartButtonPressed = null,
-    Object? buttonText = null,
+    Object? onboardingStep = null,
   }) {
     return _then(_value.copyWith(
-      currentPage: null == currentPage
-          ? _value.currentPage
-          : currentPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      isStartButtonPressed: null == isStartButtonPressed
-          ? _value.isStartButtonPressed
-          : isStartButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      buttonText: null == buttonText
-          ? _value.buttonText
-          : buttonText // ignore: cast_nullable_to_non_nullable
-              as String,
+      onboardingStep: null == onboardingStep
+          ? _value.onboardingStep
+          : onboardingStep // ignore: cast_nullable_to_non_nullable
+              as OnboardingStep,
     ) as $Val);
   }
 }
@@ -114,7 +96,7 @@ abstract class _$$_OnboardingStateCopyWith<$Res>
       __$$_OnboardingStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int currentPage, bool isStartButtonPressed, String buttonText});
+  $Res call({OnboardingStep onboardingStep});
 }
 
 /// @nodoc
@@ -128,23 +110,13 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentPage = null,
-    Object? isStartButtonPressed = null,
-    Object? buttonText = null,
+    Object? onboardingStep = null,
   }) {
     return _then(_$_OnboardingState(
-      currentPage: null == currentPage
-          ? _value.currentPage
-          : currentPage // ignore: cast_nullable_to_non_nullable
-              as int,
-      isStartButtonPressed: null == isStartButtonPressed
-          ? _value.isStartButtonPressed
-          : isStartButtonPressed // ignore: cast_nullable_to_non_nullable
-              as bool,
-      buttonText: null == buttonText
-          ? _value.buttonText
-          : buttonText // ignore: cast_nullable_to_non_nullable
-              as String,
+      onboardingStep: null == onboardingStep
+          ? _value.onboardingStep
+          : onboardingStep // ignore: cast_nullable_to_non_nullable
+              as OnboardingStep,
     ));
   }
 }
@@ -153,23 +125,15 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
 
 class _$_OnboardingState implements _OnboardingState {
   const _$_OnboardingState(
-      {this.currentPage = 0,
-      this.isStartButtonPressed = false,
-      this.buttonText = 'Start'});
+      {this.onboardingStep = OnboardingStep.onboarding_initial});
 
   @override
   @JsonKey()
-  final int currentPage;
-  @override
-  @JsonKey()
-  final bool isStartButtonPressed;
-  @override
-  @JsonKey()
-  final String buttonText;
+  final OnboardingStep onboardingStep;
 
   @override
   String toString() {
-    return 'OnboardingBaseState.state(currentPage: $currentPage, isStartButtonPressed: $isStartButtonPressed, buttonText: $buttonText)';
+    return 'OnboardingBaseState.state(onboardingStep: $onboardingStep)';
   }
 
   @override
@@ -177,17 +141,12 @@ class _$_OnboardingState implements _OnboardingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnboardingState &&
-            (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage) &&
-            (identical(other.isStartButtonPressed, isStartButtonPressed) ||
-                other.isStartButtonPressed == isStartButtonPressed) &&
-            (identical(other.buttonText, buttonText) ||
-                other.buttonText == buttonText));
+            (identical(other.onboardingStep, onboardingStep) ||
+                other.onboardingStep == onboardingStep));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, currentPage, isStartButtonPressed, buttonText);
+  int get hashCode => Object.hash(runtimeType, onboardingStep);
 
   @JsonKey(ignore: true)
   @override
@@ -198,33 +157,27 @@ class _$_OnboardingState implements _OnboardingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            int currentPage, bool isStartButtonPressed, String buttonText)
-        state,
+    required TResult Function(OnboardingStep onboardingStep) state,
   }) {
-    return state(currentPage, isStartButtonPressed, buttonText);
+    return state(onboardingStep);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            int currentPage, bool isStartButtonPressed, String buttonText)?
-        state,
+    TResult? Function(OnboardingStep onboardingStep)? state,
   }) {
-    return state?.call(currentPage, isStartButtonPressed, buttonText);
+    return state?.call(onboardingStep);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int currentPage, bool isStartButtonPressed, String buttonText)?
-        state,
+    TResult Function(OnboardingStep onboardingStep)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
-      return state(currentPage, isStartButtonPressed, buttonText);
+      return state(onboardingStep);
     }
     return orElse();
   }
@@ -259,17 +212,11 @@ class _$_OnboardingState implements _OnboardingState {
 }
 
 abstract class _OnboardingState implements OnboardingBaseState {
-  const factory _OnboardingState(
-      {final int currentPage,
-      final bool isStartButtonPressed,
-      final String buttonText}) = _$_OnboardingState;
+  const factory _OnboardingState({final OnboardingStep onboardingStep}) =
+      _$_OnboardingState;
 
   @override
-  int get currentPage;
-  @override
-  bool get isStartButtonPressed;
-  @override
-  String get buttonText;
+  OnboardingStep get onboardingStep;
   @override
   @JsonKey(ignore: true)
   _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>

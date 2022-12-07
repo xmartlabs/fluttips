@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
+import 'package:fluttips/ui/onboarding/onboarding_step.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/onboarding/onboarding_cubit.dart';
 import 'package:fluttips/ui/common/animatedPagerDote.dart';
-
-import 'package:fluttips/core/model/enums/onboarding_enum.dart';
 
 class OnboardingContentScreen extends StatefulWidget {
   const OnboardingContentScreen();
@@ -31,10 +30,10 @@ class _OnboardingContentScreenState extends State<OnboardingContentScreen> {
             Positioned(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: Onboarding.values
+                children: OnboardingStep.onboardingPages
                     .map(
                       (e) => AnimatedPagerDot(
-                        currentPage: state.currentPage,
+                        currentPage: state.onboardingStep.index,
                         myIndex: e.index,
                         color: context.theme.colors.surface,
                       ),
@@ -49,8 +48,8 @@ class _OnboardingContentScreenState extends State<OnboardingContentScreen> {
 
 class _PagerView extends StatelessWidget {
   const _PagerView({
-    Key? key,
     required PageController pageController,
+    Key? key,
   })  : _pageController = pageController,
         super(key: key);
 
@@ -59,47 +58,46 @@ class _PagerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Stack(
         children: [
-          PageView(
-            controller: _pageController,
-            onPageChanged: context.read<OnboardingCubit>().setCurrentPage,
-            children: Onboarding.values
-                .map(
-                  (e) => Row(
+          pageViewContent(context),
+        ],
+      );
+
+  PageView pageViewContent(BuildContext context) => PageView(
+        controller: _pageController,
+        onPageChanged: (index) =>
+            context.read<OnboardingCubit>().setCurrentPage(index),
+        children: OnboardingStep.onboardingPages
+            .map(
+              (onboardingStep) => Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  onboardingStep.getIcon(context)!.image(),
+                  SizedBox(width: 20.w),
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        e.imageUrl,
+                      Text(
+                        onboardingStep.getPrimaryText(context),
+                        style: context.theme.textStyles.titleLarge!.copyWith(
+                          color: context.theme.colors.surface,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      SizedBox(width: 20.w),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            e.firstText,
-                            style:
-                                context.theme.textStyles.titleLarge!.copyWith(
-                              color: context.theme.colors.surface,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      SizedBox(height: 4.h),
+                      Container(
+                        child: Text(
+                          onboardingStep.getSecondaryText(context),
+                          style: context.theme.textStyles.bodyLarge!.copyWith(
+                            color: context.theme.colors.surface,
                           ),
-                          SizedBox(height: 04),
-                          Container(
-                            child: Text(
-                              e.secondText,
-                              style:
-                                  context.theme.textStyles.bodyLarge!.copyWith(
-                                color: context.theme.colors.surface,
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ],
                   ),
-                )
-                .toList(),
-          ),
-        ],
+                ],
+              ),
+            )
+            .toList(),
       );
 }

@@ -1,14 +1,16 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:fluttips/core/model/onboarding_status.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:fluttips/core/repository/session_repository.dart';
-
 import 'package:fluttips/core/di/di_provider.dart';
 
-import 'package:fluttips/ui/resources.dart';
+import 'package:fluttips/ui/onboarding/onboarding_step.dart';
 
 part 'onboarding_cubit.freezed.dart';
 
@@ -21,16 +23,21 @@ class OnboardingCubit extends Cubit<OnboardingBaseState> {
   OnboardingCubit(this._errorHandler)
       : super(const OnboardingBaseState.state());
 
-  Future<void> onPressedAction() async {
-    state.isStartButtonPressed
-        ? _sessionRepository.authenticateUser()
-        : emit(
-            state.copyWith(isStartButtonPressed: !state.isStartButtonPressed));
-  }
+  void onPressedAction() async =>
+      state.onboardingStep.index > OnboardingStep.onboarding_initial.index
+          ? _sessionRepository.setOnboardingState(AppSessionStatus.onboarded)
+          : emit(
+              state.copyWith(
+                onboardingStep:
+                    OnboardingStep.values[state.onboardingStep.index + 1],
+              ),
+            );
 
-  String textButton(int index) => index == 2 ? 'Lets go!' : 'Skip';
+  String textButton(int index, BuildContext context) => index == 2
+      ? context.localizations.button_lets_go
+      : context.localizations.button_skip;
 
-  void setCurrentPage(int index) {
-    emit(state.copyWith(currentPage: index, buttonText: textButton(index)));
-  }
+  void setCurrentPage(int index) => emit(
+        state.copyWith(onboardingStep: OnboardingStep.onboardingPages[index]),
+      );
 }

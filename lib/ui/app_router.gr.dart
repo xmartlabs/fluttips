@@ -23,19 +23,19 @@ class _$AppRouter extends RootStackRouter {
         child: const CatalogScreen(),
       );
     },
-    UnauthenticatedRouter.name: (routeData) {
+    UncompletedOnboarding.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const SectionRouter(),
       );
     },
-    AuthenticatedRouter.name: (routeData) {
+    CompletedOnboarding.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const SectionRouter(),
       );
     },
-    Onboarding.name: (routeData) {
+    OnboardingRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const OnboardingScreen(),
@@ -90,24 +90,24 @@ class _$AppRouter extends RootStackRouter {
           path: '/catalog-screen',
         ),
         RouteConfig(
-          UnauthenticatedRouter.name,
+          UncompletedOnboarding.name,
           path: '/section-router',
           children: [
             RouteConfig(
-              Onboarding.name,
+              OnboardingRoute.name,
               path: '',
-              parent: UnauthenticatedRouter.name,
+              parent: UncompletedOnboarding.name,
             )
           ],
         ),
         RouteConfig(
-          AuthenticatedRouter.name,
+          CompletedOnboarding.name,
           path: '/section-router',
           children: [
             RouteConfig(
               HomeScreenRoute.name,
               path: '',
-              parent: AuthenticatedRouter.name,
+              parent: CompletedOnboarding.name,
               children: [
                 RouteConfig(
                   HomeTipsScreenRoute.name,
@@ -129,7 +129,7 @@ class _$AppRouter extends RootStackRouter {
             RouteConfig(
               ListFavouritesTipsScreenRoute.name,
               path: 'list_favourite',
-              parent: AuthenticatedRouter.name,
+              parent: CompletedOnboarding.name,
             ),
           ],
         ),
@@ -150,40 +150,40 @@ class CatalogRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SectionRouter]
-class UnauthenticatedRouter extends PageRouteInfo<void> {
-  const UnauthenticatedRouter({List<PageRouteInfo>? children})
+class UncompletedOnboarding extends PageRouteInfo<void> {
+  const UncompletedOnboarding({List<PageRouteInfo>? children})
       : super(
-          UnauthenticatedRouter.name,
+          UncompletedOnboarding.name,
           path: '/section-router',
           initialChildren: children,
         );
 
-  static const String name = 'UnauthenticatedRouter';
+  static const String name = 'UncompletedOnboarding';
 }
 
 /// generated route for
 /// [SectionRouter]
-class AuthenticatedRouter extends PageRouteInfo<void> {
-  const AuthenticatedRouter({List<PageRouteInfo>? children})
+class CompletedOnboarding extends PageRouteInfo<void> {
+  const CompletedOnboarding({List<PageRouteInfo>? children})
       : super(
-          AuthenticatedRouter.name,
+          CompletedOnboarding.name,
           path: '/section-router',
           initialChildren: children,
         );
 
-  static const String name = 'AuthenticatedRouter';
+  static const String name = 'CompletedOnboarding';
 }
 
 /// generated route for
 /// [OnboardingScreen]
-class Onboarding extends PageRouteInfo<void> {
-  const Onboarding()
+class OnboardingRoute extends PageRouteInfo<void> {
+  const OnboardingRoute()
       : super(
-          Onboarding.name,
+          OnboardingRoute.name,
           path: '',
         );
 
-  static const String name = 'Onboarding';
+  static const String name = 'OnboardingRoute';
 }
 
 /// generated route for

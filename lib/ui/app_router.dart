@@ -21,18 +21,18 @@ part 'app_router.gr.dart';
       page: CatalogScreen,
     ),
     AutoRoute(
-      name: 'UnauthenticatedRouter',
+      name: 'UncompletedOnboarding',
       page: SectionRouter,
       children: [
         AutoRoute(
           initial: true,
-          name: 'Onboarding',
+          name: 'OnboardingRoute',
           page: OnboardingScreen,
         ),
       ],
     ),
     AutoRoute(
-      name: 'AuthenticatedRouter',
+      name: 'CompletedOnboarding',
       page: SectionRouter,
       children: [
         AutoRoute(
