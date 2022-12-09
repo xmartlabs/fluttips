@@ -7,6 +7,13 @@ on:
       - synchronize
       - labeled
       - unlabeled
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - labeled
+      - unlabeled
 
 jobs:
   check:
