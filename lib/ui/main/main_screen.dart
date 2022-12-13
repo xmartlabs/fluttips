@@ -51,9 +51,9 @@ class _SplashContentScreen extends StatelessWidget {
   List<PageRouteInfo<dynamic>> provideRoutes(MainBaseState state) {
     switch (state.appSessionStatus) {
       case AppSessionStatus.onboarded:
-        return [const CompletedOnboarding()];
+        return [const UserOnboardedRouter()];
       case AppSessionStatus.notOnboarded:
-        return [const UncompletedOnboarding()];
+        return [const UncompletedOnboardingRouter()];
       case null:
         return [];
     }

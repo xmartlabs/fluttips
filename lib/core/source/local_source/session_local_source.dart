@@ -1,18 +1,16 @@
-import 'dart:convert';
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttips/core/common/helper/enum_helpers.dart';
 import 'package:fluttips/core/common/store/secure_storage_cached_source.dart';
 import 'package:fluttips/core/model/onboarding_status.dart';
 import 'package:stock/stock.dart';
 
-class AuthLocalSource {
+class SessionLocalSource {
   static const _storageAuthPrefix = 'AuthLocalSource';
   static const _keyOnboarding = '$_storageAuthPrefix.hasCompletedOnboarding';
 
   late SourceOfTruth<String, AppSessionStatus> _userOnboardedStorage;
 
-  AuthLocalSource(FlutterSecureStorage storage) {
+  SessionLocalSource(FlutterSecureStorage storage) {
     final secureStorage = SecuredStorageSourceOfTruth(storage);
     _userOnboardedStorage =
         secureStorage.mapToUsingMapper(_AppSessionStatusStockTypeMapper());
@@ -34,5 +32,5 @@ class _AppSessionStatusStockTypeMapper
       AppSessionStatus.notOnboarded;
 
   @override
-  String fromOutput(AppSessionStatus value) => value.name.toString();
+  String fromOutput(AppSessionStatus value) => value.name;
 }

@@ -21,7 +21,7 @@ part 'app_router.gr.dart';
       page: CatalogScreen,
     ),
     AutoRoute(
-      name: 'UncompletedOnboarding',
+      name: 'UncompletedOnboardingRouter',
       page: SectionRouter,
       children: [
         AutoRoute(
@@ -32,7 +32,7 @@ part 'app_router.gr.dart';
       ],
     ),
     AutoRoute(
-      name: 'CompletedOnboarding',
+      name: 'UserOnboardedRouter',
       page: SectionRouter,
       children: [
         AutoRoute(

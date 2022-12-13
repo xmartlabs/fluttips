@@ -125,7 +125,7 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
 
 class _$_OnboardingState implements _OnboardingState {
   const _$_OnboardingState(
-      {this.onboardingStep = OnboardingStep.onboarding_initial});
+      {this.onboardingStep = OnboardingStep.onboardingInitial});
 
   @override
   @JsonKey()

@@ -1,12 +1,11 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttips/core/repository/session_repository.dart';
 import 'package:fluttips/core/repository/tip_repository.dart';
-import 'package:fluttips/core/source/local_source/auth_local_source.dart';
 import 'package:fluttips/core/source/common/http_service.dart';
 import 'package:fluttips/core/source/remote_source/tip_remote_source.dart';
 import 'package:get_it/get_it.dart';
-
 import 'package:fluttips/core/source/database.dart';
+import 'package:fluttips/core/source/local_source/session_local_source.dart';
 
 class RepositoryDiModule {
   RepositoryDiModule._privateConstructor();
@@ -39,7 +38,7 @@ extension _GetItUseCaseDiModuleExtensions on GetIt {
   }
 
   void _setupSources() {
-    registerLazySingleton(() => AuthLocalSource(get()));
+    registerLazySingleton(() => SessionLocalSource(get()));
     registerLazySingleton(() => TipRemoteSource(get()));
     registerLazySingleton(() => get<AppDatabase>().amountLocalSource);
     registerLazySingleton(() => get<AppDatabase>().tipsLocalSource);

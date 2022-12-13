@@ -1,6 +1,7 @@
 {
   "button_lets_go": "Let's go!",
   "button_skip": "Skip",
+  "button_start": "Start",
   "error": "Error: {text}",
   "@error": {
     "description": "Gives the user an error explanation",

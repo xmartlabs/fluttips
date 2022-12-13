@@ -17,11 +17,11 @@ class BorderButton extends StatelessWidget {
   Widget build(BuildContext context) => TextButton(
         onPressed: action,
         style: TextButton.styleFrom(
-          padding: const EdgeInsets.only(
-            top: 5,
-            left: 10,
-            right: 5,
-            bottom: 5,
+          padding: EdgeInsets.only(
+            top: 5.h,
+            left: 10.w,
+            right: 5.w,
+            bottom: 5.h,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.r),

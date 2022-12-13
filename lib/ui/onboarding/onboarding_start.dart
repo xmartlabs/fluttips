@@ -4,7 +4,6 @@ import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/gen/assets.gen.dart';
 
-// TODO RENAME FILE
 class OnboardingStartScreen extends StatelessWidget {
   const OnboardingStartScreen({
     Key? key,

@@ -5,10 +5,10 @@ import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/onboarding/onboarding_step.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/onboarding/onboarding_cubit.dart';
-import 'package:fluttips/ui/common/animatedPagerDote.dart';
+import 'package:fluttips/ui/common/animated_pager_dote.dart';
 
 class OnboardingContentScreen extends StatelessWidget {
-  const OnboardingContentScreen();
+  const OnboardingContentScreen({super.key});
 
   @override
   Widget build(BuildContext context) => Stack(
@@ -27,7 +27,7 @@ class OnboardingContentScreen extends StatelessWidget {
             children: OnboardingStep.onboardingPages
                 .map(
                   (pages) => AnimatedPagerDot(
-                    isCurrentPage: state.onboardingStep.index == pages.index,
+                    isDotSelected: state.onboardingStep.index == pages.index,
                     color: context.theme.colors.surface,
                   ),
                 )
@@ -75,12 +75,10 @@ class _PagerViewState extends State<_PagerView> {
                         ),
                       ),
                       SizedBox(height: 4.h),
-                      Container(
-                        child: Text(
-                          onboardingStep.getSecondaryText(context),
-                          style: context.theme.textStyles.bodyLarge!.copyWith(
-                            color: context.theme.colors.surface,
-                          ),
+                      Text(
+                        onboardingStep.getSecondaryText(context),
+                        style: context.theme.textStyles.bodyLarge!.copyWith(
+                          color: context.theme.colors.surface,
                         ),
                       ),
                     ],
