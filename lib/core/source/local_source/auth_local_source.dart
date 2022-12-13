@@ -18,27 +18,21 @@ class AuthLocalSource {
         secureStorage.mapToUsingMapper(_AppSessionStatusStockTypeMapper());
   }
 
-  Stream<AppSessionStatus?> getSessionStatus()  =>
+  Stream<AppSessionStatus?> getSessionStatus() =>
       _userOnboardedStorage.reader(_keyOnboarding);
 
   Future<void> setSessionStatus(AppSessionStatus status) async {
     await _userOnboardedStorage.write(_keyOnboarding, status);
   }
-
 }
 
 class _AppSessionStatusStockTypeMapper
     extends StockTypeMapper<String, AppSessionStatus> {
   @override
-  AppSessionStatus fromInput(String value) {
-    print('value $value');
-    return enumFromString(AppSessionStatus.values, value) ??
+  AppSessionStatus fromInput(String value) =>
+      enumFromString(AppSessionStatus.values, value) ??
       AppSessionStatus.notOnboarded;
-  }
 
   @override
-  String fromOutput(AppSessionStatus value) {
-    print('value2 $value');
-    return value.toString();
-  }
+  String fromOutput(AppSessionStatus value) => value.name.toString();
 }

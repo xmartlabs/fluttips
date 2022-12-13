@@ -6,14 +6,12 @@ const animationShortDuration = Duration(milliseconds: 200);
 
 class AnimatedPagerDot extends StatelessWidget {
   const AnimatedPagerDot({
-    Key? key,
-    required this.currentPage,
-    required this.myIndex,
+    required this.isCurrentPage,
     required this.color,
+    Key? key,
   }) : super(key: key);
 
-  final int currentPage;
-  final int myIndex;
+  final bool isCurrentPage;
   final Color color;
 
   @override
@@ -24,7 +22,7 @@ class AnimatedPagerDot extends StatelessWidget {
         margin: const EdgeInsets.only(left: 4, right: 4, bottom: 15, top: 10),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: myIndex == currentPage ? color : color.withOpacity(0.5),
+          color: isCurrentPage ? color : color.withOpacity(0.5),
         ),
       );
 }

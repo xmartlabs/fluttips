@@ -7,60 +7,50 @@ import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/onboarding/onboarding_cubit.dart';
 import 'package:fluttips/ui/common/animatedPagerDote.dart';
 
-class OnboardingContentScreen extends StatefulWidget {
+class OnboardingContentScreen extends StatelessWidget {
   const OnboardingContentScreen();
 
   @override
-  State<OnboardingContentScreen> createState() =>
-      _OnboardingContentScreenState();
-}
+  Widget build(BuildContext context) => Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          const _PagerView(),
+          buildViewPagerIndicator(),
+        ],
+      );
 
-class _OnboardingContentScreenState extends State<OnboardingContentScreen> {
-  _OnboardingContentScreenState();
-
-  final PageController _pageController = PageController();
-
-  @override
-  Widget build(BuildContext context) =>
+  Widget buildViewPagerIndicator() =>
       BlocBuilder<OnboardingCubit, OnboardingBaseState>(
-        builder: (context, state) => Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            _PagerView(pageController: _pageController),
-            Positioned(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: OnboardingStep.onboardingPages
-                    .map(
-                      (e) => AnimatedPagerDot(
-                        currentPage: state.onboardingStep.index,
-                        myIndex: e.index,
-                        color: context.theme.colors.surface,
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-          ],
+        builder: (context, state) => Positioned(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: OnboardingStep.onboardingPages
+                .map(
+                  (pages) => AnimatedPagerDot(
+                    isCurrentPage: state.onboardingStep.index == pages.index,
+                    color: context.theme.colors.surface,
+                  ),
+                )
+                .toList(),
+          ),
         ),
       );
 }
 
-class _PagerView extends StatelessWidget {
+class _PagerView extends StatefulWidget {
   const _PagerView({
-    required PageController pageController,
     Key? key,
-  })  : _pageController = pageController,
-        super(key: key);
-
-  final PageController _pageController;
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Stack(
-        children: [
-          pageViewContent(context),
-        ],
-      );
+  State<_PagerView> createState() => _PagerViewState();
+}
+
+class _PagerViewState extends State<_PagerView> {
+  @override
+  Widget build(BuildContext context) => pageViewContent(context);
+
+  final PageController _pageController = PageController();
 
   PageView pageViewContent(BuildContext context) => PageView(
         controller: _pageController,

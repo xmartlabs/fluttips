@@ -53,8 +53,9 @@ class _SplashContentScreen extends StatelessWidget {
       case AppSessionStatus.onboarded:
         return [const CompletedOnboarding()];
       case AppSessionStatus.notOnboarded:
-      case null:
         return [const UncompletedOnboarding()];
+      case null:
+        return [];
     }
   }
 }

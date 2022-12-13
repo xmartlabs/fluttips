@@ -8,14 +8,10 @@ import 'package:fluttips/core/model/onboarding_status.dart';
 class SessionRepository {
   final AuthLocalSource _authLocalSource = DiProvider.get();
 
-  Stream<AppSessionStatus> getSessionStatus() =>
-      _authLocalSource.getSessionStatus().map((status) {
-        print('get $status');
-        return status ?? AppSessionStatus.notOnboarded;
-      });
+  Stream<AppSessionStatus> getSessionStatus() => _authLocalSource
+      .getSessionStatus()
+      .map((status) => status ?? AppSessionStatus.notOnboarded);
 
-  Future<void> setOnboardingState(AppSessionStatus sessionStatus) {
-    print('hola   $sessionStatus');
-    return _authLocalSource.setSessionStatus(sessionStatus);
-  }
+  Future<void> setOnboardingState(AppSessionStatus sessionStatus) =>
+      _authLocalSource.setSessionStatus(sessionStatus);
 }

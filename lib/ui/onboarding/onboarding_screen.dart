@@ -19,29 +19,34 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) => BlocProvider(
         lazy: false,
         create: (context) => OnboardingCubit(context.read<ErrorHandlerCubit>()),
-        child: Builder(builder: (context) {
-          final isStartButtonPressed = context.select(
-            (OnboardingCubit cubit) =>
-                cubit.state.onboardingStep.index >
-                OnboardingStep.onboarding_initial.index,
-          );
-          final btnText = context.select(
-            (OnboardingCubit cubit) =>
-                cubit.state.onboardingStep.getButtonText(context),
-          );
-          return Scaffold(
-            backgroundColor: context.theme.colors.background,
-            body: Stack(
-              fit: StackFit.expand,
-              alignment: Alignment.center,
-              children: [
-                isStartButtonPressed
-                    ? const OnboardingContentScreen()
-                    : const OnboardingStartScreen(),
-                OnboardingButton(text: btnText),
-              ],
-            ),
-          );
-        }),
+        child: const OnboardingScreenContent(),
       );
+}
+
+class OnboardingScreenContent extends StatelessWidget {
+  const OnboardingScreenContent({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) =>
+      BlocBuilder<OnboardingCubit, OnboardingBaseState>(
+          builder: (context, state) {
+        final isStartButtonPressed = state.onboardingStep.index >
+            OnboardingStep.onboarding_initial.index;
+        final btnText = state.onboardingStep.getButtonText(context);
+        return Scaffold(
+          backgroundColor: context.theme.colors.background,
+          body: Stack(
+            fit: StackFit.expand,
+            alignment: Alignment.center,
+            children: [
+              isStartButtonPressed
+                  ? const OnboardingContentScreen()
+                  : const OnboardingStartScreen(),
+              OnboardingButton(text: btnText),
+            ],
+          ),
+        );
+      });
 }
