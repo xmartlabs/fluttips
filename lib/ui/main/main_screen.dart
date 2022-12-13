@@ -4,11 +4,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fluttips/core/di/di_provider.dart';
-import 'package:fluttips/core/model/authentication_status.dart';
 import 'package:fluttips/ui/app_router.dart';
 import 'package:fluttips/ui/main/main_cubit.dart';
 import 'package:fluttips/ui/resources.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
+
+import 'package:fluttips/core/model/onboarding_status.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -48,11 +49,11 @@ class _SplashContentScreen extends StatelessWidget {
       );
 
   List<PageRouteInfo<dynamic>> provideRoutes(MainBaseState state) {
-    switch (state.authenticationStatus) {
-      // TODO: Fix redirection to implement the Onboarding
-      case AuthenticationStatus.unauthenticated:
-      case AuthenticationStatus.authenticated:
-        return [const AuthenticatedRouter()];
+    switch (state.appSessionStatus) {
+      case AppSessionStatus.onboarded:
+        return [const UserOnboardedRouter()];
+      case AppSessionStatus.notOnboarded:
+        return [const UncompletedOnboardingRouter()];
       case null:
         return [];
     }

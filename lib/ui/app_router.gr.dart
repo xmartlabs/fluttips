@@ -23,16 +23,22 @@ class _$AppRouter extends RootStackRouter {
         child: const CatalogScreen(),
       );
     },
-    UnauthenticatedRouter.name: (routeData) {
+    UncompletedOnboardingRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const SectionRouter(),
       );
     },
-    AuthenticatedRouter.name: (routeData) {
+    UserOnboardedRouter.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const SectionRouter(),
+      );
+    },
+    OnboardingRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const OnboardingScreen(),
       );
     },
     HomeScreenRoute.name: (routeData) {
@@ -84,17 +90,24 @@ class _$AppRouter extends RootStackRouter {
           path: '/catalog-screen',
         ),
         RouteConfig(
-          UnauthenticatedRouter.name,
+          UncompletedOnboardingRouter.name,
           path: '/section-router',
+          children: [
+            RouteConfig(
+              OnboardingRoute.name,
+              path: '',
+              parent: UncompletedOnboardingRouter.name,
+            )
+          ],
         ),
         RouteConfig(
-          AuthenticatedRouter.name,
+          UserOnboardedRouter.name,
           path: '/section-router',
           children: [
             RouteConfig(
               HomeScreenRoute.name,
               path: '',
-              parent: AuthenticatedRouter.name,
+              parent: UserOnboardedRouter.name,
               children: [
                 RouteConfig(
                   HomeTipsScreenRoute.name,
@@ -116,7 +129,7 @@ class _$AppRouter extends RootStackRouter {
             RouteConfig(
               ListFavouritesTipsScreenRoute.name,
               path: 'list_favourite',
-              parent: AuthenticatedRouter.name,
+              parent: UserOnboardedRouter.name,
             ),
           ],
         ),
@@ -137,27 +150,40 @@ class CatalogRouter extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SectionRouter]
-class UnauthenticatedRouter extends PageRouteInfo<void> {
-  const UnauthenticatedRouter()
+class UncompletedOnboardingRouter extends PageRouteInfo<void> {
+  const UncompletedOnboardingRouter({List<PageRouteInfo>? children})
       : super(
-          UnauthenticatedRouter.name,
-          path: '/section-router',
-        );
-
-  static const String name = 'UnauthenticatedRouter';
-}
-
-/// generated route for
-/// [SectionRouter]
-class AuthenticatedRouter extends PageRouteInfo<void> {
-  const AuthenticatedRouter({List<PageRouteInfo>? children})
-      : super(
-          AuthenticatedRouter.name,
+          UncompletedOnboardingRouter.name,
           path: '/section-router',
           initialChildren: children,
         );
 
-  static const String name = 'AuthenticatedRouter';
+  static const String name = 'UncompletedOnboardingRouter';
+}
+
+/// generated route for
+/// [SectionRouter]
+class UserOnboardedRouter extends PageRouteInfo<void> {
+  const UserOnboardedRouter({List<PageRouteInfo>? children})
+      : super(
+          UserOnboardedRouter.name,
+          path: '/section-router',
+          initialChildren: children,
+        );
+
+  static const String name = 'UserOnboardedRouter';
+}
+
+/// generated route for
+/// [OnboardingScreen]
+class OnboardingRoute extends PageRouteInfo<void> {
+  const OnboardingRoute()
+      : super(
+          OnboardingRoute.name,
+          path: '',
+        );
+
+  static const String name = 'OnboardingRoute';
 }
 
 /// generated route for

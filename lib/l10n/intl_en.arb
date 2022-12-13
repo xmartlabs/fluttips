@@ -1,4 +1,7 @@
 {
+  "button_lets_go": "Let's go!",
+  "button_skip": "Skip",
+  "button_start": "Start",
   "error": "Error: {text}",
   "@error": {
     "description": "Gives the user an error explanation",
@@ -20,6 +23,12 @@
   "mail": "Mail",
   "messageEmptyFavoritesScreen": "You don't have any favorites yet :(",
   "myFavorites": "My Favorites",
+  "onboarding_favourite_first_text": "Save your favorite tips",
+  "onboarding_favourite_second_text": "to have all of them together",
+  "onboarding_gestures_first_text": "Navigate through the tip pages",
+  "onboarding_gestures_second_text": "swiping up and down",
+  "onboarding_tips_and_trick_second_text": "for Flutter development",
+  "onboarding_tips_and_tricks_first_text": "Find lots of tips and tricks",
   "password": "Password",
   "search": "Search",
   "xmartlabs_projects": "Xmartlabs' projects"

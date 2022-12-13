@@ -72,6 +72,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/images/
     - environments/
 
 flutter_gen:

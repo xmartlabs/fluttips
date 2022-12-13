@@ -16,21 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MainBaseState {
-  AuthenticationStatus? get authenticationStatus =>
-      throw _privateConstructorUsedError;
+  AppSessionStatus? get appSessionStatus => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatus? authenticationStatus) state,
+    required TResult Function(AppSessionStatus? appSessionStatus) state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatus? authenticationStatus)? state,
+    TResult? Function(AppSessionStatus? appSessionStatus)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatus? authenticationStatus)? state,
+    TResult Function(AppSessionStatus? appSessionStatus)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +61,7 @@ abstract class $MainBaseStateCopyWith<$Res> {
           MainBaseState value, $Res Function(MainBaseState) then) =
       _$MainBaseStateCopyWithImpl<$Res, MainBaseState>;
   @useResult
-  $Res call({AuthenticationStatus? authenticationStatus});
+  $Res call({AppSessionStatus? appSessionStatus});
 }
 
 /// @nodoc
@@ -78,13 +77,13 @@ class _$MainBaseStateCopyWithImpl<$Res, $Val extends MainBaseState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? authenticationStatus = freezed,
+    Object? appSessionStatus = freezed,
   }) {
     return _then(_value.copyWith(
-      authenticationStatus: freezed == authenticationStatus
-          ? _value.authenticationStatus
-          : authenticationStatus // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus?,
+      appSessionStatus: freezed == appSessionStatus
+          ? _value.appSessionStatus
+          : appSessionStatus // ignore: cast_nullable_to_non_nullable
+              as AppSessionStatus?,
     ) as $Val);
   }
 }
@@ -97,7 +96,7 @@ abstract class _$$_MainStateCopyWith<$Res>
       __$$_MainStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({AuthenticationStatus? authenticationStatus});
+  $Res call({AppSessionStatus? appSessionStatus});
 }
 
 /// @nodoc
@@ -111,13 +110,13 @@ class __$$_MainStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? authenticationStatus = freezed,
+    Object? appSessionStatus = freezed,
   }) {
     return _then(_$_MainState(
-      authenticationStatus: freezed == authenticationStatus
-          ? _value.authenticationStatus
-          : authenticationStatus // ignore: cast_nullable_to_non_nullable
-              as AuthenticationStatus?,
+      appSessionStatus: freezed == appSessionStatus
+          ? _value.appSessionStatus
+          : appSessionStatus // ignore: cast_nullable_to_non_nullable
+              as AppSessionStatus?,
     ));
   }
 }
@@ -125,15 +124,15 @@ class __$$_MainStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MainState implements _MainState {
-  const _$_MainState({this.authenticationStatus = null});
+  const _$_MainState({this.appSessionStatus = null});
 
   @override
   @JsonKey()
-  final AuthenticationStatus? authenticationStatus;
+  final AppSessionStatus? appSessionStatus;
 
   @override
   String toString() {
-    return 'MainBaseState.state(authenticationStatus: $authenticationStatus)';
+    return 'MainBaseState.state(appSessionStatus: $appSessionStatus)';
   }
 
   @override
@@ -141,12 +140,12 @@ class _$_MainState implements _MainState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MainState &&
-            (identical(other.authenticationStatus, authenticationStatus) ||
-                other.authenticationStatus == authenticationStatus));
+            (identical(other.appSessionStatus, appSessionStatus) ||
+                other.appSessionStatus == appSessionStatus));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, authenticationStatus);
+  int get hashCode => Object.hash(runtimeType, appSessionStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -157,27 +156,27 @@ class _$_MainState implements _MainState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(AuthenticationStatus? authenticationStatus) state,
+    required TResult Function(AppSessionStatus? appSessionStatus) state,
   }) {
-    return state(authenticationStatus);
+    return state(appSessionStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(AuthenticationStatus? authenticationStatus)? state,
+    TResult? Function(AppSessionStatus? appSessionStatus)? state,
   }) {
-    return state?.call(authenticationStatus);
+    return state?.call(appSessionStatus);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AuthenticationStatus? authenticationStatus)? state,
+    TResult Function(AppSessionStatus? appSessionStatus)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
-      return state(authenticationStatus);
+      return state(appSessionStatus);
     }
     return orElse();
   }
@@ -212,11 +211,11 @@ class _$_MainState implements _MainState {
 }
 
 abstract class _MainState implements MainBaseState {
-  const factory _MainState({final AuthenticationStatus? authenticationStatus}) =
+  const factory _MainState({final AppSessionStatus? appSessionStatus}) =
       _$_MainState;
 
   @override
-  AuthenticationStatus? get authenticationStatus;
+  AppSessionStatus? get appSessionStatus;
   @override
   @JsonKey(ignore: true)
   _$$_MainStateCopyWith<_$_MainState> get copyWith =>
