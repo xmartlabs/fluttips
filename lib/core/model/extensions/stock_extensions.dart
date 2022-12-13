@@ -11,12 +11,14 @@ extension StockStreamExtensions<T> on Stream<StockResponse<T>> {
         }
       });
 
-  Stream<T> filterSuccessStockResponseData([Function(Object?)? errorHandler]) =>
+  Stream<T> filterSuccessStockResponseData(
+          [Function(Object?, StackTrace?)? errorHandler]) =>
       flatMap((response) async* {
         if (response.isData) {
           yield response.requireData();
         } else if (response.isError) {
-          errorHandler?.call((response as StockResponseError).error);
+          final stockError = response as StockResponseError;
+          errorHandler?.call(stockError.error, stockError.stackTrace);
         }
       });
 }

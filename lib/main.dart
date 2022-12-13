@@ -14,6 +14,8 @@ import 'package:fluttips/ui/main/main_screen.dart';
 import 'package:bugsee_flutter/bugsee.dart';
 
 Future<void> main() async {
+  final url = 'https://raw.githubusercontent.com/vandadnp/flutter-tips-and-tricks/main/tipsandtricks/' + Uri.encodeComponent('unwrap-list-t?-?-in-dart/unwrap-list-t?-?-in-dart.jpg');
+  print(url);
   await runZonedGuarded(
     () async {
       final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();

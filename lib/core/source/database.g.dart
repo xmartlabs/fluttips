@@ -87,7 +87,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`tipId`))');
+            'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE, PRIMARY KEY (`tipId`))');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favouriteDate` INTEGER, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
