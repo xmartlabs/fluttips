@@ -14,6 +14,7 @@ class TipStockTypeMapper extends StockTypeMapper<TipDbEntity, Tip> {
         mdUrl: value.mdUrl,
         favouriteDate: value.favouriteDate,
         randomId: value.randomId,
+        amountViews: value.amountViews,
       );
 
   @override
@@ -26,6 +27,7 @@ class TipStockTypeMapper extends StockTypeMapper<TipDbEntity, Tip> {
         mdUrl: value.mdUrl,
         favouriteDate: value.favouriteDate,
         randomId: value.randomId,
+        amountViews: value.amountViews,
       );
 }
 
