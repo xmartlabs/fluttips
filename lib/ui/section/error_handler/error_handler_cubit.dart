@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:fluttips/core/common/logger.dart';
 import 'package:fluttips/ui/section/error_handler/general_error.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,7 +14,11 @@ class ErrorHandlerCubit extends Cubit<ErrorHandlerState>
   ErrorHandlerCubit() : super(const ErrorHandlerState.init());
 
   @override
-  void handleError(Object? error, [VoidCallback? retry]) {
+  void handleError(
+    Object? error, [
+    StackTrace? stacktrace,
+    VoidCallback? retry,
+  ]) {
     if (error is DioError &&
         (error.type == DioErrorType.connectTimeout ||
             error.type == DioErrorType.receiveTimeout)) {
@@ -21,11 +26,16 @@ class ErrorHandlerCubit extends Cubit<ErrorHandlerState>
     } else if (error is GeneralError) {
       emit(ErrorHandlerState.generalError(error.title, error.description));
     } else {
+      Logger.w("Unknown error", error, stacktrace);
       emit(ErrorHandlerState.unknownError(error));
     }
   }
 }
 
 abstract class GeneralErrorHandler {
-  void handleError(Object? error, [VoidCallback? retry]);
+  void handleError(
+    Object? error, [
+    StackTrace? stacktrace,
+    VoidCallback? retry,
+  ]);
 }

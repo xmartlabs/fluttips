@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:dartx/dartx.dart';
 import 'package:fluttips/core/model/service/responses/github_file_response.dart';
 import 'package:fluttips/core/model/service/responses/service_response.dart';
@@ -42,7 +41,8 @@ class TipRemoteSource {
       id: key,
       name: _generateTipName(key),
       url: Config.prefixUrl + tipDir.path,
-      imageUrl: Config.imageBaseUrl + files[FileType.image]!.path,
+      imageUrl: Config.imageBaseUrl +
+          Uri.encodeComponent(files[FileType.image]!.path),
       codeUrl: Config.prefixUrl + (files[FileType.code]?.path ?? ''),
       mdUrl: Config.prefixUrl + (files[FileType.md]?.path ?? ''),
       randomId: random.nextInt(Config.maxDatabaseIntValue.toInt()),
