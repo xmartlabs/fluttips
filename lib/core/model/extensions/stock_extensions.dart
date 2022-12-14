@@ -11,8 +11,9 @@ extension StockStreamExtensions<T> on Stream<StockResponse<T>> {
         }
       });
 
-  Stream<T> filterSuccessStockResponseData(
-          [Function(Object?, StackTrace?)? errorHandler]) =>
+  Stream<T> filterSuccessStockResponseData([
+    Function(Object?, StackTrace?)? errorHandler,
+  ]) =>
       flatMap((response) async* {
         if (response.isData) {
           yield response.requireData();

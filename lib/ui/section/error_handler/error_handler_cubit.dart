@@ -14,7 +14,11 @@ class ErrorHandlerCubit extends Cubit<ErrorHandlerState>
   ErrorHandlerCubit() : super(const ErrorHandlerState.init());
 
   @override
-  void handleError(Object? error, [StackTrace? stacktrace, VoidCallback? retry]) {
+  void handleError(
+    Object? error, [
+    StackTrace? stacktrace,
+    VoidCallback? retry,
+  ]) {
     if (error is DioError &&
         (error.type == DioErrorType.connectTimeout ||
             error.type == DioErrorType.receiveTimeout)) {
@@ -29,5 +33,9 @@ class ErrorHandlerCubit extends Cubit<ErrorHandlerState>
 }
 
 abstract class GeneralErrorHandler {
-  void handleError(Object? error, [StackTrace? stacktrace, VoidCallback? retry]);
+  void handleError(
+    Object? error, [
+    StackTrace? stacktrace,
+    VoidCallback? retry,
+  ]);
 }
