@@ -63,8 +63,6 @@ class _$AppDatabase extends AppDatabase {
 
   TipsLocalSource? _tipsLocalSourceInstance;
 
-  AmountViewsLocalSource? _amountLocalSourceInstance;
-
   Future<sqflite.Database> open(
     String path,
     List<Migration> migrations, [
@@ -87,9 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `TipsAmountViews` (`tipId` TEXT NOT NULL, `amountViews` INTEGER NOT NULL, FOREIGN KEY (`tipId`) REFERENCES `Tips` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`tipId`))');
-        await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favouriteDate` INTEGER, `randomId` INTEGER NOT NULL, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `Tips` (`id` TEXT NOT NULL, `name` TEXT NOT NULL, `url` TEXT NOT NULL, `imageUrl` TEXT NOT NULL, `codeUrl` TEXT, `mdUrl` TEXT, `favouriteDate` INTEGER, `randomId` INTEGER NOT NULL, `amountViews` INTEGER NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -101,12 +97,6 @@ class _$AppDatabase extends AppDatabase {
   TipsLocalSource get tipsLocalSource {
     return _tipsLocalSourceInstance ??=
         _$TipsLocalSource(database, changeListener);
-  }
-
-  @override
-  AmountViewsLocalSource get amountLocalSource {
-    return _amountLocalSourceInstance ??=
-        _$AmountViewsLocalSource(database, changeListener);
   }
 }
 
@@ -127,7 +117,8 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'mdUrl': item.mdUrl,
                   'favouriteDate':
                       _dateTimeConverter.encode(item.favouriteDate),
-                  'randomId': item.randomId
+                  'randomId': item.randomId,
+                  'amountViews': item.amountViews
                 },
             changeListener),
         _tipDbEntityUpdateAdapter = UpdateAdapter(
@@ -143,7 +134,8 @@ class _$TipsLocalSource extends TipsLocalSource {
                   'mdUrl': item.mdUrl,
                   'favouriteDate':
                       _dateTimeConverter.encode(item.favouriteDate),
-                  'randomId': item.randomId
+                  'randomId': item.randomId,
+                  'amountViews': item.amountViews
                 },
             changeListener);
 
@@ -169,7 +161,27 @@ class _$TipsLocalSource extends TipsLocalSource {
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
             favouriteDate:
-                _dateTimeConverter.decode(row['favouriteDate'] as int?)),
+                _dateTimeConverter.decode(row['favouriteDate'] as int?),
+            amountViews: row['amountViews'] as int),
+        queryableName: 'Tips',
+        isView: false);
+  }
+
+  @override
+  Stream<List<TipDbEntity>> getAmountsView() {
+    return _queryAdapter.queryListStream(
+        'SELECT * FROM Tips ORDER BY amountViews',
+        mapper: (Map<String, Object?> row) => TipDbEntity(
+            id: row['id'] as String,
+            name: row['name'] as String,
+            url: row['url'] as String,
+            imageUrl: row['imageUrl'] as String,
+            codeUrl: row['codeUrl'] as String?,
+            mdUrl: row['mdUrl'] as String?,
+            randomId: row['randomId'] as int,
+            favouriteDate:
+                _dateTimeConverter.decode(row['favouriteDate'] as int?),
+            amountViews: row['amountViews'] as int),
         queryableName: 'Tips',
         isView: false);
   }
@@ -186,7 +198,8 @@ class _$TipsLocalSource extends TipsLocalSource {
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
             favouriteDate:
-                _dateTimeConverter.decode(row['favouriteDate'] as int?)),
+                _dateTimeConverter.decode(row['favouriteDate'] as int?),
+            amountViews: row['amountViews'] as int),
         arguments: [id]);
   }
 
@@ -203,7 +216,8 @@ class _$TipsLocalSource extends TipsLocalSource {
             mdUrl: row['mdUrl'] as String?,
             randomId: row['randomId'] as int,
             favouriteDate:
-                _dateTimeConverter.decode(row['favouriteDate'] as int?)),
+                _dateTimeConverter.decode(row['favouriteDate'] as int?),
+            amountViews: row['amountViews'] as int),
         queryableName: 'Tips',
         isView: false);
   }
@@ -236,56 +250,6 @@ class _$TipsLocalSource extends TipsLocalSource {
         await transactionDatabase.tipsLocalSource.replaceAndUpdateTips(tips);
       });
     }
-  }
-}
-
-class _$AmountViewsLocalSource extends AmountViewsLocalSource {
-  _$AmountViewsLocalSource(
-    this.database,
-    this.changeListener,
-  )   : _queryAdapter = QueryAdapter(database, changeListener),
-        _tipAmountViewsDbEntityInsertionAdapter = InsertionAdapter(
-            database,
-            'TipsAmountViews',
-            (TipAmountViewsDbEntity item) => <String, Object?>{
-                  'tipId': item.tipId,
-                  'amountViews': item.amountViews
-                },
-            changeListener);
-
-  final sqflite.DatabaseExecutor database;
-
-  final StreamController<String> changeListener;
-
-  final QueryAdapter _queryAdapter;
-
-  final InsertionAdapter<TipAmountViewsDbEntity>
-      _tipAmountViewsDbEntityInsertionAdapter;
-
-  @override
-  Stream<List<TipAmountViewsDbEntity>> getAmountsView() {
-    return _queryAdapter.queryListStream(
-        'SELECT * FROM TipsAmountViews ORDER BY amountViews',
-        mapper: (Map<String, Object?> row) => TipAmountViewsDbEntity(
-            tipId: row['tipId'] as String,
-            amountViews: row['amountViews'] as int),
-        queryableName: 'TipsAmountViews',
-        isView: false);
-  }
-
-  @override
-  Future<TipAmountViewsDbEntity?> getAmountsViewById(String id) async {
-    return _queryAdapter.query('SELECT * FROM TipsAmountViews WHERE tipId = ?1',
-        mapper: (Map<String, Object?> row) => TipAmountViewsDbEntity(
-            tipId: row['tipId'] as String,
-            amountViews: row['amountViews'] as int),
-        arguments: [id]);
-  }
-
-  @override
-  Future<void> insertAmount(TipAmountViewsDbEntity amountView) async {
-    await _tipAmountViewsDbEntityInsertionAdapter.insert(
-        amountView, OnConflictStrategy.replace);
   }
 }
 
