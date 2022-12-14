@@ -28,6 +28,7 @@ mixin _$Tip {
   String? get mdUrl => throw _privateConstructorUsedError;
   int get randomId => throw _privateConstructorUsedError;
   DateTime? get favouriteDate => throw _privateConstructorUsedError;
+  int get amountViews => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +48,8 @@ abstract class $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      DateTime? favouriteDate});
+      DateTime? favouriteDate,
+      int amountViews});
 }
 
 /// @nodoc
@@ -70,6 +72,7 @@ class _$TipCopyWithImpl<$Res, $Val extends Tip> implements $TipCopyWith<$Res> {
     Object? mdUrl = freezed,
     Object? randomId = null,
     Object? favouriteDate = freezed,
+    Object? amountViews = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -104,6 +107,10 @@ class _$TipCopyWithImpl<$Res, $Val extends Tip> implements $TipCopyWith<$Res> {
           ? _value.favouriteDate
           : favouriteDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      amountViews: null == amountViews
+          ? _value.amountViews
+          : amountViews // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -122,7 +129,8 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
       String? codeUrl,
       String? mdUrl,
       int randomId,
-      DateTime? favouriteDate});
+      DateTime? favouriteDate,
+      int amountViews});
 }
 
 /// @nodoc
@@ -142,6 +150,7 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$_Tip>
     Object? mdUrl = freezed,
     Object? randomId = null,
     Object? favouriteDate = freezed,
+    Object? amountViews = null,
   }) {
     return _then(_$_Tip(
       id: null == id
@@ -176,6 +185,10 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$_Tip>
           ? _value.favouriteDate
           : favouriteDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      amountViews: null == amountViews
+          ? _value.amountViews
+          : amountViews // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -192,7 +205,8 @@ class _$_Tip implements _Tip {
       required this.codeUrl,
       required this.mdUrl,
       required this.randomId,
-      this.favouriteDate});
+      this.favouriteDate,
+      this.amountViews = 0});
 
   factory _$_Tip.fromJson(Map<String, dynamic> json) => _$$_TipFromJson(json);
 
@@ -212,10 +226,13 @@ class _$_Tip implements _Tip {
   final int randomId;
   @override
   final DateTime? favouriteDate;
+  @override
+  @JsonKey()
+  final int amountViews;
 
   @override
   String toString() {
-    return 'Tip(id: $id, name: $name, url: $url, imageUrl: $imageUrl, codeUrl: $codeUrl, mdUrl: $mdUrl, randomId: $randomId, favouriteDate: $favouriteDate)';
+    return 'Tip(id: $id, name: $name, url: $url, imageUrl: $imageUrl, codeUrl: $codeUrl, mdUrl: $mdUrl, randomId: $randomId, favouriteDate: $favouriteDate, amountViews: $amountViews)';
   }
 
   @override
@@ -233,13 +250,15 @@ class _$_Tip implements _Tip {
             (identical(other.randomId, randomId) ||
                 other.randomId == randomId) &&
             (identical(other.favouriteDate, favouriteDate) ||
-                other.favouriteDate == favouriteDate));
+                other.favouriteDate == favouriteDate) &&
+            (identical(other.amountViews, amountViews) ||
+                other.amountViews == amountViews));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, url, imageUrl, codeUrl,
-      mdUrl, randomId, favouriteDate);
+      mdUrl, randomId, favouriteDate, amountViews);
 
   @JsonKey(ignore: true)
   @override
@@ -264,7 +283,8 @@ abstract class _Tip implements Tip {
       required final String? codeUrl,
       required final String? mdUrl,
       required final int randomId,
-      final DateTime? favouriteDate}) = _$_Tip;
+      final DateTime? favouriteDate,
+      final int amountViews}) = _$_Tip;
 
   factory _Tip.fromJson(Map<String, dynamic> json) = _$_Tip.fromJson;
 
@@ -284,6 +304,8 @@ abstract class _Tip implements Tip {
   int get randomId;
   @override
   DateTime? get favouriteDate;
+  @override
+  int get amountViews;
   @override
   @JsonKey(ignore: true)
   _$$_TipCopyWith<_$_Tip> get copyWith => throw _privateConstructorUsedError;

@@ -12,6 +12,7 @@ class TipDbEntity {
   final String? mdUrl;
   DateTime? favouriteDate;
   int randomId;
+  int amountViews;
 
   TipDbEntity({
     required this.id,
@@ -22,5 +23,6 @@ class TipDbEntity {
     required this.mdUrl,
     required this.randomId,
     required this.favouriteDate,
+    required this.amountViews,
   });
 }
