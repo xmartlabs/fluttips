@@ -52,7 +52,7 @@ class TipRepository {
       );
 
   Future<Map<String, int>> getVisited() =>
-      _tipsLocalSource.getAmountsView().first.then(
+      _tipsLocalSource.getTips().first.then(
             (values) => values.associate(
               (element) => MapEntry(element.id, element.amountViews),
             ),
@@ -80,8 +80,8 @@ class TipRepository {
   Future<void> setTipAsViewedInSession(Tip tip) async {
     if (!_tipsAlreadyVisited.contains(tip.id)) {
       _tipsAlreadyVisited.add(tip.id);
-      final newTip = tip.copyWith(amountViews: tip.amountViews + 1);
-      final tipToUpdate = _tipMapper.fromOutput(newTip);
+      final dbTip = tip.copyWith(amountViews: tip.amountViews + 1);
+      final tipToUpdate = _tipMapper.fromOutput(dbTip);
       await _tipsLocalSource.updateTip(tipToUpdate);
     }
   }

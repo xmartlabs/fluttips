@@ -11,11 +11,6 @@ abstract class TipsLocalSource {
   @Query('SELECT * FROM ${TipDbEntity.tableName} ORDER BY randomId')
   Stream<List<TipDbEntity>> getTips();
 
-  @Query(
-    'SELECT * FROM ${TipDbEntity.tableName} ORDER BY amountViews',
-  )
-  Stream<List<TipDbEntity>> getAmountsView();
-
   @Query('SELECT * FROM ${TipDbEntity.tableName} WHERE id = :id')
   Future<List<TipDbEntity>> getTipById(String id);
 

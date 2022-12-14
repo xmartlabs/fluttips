@@ -168,25 +168,6 @@ class _$TipsLocalSource extends TipsLocalSource {
   }
 
   @override
-  Stream<List<TipDbEntity>> getAmountsView() {
-    return _queryAdapter.queryListStream(
-        'SELECT * FROM Tips ORDER BY amountViews',
-        mapper: (Map<String, Object?> row) => TipDbEntity(
-            id: row['id'] as String,
-            name: row['name'] as String,
-            url: row['url'] as String,
-            imageUrl: row['imageUrl'] as String,
-            codeUrl: row['codeUrl'] as String?,
-            mdUrl: row['mdUrl'] as String?,
-            randomId: row['randomId'] as int,
-            favouriteDate:
-                _dateTimeConverter.decode(row['favouriteDate'] as int?),
-            amountViews: row['amountViews'] as int),
-        queryableName: 'Tips',
-        isView: false);
-  }
-
-  @override
   Future<List<TipDbEntity>> getTipById(String id) async {
     return _queryAdapter.queryList('SELECT * FROM Tips WHERE id = ?1',
         mapper: (Map<String, Object?> row) => TipDbEntity(
