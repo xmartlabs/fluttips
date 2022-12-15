@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/core/model/extensions/tip_extension.dart';
@@ -41,6 +42,7 @@ class _TipContentScreen extends StatefulWidget {
 
 class _TipContentScreenState extends State<_TipContentScreen> {
   final PageController _pageController = PageController();
+  bool _isScrolling = false;
 
   _TipContentScreenState();
 
@@ -57,7 +59,8 @@ class _TipContentScreenState extends State<_TipContentScreen> {
     return BlocConsumer<TipCubit, TipsBaseState>(
       listener: (context, state) {
         if (state.currentPage != _pageController.page?.toInt() &&
-            state.currentPage > 0) {
+            state.currentPage > 0 &&
+            !_isScrolling) {
           _pageController.jumpToPage(state.currentPage);
         }
       },
@@ -76,26 +79,34 @@ class _TipContentScreenState extends State<_TipContentScreen> {
           (GlobalUICubit globalUICubit) =>
               globalUICubit.state.showUIActionComponent,
         ),
-        child: PhotoViewGallery.builder(
-          backgroundDecoration:
-              BoxDecoration(color: context.theme.colors.background),
-          scrollPhysics: const BouncingScrollPhysics(),
-          builder: (BuildContext context, int index) =>
-              PhotoViewGalleryPageOptions(
-            imageProvider: NetworkImage(state.tips[index].imageUrl),
-            initialScale: PhotoViewComputedScale.contained,
-            minScale: PhotoViewComputedScale.contained,
-            maxScale: PhotoViewComputedScale.covered * 1.5,
-            onTapUp: (context, _, __) =>
-                globalCubit.toggleUIActionComponentState(),
+        child: NotificationListener(
+          onNotification: (notification) {
+            if (notification is UserScrollNotification) {
+              _isScrolling = notification.direction != ScrollDirection.idle;
+            }
+            return _isScrolling;
+          },
+          child: PhotoViewGallery.builder(
+            backgroundDecoration:
+                BoxDecoration(color: context.theme.colors.background),
+            scrollPhysics: const BouncingScrollPhysics(),
+            builder: (BuildContext context, int index) =>
+                PhotoViewGalleryPageOptions(
+              imageProvider: NetworkImage(state.tips[index].imageUrl),
+              initialScale: PhotoViewComputedScale.contained,
+              minScale: PhotoViewComputedScale.contained,
+              maxScale: PhotoViewComputedScale.covered * 1.5,
+              onTapUp: (context, _, __) =>
+                  globalCubit.toggleUIActionComponentState(),
+            ),
+            itemCount: state.tips.length,
+            pageController: _pageController,
+            onPageChanged: (index) => cubit
+              ..onTipDisplayed(state.tips[index])
+              ..setCurrentPage(index),
+            scrollDirection: Axis.vertical,
+            allowImplicitScrolling: true,
           ),
-          itemCount: state.tips.length,
-          pageController: _pageController,
-          onPageChanged: (index) => cubit
-            ..onTipDisplayed(state.tips[index])
-            ..setCurrentPage(index),
-          scrollDirection: Axis.vertical,
-          allowImplicitScrolling: true,
         ),
       ),
     );
