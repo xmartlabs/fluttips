@@ -48,10 +48,10 @@ class TipCubit extends Cubit<TipsBaseState> {
   void _subscribeToTips() {
     subscriptionToTips = _getTipStream().listen((tips) {
       if (tips.isNotEmpty) {
-        onTipDisplayed(tips.first);
         final currentPage = tip == null
             ? state.currentPage
             : tips.indexWhere((element) => element.id == tip?.id);
+        onTipDisplayed(tips.elementAt(currentPage));
         emit(state.copyWith(currentPage: currentPage, tips: tips));
       }
     });
