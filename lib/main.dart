@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:dartx/dartx.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,7 @@ import 'package:fluttips/ui/main/main_screen.dart';
 import 'package:bugsee_flutter/bugsee.dart';
 
 Future<void> main() async {
+  final initialTime = DateTime.now();
   await runZonedGuarded(
     () async {
       final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -27,8 +29,10 @@ Future<void> main() async {
       Config.bugseeEnabled
           ? await _launchBugsee((_) => runApp(const MyApp()))
           : runApp(const MyApp());
-
-      FlutterNativeSplash.remove();
+      await Future.delayed(
+        300.milliseconds - DateTime.now().difference(initialTime),
+        FlutterNativeSplash.remove,
+      );
     },
     (exception, stackTrace) =>
         Logger.fatal(error: exception, stackTrace: stackTrace),

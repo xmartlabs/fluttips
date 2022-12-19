@@ -84,7 +84,7 @@ class _TipContentScreenState extends State<_TipContentScreen> {
             if (notification is UserScrollNotification) {
               _isScrolling = notification.direction != ScrollDirection.idle;
             }
-            return _isScrolling;
+            return false;
           },
           child: PhotoViewGallery.builder(
             backgroundDecoration:
