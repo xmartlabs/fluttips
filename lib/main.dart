@@ -29,15 +29,19 @@ Future<void> main() async {
       Config.bugseeEnabled
           ? await _launchBugsee((_) => runApp(const MyApp()))
           : runApp(const MyApp());
-      await Future.delayed(
-        300.milliseconds - DateTime.now().difference(initialTime),
-        FlutterNativeSplash.remove,
-      );
+
+      await _delayedSplashScreen(initialTime);
     },
     (exception, stackTrace) =>
         Logger.fatal(error: exception, stackTrace: stackTrace),
   );
 }
+
+Future<void> _delayedSplashScreen(DateTime initialTime) => Future.delayed(
+      Config.maxDurationSplash.milliseconds -
+          DateTime.now().difference(initialTime),
+      FlutterNativeSplash.remove,
+    );
 
 Future<void> _launchBugsee(void Function(bool isBugseeLaunched) appRunner) =>
     Bugsee.launch(Config.bugseeAPIKey!, appRunCallback: appRunner);
