@@ -19,10 +19,9 @@ part 'tips_state.dart';
 
 class TipCubit extends Cubit<TipsBaseState> {
   final TipRepository _tipRepository = DiProvider.get();
-
   final GeneralErrorHandler _errorHandler;
   final ShowTipsType _showTipsType;
-  final Tip? tip;
+  Tip? tip;
 
   late StreamSubscription<List<Tip>> subscriptionToTips;
 
@@ -37,21 +36,24 @@ class TipCubit extends Cubit<TipsBaseState> {
     return super.close();
   }
 
-  void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
+  void setCurrentPage(int index) {
+    emit(state.copyWith(currentPage: index));
+    tip = state.tips.elementAt(index);
+  }
 
   Future<void> onTipDisplayed(Tip tip) =>
       _tipRepository.setTipAsViewedInSession(tip);
 
-  Future<void> changeFavouriteButton() =>
-      _tipRepository.toggleFavouriteTip(state.tips[state.currentPage]);
+  Future<void> changeFavouriteButton(int index) =>
+      _tipRepository.toggleFavouriteTip(state.tips[index]);
 
   void _subscribeToTips() {
     subscriptionToTips = _getTipStream().listen((tips) {
       if (tips.isNotEmpty) {
+        onTipDisplayed(tips.elementAt(state.currentPage));
         final currentPage = tip == null
             ? state.currentPage
             : tips.indexWhere((element) => element.id == tip?.id);
-        onTipDisplayed(tips.elementAt(currentPage));
         emit(state.copyWith(currentPage: currentPage, tips: tips));
       }
     });
@@ -67,15 +69,15 @@ class TipCubit extends Cubit<TipsBaseState> {
       .scan((acc, current, index) => _mergeTipLists(acc, current), []);
 
   List<Tip> _mergeTipLists(
-    List<Tip> originalFavoutiteTips,
+    List<Tip> originalFavouriteTips,
     List<Tip> currentFavouriteTips,
   ) {
-    if (originalFavoutiteTips.isEmpty) {
+    if (originalFavouriteTips.isEmpty) {
       return currentFavouriteTips;
     }
     final Map<String, DateTime?> tipFavouriteDates = currentFavouriteTips
         .associate((tip) => MapEntry(tip.id, tip.favouriteDate));
-    return originalFavoutiteTips
+    return originalFavouriteTips
         .map((tip) => tip.copyWith(favouriteDate: tipFavouriteDates[tip.id]))
         .toList();
   }
