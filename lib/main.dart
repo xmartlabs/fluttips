@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:dartx/dartx.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,16 +29,15 @@ Future<void> main() async {
           ? await _launchBugsee((_) => runApp(const MyApp()))
           : runApp(const MyApp());
 
-      await _delayedSplashScreen(initialTime);
+      await _removeSplashScreen(initialTime);
     },
     (exception, stackTrace) =>
         Logger.fatal(error: exception, stackTrace: stackTrace),
   );
 }
 
-Future<void> _delayedSplashScreen(DateTime initialTime) => Future.delayed(
-      Config.maxDurationSplash.milliseconds -
-          DateTime.now().difference(initialTime),
+Future<void> _removeSplashScreen(DateTime initialTime) => Future.delayed(
+      Config.splashMinDuration - DateTime.now().difference(initialTime),
       FlutterNativeSplash.remove,
     );
 

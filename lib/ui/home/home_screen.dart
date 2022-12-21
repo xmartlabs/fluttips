@@ -60,7 +60,7 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
 
   Widget _buildFab(bool showUIActionComponent) => AnimatedOpacity(
         opacity: showUIActionComponent ? 1.0 : 0.0,
-        duration: const Duration(milliseconds: Config.durationAnimation),
+        duration: Config.durationAnimation,
         child: Visibility(
           visible: showUIActionComponent,
           child: Fab(

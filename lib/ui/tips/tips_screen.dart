@@ -73,8 +73,7 @@ class _TipContentScreenState extends State<_TipContentScreen> {
             state.tips.isNotEmpty && state.tips[state.currentPage].isFavourite
                 ? const FabState.selected()
                 : const FabState.notSelected(),
-        action: () =>
-            cubit.changeFavouriteButton(_pageController.page!.toInt()),
+        action: () => cubit.toggleFavouriteTipValue(),
         iconSelected: Icons.star,
         visibility: context.select(
           (GlobalUICubit globalUICubit) =>

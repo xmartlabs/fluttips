@@ -37,15 +37,15 @@ class TipCubit extends Cubit<TipsBaseState> {
   }
 
   void setCurrentPage(int index) {
-    emit(state.copyWith(currentPage: index));
     tip = state.tips.elementAt(index);
+    emit(state.copyWith(currentPage: index));
   }
 
   Future<void> onTipDisplayed(Tip tip) =>
       _tipRepository.setTipAsViewedInSession(tip);
 
-  Future<void> changeFavouriteButton(int index) =>
-      _tipRepository.toggleFavouriteTip(state.tips[index]);
+  Future<void> toggleFavouriteTipValue() =>
+      _tipRepository.toggleFavouriteTipValue(state.tips[state.currentPage]);
 
   void _subscribeToTips() {
     subscriptionToTips = _getTipStream().listen((tips) {
