@@ -18,19 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TipsBaseState {
   List<Tip> get tips => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
+  Tip? get currentTip => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Tip> tips, int currentPage) state,
+    required TResult Function(List<Tip> tips, int currentPage, Tip? currentTip)
+        state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Tip> tips, int currentPage)? state,
+    TResult? Function(List<Tip> tips, int currentPage, Tip? currentTip)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Tip> tips, int currentPage)? state,
+    TResult Function(List<Tip> tips, int currentPage, Tip? currentTip)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,7 +64,9 @@ abstract class $TipsBaseStateCopyWith<$Res> {
           TipsBaseState value, $Res Function(TipsBaseState) then) =
       _$TipsBaseStateCopyWithImpl<$Res, TipsBaseState>;
   @useResult
-  $Res call({List<Tip> tips, int currentPage});
+  $Res call({List<Tip> tips, int currentPage, Tip? currentTip});
+
+  $TipCopyWith<$Res>? get currentTip;
 }
 
 /// @nodoc
@@ -80,6 +84,7 @@ class _$TipsBaseStateCopyWithImpl<$Res, $Val extends TipsBaseState>
   $Res call({
     Object? tips = null,
     Object? currentPage = null,
+    Object? currentTip = freezed,
   }) {
     return _then(_value.copyWith(
       tips: null == tips
@@ -90,7 +95,23 @@ class _$TipsBaseStateCopyWithImpl<$Res, $Val extends TipsBaseState>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
+      currentTip: freezed == currentTip
+          ? _value.currentTip
+          : currentTip // ignore: cast_nullable_to_non_nullable
+              as Tip?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TipCopyWith<$Res>? get currentTip {
+    if (_value.currentTip == null) {
+      return null;
+    }
+
+    return $TipCopyWith<$Res>(_value.currentTip!, (value) {
+      return _then(_value.copyWith(currentTip: value) as $Val);
+    });
   }
 }
 
@@ -102,7 +123,10 @@ abstract class _$$_TipsStateCopyWith<$Res>
       __$$_TipsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Tip> tips, int currentPage});
+  $Res call({List<Tip> tips, int currentPage, Tip? currentTip});
+
+  @override
+  $TipCopyWith<$Res>? get currentTip;
 }
 
 /// @nodoc
@@ -118,6 +142,7 @@ class __$$_TipsStateCopyWithImpl<$Res>
   $Res call({
     Object? tips = null,
     Object? currentPage = null,
+    Object? currentTip = freezed,
   }) {
     return _then(_$_TipsState(
       tips: null == tips
@@ -128,6 +153,10 @@ class __$$_TipsStateCopyWithImpl<$Res>
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
+      currentTip: freezed == currentTip
+          ? _value.currentTip
+          : currentTip // ignore: cast_nullable_to_non_nullable
+              as Tip?,
     ));
   }
 }
@@ -135,7 +164,8 @@ class __$$_TipsStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TipsState implements _TipsState {
-  const _$_TipsState({final List<Tip> tips = const [], this.currentPage = 0})
+  const _$_TipsState(
+      {final List<Tip> tips = const [], this.currentPage = 0, this.currentTip})
       : _tips = tips;
 
   final List<Tip> _tips;
@@ -149,10 +179,12 @@ class _$_TipsState implements _TipsState {
   @override
   @JsonKey()
   final int currentPage;
+  @override
+  final Tip? currentTip;
 
   @override
   String toString() {
-    return 'TipsBaseState.state(tips: $tips, currentPage: $currentPage)';
+    return 'TipsBaseState.state(tips: $tips, currentPage: $currentPage, currentTip: $currentTip)';
   }
 
   @override
@@ -162,12 +194,14 @@ class _$_TipsState implements _TipsState {
             other is _$_TipsState &&
             const DeepCollectionEquality().equals(other._tips, _tips) &&
             (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage));
+                other.currentPage == currentPage) &&
+            (identical(other.currentTip, currentTip) ||
+                other.currentTip == currentTip));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_tips), currentPage);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_tips), currentPage, currentTip);
 
   @JsonKey(ignore: true)
   @override
@@ -178,27 +212,28 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Tip> tips, int currentPage) state,
+    required TResult Function(List<Tip> tips, int currentPage, Tip? currentTip)
+        state,
   }) {
-    return state(tips, currentPage);
+    return state(tips, currentPage, currentTip);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Tip> tips, int currentPage)? state,
+    TResult? Function(List<Tip> tips, int currentPage, Tip? currentTip)? state,
   }) {
-    return state?.call(tips, currentPage);
+    return state?.call(tips, currentPage, currentTip);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Tip> tips, int currentPage)? state,
+    TResult Function(List<Tip> tips, int currentPage, Tip? currentTip)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
-      return state(tips, currentPage);
+      return state(tips, currentPage, currentTip);
     }
     return orElse();
   }
@@ -233,13 +268,17 @@ class _$_TipsState implements _TipsState {
 }
 
 abstract class _TipsState implements TipsBaseState {
-  const factory _TipsState({final List<Tip> tips, final int currentPage}) =
-      _$_TipsState;
+  const factory _TipsState(
+      {final List<Tip> tips,
+      final int currentPage,
+      final Tip? currentTip}) = _$_TipsState;
 
   @override
   List<Tip> get tips;
   @override
   int get currentPage;
+  @override
+  Tip? get currentTip;
   @override
   @JsonKey(ignore: true)
   _$$_TipsStateCopyWith<_$_TipsState> get copyWith =>

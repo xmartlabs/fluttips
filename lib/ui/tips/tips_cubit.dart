@@ -21,12 +21,11 @@ class TipCubit extends Cubit<TipsBaseState> {
   final TipRepository _tipRepository = DiProvider.get();
   final GeneralErrorHandler _errorHandler;
   final ShowTipsType _showTipsType;
-  Tip? tip;
 
   late StreamSubscription<List<Tip>> subscriptionToTips;
 
-  TipCubit(this._showTipsType, this._errorHandler, this.tip)
-      : super(const TipsBaseState.state()) {
+  TipCubit(this._showTipsType, this._errorHandler, Tip? tip)
+      : super(TipsBaseState.state(currentTip: tip)) {
     _subscribeToTips();
   }
 
@@ -36,25 +35,33 @@ class TipCubit extends Cubit<TipsBaseState> {
     return super.close();
   }
 
-  void setCurrentPage(int index) {
-    tip = state.tips.elementAt(index);
-    emit(state.copyWith(currentPage: index));
-  }
+  void setCurrentPage(int index) => emit(
+        state.copyWith(
+          currentTip: state.tips.elementAt(index),
+          currentPage: index,
+        ),
+      );
 
   Future<void> onTipDisplayed(Tip tip) =>
       _tipRepository.setTipAsViewedInSession(tip);
 
   Future<void> toggleFavouriteTipValue() =>
-      _tipRepository.toggleFavouriteTipValue(state.tips[state.currentPage]);
+      _tipRepository.toggleFavouriteTipValue(state.currentTip!);
 
   void _subscribeToTips() {
     subscriptionToTips = _getTipStream().listen((tips) {
       if (tips.isNotEmpty) {
         onTipDisplayed(tips.elementAt(state.currentPage));
-        final currentPage = tip == null
+        final currentPage = state.currentTip == null
             ? state.currentPage
-            : tips.indexWhere((element) => element.id == tip?.id);
-        emit(state.copyWith(currentPage: currentPage, tips: tips));
+            : tips.indexWhere((element) => element.id == state.currentTip?.id);
+        emit(
+          state.copyWith(
+            currentPage: currentPage,
+            tips: tips,
+            currentTip: tips[state.currentPage],
+          ),
+        );
       }
     });
   }
