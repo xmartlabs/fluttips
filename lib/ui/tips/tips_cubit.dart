@@ -19,15 +19,13 @@ part 'tips_state.dart';
 
 class TipCubit extends Cubit<TipsBaseState> {
   final TipRepository _tipRepository = DiProvider.get();
-
   final GeneralErrorHandler _errorHandler;
   final ShowTipsType _showTipsType;
-  final Tip? tip;
 
   late StreamSubscription<List<Tip>> subscriptionToTips;
 
-  TipCubit(this._showTipsType, this._errorHandler, this.tip)
-      : super(const TipsBaseState.state()) {
+  TipCubit(this._showTipsType, this._errorHandler, Tip? tip)
+      : super(TipsBaseState.state(currentTip: tip)) {
     _subscribeToTips();
   }
 
@@ -37,22 +35,33 @@ class TipCubit extends Cubit<TipsBaseState> {
     return super.close();
   }
 
-  void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
+  void setCurrentPage(int index) => emit(
+        state.copyWith(
+          currentTip: state.tips.elementAt(index),
+          currentPage: index,
+        ),
+      );
 
   Future<void> onTipDisplayed(Tip tip) =>
       _tipRepository.setTipAsViewedInSession(tip);
 
-  Future<void> changeFavouriteButton() =>
-      _tipRepository.toggleFavouriteTip(state.tips[state.currentPage]);
+  Future<void> toggleFavouriteTipValue() =>
+      _tipRepository.toggleFavouriteTipValue(state.currentTip!);
 
   void _subscribeToTips() {
     subscriptionToTips = _getTipStream().listen((tips) {
       if (tips.isNotEmpty) {
-        final currentPage = tip == null
+        onTipDisplayed(tips.elementAt(state.currentPage));
+        final currentPage = state.currentTip == null
             ? state.currentPage
-            : tips.indexWhere((element) => element.id == tip?.id);
-        onTipDisplayed(tips.elementAt(currentPage));
-        emit(state.copyWith(currentPage: currentPage, tips: tips));
+            : tips.indexWhere((element) => element.id == state.currentTip?.id);
+        emit(
+          state.copyWith(
+            currentPage: currentPage,
+            tips: tips,
+            currentTip: tips[state.currentPage],
+          ),
+        );
       }
     });
   }
@@ -67,15 +76,15 @@ class TipCubit extends Cubit<TipsBaseState> {
       .scan((acc, current, index) => _mergeTipLists(acc, current), []);
 
   List<Tip> _mergeTipLists(
-    List<Tip> originalFavoutiteTips,
+    List<Tip> originalFavouriteTips,
     List<Tip> currentFavouriteTips,
   ) {
-    if (originalFavoutiteTips.isEmpty) {
+    if (originalFavouriteTips.isEmpty) {
       return currentFavouriteTips;
     }
     final Map<String, DateTime?> tipFavouriteDates = currentFavouriteTips
         .associate((tip) => MapEntry(tip.id, tip.favouriteDate));
-    return originalFavoutiteTips
+    return originalFavouriteTips
         .map((tip) => tip.copyWith(favouriteDate: tipFavouriteDates[tip.id]))
         .toList();
   }

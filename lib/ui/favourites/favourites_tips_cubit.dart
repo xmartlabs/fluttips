@@ -32,8 +32,8 @@ class FavouritesTipsCubit extends Cubit<FavouritesTipsBaseState> {
 
   void setCurrentPage(int index) => emit(state.copyWith(currentPage: index));
 
-  Future<void> changeFavouriteButton(Tip tip) =>
-      _tipRepository.toggleFavouriteTip(tip);
+  Future<void> changeFavouriteButton(Tip tip, int index) =>
+      _tipRepository.toggleFavouriteTipValue(tip);
 
   void navigateToTip(Tip tip) {
     _router.navigate(

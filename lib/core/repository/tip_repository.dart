@@ -86,11 +86,10 @@ class TipRepository {
     }
   }
 
-  Future<void> toggleFavouriteTip(Tip tip) async {
+  Future<void> toggleFavouriteTipValue(Tip tip) async {
     final tipToUpdate = _tipMapper.fromOutput(tip);
-    tipToUpdate.favouriteDate != null
-        ? tipToUpdate.favouriteDate = null
-        : tipToUpdate.favouriteDate = DateTime.now();
+    tipToUpdate.favouriteDate =
+        tipToUpdate.favouriteDate == null ? DateTime.now() : null;
     await _tipsLocalSource.updateTip(tipToUpdate);
   }
 }

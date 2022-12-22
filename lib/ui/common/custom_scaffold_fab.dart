@@ -33,7 +33,7 @@ class MainScaffoldWithFab extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 15.0),
           child: AnimatedOpacity(
             opacity: visibility! ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: Config.durationAnimation),
+            duration: Config.durationAnimation,
             child: Visibility(
               visible: visibility ?? true,
               child: Fab(
