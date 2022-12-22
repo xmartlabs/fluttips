@@ -23,9 +23,7 @@ class _VideosContentScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: 5.h,
-            ),
+            SizedBox(height: 5.h),
             Icon(
               Icons.play_circle_outline_outlined,
               color: context.theme.colors.surface.shade700,
