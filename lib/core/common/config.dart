@@ -30,8 +30,8 @@ extension EnviromentPath on Environments {
 abstract class Config {
   static const String _environmentFolder = 'environments';
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
-  static const int durationAnimation = 150;
-  static const int maxDurationSplash = 300;
+  static const Duration durationAnimation = Duration(milliseconds: 150);
+  static const Duration splashMinDuration = Duration(milliseconds: 300);
   static const debugMode = kDebugMode;
 
   static const firebaseEnabled = !debugMode;
