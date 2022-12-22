@@ -32,7 +32,7 @@ class DisplayListFavoritesTipsScreen extends StatelessWidget {
           child: Text(
             tip.name,
             textAlign: TextAlign.center,
-            style: context.theme.textStyles.bodySmall!.copyWith(
+            style: context.theme.textStyles.titleMedium!.copyWith(
               color: context.theme.colors.primary.shade100,
             ),
           ),

@@ -27,55 +27,93 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
       builder: (context, state) => Container(
         margin: EdgeInsets.only(left: 45.w),
         padding: EdgeInsets.symmetric(horizontal: 40.0.w),
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-              alignment: Alignment.centerLeft,
-              child: Text(
-                context.localizations.myFavorites,
-                style: TextStyle(
-                  color: context.theme.colors.primary.shade100,
-                ),
-              ),
-            ),
-            state.tips.isEmpty
-                ? emptyFavouriteScreen(context)
-                : displayFavouritesTips(state, cubit),
-          ],
-        ),
+        child: state.tips.isEmpty
+            ? emptyFavouriteScreen(context)
+            : displayFavouritesTips(state, cubit, context),
       ),
     );
   }
 
-  Expanded displayFavouritesTips(
+  Column displayFavouritesTips(
     FavouritesTipsBaseState state,
     FavouritesTipsCubit cubit,
+    BuildContext context,
   ) =>
-      Expanded(
-        child: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: 5,
-          mainAxisSpacing: 5,
-          crossAxisSpacing: 5,
-          children: state.tips
-              .map(
-                (tip) => DisplayListFavoritesTipsScreen(
-                  tip: tip,
-                  onTipAppendCallback: () => cubit.navigateToTip(tip),
-                ),
-              )
-              .toList(),
-        ),
+      Column(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              context.localizations.myFavorites,
+              style: context.theme.textStyles.titleLarge!.copyWith(
+                color: context.theme.colors.primary.shade100,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              childAspectRatio: 5,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
+              children: state.tips
+                  .map(
+                    (tip) => DisplayListFavoritesTipsScreen(
+                      tip: tip,
+                      onTipAppendCallback: () => cubit.navigateToTip(tip),
+                    ),
+                  )
+                  .toList(),
+            ),
+          ),
+        ],
       );
 
-  Expanded emptyFavouriteScreen(BuildContext context) => Expanded(
-        child: Center(
-          child: Text(
-            context.localizations.messageEmptyFavoritesScreen,
-            style: context.theme.textStyles.titleLarge!.copyWith(
-              color: context.theme.colors.surface.shade800,
-            ),
+  Center emptyFavouriteScreen(BuildContext context) => Center(
+        child: Container(
+          width: .5.sw,
+          padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 35.h),
+          child: Column(
+            children: [
+              Text(
+                textAlign: TextAlign.center,
+                context.localizations.myFavorites,
+                style: context.theme.textStyles.titleMedium!.copyWith(
+                  color: context.theme.colors.surface.shade600,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  textAlign: TextAlign.start,
+                  context.localizations.firstMessageEmptyFavoritesScreen,
+                  style: context.theme.textStyles.bodyMedium!.copyWith(
+                    color: context.theme.colors.surface.shade600,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: Text(
+                  textAlign: TextAlign.start,
+                  context.localizations.secondMessageEmptyFavoritesScreen,
+                  style: context.theme.textStyles.bodyMedium!.copyWith(
+                    color: context.theme.colors.surface.shade600,
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 190.w,
+                height: 190.h,
+                child: Image.asset('assets/images/onboarding_favourite.png'),
+              ),
+            ],
           ),
         ),
       );

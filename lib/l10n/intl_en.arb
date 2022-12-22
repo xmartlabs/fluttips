@@ -18,11 +18,11 @@
   "error_no_internet_connection_error_title": "Error",
   "error_unknown_error_description": "Something went wrong!",
   "error_unknown_error_title": "Ops!",
+  "firstMessageEmptyFavoritesScreen": "1. To add one, first find the tip you want to save",
   "home": "Home",
   "log_out": "Log out",
   "mail": "Mail",
-  "messageEmptyFavoritesScreen": "You don't have any favorites yet :(",
-  "myFavorites": "My Favorites",
+  "myFavorites": "Your Favorites",
   "onboarding_favourite_first_text": "Save your favorite tips",
   "onboarding_favourite_second_text": "to have all of them together",
   "onboarding_gestures_first_text": "Navigate through the tip pages",
@@ -31,5 +31,7 @@
   "onboarding_tips_and_tricks_first_text": "Find lots of tips and tricks",
   "password": "Password",
   "search": "Search",
+  "secondMessageEmptyFavoritesScreen": "2. Tap on the start icon on the bottom right of the screen",
+  "videos": "Coming soon",
   "xmartlabs_projects": "Xmartlabs' projects"
 }

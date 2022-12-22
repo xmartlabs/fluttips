@@ -43,10 +43,10 @@ class AppDrawer extends StatelessWidget {
                   ),
                 )
                 .toList(),
-            const SizedBox(height: 30),
+            SizedBox(height: 100.h),
             IconButton(
               onPressed: action,
-              icon: const Icon(Icons.arrow_back_ios_new),
+              icon: const Icon(Icons.help_outline_rounded),
               color: context.theme.colors.surface.shade700,
             ),
           ],
@@ -71,7 +71,7 @@ class _TabOption extends StatelessWidget {
     final color = context.theme.colors;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 350),
-      padding: const EdgeInsets.all(15),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         color: color.primary.shade100,
@@ -80,7 +80,7 @@ class _TabOption extends StatelessWidget {
         icon: isCurrentIndex
             ? Icon(
                 icon,
-                color: color.primary,
+                color: color.surface.shade900,
               )
             : Icon(
                 icon,
@@ -106,7 +106,7 @@ extension NavExtensions on HomeNavOptions {
       case HomeNavOptions.images:
         return Icons.image_outlined;
       case HomeNavOptions.favourites:
-        return Icons.star_border;
+        return Icons.star_border_rounded;
     }
   }
 
