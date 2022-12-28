@@ -50,9 +50,6 @@ app.*.map.json
 # Environment files
 *.env
 *.env.default
-/android/secrets/
-/android/fastlane/.env.default
-
 
 # Fvm
 .fvm/flutter_sdk
@@ -63,6 +60,7 @@ app.*.map.json
 **/fastlane/screenshots
 **/fastlane/test_output
 .bundle/
+vendor/bundle/
 
 #iOS related
 ios/build
