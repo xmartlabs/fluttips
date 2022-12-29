@@ -24,6 +24,7 @@ class AppStyles extends TextTheme {
     displaySmall,
   }) : super(
           bodyLarge: bodyLarge,
+          headlineLarge: headlineLarge,
           headlineMedium: headlineMedium,
           headlineSmall: headlineSmall,
           titleLarge: titleLarge,

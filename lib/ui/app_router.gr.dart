@@ -81,6 +81,28 @@ class _$AppRouter extends RootStackRouter {
         child: const FavouritesTipsScreen(),
       );
     },
+    AboutFlowRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const EmptyRouterPage(),
+      );
+    },
+    AboutScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AboutScreen(),
+      );
+    },
+    AboutWebViewRoute.name: (routeData) {
+      final args = routeData.argsAs<AboutWebViewRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: AboutWebViewScreen(
+          isPrivacyPolicy: args.isPrivacyPolicy,
+          key: args.key,
+        ),
+      );
+    },
   };
 
   @override
@@ -123,6 +145,30 @@ class _$AppRouter extends RootStackRouter {
                   HomeFavouritesTipsScreenRoute.name,
                   path: 'favourite',
                   parent: HomeScreenRoute.name,
+                ),
+                RouteConfig(
+                  AboutFlowRoute.name,
+                  path: 'empty-router-page',
+                  parent: HomeScreenRoute.name,
+                  children: [
+                    RouteConfig(
+                      '#redirect',
+                      path: '',
+                      parent: AboutFlowRoute.name,
+                      redirectTo: 'about',
+                      fullMatch: true,
+                    ),
+                    RouteConfig(
+                      AboutScreenRoute.name,
+                      path: 'about',
+                      parent: AboutFlowRoute.name,
+                    ),
+                    RouteConfig(
+                      AboutWebViewRoute.name,
+                      path: 'aboutWebView',
+                      parent: AboutFlowRoute.name,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -300,4 +346,63 @@ class HomeFavouritesTipsScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeFavouritesTipsScreenRoute';
+}
+
+/// generated route for
+/// [EmptyRouterPage]
+class AboutFlowRoute extends PageRouteInfo<void> {
+  const AboutFlowRoute({List<PageRouteInfo>? children})
+      : super(
+          AboutFlowRoute.name,
+          path: 'empty-router-page',
+          initialChildren: children,
+        );
+
+  static const String name = 'AboutFlowRoute';
+}
+
+/// generated route for
+/// [AboutScreen]
+class AboutScreenRoute extends PageRouteInfo<void> {
+  const AboutScreenRoute()
+      : super(
+          AboutScreenRoute.name,
+          path: 'about',
+        );
+
+  static const String name = 'AboutScreenRoute';
+}
+
+/// generated route for
+/// [AboutWebViewScreen]
+class AboutWebViewRoute extends PageRouteInfo<AboutWebViewRouteArgs> {
+  AboutWebViewRoute({
+    required bool isPrivacyPolicy,
+    Key? key,
+  }) : super(
+          AboutWebViewRoute.name,
+          path: 'aboutWebView',
+          args: AboutWebViewRouteArgs(
+            isPrivacyPolicy: isPrivacyPolicy,
+            key: key,
+          ),
+        );
+
+  static const String name = 'AboutWebViewRoute';
+}
+
+class AboutWebViewRouteArgs {
+  const AboutWebViewRouteArgs({
+    required this.isPrivacyPolicy,
+    this.key,
+  });
+
+  final bool isPrivacyPolicy;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'AboutWebViewRouteArgs{isPrivacyPolicy: $isPrivacyPolicy, key: $key}';
+  }
 }
