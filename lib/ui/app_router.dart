@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttips/ui/about/about_screen.dart';
-import 'package:fluttips/ui/about/about_webview_screen.dart';
 import 'package:fluttips/ui/catalog/catalog_screen.dart';
 import 'package:fluttips/ui/favourites/list_favourites_tips_screen.dart';
 import 'package:fluttips/ui/home/home_screen.dart';
@@ -13,6 +12,7 @@ import 'package:fluttips/ui/videos/videos.dart';
 import 'package:fluttips/ui/favourites/favourites_tips_screen.dart';
 import 'package:fluttips/core/model/tip.dart';
 import 'package:auto_route/empty_router_widgets.dart';
+import 'package:fluttips/ui/webView/webview_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -68,9 +68,9 @@ part 'app_router.gr.dart';
                   page: AboutScreen,
                 ),
                 AutoRoute(
-                  path: AppRouter.aboutWebViewPath,
-                  name: 'AboutWebViewRoute',
-                  page: AboutWebViewScreen,
+                  path: AppRouter.webViewPath,
+                  name: 'WebViewRoute',
+                  page: WebViewScreen,
                 ),
               ],
             ),
@@ -91,5 +91,5 @@ class AppRouter extends _$AppRouter {
   static const favouritesTipsPath = 'favourite';
   static const listFavouritesTipsPath = 'list_favourite';
   static const aboutPath = 'about';
-  static const aboutWebViewPath = 'aboutWebView';
+  static const webViewPath = 'webView';
 }

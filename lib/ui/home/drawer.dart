@@ -50,9 +50,11 @@ class AppDrawer extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 10.h),
                 alignment: Alignment.bottomCenter,
                 child: _TabOption(
-                  isCurrentIndex: 3 == _tabsController.activeIndex,
+                  isCurrentIndex:
+                      HomeNavOptions.about.index == _tabsController.activeIndex,
                   icon: HomeNavOptions.about.icon,
-                  onPress: () => _tabsController.setActiveIndex(3),
+                  onPress: () => _tabsController
+                      .setActiveIndex(HomeNavOptions.about.index),
                 ),
               ),
             ),

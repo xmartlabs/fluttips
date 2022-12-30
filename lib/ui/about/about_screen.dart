@@ -7,6 +7,8 @@ import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:fluttips/ui/about/about_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fluttips/core/common/config.dart';
+import 'package:fluttips/gen/assets.gen.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({
@@ -32,23 +34,23 @@ class AboutContentScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const AboutSection(),
+              const _AboutSection(),
               SizedBox(height: 15.h),
-              const CreditsSection(),
+              const _CreditsSection(),
               SizedBox(height: 15.h),
-              const TermsAndPolicySection(),
+              const _TermsAndPolicySection(),
               SizedBox(height: 20.h),
               Divider(color: context.theme.colors.surface),
               SizedBox(height: 20.h),
-              const SuggestionSection(),
+              const _SuggestionSection(),
             ],
           ),
         ),
       );
 }
 
-class SuggestionSection extends StatelessWidget {
-  const SuggestionSection({
+class _SuggestionSection extends StatelessWidget {
+  const _SuggestionSection({
     Key? key,
   }) : super(key: key);
 
@@ -57,7 +59,7 @@ class SuggestionSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            context.localizations.button_suggestion,
+            context.localizations.about_button_suggestion,
             style: context.theme.textStyles.titleMedium!.copyWith(
               color: context.theme.colors.surface,
               fontWeight: FontWeight.bold,
@@ -72,15 +74,15 @@ class SuggestionSection extends StatelessWidget {
           ),
           SizedBox(height: 10.h),
           AppButton(
-            text: context.localizations.button_email,
-            action: () => context.read<AboutCubit>().sendEmail(),
+            text: context.localizations.about_button_send_email_feedback,
+            action: () => context.read<AboutCubit>().sendEmail(context),
           ),
         ],
       );
 }
 
-class TermsAndPolicySection extends StatelessWidget {
-  const TermsAndPolicySection({
+class _TermsAndPolicySection extends StatelessWidget {
+  const _TermsAndPolicySection({
     Key? key,
   }) : super(key: key);
 
@@ -88,20 +90,24 @@ class TermsAndPolicySection extends StatelessWidget {
   Widget build(BuildContext context) => Row(
         children: [
           AppButton(
-            text: context.localizations.button_terms,
-            action: () => context.read<AboutCubit>().navigateToWebView(false),
+            text: context.localizations.about_button_terms,
+            action: () => context
+                .read<AboutCubit>()
+                .navigateToWebView(Assets.policyAndTerms.termsAndConditions),
           ),
           SizedBox(width: 15.w),
           AppButton(
-            text: context.localizations.button_privacy,
-            action: () => context.read<AboutCubit>().navigateToWebView(true),
+            text: context.localizations.about_button_privacy,
+            action: () => context
+                .read<AboutCubit>()
+                .navigateToWebView(Assets.policyAndTerms.privacyPolicy),
           ),
         ],
       );
 }
 
-class CreditsSection extends StatelessWidget {
-  const CreditsSection({
+class _CreditsSection extends StatelessWidget {
+  const _CreditsSection({
     Key? key,
   }) : super(key: key);
 
@@ -115,9 +121,7 @@ class CreditsSection extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
-            width: 10.w,
-          ),
+          SizedBox(width: 10.w),
           Text(
             context.localizations.about_images,
             style: context.theme.textStyles.bodyLarge!.copyWith(
@@ -133,16 +137,10 @@ class CreditsSection extends StatelessWidget {
               ),
             ),
             onTap: () => launchUrl(
-              Uri(
-                scheme: 'https',
-                host: 'github.com',
-                path: 'vandadnp/flutter-tips-and-tricks',
-              ),
+              Uri.parse(Config.imagesTipsRepository),
             ),
           ),
-          SizedBox(
-            width: 10.w,
-          ),
+          SizedBox(width: 10.w),
           Text(
             context.localizations.about_videos,
             style: context.theme.textStyles.bodyLarge!.copyWith(
@@ -158,20 +156,15 @@ class CreditsSection extends StatelessWidget {
               ),
             ),
             onTap: () => launchUrl(
-              Uri(
-                scheme: 'https',
-                host: 'youtube.com',
-                path: '/watch',
-                query: 'v=b6Z885Z46cU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG',
-              ),
+              Uri.parse(Config.widgetOfTheWeekLink),
             ),
           ),
         ],
       );
 }
 
-class AboutSection extends StatelessWidget {
-  const AboutSection({
+class _AboutSection extends StatelessWidget {
+  const _AboutSection({
     Key? key,
   }) : super(key: key);
 

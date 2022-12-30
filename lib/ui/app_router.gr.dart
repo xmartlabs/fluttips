@@ -93,12 +93,13 @@ class _$AppRouter extends RootStackRouter {
         child: const AboutScreen(),
       );
     },
-    AboutWebViewRoute.name: (routeData) {
-      final args = routeData.argsAs<AboutWebViewRouteArgs>();
+    WebViewRoute.name: (routeData) {
+      final args = routeData.argsAs<WebViewRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: AboutWebViewScreen(
-          isPrivacyPolicy: args.isPrivacyPolicy,
+        child: WebViewScreen(
+          args.path,
+          args.actionButton,
           key: args.key,
         ),
       );
@@ -164,8 +165,8 @@ class _$AppRouter extends RootStackRouter {
                       parent: AboutFlowRoute.name,
                     ),
                     RouteConfig(
-                      AboutWebViewRoute.name,
-                      path: 'aboutWebView',
+                      WebViewRoute.name,
+                      path: 'webView',
                       parent: AboutFlowRoute.name,
                     ),
                   ],
@@ -374,35 +375,40 @@ class AboutScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [AboutWebViewScreen]
-class AboutWebViewRoute extends PageRouteInfo<AboutWebViewRouteArgs> {
-  AboutWebViewRoute({
-    required bool isPrivacyPolicy,
+/// [WebViewScreen]
+class WebViewRoute extends PageRouteInfo<WebViewRouteArgs> {
+  WebViewRoute({
+    required String path,
+    required void Function() actionButton,
     Key? key,
   }) : super(
-          AboutWebViewRoute.name,
-          path: 'aboutWebView',
-          args: AboutWebViewRouteArgs(
-            isPrivacyPolicy: isPrivacyPolicy,
+          WebViewRoute.name,
+          path: 'webView',
+          args: WebViewRouteArgs(
+            path: path,
+            actionButton: actionButton,
             key: key,
           ),
         );
 
-  static const String name = 'AboutWebViewRoute';
+  static const String name = 'WebViewRoute';
 }
 
-class AboutWebViewRouteArgs {
-  const AboutWebViewRouteArgs({
-    required this.isPrivacyPolicy,
+class WebViewRouteArgs {
+  const WebViewRouteArgs({
+    required this.path,
+    required this.actionButton,
     this.key,
   });
 
-  final bool isPrivacyPolicy;
+  final String path;
+
+  final void Function() actionButton;
 
   final Key? key;
 
   @override
   String toString() {
-    return 'AboutWebViewRouteArgs{isPrivacyPolicy: $isPrivacyPolicy, key: $key}';
+    return 'WebViewRouteArgs{path: $path, actionButton: $actionButton, key: $key}';
   }
 }
