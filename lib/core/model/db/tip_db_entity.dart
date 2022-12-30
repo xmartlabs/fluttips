@@ -12,7 +12,7 @@ class TipDbEntity {
   final String? mdUrl;
   DateTime? favouriteDate;
   int randomId;
-  int amountViews;
+  int amountViews = 0;
 
   TipDbEntity({
     required this.id,
