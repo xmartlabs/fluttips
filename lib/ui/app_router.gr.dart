@@ -99,7 +99,6 @@ class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: WebViewScreen(
           args.path,
-          args.actionButton,
           key: args.key,
         ),
       );
@@ -379,14 +378,12 @@ class AboutScreenRoute extends PageRouteInfo<void> {
 class WebViewRoute extends PageRouteInfo<WebViewRouteArgs> {
   WebViewRoute({
     required String path,
-    required void Function() actionButton,
     Key? key,
   }) : super(
           WebViewRoute.name,
           path: 'webView',
           args: WebViewRouteArgs(
             path: path,
-            actionButton: actionButton,
             key: key,
           ),
         );
@@ -397,18 +394,15 @@ class WebViewRoute extends PageRouteInfo<WebViewRouteArgs> {
 class WebViewRouteArgs {
   const WebViewRouteArgs({
     required this.path,
-    required this.actionButton,
     this.key,
   });
 
   final String path;
 
-  final void Function() actionButton;
-
   final Key? key;
 
   @override
   String toString() {
-    return 'WebViewRouteArgs{path: $path, actionButton: $actionButton, key: $key}';
+    return 'WebViewRouteArgs{path: $path, key: $key}';
   }
 }

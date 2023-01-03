@@ -8,7 +8,6 @@ import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:fluttips/ui/about/about_cubit.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttips/core/common/config.dart';
-import 'package:fluttips/gen/assets.gen.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({
@@ -18,12 +17,12 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider(
         create: (context) => AboutCubit(context.read<ErrorHandlerCubit>()),
-        child: const AboutContentScreen(),
+        child: const _AboutContentScreen(),
       );
 }
 
-class AboutContentScreen extends StatelessWidget {
-  const AboutContentScreen({Key? key}) : super(key: key);
+class _AboutContentScreen extends StatelessWidget {
+  const _AboutContentScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Container(
@@ -75,7 +74,7 @@ class _SuggestionSection extends StatelessWidget {
           SizedBox(height: 10.h),
           AppButton(
             text: context.localizations.about_button_send_email_feedback,
-            action: () => context.read<AboutCubit>().sendEmail(context),
+            action: () => context.read<AboutCubit>().sendEmail(),
           ),
         ],
       );
@@ -93,14 +92,14 @@ class _TermsAndPolicySection extends StatelessWidget {
             text: context.localizations.about_button_terms,
             action: () => context
                 .read<AboutCubit>()
-                .navigateToWebView(Assets.policyAndTerms.termsAndConditions),
+                .navigateToWebView(isPrivacyPolicy: false),
           ),
           SizedBox(width: 15.w),
           AppButton(
             text: context.localizations.about_button_privacy,
             action: () => context
                 .read<AboutCubit>()
-                .navigateToWebView(Assets.policyAndTerms.privacyPolicy),
+                .navigateToWebView(isPrivacyPolicy: true),
           ),
         ],
       );

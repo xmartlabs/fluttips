@@ -31,7 +31,7 @@ class AppDrawer extends StatelessWidget {
             //TODO: add logo here and delete text
             const Text('FLUTTIPS'),
             ...HomeNavOptions.values
-                .where((element) => element.index != 3)
+                .where((element) => element.index != HomeNavOptions.about.index)
                 .map(
                   (navOption) => Expanded(
                     child: _TabOption(

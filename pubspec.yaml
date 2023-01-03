@@ -50,9 +50,9 @@ dependencies:
   sqflite: 2.2.0+3
   stack_trace: 1.10.0
   stock: 1.0.1
+  package_info_plus: 3.0.2
   url_launcher: 6.1.7
   webview_flutter: 4.0.1
-  package_info_plus: ^3.0.2
 
 dev_dependencies:
   flutter_test:
