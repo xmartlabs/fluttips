@@ -90,16 +90,14 @@ class _TermsAndPolicySection extends StatelessWidget {
         children: [
           AppButton(
             text: context.localizations.about_button_terms,
-            action: () => context
-                .read<AboutCubit>()
-                .navigateToWebView(isPrivacyPolicy: false),
+            action: () =>
+                context.read<AboutCubit>().onTermsAndConditionsButtonPressed(),
           ),
           SizedBox(width: 15.w),
           AppButton(
             text: context.localizations.about_button_privacy,
-            action: () => context
-                .read<AboutCubit>()
-                .navigateToWebView(isPrivacyPolicy: true),
+            action: () =>
+                context.read<AboutCubit>().onPrivacyPolicyButtonPressed(),
           ),
         ],
       );

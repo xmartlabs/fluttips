@@ -21,12 +21,12 @@ class AboutCubit extends Cubit<AboutBaseState> {
 
   AboutCubit(this._errorHandler) : super(const AboutBaseState.state());
 
-  void navigateToWebView({required bool isPrivacyPolicy}) => _router.navigate(
-        WebViewRoute(
-          path: isPrivacyPolicy
-              ? Assets.policyAndTerms.privacyPolicy
-              : Assets.policyAndTerms.termsAndConditions,
-        ),
+  void onTermsAndConditionsButtonPressed() => _router.navigate(
+        WebViewRoute(path: Assets.policyAndTerms.termsAndConditions),
+      );
+
+  void onPrivacyPolicyButtonPressed() => _router.navigate(
+        WebViewRoute(path: Assets.policyAndTerms.privacyPolicy),
       );
 
   Future<void> sendEmail() async {

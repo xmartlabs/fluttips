@@ -16,15 +16,13 @@ class WebViewScreen extends StatefulWidget {
 
 class _WebViewScreenState extends State<WebViewScreen> {
   late final WebViewController _webViewController;
-  late final String _path;
 
   _WebViewScreenState();
 
   @override
   void initState() {
-    _path = widget.path;
     _webViewController = WebViewController();
-    _webViewController.loadFlutterAsset(_path);
+    _webViewController.loadFlutterAsset(widget.path);
     super.initState();
   }
 
@@ -32,8 +30,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
   Widget build(BuildContext context) {
     _webViewController.setBackgroundColor(context.theme.colors.background);
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
-      margin: EdgeInsets.only(left: 45, top: 10.h),
+      margin: EdgeInsets.only(left: 50, top: 10.h),
       alignment: Alignment.centerLeft,
       child: Column(
         children: [
