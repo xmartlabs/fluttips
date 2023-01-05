@@ -3,8 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluttips/ui/common/app_button.dart';
 import 'package:fluttips/ui/common/app_dialog.dart';
+import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/common/fab.dart';
 import 'package:fluttips/ui/common/search_bar.dart';
+import 'package:fluttips/ui/theme/app_theme.dart';
 
 class CatalogScreen extends StatefulWidget {
   const CatalogScreen({Key? key}) : super(key: key);
@@ -48,6 +50,7 @@ class CatalogScreenState extends State<CatalogScreen> {
           AppButton(
             text: 'hello',
             action: controllerAppButton.clear,
+            backgroundColor: context.theme.colors.primary.shade100,
           ),
           Fab(
             state: const FabState.notSelected(),

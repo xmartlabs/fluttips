@@ -6,33 +6,65 @@ import 'package:fluttips/ui/onboarding/onboarding_step.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/onboarding/onboarding_cubit.dart';
 import 'package:fluttips/ui/common/animated_pager_dote.dart';
+import 'package:fluttips/ui/common/app_button.dart';
 
 class OnboardingContentScreen extends StatelessWidget {
-  const OnboardingContentScreen({super.key});
+  const OnboardingContentScreen({
+    required this.btnText,
+    required this.action,
+    super.key,
+  });
+
+  final String btnText;
+  final VoidCallback action;
+  static const indexOnboardingGestures = 3;
 
   @override
-  Widget build(BuildContext context) => Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          const _PagerView(),
-          buildViewPagerIndicator(),
-        ],
+  Widget build(BuildContext context) =>
+      BlocBuilder<OnboardingCubit, OnboardingBaseState>(
+        builder: (context, state) => Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            const _PagerView(),
+            buildViewPagerIndicator(context, state),
+            state.onboardingStep.index != indexOnboardingGestures
+                ? Positioned(
+                    top: 30,
+                    right: 15,
+                    child: AppButton(
+                      text: btnText,
+                      action: action,
+                      backgroundColor: context.theme.colors.background,
+                    ),
+                  )
+                : Positioned(
+                    bottom: 15,
+                    right: 15,
+                    child: AppButton(
+                      text: btnText,
+                      action: action,
+                      backgroundColor: context.theme.colors.background,
+                    ),
+                  ),
+          ],
+        ),
       );
 
-  Widget buildViewPagerIndicator() =>
-      BlocBuilder<OnboardingCubit, OnboardingBaseState>(
-        builder: (context, state) => Positioned(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: OnboardingStep.onboardingPages
-                .map(
-                  (pages) => AnimatedPagerDot(
-                    isDotSelected: state.onboardingStep.index == pages.index,
-                    color: context.theme.colors.surface,
-                  ),
-                )
-                .toList(),
-          ),
+  Widget buildViewPagerIndicator(
+    BuildContext context,
+    OnboardingBaseState state,
+  ) =>
+      Positioned(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: OnboardingStep.onboardingPages
+              .map(
+                (pages) => AnimatedPagerDot(
+                  isDotSelected: state.onboardingStep.index == pages.index,
+                  color: context.theme.colors.surface,
+                ),
+              )
+              .toList(),
         ),
       );
 }
