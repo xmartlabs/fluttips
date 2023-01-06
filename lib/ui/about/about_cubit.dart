@@ -32,9 +32,8 @@ class AboutCubit extends Cubit<AboutBaseState> {
   Future<void> sendEmail() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final Email email = Email(
-      subject: Resources.localizations.feedback_email_subject +
-          Resources.localizations.app_version +
-          packageInfo.version,
+      subject:
+          Resources.localizations.feedback_email_subject + packageInfo.version,
       recipients: [Config.appEmail],
       isHTML: false,
     );
