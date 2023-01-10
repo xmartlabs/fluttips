@@ -32,9 +32,9 @@
   "error_unknown_error_description": "Something went wrong!",
   "error_unknown_error_title": "Ops!",
   "feedback_email_subject": "Feedback: app version {version}",
-  "@feedback_email_subject" : {
-    "description" : "Indicate the version of the app",
-    "placeholders" : {
+  "@feedback_email_subject": {
+    "description": "Indicate the version of the app",
+    "placeholders": {
       "version": {
         "type": "String",
         "example": "4.0"
