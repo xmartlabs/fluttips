@@ -33,7 +33,7 @@ class AboutCubit extends Cubit<AboutBaseState> {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     final Email email = Email(
       subject:
-          Resources.localizations.feedback_email_subject + packageInfo.version,
+          Resources.localizations.feedback_email_subject(packageInfo.version),
       recipients: [Config.appEmail],
       isHTML: false,
     );

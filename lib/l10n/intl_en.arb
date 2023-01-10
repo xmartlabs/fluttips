@@ -31,7 +31,16 @@
   "error_no_internet_connection_error_title": "Error",
   "error_unknown_error_description": "Something went wrong!",
   "error_unknown_error_title": "Ops!",
-  "feedback_email_subject": "Feedback: app version ",
+  "feedback_email_subject": "Feedback: app version {version}",
+  "@feedback_email_subject" : {
+    "description" : "Indicate the version of the app",
+    "placeholders" : {
+      "name": {
+        "type": "String",
+        "example": "4.0"
+      }
+    }
+  },
   "firstMessageEmptyFavoritesScreen": "1. To add one, first find the tip you want to save",
   "home": "Home",
   "log_out": "Log out",
