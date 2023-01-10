@@ -32,6 +32,11 @@ abstract class Config {
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const Duration durationAnimation = Duration(milliseconds: 150);
   static const Duration splashMinDuration = Duration(milliseconds: 300);
+  static const String appEmail = 'fluttips@xmartlabs.com';
+  static const String imagesTipsRepository =
+      'https://www.github.com/vandadnp/flutter-tips-and-tricks';
+  static const String widgetOfTheWeekLink =
+      'https://www.youtube.com/watch?v=b6Z885Z46cU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG';
   static const debugMode = kDebugMode;
 
   static const firebaseEnabled = !debugMode;

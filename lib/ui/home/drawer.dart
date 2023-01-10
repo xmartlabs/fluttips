@@ -8,12 +8,10 @@ import 'package:fluttips/ui/tips/show_tips_type.dart';
 
 class AppDrawer extends StatelessWidget {
   final TabsRouter _tabsController;
-  final VoidCallback? action;
 
   const AppDrawer({
     required TabsRouter tabsController,
     Key? key,
-    this.action,
   })  : _tabsController = tabsController,
         super(key: key);
 
@@ -33,21 +31,32 @@ class AppDrawer extends StatelessWidget {
             //TODO: add logo here and delete text
             const Text('FLUTTIPS'),
             ...HomeNavOptions.values
+                .where((element) => element.index != HomeNavOptions.about.index)
                 .map(
-                  (navOption) => _TabOption(
-                    icon: navOption.icon,
-                    isCurrentIndex:
-                        navOption.index == _tabsController.activeIndex,
-                    onPress: () =>
-                        _tabsController.setActiveIndex(navOption.index),
+                  (navOption) => Expanded(
+                    child: _TabOption(
+                      icon: navOption.icon,
+                      isCurrentIndex:
+                          navOption.index == _tabsController.activeIndex,
+                      onPress: () =>
+                          _tabsController.setActiveIndex(navOption.index),
+                    ),
                   ),
                 )
                 .toList(),
-            SizedBox(height: 100.h),
-            IconButton(
-              onPressed: action,
-              icon: const Icon(Icons.help_outline_rounded),
-              color: context.theme.colors.surface.shade700,
+            Expanded(
+              flex: 3,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 10.h),
+                alignment: Alignment.bottomCenter,
+                child: _TabOption(
+                  isCurrentIndex:
+                      HomeNavOptions.about.index == _tabsController.activeIndex,
+                  icon: HomeNavOptions.about.icon,
+                  onPress: () => _tabsController
+                      .setActiveIndex(HomeNavOptions.about.index),
+                ),
+              ),
             ),
           ],
         ),
@@ -96,6 +105,7 @@ enum HomeNavOptions {
   images,
   videos,
   favourites,
+  about,
 }
 
 extension NavExtensions on HomeNavOptions {
@@ -107,6 +117,8 @@ extension NavExtensions on HomeNavOptions {
         return Icons.image_outlined;
       case HomeNavOptions.favourites:
         return Icons.star_border_rounded;
+      case HomeNavOptions.about:
+        return Icons.help_outline_rounded;
     }
   }
 
@@ -118,6 +130,8 @@ extension NavExtensions on HomeNavOptions {
         return const HomeVideosScreenRoute();
       case HomeNavOptions.favourites:
         return const HomeFavouritesTipsScreenRoute();
+      case HomeNavOptions.about:
+        return const AboutFlowRoute();
     }
   }
 }

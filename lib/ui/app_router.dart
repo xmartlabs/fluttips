@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
+import 'package:fluttips/ui/about/about_screen.dart';
 import 'package:fluttips/ui/catalog/catalog_screen.dart';
 import 'package:fluttips/ui/favourites/list_favourites_tips_screen.dart';
 import 'package:fluttips/ui/home/home_screen.dart';
@@ -10,6 +11,8 @@ import 'package:fluttips/ui/tips/tips_screen.dart';
 import 'package:fluttips/ui/videos/videos.dart';
 import 'package:fluttips/ui/favourites/favourites_tips_screen.dart';
 import 'package:fluttips/core/model/tip.dart';
+import 'package:auto_route/empty_router_widgets.dart';
+import 'package:fluttips/ui/webView/webview_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -54,6 +57,23 @@ part 'app_router.gr.dart';
               name: 'HomeFavouritesTipsScreenRoute',
               page: FavouritesTipsScreen,
             ),
+            AutoRoute(
+              name: 'AboutFlowRoute',
+              page: EmptyRouterPage,
+              children: [
+                AutoRoute(
+                  path: AppRouter.aboutPath,
+                  initial: true,
+                  name: 'AboutScreenRoute',
+                  page: AboutScreen,
+                ),
+                AutoRoute(
+                  path: AppRouter.webViewPath,
+                  name: 'WebViewRoute',
+                  page: WebViewScreen,
+                ),
+              ],
+            ),
           ],
         ),
         AutoRoute(
@@ -70,4 +90,6 @@ class AppRouter extends _$AppRouter {
   static const videosPath = 'videos';
   static const favouritesTipsPath = 'favourite';
   static const listFavouritesTipsPath = 'list_favourite';
+  static const aboutPath = 'about';
+  static const webViewPath = 'webView';
 }
