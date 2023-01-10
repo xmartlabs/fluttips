@@ -35,7 +35,7 @@
   "@feedback_email_subject" : {
     "description" : "Indicate the version of the app",
     "placeholders" : {
-      "name": {
+      "version": {
         "type": "String",
         "example": "4.0"
       }
