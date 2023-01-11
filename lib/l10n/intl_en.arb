@@ -1,4 +1,17 @@
 {
+  "about": "About",
+  "about_button_privacy": "Privacy policy",
+  "about_button_send_email_feedback": "Send us an email",
+  "about_button_suggestion": "Any suggestion?",
+  "about_button_terms": "Terms and condition",
+  "about_credits": "Credits",
+  "about_fluttips": "Looking for the best way to get the most out of Flutter in all its different applications and use cases? Look no further than Fluttips! This Open Source project, launched by the talented team at Xmartlabs, is filled with top-quality data and resources from Vandadnp's GitHub libraries and Flutter & Google video tips. Nurtured with this wealth of knowledge, Fluttips is the ultimate destination for Flutter developers looking to optimize their process and stay up-to-date on the latest trends and news. So why wait? Start using Fluttips today and take your Flutter skills to the next level!",
+  "about_hear": "We want to hear from you!",
+  "about_images": "Images tips: ",
+  "about_vandadnp": "Vandadnp",
+  "about_videos": "Videos tips: ",
+  "about_widgets": "Widgets of the week",
+  "app_name": "Fluttips",
   "button_lets_go": "Let's go!",
   "button_skip": "Skip",
   "button_start": "Start",
@@ -18,6 +31,16 @@
   "error_no_internet_connection_error_title": "Error",
   "error_unknown_error_description": "Something went wrong!",
   "error_unknown_error_title": "Ops!",
+  "feedback_email_subject": "Feedback: app version {version}",
+  "@feedback_email_subject": {
+    "description": "Indicate the version of the app",
+    "placeholders": {
+      "version": {
+        "type": "String",
+        "example": "4.0"
+      }
+    }
+  },
   "firstMessageEmptyFavoritesScreen": "1. To add one, first find the tip you want to save",
   "home": "Home",
   "log_out": "Log out",
