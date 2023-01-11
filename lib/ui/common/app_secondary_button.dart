@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 
-class AppButton extends StatelessWidget {
+class AppSecondaryButton extends StatelessWidget {
   final String text;
   final VoidCallback action;
 
-  const AppButton({
+  const AppSecondaryButton({
     required this.text,
     required this.action,
     Key? key,
@@ -15,10 +15,15 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialButton(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.r),
+          side: BorderSide(
+            color: context.theme.colors.surface,
+          ),
+        ),
         elevation: 5,
-        color: context.theme.colors.primary.shade100,
+        color: Colors.transparent,
+        textColor: context.theme.colors.surface,
         onPressed: action,
         child: Text(text),
       );

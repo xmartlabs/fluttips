@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/ic_launcher_foreground.png
+  AssetGenImage get icLauncherForeground =>
+      const AssetGenImage('assets/images/ic_launcher_foreground.png');
+
   /// File path: assets/images/onboarding_branding.png
   AssetGenImage get onboardingBranding =>
       const AssetGenImage('assets/images/onboarding_branding.png');
@@ -34,6 +38,7 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        icLauncherForeground,
         onboardingBranding,
         onboardingDescribeApp,
         onboardingFavourite,

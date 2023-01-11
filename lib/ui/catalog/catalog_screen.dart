@@ -1,10 +1,10 @@
 // ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
-import 'package:fluttips/ui/common/app_button.dart';
+import 'package:fluttips/ui/common/app_secondary_button.dart';
 import 'package:fluttips/ui/common/app_dialog.dart';
 import 'package:fluttips/ui/common/fab.dart';
 import 'package:fluttips/ui/common/search_bar.dart';
+import 'package:fluttips/ui/common/app_primary_button.dart';
 
 class CatalogScreen extends StatefulWidget {
   const CatalogScreen({Key? key}) : super(key: key);
@@ -45,7 +45,11 @@ class CatalogScreenState extends State<CatalogScreen> {
             controller: controllerSearchBar,
             action: (word) => print('writing'),
           ),
-          AppButton(
+          AppSecondaryButton(
+            text: 'hello',
+            action: controllerAppButton.clear,
+          ),
+          AppPrimaryButton(
             text: 'hello',
             action: controllerAppButton.clear,
           ),

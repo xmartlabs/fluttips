@@ -18,12 +18,12 @@ class _VideosContentScreen extends StatelessWidget {
           children: [
             Text(
               context.localizations.videos,
-              style: context.theme.textStyles.bodyMedium!.copyWith(
+              style: context.theme.textStyles.titleLarge!.copyWith(
                 color: context.theme.colors.surface.shade700,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 5.h),
+            SizedBox(height: 10.h),
             Icon(
               Icons.play_circle_outline_outlined,
               color: context.theme.colors.surface.shade700,
