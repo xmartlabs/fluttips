@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
-import 'package:fluttips/ui/common/app_button.dart';
+import 'package:fluttips/ui/common/app_secondary_button.dart';
 import 'package:fluttips/ui/common/app_dialog.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/common/fab.dart';
@@ -47,10 +47,9 @@ class CatalogScreenState extends State<CatalogScreen> {
             controller: controllerSearchBar,
             action: (word) => print('writing'),
           ),
-          AppButton(
+          AppSecondaryButton(
             text: 'hello',
             action: controllerAppButton.clear,
-            backgroundColor: context.theme.colors.primary.shade100,
           ),
           Fab(
             state: const FabState.notSelected(),

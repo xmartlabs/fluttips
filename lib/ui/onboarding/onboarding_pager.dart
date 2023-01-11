@@ -6,7 +6,7 @@ import 'package:fluttips/ui/onboarding/onboarding_step.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/onboarding/onboarding_cubit.dart';
 import 'package:fluttips/ui/common/animated_pager_dote.dart';
-import 'package:fluttips/ui/common/app_button.dart';
+import 'package:fluttips/ui/common/app_secondary_button.dart';
 
 class OnboardingContentScreen extends StatelessWidget {
   final String buttonText;
@@ -31,19 +31,17 @@ class OnboardingContentScreen extends StatelessWidget {
                 ? Positioned(
                     top: 30.h,
                     right: 15.w,
-                    child: AppButton(
+                    child: AppSecondaryButton(
                       text: buttonText,
                       action: action,
-                      backgroundColor: context.theme.colors.background,
                     ),
                   )
                 : Positioned(
                     bottom: 15.h,
                     right: 15.w,
-                    child: AppButton(
+                    child: AppSecondaryButton(
                       text: buttonText,
                       action: action,
-                      backgroundColor: context.theme.colors.background,
                     ),
                   ),
           ],

@@ -48,11 +48,19 @@ class AppDrawer extends StatelessWidget {
                   ),
                 )
                 .toList(),
-            SizedBox(height: 80.h),
-            IconButton(
-              onPressed: action,
-              icon: const Icon(Icons.help_outline_rounded),
-              color: context.theme.colors.surface.shade700,
+            Expanded(
+              flex: 3,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 10.h),
+                alignment: Alignment.bottomCenter,
+                child: _TabOption(
+                  isCurrentIndex:
+                      HomeNavOptions.about.index == _tabsController.activeIndex,
+                  icon: HomeNavOptions.about.icon,
+                  onPress: () => _tabsController
+                      .setActiveIndex(HomeNavOptions.about.index),
+                ),
+              ),
             ),
           ],
         ),
