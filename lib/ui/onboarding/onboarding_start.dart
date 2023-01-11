@@ -7,13 +7,13 @@ import 'package:fluttips/gen/assets.gen.dart';
 
 class OnboardingStartScreen extends StatelessWidget {
   const OnboardingStartScreen({
-    required this.btnText,
+    required this.buttonText,
     required this.action,
     Key? key,
   }) : super(key: key);
 
   final VoidCallback action;
-  final String btnText;
+  final String buttonText;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -32,10 +32,10 @@ class OnboardingStartScreen extends StatelessWidget {
               ],
             ),
             Positioned(
-              bottom: 15,
-              right: 15,
+              bottom: 15.h,
+              right: 15.w,
               child: AppButton(
-                text: btnText,
+                text: buttonText,
                 action: action,
                 backgroundColor: context.theme.colors.background,
               ),

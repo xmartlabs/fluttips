@@ -35,11 +35,8 @@ class OnboardingScreenContent extends StatelessWidget {
           return Scaffold(
             backgroundColor: context.theme.colors.background,
             body: isStartButtonPressed
-                ? OnboardingContentScreen(
-                    btnText: btnText,
-                    action: action,
-                  )
-                : OnboardingStartScreen(btnText: btnText, action: action),
+                ? OnboardingContentScreen(buttonText: btnText, action: action)
+                : OnboardingStartScreen(buttonText: btnText, action: action),
           );
         },
       );

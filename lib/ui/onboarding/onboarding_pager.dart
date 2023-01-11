@@ -9,15 +9,14 @@ import 'package:fluttips/ui/common/animated_pager_dote.dart';
 import 'package:fluttips/ui/common/app_button.dart';
 
 class OnboardingContentScreen extends StatelessWidget {
+  final String buttonText;
+  final VoidCallback action;
+
   const OnboardingContentScreen({
-    required this.btnText,
+    required this.buttonText,
     required this.action,
     super.key,
   });
-
-  final String btnText;
-  final VoidCallback action;
-  static const indexOnboardingGestures = 3;
 
   @override
   Widget build(BuildContext context) =>
@@ -26,22 +25,23 @@ class OnboardingContentScreen extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           children: [
             const _PagerView(),
-            buildViewPagerIndicator(context, state),
-            state.onboardingStep.index != indexOnboardingGestures
+            _buildViewPagerIndicator(context, state.onboardingStep),
+            state.onboardingStep.index !=
+                    OnboardingStep.onboardingGestures.index
                 ? Positioned(
-                    top: 30,
-                    right: 15,
+                    top: 30.h,
+                    right: 15.w,
                     child: AppButton(
-                      text: btnText,
+                      text: buttonText,
                       action: action,
                       backgroundColor: context.theme.colors.background,
                     ),
                   )
                 : Positioned(
-                    bottom: 15,
-                    right: 15,
+                    bottom: 15.h,
+                    right: 15.w,
                     child: AppButton(
-                      text: btnText,
+                      text: buttonText,
                       action: action,
                       backgroundColor: context.theme.colors.background,
                     ),
@@ -50,9 +50,9 @@ class OnboardingContentScreen extends StatelessWidget {
         ),
       );
 
-  Widget buildViewPagerIndicator(
+  Widget _buildViewPagerIndicator(
     BuildContext context,
-    OnboardingBaseState state,
+    OnboardingStep onboardingStep,
   ) =>
       Positioned(
         child: Row(
@@ -60,7 +60,7 @@ class OnboardingContentScreen extends StatelessWidget {
           children: OnboardingStep.onboardingPages
               .map(
                 (pages) => AnimatedPagerDot(
-                  isDotSelected: state.onboardingStep.index == pages.index,
+                  isDotSelected: onboardingStep.index == pages.index,
                   color: context.theme.colors.surface,
                 ),
               )
