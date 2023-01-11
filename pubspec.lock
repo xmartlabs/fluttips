@@ -281,6 +281,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  cv:
+    dependency: transitive
+    description:
+      name: cv
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.8+1"
   dart_code_metrics:
     dependency: "direct dev"
     description:
@@ -433,6 +440,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_archive:
+    dependency: "direct main"
+    description:
+      name: flutter_archive
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.0"
   flutter_bloc:
     dependency: "direct main"
     description:
@@ -820,7 +834,7 @@ packages:
     source: hosted
     version: "1.8.2"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
@@ -1118,6 +1132,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1+1"
+  sqflite_common_porter:
+    dependency: "direct main"
+    description:
+      path: sqflite_common_porter
+      ref: dart2_3
+      resolved-ref: "376e9c11f531261e1fb79e4f3c5e94d5c3a80636"
+      url: "https://github.com/tekartik/sqflite_more"
+    source: git
+    version: "0.3.0"
   sqlite3:
     dependency: transitive
     description:
@@ -1188,6 +1211,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.4"
+  tekartik_common_utils:
+    dependency: transitive
+    description:
+      path: "."
+      ref: dart2_3
+      resolved-ref: ac7e67565d695670f5bcc70c3dd4216ec99b045f
+      url: "https://github.com/tekartik/common_utils.dart"
+    source: git
+    version: "0.13.6"
+  tekartik_lints:
+    dependency: transitive
+    description:
+      path: "packages/lints"
+      ref: dart2_3
+      resolved-ref: "1f82d773d2fecd35ca4a38be09dacf596bc67575"
+      url: "https://github.com/tekartik/common.dart"
+    source: git
+    version: "0.1.2"
   term_glyph:
     dependency: transitive
     description:

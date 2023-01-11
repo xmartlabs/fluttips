@@ -53,6 +53,14 @@ dependencies:
   stock: 1.0.1
   url_launcher: 6.1.7
   webview_flutter: 4.0.1
+  sqflite_common_porter:
+    git:
+      url: https://github.com/tekartik/sqflite_more
+      ref: dart2_3
+      path: sqflite_common_porter
+    version: '>=0.2.0'
+  flutter_archive: ^5.0.0
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_test:

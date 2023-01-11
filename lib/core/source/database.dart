@@ -13,4 +13,6 @@ abstract class AppDatabase extends FloorDatabase {
   TipsLocalSource get tipsLocalSource;
 
   Future<void> clearAllTables() => database.delete(TipDbEntity.tableName);
+
+  Future<String> getDatabasesPath() => sqfliteDatabaseFactory.getDatabasesPath();
 }
