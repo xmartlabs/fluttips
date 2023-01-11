@@ -9,12 +9,10 @@ import 'package:fluttips/gen/assets.gen.dart';
 
 class AppDrawer extends StatelessWidget {
   final TabsRouter _tabsController;
-  final VoidCallback? action;
 
   const AppDrawer({
     required TabsRouter tabsController,
     Key? key,
-    this.action,
   })  : _tabsController = tabsController,
         super(key: key);
 
@@ -37,13 +35,16 @@ class AppDrawer extends StatelessWidget {
               child: Assets.images.icLauncherForeground.image(),
             ),
             ...HomeNavOptions.values
+                .where((element) => element.index != HomeNavOptions.about.index)
                 .map(
-                  (navOption) => _TabOption(
-                    icon: navOption.icon,
-                    isCurrentIndex:
-                        navOption.index == _tabsController.activeIndex,
-                    onPress: () =>
-                        _tabsController.setActiveIndex(navOption.index),
+                  (navOption) => Expanded(
+                    child: _TabOption(
+                      icon: navOption.icon,
+                      isCurrentIndex:
+                          navOption.index == _tabsController.activeIndex,
+                      onPress: () =>
+                          _tabsController.setActiveIndex(navOption.index),
+                    ),
                   ),
                 )
                 .toList(),
@@ -100,6 +101,7 @@ enum HomeNavOptions {
   images,
   videos,
   favourites,
+  about,
 }
 
 extension NavExtensions on HomeNavOptions {
@@ -111,6 +113,8 @@ extension NavExtensions on HomeNavOptions {
         return Icons.image_outlined;
       case HomeNavOptions.favourites:
         return Icons.star_border_rounded;
+      case HomeNavOptions.about:
+        return Icons.help_outline_rounded;
     }
   }
 
@@ -122,6 +126,8 @@ extension NavExtensions on HomeNavOptions {
         return const HomeVideosScreenRoute();
       case HomeNavOptions.favourites:
         return const HomeFavouritesTipsScreenRoute();
+      case HomeNavOptions.about:
+        return const AboutFlowRoute();
     }
   }
 }

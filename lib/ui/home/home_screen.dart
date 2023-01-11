@@ -52,7 +52,6 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
         body: SafeArea(child: child),
         drawer: AppDrawer(
           tabsController: AutoTabsRouter.of(context),
-          action: () => _scaffoldKey.currentState!.closeDrawer(),
         ),
       ),
     );

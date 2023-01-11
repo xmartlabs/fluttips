@@ -47,10 +47,26 @@ class $AssetsImagesGen {
       ];
 }
 
+class $AssetsPolicyAndTermsGen {
+  const $AssetsPolicyAndTermsGen();
+
+  /// File path: assets/policy_and_terms/privacy_policy.html
+  String get privacyPolicy => 'assets/policy_and_terms/privacy_policy.html';
+
+  /// File path: assets/policy_and_terms/terms_and_conditions.html
+  String get termsAndConditions =>
+      'assets/policy_and_terms/terms_and_conditions.html';
+
+  /// List of all assets
+  List<String> get values => [privacyPolicy, termsAndConditions];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsPolicyAndTermsGen policyAndTerms =
+      $AssetsPolicyAndTermsGen();
 }
 
 class AssetGenImage {

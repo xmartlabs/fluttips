@@ -81,6 +81,28 @@ class _$AppRouter extends RootStackRouter {
         child: const FavouritesTipsScreen(),
       );
     },
+    AboutFlowRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const EmptyRouterPage(),
+      );
+    },
+    AboutScreenRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AboutScreen(),
+      );
+    },
+    WebViewRoute.name: (routeData) {
+      final args = routeData.argsAs<WebViewRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: WebViewScreen(
+          args.path,
+          key: args.key,
+        ),
+      );
+    },
   };
 
   @override
@@ -123,6 +145,30 @@ class _$AppRouter extends RootStackRouter {
                   HomeFavouritesTipsScreenRoute.name,
                   path: 'favourite',
                   parent: HomeScreenRoute.name,
+                ),
+                RouteConfig(
+                  AboutFlowRoute.name,
+                  path: 'empty-router-page',
+                  parent: HomeScreenRoute.name,
+                  children: [
+                    RouteConfig(
+                      '#redirect',
+                      path: '',
+                      parent: AboutFlowRoute.name,
+                      redirectTo: 'about',
+                      fullMatch: true,
+                    ),
+                    RouteConfig(
+                      AboutScreenRoute.name,
+                      path: 'about',
+                      parent: AboutFlowRoute.name,
+                    ),
+                    RouteConfig(
+                      WebViewRoute.name,
+                      path: 'webView',
+                      parent: AboutFlowRoute.name,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -300,4 +346,63 @@ class HomeFavouritesTipsScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeFavouritesTipsScreenRoute';
+}
+
+/// generated route for
+/// [EmptyRouterPage]
+class AboutFlowRoute extends PageRouteInfo<void> {
+  const AboutFlowRoute({List<PageRouteInfo>? children})
+      : super(
+          AboutFlowRoute.name,
+          path: 'empty-router-page',
+          initialChildren: children,
+        );
+
+  static const String name = 'AboutFlowRoute';
+}
+
+/// generated route for
+/// [AboutScreen]
+class AboutScreenRoute extends PageRouteInfo<void> {
+  const AboutScreenRoute()
+      : super(
+          AboutScreenRoute.name,
+          path: 'about',
+        );
+
+  static const String name = 'AboutScreenRoute';
+}
+
+/// generated route for
+/// [WebViewScreen]
+class WebViewRoute extends PageRouteInfo<WebViewRouteArgs> {
+  WebViewRoute({
+    required String path,
+    Key? key,
+  }) : super(
+          WebViewRoute.name,
+          path: 'webView',
+          args: WebViewRouteArgs(
+            path: path,
+            key: key,
+          ),
+        );
+
+  static const String name = 'WebViewRoute';
+}
+
+class WebViewRouteArgs {
+  const WebViewRouteArgs({
+    required this.path,
+    this.key,
+  });
+
+  final String path;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'WebViewRouteArgs{path: $path, key: $key}';
+  }
 }
