@@ -37,6 +37,14 @@ abstract class Config {
       'https://www.github.com/vandadnp/flutter-tips-and-tricks';
   static const String widgetOfTheWeekLink =
       'https://www.youtube.com/watch?v=b6Z885Z46cU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG';
+  static const String fluttipsRepository =
+      'https://github.com/xmartlabs/fluttips';
+  static const String xmartlabsLinkedln =
+      'https://www.linkedin.com/company/xmartlabs';
+  static const String xmartlabsInstagram =
+      'https://www.instagram.com/xmartlabs/?hl=es';
+  static const String xmartlabsTwitter = 'https://twitter.com/xmartlabs';
+
   static const debugMode = kDebugMode;
 
   static const firebaseEnabled = !debugMode;

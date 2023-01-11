@@ -1174,6 +1174,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.2"
+  styled_text:
+    dependency: "direct main"
+    description:
+      name: styled_text
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "6.0.0"
   synchronized:
     dependency: transitive
     description:
@@ -1391,6 +1398,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.0"
+  xmlstream:
+    dependency: transitive
+    description:
+      name: xmlstream
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   yaml:
     dependency: transitive
     description:
