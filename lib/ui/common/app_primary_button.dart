@@ -15,17 +15,17 @@ class AppPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialButton(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(16.r),
-      side: BorderSide(
-        color: context.theme.colors.surface,
-      ),
-    ),
-    elevation: 5,
-    color: context.theme.colors.primary.shade100,
-    textColor: context.theme.colors.surface,
-    onPressed: action,
-    focusColor: context.theme.colors.surface.shade600,
-    child: Text(text),
-  );
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16.r),
+          side: BorderSide(
+            color: context.theme.colors.surface,
+          ),
+        ),
+        elevation: 5,
+        color: context.theme.colors.primary.shade100,
+        textColor: context.theme.colors.surface,
+        onPressed: action,
+        focusColor: context.theme.colors.surface.shade600,
+        child: Text(text),
+      );
 }
