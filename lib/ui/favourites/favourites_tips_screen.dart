@@ -5,7 +5,6 @@ import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:fluttips/ui/favourites/favourites_tips_cubit.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
-
 import 'package:fluttips/ui/favourites/display_list_favorites_tips_screen.dart';
 
 class FavouritesTipsScreen extends StatelessWidget {
@@ -25,7 +24,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
     final cubit = context.read<FavouritesTipsCubit>();
     return BlocBuilder<FavouritesTipsCubit, FavouritesTipsBaseState>(
       builder: (context, state) => Container(
-        margin: EdgeInsets.only(left: 45.w),
+        margin: EdgeInsets.symmetric(horizontal: 45.w),
         padding: EdgeInsets.symmetric(horizontal: 40.0.w),
         child: state.tips.isEmpty
             ? emptyFavouriteScreen(context)

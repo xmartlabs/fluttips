@@ -27,25 +27,21 @@ class _AboutContentScreen extends StatelessWidget {
   const _AboutContentScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.w),
-        margin: EdgeInsets.only(left: 65.w, top: 30.h),
-        alignment: Alignment.centerLeft,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const _AboutSection(),
-              SizedBox(height: 15.h),
-              const _CreditsSection(),
-              SizedBox(height: 15.h),
-              Divider(color: context.theme.colors.surface),
-              SizedBox(height: 15.h),
-              const _SuggestionSection(),
-              SizedBox(height: 20.h),
-              const _TermsAndPolicySection(),
-            ],
-          ),
+  Widget build(BuildContext context) => SingleChildScrollView(
+        padding: EdgeInsets.fromLTRB(70.w, 30.h, 70.w, 30.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const _AboutSection(),
+            SizedBox(height: 15.h),
+            const _CreditsSection(),
+            SizedBox(height: 15.h),
+            Divider(color: context.theme.colors.surface),
+            SizedBox(height: 15.h),
+            const _SuggestionSection(),
+            SizedBox(height: 20.h),
+            const _TermsAndPolicySection(),
+          ],
         ),
       );
 }
@@ -143,9 +139,7 @@ class _CreditsSection extends StatelessWidget {
                   decoration: TextDecoration.underline,
                 ),
               ),
-              onTap: () => launchUrl(
-                Uri.parse(Config.imagesTipsRepository),
-              ),
+              onTap: () => launchUrl(Config.imagesTipsRepository),
             ),
             SizedBox(width: 10.w),
             Text(
@@ -162,9 +156,7 @@ class _CreditsSection extends StatelessWidget {
                   decoration: TextDecoration.underline,
                 ),
               ),
-              onTap: () => launchUrl(
-                Uri.parse(Config.widgetOfTheWeekLink),
-              ),
+              onTap: () => launchUrl(Config.widgetOfTheWeekLink),
             ),
           ],
         ),
@@ -207,23 +199,17 @@ class _AboutSection extends StatelessWidget {
                       SizedBox(width: 10.w),
                       InkWell(
                         child: Assets.images.icLinkedlnLogo.image(),
-                        onTap: () => launchUrl(
-                          Uri.parse(Config.xmartlabsLinkedln),
-                        ),
+                        onTap: () => launchUrl(Config.xmartlabsLinkedln),
                       ),
                       SizedBox(width: 10.w),
                       InkWell(
                         child: Assets.images.icInstagramLogo.image(),
-                        onTap: () => launchUrl(
-                          Uri.parse(Config.xmartlabsInstagram),
-                        ),
+                        onTap: () => launchUrl(Config.xmartlabsInstagram),
                       ),
                       SizedBox(width: 10.w),
                       InkWell(
                         child: Assets.images.icTwitterLogo.image(),
-                        onTap: () => launchUrl(
-                          Uri.parse(Config.xmartlabsTwitter),
-                        ),
+                        onTap: () => launchUrl(Config.xmartlabsTwitter),
                       ),
                     ],
                   ),
@@ -232,9 +218,8 @@ class _AboutSection extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             StyledText(
-              text: context.localizations.about_fluttips(
-                '<link href=${Config.fluttipsRepository}>Open Source Project</link>',
-              ),
+              text: context.localizations
+                  .about_fluttips(Config.fluttipsRepository),
               tags: {
                 'link': StyledTextActionTag(
                   (String? text, Map<String?, String?> attrs) {

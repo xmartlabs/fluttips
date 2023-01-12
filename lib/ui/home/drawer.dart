@@ -8,11 +8,14 @@ import 'package:fluttips/ui/tips/show_tips_type.dart';
 
 class AppDrawer extends StatelessWidget {
   final TabsRouter _tabsController;
+  final Function _action;
 
   const AppDrawer({
     required TabsRouter tabsController,
+    required Function action,
     Key? key,
   })  : _tabsController = tabsController,
+        _action = action,
         super(key: key);
 
   @override
@@ -38,8 +41,10 @@ class AppDrawer extends StatelessWidget {
                       icon: navOption.icon,
                       isCurrentIndex:
                           navOption.index == _tabsController.activeIndex,
-                      onPress: () =>
-                          _tabsController.setActiveIndex(navOption.index),
+                      onPress: () {
+                        _action();
+                        _tabsController.setActiveIndex(navOption.index);
+                      },
                     ),
                   ),
                 )
@@ -53,8 +58,10 @@ class AppDrawer extends StatelessWidget {
                   isCurrentIndex:
                       HomeNavOptions.about.index == _tabsController.activeIndex,
                   icon: HomeNavOptions.about.icon,
-                  onPress: () => _tabsController
-                      .setActiveIndex(HomeNavOptions.about.index),
+                  onPress: () {
+                    _action();
+                    _tabsController.setActiveIndex(HomeNavOptions.about.index);
+                  },
                 ),
               ),
             ),

@@ -33,17 +33,17 @@ abstract class Config {
   static const Duration durationAnimation = Duration(milliseconds: 150);
   static const Duration splashMinDuration = Duration(milliseconds: 300);
   static const String appEmail = 'fluttips@xmartlabs.com';
-  static const String imagesTipsRepository =
-      'https://www.github.com/vandadnp/flutter-tips-and-tricks';
-  static const String widgetOfTheWeekLink =
-      'https://www.youtube.com/watch?v=b6Z885Z46cU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG';
-  static const String fluttipsRepository =
-      'https://github.com/xmartlabs/fluttips';
-  static const String xmartlabsLinkedln =
-      'https://www.linkedin.com/company/xmartlabs';
-  static const String xmartlabsInstagram =
-      'https://www.instagram.com/xmartlabs/?hl=es';
-  static const String xmartlabsTwitter = 'https://twitter.com/xmartlabs';
+  static Uri imagesTipsRepository =
+      Uri.parse('https://www.github.com/vandadnp/flutter-tips-and-tricks');
+  static Uri widgetOfTheWeekLink = Uri.parse(
+    'https://www.youtube.com/watch?v=b6Z885Z46cU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG',
+  );
+  static String fluttipsRepository = 'https://github.com/xmartlabs/fluttips';
+  static Uri xmartlabsLinkedln =
+      Uri.parse('https://www.linkedin.com/company/xmartlabs');
+  static Uri xmartlabsInstagram =
+      Uri.parse('https://www.instagram.com/xmartlabs/?hl=es');
+  static Uri xmartlabsTwitter = Uri.parse('https://twitter.com/xmartlabs');
 
   static const debugMode = kDebugMode;
 

@@ -20,7 +20,7 @@ class DisplayListFavoritesTipsScreen extends StatelessWidget {
         onTap: onTipAppendCallback,
         child: Container(
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.only(left: 10),
+          padding: EdgeInsets.symmetric(horizontal: 10.w),
           margin: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.r),
