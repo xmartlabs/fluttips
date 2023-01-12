@@ -5,6 +5,7 @@ import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/app_router.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
+import 'package:fluttips/gen/assets.gen.dart';
 
 class AppDrawer extends StatelessWidget {
   final TabsRouter _tabsController;
@@ -27,9 +28,12 @@ class AppDrawer extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(height: 30),
-            //TODO: add logo here and delete text
-            const Text('FLUTTIPS'),
+            Container(
+              width: 50.w,
+              height: 50.h,
+              margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
+              child: Assets.images.icAppLogo.image(),
+            ),
             ...HomeNavOptions.values
                 .where((element) => element.index != HomeNavOptions.about.index)
                 .map(
