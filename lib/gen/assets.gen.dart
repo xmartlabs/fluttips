@@ -16,10 +16,6 @@ class $AssetsImagesGen {
   AssetGenImage get icAppLogo =>
       const AssetGenImage('assets/images/icAppLogo.png');
 
-  /// File path: assets/images/ic_launcher_foreground.png
-  AssetGenImage get icLauncherForeground =>
-      const AssetGenImage('assets/images/ic_launcher_foreground.png');
-
   /// File path: assets/images/onboarding_branding.png
   AssetGenImage get onboardingBranding =>
       const AssetGenImage('assets/images/onboarding_branding.png');
@@ -43,7 +39,6 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         icAppLogo,
-        icLauncherForeground,
         onboardingBranding,
         onboardingDescribeApp,
         onboardingFavourite,
