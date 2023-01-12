@@ -12,6 +12,10 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/icAppLogo.png
+  AssetGenImage get icAppLogo =>
+      const AssetGenImage('assets/images/icAppLogo.png');
+
   /// File path: assets/images/ic_github_logo.png
   AssetGenImage get icGithubLogo =>
       const AssetGenImage('assets/images/ic_github_logo.png');
@@ -27,10 +31,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/ic_twitter_logo.png
   AssetGenImage get icTwitterLogo =>
       const AssetGenImage('assets/images/ic_twitter_logo.png');
-
-  /// File path: assets/images/icAppLogo.png
-  AssetGenImage get icAppLogo =>
-      const AssetGenImage('assets/images/icAppLogo.png');
 
   /// File path: assets/images/onboarding_branding.png
   AssetGenImage get onboardingBranding =>
@@ -54,11 +54,11 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        icAppLogo,
         icGithubLogo,
         icInstagramLogo,
         icLinkedlnLogo,
         icTwitterLogo,
-        icAppLogo,
         onboardingBranding,
         onboardingDescribeApp,
         onboardingFavourite,
