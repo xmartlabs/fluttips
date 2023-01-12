@@ -18,5 +18,6 @@ class AppPrimaryButton extends StatelessWidget {
         text: text,
         action: action,
         backgroundColor: context.theme.colors.primary.shade100,
+        textColor: context.theme.colors.primary,
       );
 }

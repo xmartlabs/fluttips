@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttips/ui/common/app_secondary_button.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
@@ -10,6 +9,7 @@ import 'package:styled_text/styled_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttips/core/common/config.dart';
 import 'package:fluttips/gen/assets.gen.dart';
+import 'package:fluttips/ui/common/app_primary_button.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({
@@ -90,14 +90,14 @@ class _TermsAndPolicySection extends StatelessWidget {
         margin: EdgeInsets.only(right: 30.w, left: 20.w),
         child: Row(
           children: [
-            AppButton(
+            AppPrimaryButton(
               text: context.localizations.about_button_terms,
               action: () => context
                   .read<AboutCubit>()
                   .onTermsAndConditionsButtonPressed(),
             ),
             SizedBox(width: 15.w),
-            AppButton(
+            AppPrimaryButton(
               text: context.localizations.about_button_privacy,
               action: () =>
                   context.read<AboutCubit>().onPrivacyPolicyButtonPressed(),
