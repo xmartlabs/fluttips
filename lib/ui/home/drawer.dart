@@ -32,7 +32,7 @@ class AppDrawer extends StatelessWidget {
               width: 50.w,
               height: 50.h,
               margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
-              child: Assets.images.icLauncherForeground.image(),
+              child: Assets.images.icAppLogo.image(),
             ),
             ...HomeNavOptions.values
                 .where((element) => element.index != HomeNavOptions.about.index)
