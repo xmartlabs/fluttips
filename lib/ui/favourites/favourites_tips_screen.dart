@@ -107,6 +107,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 10.h),
               SizedBox(
                 width: 190.w,
                 height: 190.h,
