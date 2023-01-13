@@ -7,11 +7,13 @@ class AppBaseButton extends StatelessWidget {
   final String text;
   final VoidCallback action;
   final Color backgroundColor;
+  final Color textColor;
 
   const AppBaseButton({
     required this.text,
     required this.action,
     required this.backgroundColor,
+    required this.textColor,
     Key? key,
   }) : super(key: key);
 
@@ -25,7 +27,7 @@ class AppBaseButton extends StatelessWidget {
         ),
         elevation: 5,
         color: backgroundColor,
-        textColor: context.theme.colors.surface,
+        textColor: textColor,
         onPressed: action,
         child: Text(text),
       );

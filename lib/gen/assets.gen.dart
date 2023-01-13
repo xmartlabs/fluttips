@@ -16,6 +16,22 @@ class $AssetsImagesGen {
   AssetGenImage get icAppLogo =>
       const AssetGenImage('assets/images/icAppLogo.png');
 
+  /// File path: assets/images/ic_github_logo.png
+  AssetGenImage get icGithubLogo =>
+      const AssetGenImage('assets/images/ic_github_logo.png');
+
+  /// File path: assets/images/ic_instagram_logo.png
+  AssetGenImage get icInstagramLogo =>
+      const AssetGenImage('assets/images/ic_instagram_logo.png');
+
+  /// File path: assets/images/ic_linkedln_logo.png
+  AssetGenImage get icLinkedlnLogo =>
+      const AssetGenImage('assets/images/ic_linkedln_logo.png');
+
+  /// File path: assets/images/ic_twitter_logo.png
+  AssetGenImage get icTwitterLogo =>
+      const AssetGenImage('assets/images/ic_twitter_logo.png');
+
   /// File path: assets/images/onboarding_branding.png
   AssetGenImage get onboardingBranding =>
       const AssetGenImage('assets/images/onboarding_branding.png');
@@ -39,6 +55,10 @@ class $AssetsImagesGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         icAppLogo,
+        icGithubLogo,
+        icInstagramLogo,
+        icLinkedlnLogo,
+        icTwitterLogo,
         onboardingBranding,
         onboardingDescribeApp,
         onboardingFavourite,
