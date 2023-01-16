@@ -9,6 +9,8 @@ part 'global_ui_cubit.freezed.dart';
 part 'global_ui_state.dart';
 
 class GlobalUICubit extends Cubit<GlobalUIState> {
+  final AppRouter globalRouter = DiProvider.get();
+
   GlobalUICubit() : super(const GlobalUIState.state()) {
     globalRouter.addListener(
       () => emit(
@@ -18,8 +20,6 @@ class GlobalUICubit extends Cubit<GlobalUIState> {
       ),
     );
   }
-
-  final AppRouter globalRouter = DiProvider.get();
 
   void toggleUIActionComponentState() => emit(
         state.copyWith(
