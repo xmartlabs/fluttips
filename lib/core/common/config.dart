@@ -44,7 +44,7 @@ abstract class Config {
   static Uri xmartlabsInstagram =
       Uri.parse('https://www.instagram.com/xmartlabs/?hl=es');
   static Uri xmartlabsTwitter = Uri.parse('https://twitter.com/xmartlabs');
-
+  static String key = 'alreadyCleanData';
   static const debugMode = kDebugMode;
 
   static const firebaseEnabled = !debugMode;

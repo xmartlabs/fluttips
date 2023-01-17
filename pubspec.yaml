@@ -54,6 +54,7 @@ dependencies:
   styled_text: 6.0.0
   url_launcher: 6.1.7
   webview_flutter: 4.0.1
+  shared_preferences: ^2.0.16
 
 dev_dependencies:
   flutter_test:

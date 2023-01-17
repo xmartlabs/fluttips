@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttips/core/common/config.dart';
 import 'package:fluttips/core/common/logger.dart';
 import 'package:fluttips/core/di/di_provider.dart';
@@ -12,6 +13,7 @@ import 'package:fluttips/firebase_options.dart';
 import 'package:fluttips/ui/main/main_screen.dart';
 
 import 'package:bugsee_flutter/bugsee.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   final initialTime = DateTime.now();
@@ -36,6 +38,16 @@ Future<void> main() async {
   );
 }
 
+Future<void> clearSecureStorageOnReinstall() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  if (!(prefs.getBool(Config.key) != null)) {
+    const FlutterSecureStorage storage = FlutterSecureStorage();
+    await storage.deleteAll();
+    await prefs.setBool(Config.key, true);
+  }
+}
+
 Future<void> _removeSplashScreen(DateTime initialTime) => Future.delayed(
       Config.splashMinDuration - DateTime.now().difference(initialTime),
       FlutterNativeSplash.remove,
@@ -49,6 +61,7 @@ Future _initSdks() async {
   await Config.initialize();
   await _initFirebaseCore();
   await Logger.init();
+  await clearSecureStorageOnReinstall();
 
   await Future.wait([
     DiProvider.init(),

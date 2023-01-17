@@ -33,7 +33,7 @@ extension _GetItUseCaseDiModuleExtensions on GetIt {
   }
 
   void _setupRepositories() {
-    registerLazySingleton(() => SessionRepository());
+    registerLazySingleton(() => SessionRepository(get()));
     registerLazySingleton(() => TipRepository(get(), get()));
   }
 
