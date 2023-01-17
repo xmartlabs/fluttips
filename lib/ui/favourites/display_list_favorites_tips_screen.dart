@@ -20,20 +20,21 @@ class DisplayListFavoritesTipsScreen extends StatelessWidget {
         onTap: onTipAppendCallback,
         child: Container(
           alignment: Alignment.centerLeft,
-          padding: EdgeInsets.symmetric(horizontal: 10.w),
-          margin: const EdgeInsets.all(8),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 05.h),
+          margin: const EdgeInsets.all(2),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15.r),
             color: Colors.transparent,
             border: Border.all(
-              color: context.theme.colors.primary.shade100,
+              color: context.theme.colors.primary.shade400,
             ),
           ),
           child: Text(
             tip.name,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.left,
             style: context.theme.textStyles.titleMedium!.copyWith(
               color: context.theme.colors.primary.shade100,
+              height: 1.3,
             ),
           ),
         ),

@@ -33,17 +33,18 @@ class ListFavouritesTipsScreen extends StatelessWidget {
                   style: TextButton.styleFrom(
                     padding: const EdgeInsets.only(
                       top: 5,
-                      left: 10,
+                      left: 13,
                       right: 5,
                       bottom: 5,
                     ),
                     shape: const CircleBorder(),
-                    backgroundColor: context.theme.colors.primary.shade100,
+                    backgroundColor: context.theme.colors.primary,
                     alignment: Alignment.center,
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.arrow_back_ios,
                     size: 20,
+                    color: context.theme.colors.primary.shade100,
                   ),
                 ),
               ),
