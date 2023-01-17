@@ -17,35 +17,38 @@ class ListFavouritesTipsScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => SafeArea(
-        child: Stack(
-          children: [
-            TipsScreen(
-              showTipType: showTipType,
-              tip: tip,
-            ),
-            Container(
-              margin: const EdgeInsets.only(left: 20, top: 10),
-              child: TextButton(
-                onPressed: context.router.navigateBack,
-                style: TextButton.styleFrom(
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                    left: 10,
-                    right: 5,
-                    bottom: 5,
+  Widget build(BuildContext context) => Container(
+        color: context.theme.colors.background,
+        child: SafeArea(
+          child: Stack(
+            children: [
+              TipsScreen(
+                showTipType: showTipType,
+                tip: tip,
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 20, top: 10),
+                child: TextButton(
+                  onPressed: context.router.navigateBack,
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.only(
+                      top: 5,
+                      left: 10,
+                      right: 5,
+                      bottom: 5,
+                    ),
+                    shape: const CircleBorder(),
+                    backgroundColor: context.theme.colors.primary.shade100,
+                    alignment: Alignment.center,
                   ),
-                  shape: const CircleBorder(),
-                  backgroundColor: context.theme.colors.primary.shade100,
-                  alignment: Alignment.center,
-                ),
-                child: const Icon(
-                  Icons.arrow_back_ios,
-                  size: 20,
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    size: 20,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
 }
