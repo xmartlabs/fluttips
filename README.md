@@ -11,13 +11,13 @@ The project is divided into two main folders:
 [Flutter Bloc][bloc] is used for state management, specifically, we use Cubit to manage the screen state.
 Each app section is added in a project folder which contains three components, the Screen (a `StatelessWidget`, the UI), the Cubit and the state.
 
-The `MainScreen` is the Widget that contains all screens. It defines the `MaterialApp` and provides the app router.
+The `MainScreen` is the Widget containing all screens. It defines the `MaterialApp` and provides the app router.
 The router has two subgraphs, the `UnauthenticatedRouter` used for unauthenticated users and the `AuthenticatedRouter` used for authenticated users.
 
 The [app router][app_router] is provided by [auto_route][auto_route], and contains the previous sections with some nested screens.
 
 The [theme folder][theme] contains the theme definitions, for example colors, styles and dimensions. 
-Another important plugin related to the UI is [flutter_screenutil][flutter_screenutil], used for adapting screen and font size.
+Another key plugin related to the UI is [flutter_screenutil][flutter_screenutil], used for adapting screen and font size.
 
 ### Core section
 
