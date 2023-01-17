@@ -37,7 +37,7 @@ class _AboutContentScreen extends StatelessWidget {
             const _CreditsSection(),
             SizedBox(height: 15.h),
             Container(
-              padding: const EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 20.w),
               child: Divider(color: context.theme.colors.surface),
             ),
             SizedBox(height: 15.h),

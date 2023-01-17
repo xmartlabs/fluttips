@@ -30,7 +30,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
   Widget build(BuildContext context) {
     _webViewController.setBackgroundColor(context.theme.colors.background);
     return Container(
-      margin: EdgeInsets.only(left: 80, top: 10.h),
+      margin: EdgeInsets.only(left: 80.w, top: 10.h),
       alignment: Alignment.centerLeft,
       child: Column(
         children: [
