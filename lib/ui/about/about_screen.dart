@@ -36,7 +36,10 @@ class _AboutContentScreen extends StatelessWidget {
             SizedBox(height: 15.h),
             const _CreditsSection(),
             SizedBox(height: 15.h),
-            Divider(color: context.theme.colors.surface),
+            Container(
+              padding: EdgeInsets.only(left: 20.w),
+              child: Divider(color: context.theme.colors.surface),
+            ),
             SizedBox(height: 15.h),
             const _SuggestionSection(),
             SizedBox(height: 20.h),
@@ -119,7 +122,7 @@ class _CreditsSection extends StatelessWidget {
           children: [
             Text(
               context.localizations.about_credits,
-              style: context.theme.textStyles.titleMedium!.copyWith(
+              style: context.theme.textStyles.bodyMedium!.copyWith(
                 color: context.theme.colors.surface,
                 fontWeight: FontWeight.bold,
               ),
@@ -127,14 +130,14 @@ class _CreditsSection extends StatelessWidget {
             SizedBox(width: 10.w),
             Text(
               context.localizations.about_images,
-              style: context.theme.textStyles.bodyLarge!.copyWith(
+              style: context.theme.textStyles.bodyMedium!.copyWith(
                 color: context.theme.colors.surface,
               ),
             ),
             InkWell(
               child: Text(
                 context.localizations.about_vandadnp,
-                style: context.theme.textStyles.bodyLarge!.copyWith(
+                style: context.theme.textStyles.bodyMedium!.copyWith(
                   color: context.theme.colors.surface,
                   decoration: TextDecoration.underline,
                 ),
@@ -144,14 +147,14 @@ class _CreditsSection extends StatelessWidget {
             SizedBox(width: 10.w),
             Text(
               context.localizations.about_videos,
-              style: context.theme.textStyles.bodyLarge!.copyWith(
+              style: context.theme.textStyles.bodyMedium!.copyWith(
                 color: context.theme.colors.surface,
               ),
             ),
             InkWell(
               child: Text(
                 context.localizations.about_widgets,
-                style: context.theme.textStyles.bodyLarge!.copyWith(
+                style: context.theme.textStyles.bodyMedium!.copyWith(
                   color: context.theme.colors.surface,
                   decoration: TextDecoration.underline,
                 ),
@@ -226,13 +229,13 @@ class _AboutSection extends StatelessWidget {
                     final String? link = attrs['href'];
                     launchUrl(Uri.parse(link!));
                   },
-                  style: context.theme.textStyles.bodyLarge!.copyWith(
+                  style: context.theme.textStyles.bodyMedium!.copyWith(
                     color: context.theme.colors.surface,
                     decoration: TextDecoration.underline,
                   ),
                 ),
               },
-              style: context.theme.textStyles.bodyLarge!
+              style: context.theme.textStyles.bodyMedium!
                   .copyWith(color: context.theme.colors.surface),
             ),
           ],
