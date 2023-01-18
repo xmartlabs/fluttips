@@ -2,9 +2,11 @@
 
 ## Introduction
 
-Fluttips is the first application that provides tips for programming in Flutter.
-It provides different sections, for example, you can see images with code explications and if you like, you can save the tip to see it later in favorites section.
-In a coming soon version, you will see videos of the widgets of the week, that provides you information about different components of Flutter.
+Fluttips is the first app that brings together all the best tips and tricks for programming in Flutter in one place.
+It allows you to access this information easily and quickly, making it a valuable resource for developers.
+Some of its features include images and code explanations, making it easy to understand the tips provided.
+Additionally, users can save their favorite tips to a "favorites" section, allowing them to easily access them later.
+In an upcoming version, you will be able to view "Widget of the Week" videos, which will provide you with detailed information about various elements of Flutter.
 
 <table>
   <tr>
@@ -17,16 +19,16 @@ In a coming soon version, you will see videos of the widgets of the week, that p
   </tr>
 </table>
 
-The application was made with love by [Xmartlabs][xmartlabs] team and Fluttips is based on [Xmartlabs template][xmartlabs_template], which provides a clean architecture.   
-The images tips are from [Vandadnp][Vandadnp]
-and the videos are from [Widgets of the week][Widget_of_the_week].
+Made with ❤️ by [Xmartlabs][xmartlabs] and based on [our template][xmartlabs_template], which provides a clean architecture.
+👉 The image tips are from [Vandadnp][Vandadnp]
+👉 The videos are from [Widgets of the week][Widget_of_the_week].
 
 ## Contribute
 
-- If you **want to contribute** please feel free to **submit pull requests**.
-- If you **have a feature request** please **open an issue**.
-- If you **found a bug** or **need help** please let us know. 
-
+  👉 If you **want to contribute** please feel free to **submit pull requests**.
+  👉 If you **have a feature request** please **open an issue**.
+  👉 If you **found a bug** or **need help** please let us know.
+  👉 If you enjoy using **Fluttips** we would love to hear about it! Drop us a line on [twitter](https://twitter.com/xmartlabs).
 
 [xmartlabs]: http://xmartlabs.com
 [xmartlabs_template]: https://github.com/xmartlabs/flutter-template
