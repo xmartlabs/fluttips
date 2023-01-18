@@ -1,5 +1,9 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fluttips/core/source/database.dart';
+import 'package:fluttips/core/source/providers/shared_preferences_provider.dart';
 import 'package:fluttips/ui/app_router.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UtilsDiModule {
   UtilsDiModule._privateConstructor();
@@ -11,10 +15,30 @@ class UtilsDiModule {
   void setupModule(GetIt locator) {
     locator._setupModule();
   }
+
+  Future<void> setupProviders(GetIt locator) {
+    locator._setupProviders();
+    return locator.allReady();
+  }
 }
 
-extension _GetItUseCaseDiModuleExtensions on GetIt {
+extension _GetItUtilsDiModuleExtensions on GetIt {
   void _setupModule() {
     registerSingleton(AppRouter());
+  }
+
+  void _setupProviders() {
+    registerSingletonAsync(
+      () => $FloorAppDatabase.databaseBuilder('database.db').build(),
+    );
+    registerLazySingleton(FlutterSecureStorage.new);
+    registerSingletonAsync(() => SharedPreferences.getInstance());
+
+    registerSingletonAsync(
+      () async => LocalSharedPreferencesStorage(
+        get(),
+        await getAsync<SharedPreferences>(),
+      ).init(),
+    );
   }
 }

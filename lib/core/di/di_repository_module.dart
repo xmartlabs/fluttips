@@ -1,4 +1,3 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttips/core/repository/session_repository.dart';
 import 'package:fluttips/core/repository/tip_repository.dart';
 import 'package:fluttips/core/source/common/http_service.dart';
@@ -25,11 +24,7 @@ class RepositoryDiModule {
 
 extension _GetItUseCaseDiModuleExtensions on GetIt {
   void _setupProvidersAndUtils() {
-    registerLazySingleton(FlutterSecureStorage.new);
     registerLazySingleton(() => HttpServiceDio([]));
-    registerSingletonAsync(
-      () => $FloorAppDatabase.databaseBuilder('database.db').build(),
-    );
   }
 
   void _setupRepositories() {
