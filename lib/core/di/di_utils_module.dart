@@ -4,6 +4,7 @@ import 'package:fluttips/core/source/providers/shared_preferences_provider.dart'
 import 'package:fluttips/ui/app_router.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttips/core/common/config.dart';
 
 class UtilsDiModule {
   UtilsDiModule._privateConstructor();
@@ -29,7 +30,7 @@ extension _GetItUtilsDiModuleExtensions on GetIt {
 
   void _setupProviders() {
     registerSingletonAsync(
-      () => $FloorAppDatabase.databaseBuilder('database.db').build(),
+      () => $FloorAppDatabase.databaseBuilder(Config.databaseName).build(),
     );
     registerLazySingleton(FlutterSecureStorage.new);
     registerSingletonAsync(() => SharedPreferences.getInstance());

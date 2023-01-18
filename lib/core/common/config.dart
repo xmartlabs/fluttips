@@ -28,11 +28,18 @@ extension EnviromentPath on Environments {
 }
 
 abstract class Config {
+  static const debugMode = kDebugMode;
+  static const firebaseEnabled = !debugMode;
+  static const analyticsEnabled = !debugMode;
+  static const crashlyticsEnabled = !debugMode;
+  static bool bugseeEnabled = !debugMode && _environment == Environments.dev;
+
   static const String _environmentFolder = 'environments';
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const Duration durationAnimation = Duration(milliseconds: 150);
   static const Duration splashMinDuration = Duration(milliseconds: 300);
   static const String appEmail = 'fluttips@xmartlabs.com';
+
   static Uri imagesTipsRepository =
       Uri.parse('https://www.github.com/vandadnp/flutter-tips-and-tricks');
   static Uri widgetOfTheWeekLink = Uri.parse(
@@ -44,13 +51,8 @@ abstract class Config {
   static Uri xmartlabsInstagram =
       Uri.parse('https://www.instagram.com/xmartlabs/?hl=es');
   static Uri xmartlabsTwitter = Uri.parse('https://twitter.com/xmartlabs');
-  static const debugMode = kDebugMode;
 
-  static const firebaseEnabled = !debugMode;
-  static const analyticsEnabled = !debugMode;
-  static const crashlyticsEnabled = !debugMode;
-
-  static bool bugseeEnabled = !debugMode && _environment == Environments.dev;
+  static const databaseName = 'database.db';
 
   static const apiBaseUrl =
       'https://api.github.com/repos/vandadnp/flutter-tips-and-tricks';
