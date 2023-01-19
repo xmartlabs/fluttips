@@ -24,7 +24,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
     final cubit = context.read<FavouritesTipsCubit>();
     return BlocBuilder<FavouritesTipsCubit, FavouritesTipsBaseState>(
       builder: (context, state) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 45.w),
+        margin: EdgeInsets.symmetric(horizontal: 20.w),
         padding: EdgeInsets.symmetric(horizontal: 40.0.w),
         child: state.tips.isEmpty
             ? emptyFavouriteScreen(context)
@@ -41,7 +41,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
       Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+            padding: EdgeInsets.only(top: 42.h, bottom: 16.h),
             alignment: Alignment.centerLeft,
             child: Text(
               context.localizations.myFavorites,
@@ -70,7 +70,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
         ],
       );
 
-  Center emptyFavouriteScreen(BuildContext context) => Center( //class _E
+  Center emptyFavouriteScreen(BuildContext context) => Center(
         child: Container(
           width: .5.sw,
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 35.h),
@@ -111,7 +111,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
               SizedBox(
                 width: 190.w,
                 height: 190.h,
-                child: Image.asset('assets/images/onboarding_favourite.png'), /// generado
+                child: Image.asset('assets/images/onboarding_favourite.png'),
               ),
             ],
           ),

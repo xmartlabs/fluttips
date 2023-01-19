@@ -4,7 +4,7 @@
   "about_button_suggestion": "Any suggestion?",
   "about_button_terms": "Terms and conditions",
   "about_credits": "Credits:",
-  "about_fluttips": "Looking for the best way to get the most out of Flutter in all its different applications and use cases? Look no further than Fluttips! This <link href={OpenSourceProjectUrl}>Open Source Project</link>, launched by the talented team at Xmartlabs, is filled with top-quality data and resources from Vandadnp's GitHub libraries and Flutter & Google video tips.\nNurtured with this wealth of knowledge, Fluttips is the ultimate destination for Flutter developers looking to optimize their process and stay up-to-date on the latest trends and news. So why wait? Start using Fluttips today and take your Flutter skills to the next level!",
+  "about_fluttips": "Looking for the best way to get the most out of Flutter in all its different applications and use cases? Look no further than Fluttips! This <link href={OpenSourceProjectUrl}>Open Source Project</link>, launched by the talented team at Xmartlabs, is filled with top-quality data and resources from Vandadnp's GitHub libraries and Flutter & Google video tips.\n\nNurtured with this wealth of knowledge, Fluttips is the ultimate destination for Flutter developers looking to optimize their process and stay up-to-date on the latest trends and news.\n\nSo why wait? Start using Fluttips today and take your Flutter skills to the next level!",
   "@about_fluttips": {
     "description": "It is the link to the repository",
     "placeholders": {

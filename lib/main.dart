@@ -10,7 +10,6 @@ import 'package:fluttips/core/common/logger.dart';
 import 'package:fluttips/core/di/di_provider.dart';
 import 'package:fluttips/firebase_options.dart';
 import 'package:fluttips/ui/main/main_screen.dart';
-
 import 'package:bugsee_flutter/bugsee.dart';
 
 Future<void> main() async {
