@@ -1,5 +1,7 @@
 # Fluttips
 
+[![Flutter CI](https://github.com/xmartlabs/fluttips/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/xmartlabs/fluttips/actions/workflows/flutter-ci.yml)
+
 ## Introduction
 
 Fluttips is the first app that brings together all the best tips and tricks for programming in Flutter in one place.
@@ -12,11 +14,11 @@ In an upcoming version, you will be able to view "Widget of the Week" videos, wh
 
 Images section:
 
-<img src="readme/Images.gif" width="800"/> 
+<img src="readme/Images.gif" width="500"/> 
 
 Favorites section:
 
-<img src="readme/Favorites.gif" width="800"/>
+<img src="readme/Favorites.gif" width="500"/>
 
 
 Made with ❤️ by [Xmartlabs][xmartlabs] and based on [our template][xmartlabs_template], which provides a clean architecture.
@@ -31,7 +33,7 @@ Made with ❤️ by [Xmartlabs][xmartlabs] and based on [our template][xmartlabs
 
   👉 If you **have a feature request** please **[open an issue][new_issue]**.
 
-  👉 If you **found a bug** or **need help** please let us know.
+  👉 If you **found a bug** or **[need help][new_issue]** please let us know.
 
   👉 If you enjoy using **Fluttips** we would love to hear about it! Drop us a line on [twitter][twitter].
 
