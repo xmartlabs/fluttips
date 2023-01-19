@@ -1,17 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:fluttips/core/source/providers/shared_preferences_provider.dart';
 import 'package:stock/stock.dart';
 
-class SecuredStorageSourceOfTruth extends CachedSourceOfTruth<String, String> {
-  final FlutterSecureStorage _secureStorage;
+class SharedPreferencesSourceOfTruth
+    extends CachedSourceOfTruth<String, String> {
+  final LocalSharedPreferencesStorage _storage;
 
-  SecuredStorageSourceOfTruth(this._secureStorage);
+  SharedPreferencesSourceOfTruth(this._storage);
 
   @override
   Stream<String?> reader(String key) async* {
-    final stringValue = await _secureStorage.read(key: key);
+    final stringValue = await _storage.read(key: key);
     setCachedValue(key, stringValue);
     yield* super.reader(key);
   }
@@ -20,6 +21,6 @@ class SecuredStorageSourceOfTruth extends CachedSourceOfTruth<String, String> {
   @protected
   Future<void> write(String key, String? value) async {
     await super.write(key, value);
-    await _secureStorage.write(key: key, value: value);
+    await _storage.write(key: key, value: value);
   }
 }

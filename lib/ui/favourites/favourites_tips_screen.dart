@@ -24,7 +24,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
     final cubit = context.read<FavouritesTipsCubit>();
     return BlocBuilder<FavouritesTipsCubit, FavouritesTipsBaseState>(
       builder: (context, state) => Container(
-        margin: EdgeInsets.symmetric(horizontal: 45.w),
+        margin: EdgeInsets.symmetric(horizontal: 20.w),
         padding: EdgeInsets.symmetric(horizontal: 40.0.w),
         child: state.tips.isEmpty
             ? emptyFavouriteScreen(context)
@@ -41,7 +41,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
       Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 15.h),
+            padding: EdgeInsets.only(top: 42.h, bottom: 16.h),
             alignment: Alignment.centerLeft,
             child: Text(
               context.localizations.myFavorites,

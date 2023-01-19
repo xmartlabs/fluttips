@@ -1,7 +1,7 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fluttips/core/common/helper/enum_helpers.dart';
 import 'package:fluttips/core/common/store/secure_storage_cached_source.dart';
 import 'package:fluttips/core/model/onboarding_status.dart';
+import 'package:fluttips/core/source/providers/shared_preferences_provider.dart';
 import 'package:stock/stock.dart';
 
 class SessionLocalSource {
@@ -10,8 +10,8 @@ class SessionLocalSource {
 
   late SourceOfTruth<String, AppSessionStatus> _userOnboardedStorage;
 
-  SessionLocalSource(FlutterSecureStorage storage) {
-    final secureStorage = SecuredStorageSourceOfTruth(storage);
+  SessionLocalSource(LocalSharedPreferencesStorage storage) {
+    final secureStorage = SharedPreferencesSourceOfTruth(storage);
     _userOnboardedStorage =
         secureStorage.mapToUsingMapper(_AppSessionStatusStockTypeMapper());
   }
