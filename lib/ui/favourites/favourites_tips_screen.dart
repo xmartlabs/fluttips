@@ -70,7 +70,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
         ],
       );
 
-  Center emptyFavouriteScreen(BuildContext context) => Center(
+  Center emptyFavouriteScreen(BuildContext context) => Center( //class _E
         child: Container(
           width: .5.sw,
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 35.h),
@@ -111,7 +111,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
               SizedBox(
                 width: 190.w,
                 height: 190.h,
-                child: Image.asset('assets/images/onboarding_favourite.png'),
+                child: Image.asset('assets/images/onboarding_favourite.png'), /// generado
               ),
             ],
           ),

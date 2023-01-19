@@ -1,4 +1,4 @@
-# Fluttips
+<img src="readme/Fluttips_logo.png" width=“100%”/>
 
 [![Flutter CI](https://github.com/xmartlabs/fluttips/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/xmartlabs/fluttips/actions/workflows/flutter-ci.yml)
 
@@ -12,20 +12,13 @@ Additionally, users can save their favorite tips to a "favorites" section, allow
 
 In an upcoming version, you will be able to view "Widget of the Week" videos, which will provide you with detailed information about various elements of Flutter.
 
-Images section:
-
-<img src="readme/Images.gif" width="500"/> 
-
-Favorites section:
-
-<img src="readme/Favorites.gif" width="500"/>
-
+<img src="readme/Images.gif" width=“500”/> <img src="readme/Favorites.gif" width="500"/>
 
 Made with ❤️ by [Xmartlabs][xmartlabs] and based on [our template][xmartlabs_template], which provides a clean architecture.
 
-👉 The image tips are from [Vandadnp][Vandadnp]
+📸 The image tips are from [Vandadnp][Vandadnp]
 
-👉 The videos are from [Widgets of the week][Widget_of_the_week].
+🎥 The videos are from [Widgets of the week][Widget_of_the_week].
 
 ## Contribute
 
