@@ -10,7 +10,10 @@ Additionally, users can save their favorite tips to a "favorites" section, allow
 
 In an upcoming version, you will be able to view "Widget of the Week" videos, which will provide you with detailed information about various elements of Flutter.
 
-<img src="docs/assets/Images.gif" width=300/>  <img src="docs/assets/Favorites.gif" width=300/>
+<table>
+    <th><img src="docs/assets/Images.gif" width="300"/></th>
+    <th><img src="docs/assets/Favorites.gif" width="300"/></th>
+</table>
 
 Made with ❤️ by [Xmartlabs][xmartlabs] and based on [our template][xmartlabs_template], which provides a clean architecture.
 
