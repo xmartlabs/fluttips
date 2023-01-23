@@ -11,10 +11,12 @@ Additionally, users can save their favorite tips to a "favorites" section, allow
 In an upcoming version, you will be able to view "Widget of the Week" videos, which will provide you with detailed information about various elements of Flutter.
 
 <table>
-        <img width="50%" margin="20px"  style="  padding: 5px;
-" src="docs/assets/Images.gif">
-        <img width="50%" margin="20px" style="  padding: 5px;
-" src="docs/assets/Favorites.gif">
+    <th style="padding: 1px;">
+        <img width="90%" margin="10px" src="docs/assets/Images.gif">
+    </th>
+    <th style="padding: 1px;">
+        <img width="90%" margin="10px" src="docs/assets/Favorites.gif">
+    </th>
 </table>
 
 
