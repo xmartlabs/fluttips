@@ -6,6 +6,7 @@ import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:fluttips/ui/favourites/favourites_tips_cubit.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/favourites/display_list_favorites_tips_screen.dart';
+import 'package:fluttips/gen/assets.gen.dart';
 
 class FavouritesTipsScreen extends StatelessWidget {
   const FavouritesTipsScreen({Key? key}) : super(key: key);
@@ -27,13 +28,13 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 20.w),
         padding: EdgeInsets.symmetric(horizontal: 40.0.w),
         child: state.tips.isEmpty
-            ? emptyFavouriteScreen(context)
-            : displayFavouritesTips(state, cubit, context),
+            ? _emptyFavouriteScreen(context)
+            : _displayFavouritesTips(state, cubit, context),
       ),
     );
   }
 
-  Column displayFavouritesTips(
+  Column _displayFavouritesTips(
     FavouritesTipsBaseState state,
     FavouritesTipsCubit cubit,
     BuildContext context,
@@ -70,7 +71,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
         ],
       );
 
-  Center emptyFavouriteScreen(BuildContext context) => Center(
+  Center _emptyFavouriteScreen(BuildContext context) => Center(
         child: Container(
           width: .5.sw,
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 35.h),
@@ -111,7 +112,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
               SizedBox(
                 width: 190.w,
                 height: 190.h,
-                child: Image.asset('assets/images/onboarding_favourite.png'),
+                child: Assets.images.onboardingFavourite.image(),
               ),
             ],
           ),

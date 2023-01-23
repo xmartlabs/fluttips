@@ -28,7 +28,7 @@ class ListFavouritesTipsScreen extends StatelessWidget {
                 tip: tip,
               ),
               Container(
-                margin: const EdgeInsets.only(left: 20, top: 10),
+                margin: EdgeInsets.only(left: 20.w, top: 10.h),
                 child: TextButton(
                   onPressed: context.router.navigateBack,
                   style: TextButton.styleFrom(
