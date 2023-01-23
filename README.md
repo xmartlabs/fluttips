@@ -1,10 +1,3 @@
-<style>
-td, th {
-   border: none!important;
-}
-</style>
-
-
 <img src="docs/assets/Fluttips_logo.png" width=100%/>
 
 [![Flutter CI](https://github.com/xmartlabs/fluttips/actions/workflows/flutter-ci.yml/badge.svg)](https://github.com/xmartlabs/fluttips/actions/workflows/flutter-ci.yml)
