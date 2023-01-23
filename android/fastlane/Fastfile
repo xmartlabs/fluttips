@@ -92,6 +92,7 @@ platform :android do
       json_key: ENV['GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_FILE'],
       json_key_data: ENV['GOOGLE_PLAY_SERVICE_ACCOUNT_CREDENTIALS_CONTENT'],
       aab_paths: ["#{root_path}/build/app/outputs/bundle/prodRelease/app-prod-release.aab"],
+      release_status: ENV['RELEASE_STATUS'] || 'completed',
     )
   end
 end
