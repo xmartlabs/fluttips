@@ -18,6 +18,10 @@ Future<void> openYoutubePlaylist(String playlistId) async {
       }
     }
   } else {
-    await launchUrl(youtubeWebUri);
+    if (await canLaunchUrl(youtubeWebUri)) {
+      await launchUrl(youtubeWebUri);
+    } else {
+      throw Exception('Could not launch https://$url');
+    }
   }
 }

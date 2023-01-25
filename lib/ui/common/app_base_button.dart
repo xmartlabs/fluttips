@@ -33,9 +33,13 @@ class AppBaseButton extends StatelessWidget {
         onPressed: action,
         child: Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            if (image != null) image!,
-            SizedBox(width: 10.h),
+            if (image != null)
+              Container(
+                padding: EdgeInsets.only(right: 10.w),
+                child: image,
+              ),
             Text(text),
           ],
         ),
