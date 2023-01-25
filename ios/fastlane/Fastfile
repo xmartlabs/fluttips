@@ -183,6 +183,7 @@ platform :ios do
     generate_release_ipa(
       env: 'prod',
       build_export_method: 'app-store',
+      firebase_app_id: ENV['FIREBASE_APP_ID_PROD'],
     )
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end
