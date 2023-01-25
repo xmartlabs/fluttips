@@ -8,12 +8,14 @@ class AppBaseButton extends StatelessWidget {
   final VoidCallback action;
   final Color backgroundColor;
   final Color textColor;
+  final Image? image;
 
   const AppBaseButton({
     required this.text,
     required this.action,
     required this.backgroundColor,
     required this.textColor,
+    this.image,
     Key? key,
   }) : super(key: key);
 
@@ -29,6 +31,17 @@ class AppBaseButton extends StatelessWidget {
         color: backgroundColor,
         textColor: textColor,
         onPressed: action,
-        child: Text(text),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            if (image != null)
+              Container(
+                padding: EdgeInsets.only(right: 10.w),
+                child: image,
+              ),
+            Text(text),
+          ],
+        ),
       );
 }

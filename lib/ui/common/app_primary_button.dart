@@ -6,10 +6,12 @@ import 'package:fluttips/ui/theme/app_theme.dart';
 class AppPrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback action;
+  final Image? image;
 
   const AppPrimaryButton({
     required this.text,
     required this.action,
+    this.image,
     Key? key,
   }) : super(key: key);
 
@@ -17,6 +19,7 @@ class AppPrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) => AppBaseButton(
         text: text,
         action: action,
+        image: image,
         backgroundColor: context.theme.colors.primary.shade100,
         textColor: context.theme.colors.primary,
       );
