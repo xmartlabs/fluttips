@@ -6,12 +6,14 @@ import 'package:fluttips/ui/favourites/list_favourites_tips_screen.dart';
 import 'package:fluttips/ui/home/home_screen.dart';
 import 'package:fluttips/ui/onboarding/onboarding_screen.dart';
 import 'package:fluttips/ui/section/section_router.dart';
+import 'package:fluttips/ui/tips/image_tip_details_screen.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/ui/tips/tips_screen.dart';
 import 'package:fluttips/ui/videos/videos.dart';
 import 'package:fluttips/ui/favourites/favourites_tips_screen.dart';
 import 'package:fluttips/core/model/tip.dart';
 import 'package:auto_route/empty_router_widgets.dart';
+import 'package:fluttips/ui/videos/videos_details_screen.dart';
 import 'package:fluttips/ui/webView/webview_screen.dart';
 
 part 'app_router.gr.dart';
@@ -79,6 +81,7 @@ part 'app_router.gr.dart';
     ),
   ],
 )
+
 class AppRouter extends _$AppRouter {
   static const signInPath = 'signin';
   static const tipsPath = 'tips';

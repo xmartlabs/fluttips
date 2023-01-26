@@ -9,11 +9,9 @@ import 'package:fluttips/core/repository/tip_repository.dart';
 import 'package:fluttips/core/model/tip.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
 
-import 'list_favourites_tips_screen.dart';
+part 'favourites_tip_simple_cubit.freezed.dart';
 
-part 'favourites_tips_cubit.freezed.dart';
-
-part 'favourites_tips_state.dart';
+part 'favourites_tip_simple_state.dart';
 
 class FavouritesTipsCubit extends Cubit<FavouritesTipsBaseState> {
   final TipRepository _tipRepository = DiProvider.get();

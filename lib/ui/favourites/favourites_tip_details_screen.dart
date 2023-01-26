@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
-import 'package:fluttips/ui/tips/tips_screen.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/core/model/tip.dart';
+import 'package:fluttips/ui/tips/image_tip_details_screen.dart';
 
 class FavouritesTipDetailsScreen extends StatelessWidget {
   final ShowTipsType showTipType;

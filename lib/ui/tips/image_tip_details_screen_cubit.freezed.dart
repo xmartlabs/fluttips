@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'tips_cubit.dart';
+part of 'image_tip_details_screen_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TipsBaseState {
+mixin _$TipsImageDetailsBaseState {
   List<Tip> get tips => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
   Tip? get currentTip => throw _privateConstructorUsedError;
@@ -38,31 +38,31 @@ mixin _$TipsBaseState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TipsState value) state,
+    required TResult Function(_TipsImageDetailsBaseState value) state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TipsState value)? state,
+    TResult? Function(_TipsImageDetailsBaseState value)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TipsState value)? state,
+    TResult Function(_TipsImageDetailsBaseState value)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TipsBaseStateCopyWith<TipsBaseState> get copyWith =>
+  $TipsImageDetailsBaseStateCopyWith<TipsImageDetailsBaseState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TipsBaseStateCopyWith<$Res> {
-  factory $TipsBaseStateCopyWith(
-          TipsBaseState value, $Res Function(TipsBaseState) then) =
-      _$TipsBaseStateCopyWithImpl<$Res, TipsBaseState>;
+abstract class $TipsImageDetailsBaseStateCopyWith<$Res> {
+  factory $TipsImageDetailsBaseStateCopyWith(TipsImageDetailsBaseState value,
+          $Res Function(TipsImageDetailsBaseState) then) =
+      _$TipsImageDetailsBaseStateCopyWithImpl<$Res, TipsImageDetailsBaseState>;
   @useResult
   $Res call({List<Tip> tips, int currentPage, Tip? currentTip});
 
@@ -70,9 +70,10 @@ abstract class $TipsBaseStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TipsBaseStateCopyWithImpl<$Res, $Val extends TipsBaseState>
-    implements $TipsBaseStateCopyWith<$Res> {
-  _$TipsBaseStateCopyWithImpl(this._value, this._then);
+class _$TipsImageDetailsBaseStateCopyWithImpl<$Res,
+        $Val extends TipsImageDetailsBaseState>
+    implements $TipsImageDetailsBaseStateCopyWith<$Res> {
+  _$TipsImageDetailsBaseStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -116,11 +117,12 @@ class _$TipsBaseStateCopyWithImpl<$Res, $Val extends TipsBaseState>
 }
 
 /// @nodoc
-abstract class _$$_TipsStateCopyWith<$Res>
-    implements $TipsBaseStateCopyWith<$Res> {
-  factory _$$_TipsStateCopyWith(
-          _$_TipsState value, $Res Function(_$_TipsState) then) =
-      __$$_TipsStateCopyWithImpl<$Res>;
+abstract class _$$_TipsImageDetailsBaseStateCopyWith<$Res>
+    implements $TipsImageDetailsBaseStateCopyWith<$Res> {
+  factory _$$_TipsImageDetailsBaseStateCopyWith(
+          _$_TipsImageDetailsBaseState value,
+          $Res Function(_$_TipsImageDetailsBaseState) then) =
+      __$$_TipsImageDetailsBaseStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Tip> tips, int currentPage, Tip? currentTip});
@@ -130,11 +132,13 @@ abstract class _$$_TipsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TipsStateCopyWithImpl<$Res>
-    extends _$TipsBaseStateCopyWithImpl<$Res, _$_TipsState>
-    implements _$$_TipsStateCopyWith<$Res> {
-  __$$_TipsStateCopyWithImpl(
-      _$_TipsState _value, $Res Function(_$_TipsState) _then)
+class __$$_TipsImageDetailsBaseStateCopyWithImpl<$Res>
+    extends _$TipsImageDetailsBaseStateCopyWithImpl<$Res,
+        _$_TipsImageDetailsBaseState>
+    implements _$$_TipsImageDetailsBaseStateCopyWith<$Res> {
+  __$$_TipsImageDetailsBaseStateCopyWithImpl(
+      _$_TipsImageDetailsBaseState _value,
+      $Res Function(_$_TipsImageDetailsBaseState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +148,7 @@ class __$$_TipsStateCopyWithImpl<$Res>
     Object? currentPage = null,
     Object? currentTip = freezed,
   }) {
-    return _then(_$_TipsState(
+    return _then(_$_TipsImageDetailsBaseState(
       tips: null == tips
           ? _value._tips
           : tips // ignore: cast_nullable_to_non_nullable
@@ -163,8 +167,8 @@ class __$$_TipsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TipsState implements _TipsState {
-  const _$_TipsState(
+class _$_TipsImageDetailsBaseState implements _TipsImageDetailsBaseState {
+  const _$_TipsImageDetailsBaseState(
       {final List<Tip> tips = const [], this.currentPage = 0, this.currentTip})
       : _tips = tips;
 
@@ -184,14 +188,14 @@ class _$_TipsState implements _TipsState {
 
   @override
   String toString() {
-    return 'TipsBaseState.state(tips: $tips, currentPage: $currentPage, currentTip: $currentTip)';
+    return 'TipsImageDetailsBaseState.state(tips: $tips, currentPage: $currentPage, currentTip: $currentTip)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TipsState &&
+            other is _$_TipsImageDetailsBaseState &&
             const DeepCollectionEquality().equals(other._tips, _tips) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
@@ -206,8 +210,9 @@ class _$_TipsState implements _TipsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TipsStateCopyWith<_$_TipsState> get copyWith =>
-      __$$_TipsStateCopyWithImpl<_$_TipsState>(this, _$identity);
+  _$$_TipsImageDetailsBaseStateCopyWith<_$_TipsImageDetailsBaseState>
+      get copyWith => __$$_TipsImageDetailsBaseStateCopyWithImpl<
+          _$_TipsImageDetailsBaseState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -241,7 +246,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TipsState value) state,
+    required TResult Function(_TipsImageDetailsBaseState value) state,
   }) {
     return state(this);
   }
@@ -249,7 +254,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TipsState value)? state,
+    TResult? Function(_TipsImageDetailsBaseState value)? state,
   }) {
     return state?.call(this);
   }
@@ -257,7 +262,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TipsState value)? state,
+    TResult Function(_TipsImageDetailsBaseState value)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
@@ -267,11 +272,11 @@ class _$_TipsState implements _TipsState {
   }
 }
 
-abstract class _TipsState implements TipsBaseState {
-  const factory _TipsState(
+abstract class _TipsImageDetailsBaseState implements TipsImageDetailsBaseState {
+  const factory _TipsImageDetailsBaseState(
       {final List<Tip> tips,
       final int currentPage,
-      final Tip? currentTip}) = _$_TipsState;
+      final Tip? currentTip}) = _$_TipsImageDetailsBaseState;
 
   @override
   List<Tip> get tips;
@@ -281,6 +286,6 @@ abstract class _TipsState implements TipsBaseState {
   Tip? get currentTip;
   @override
   @JsonKey(ignore: true)
-  _$$_TipsStateCopyWith<_$_TipsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_TipsImageDetailsBaseStateCopyWith<_$_TipsImageDetailsBaseState>
+      get copyWith => throw _privateConstructorUsedError;
 }
