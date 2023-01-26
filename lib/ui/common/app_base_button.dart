@@ -5,14 +5,14 @@ import 'package:fluttips/ui/theme/app_theme.dart';
 
 class AppBaseButton extends StatelessWidget {
   final String text;
-  final VoidCallback action;
+  final VoidCallback onPressed;
   final Color backgroundColor;
   final Color textColor;
   final Image? image;
 
   const AppBaseButton({
     required this.text,
-    required this.action,
+    required this.onPressed,
     required this.backgroundColor,
     required this.textColor,
     this.image,
@@ -30,7 +30,7 @@ class AppBaseButton extends StatelessWidget {
         elevation: 5,
         color: backgroundColor,
         textColor: textColor,
-        onPressed: action,
+        onPressed: onPressed,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

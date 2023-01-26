@@ -95,14 +95,14 @@ class _TermsAndPolicySection extends StatelessWidget {
           children: [
             AppPrimaryButton(
               text: context.localizations.about_button_terms,
-              action: () => context
+              onPressed: () => context
                   .read<AboutCubit>()
                   .onTermsAndConditionsButtonPressed(),
             ),
             SizedBox(width: 15.w),
             AppPrimaryButton(
               text: context.localizations.about_button_privacy,
-              action: () =>
+              onPressed: () =>
                   context.read<AboutCubit>().onPrivacyPolicyButtonPressed(),
             ),
           ],

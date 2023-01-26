@@ -31,7 +31,7 @@ abstract class Result<S> extends Equatable {
     }
   }
 
-  static Future<Result<S>> from<S>(FutureOr<S> Function() computation) async {
+  static Future<Result<S>> from<S>(Future<S> Function() computation) async {
     try {
       return Result.success(await computation());
     } catch (e) {
