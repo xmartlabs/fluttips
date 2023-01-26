@@ -51,7 +51,7 @@ class CatalogScreenState extends State<CatalogScreen> {
           ),
           AppPrimaryButton(
             text: 'hello',
-            action: controllerAppButton.clear,
+            onPressed: controllerAppButton.clear,
           ),
           Fab(
             state: const FabState.notSelected(),

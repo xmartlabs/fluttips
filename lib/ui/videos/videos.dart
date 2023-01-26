@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttips/core/common/logger.dart';
 import 'package:fluttips/ui/common/app_primary_button.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/helper/launch_helper.dart';
@@ -44,8 +47,14 @@ class _VideosContentScreen extends StatelessWidget {
             AppPrimaryButton(
               image: Assets.images.icYoutubeLogo.image(),
               text: context.localizations.videos_button,
-              action: () =>
-                  openYoutubePlaylist(Config.widgetOfTheWeekPlaylistId),
+              onPressed: () {
+                unawaited(
+                  openYoutubePlaylist(Config.widgetOfTheWeekPlaylistId).onError(
+                    (error, stackTrace) =>
+                        Logger.w("Error opening youtube", error, stackTrace),
+                  ),
+                );
+              },
             ),
           ],
         ),

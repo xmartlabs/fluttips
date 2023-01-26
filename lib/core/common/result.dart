@@ -1,5 +1,7 @@
 // ignore_for_file: no-object-declaration
 
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 // Code: https://gist.githubusercontent.com/CassiusPacheco/409e66e220ce563440df00385f39ac98/raw/d0506e4b3dadbcf5a21d9cc23b300ecbcc8c57d6/data_result.dart
 
@@ -24,6 +26,14 @@ abstract class Result<S> extends Equatable {
   factory Result(S Function() computation) {
     try {
       return Result.success(computation());
+    } catch (e) {
+      return Result.failure(e);
+    }
+  }
+
+  static Future<Result<S>> from<S>(Future<S> Function() computation) async {
+    try {
+      return Result.success(await computation());
     } catch (e) {
       return Result.failure(e);
     }
