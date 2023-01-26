@@ -9,6 +9,8 @@ import 'package:fluttips/core/repository/tip_repository.dart';
 import 'package:fluttips/core/model/tip.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
 
+import 'list_favourites_tips_screen.dart';
+
 part 'favourites_tips_cubit.freezed.dart';
 
 part 'favourites_tips_state.dart';
@@ -37,7 +39,7 @@ class FavouritesTipsCubit extends Cubit<FavouritesTipsBaseState> {
 
   void navigateToTip(Tip tip) {
     _router.navigate(
-      ListFavouritesTipsScreenRoute(
+      FavoritesTipDetailsScreen(
         showTipType: ShowTipsType.favourite,
         tip: tip,
       ),

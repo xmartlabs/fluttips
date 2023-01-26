@@ -47,11 +47,21 @@ class _$AppRouter extends RootStackRouter {
         child: const HomeScreen(),
       );
     },
-    ListFavouritesTipsScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<ListFavouritesTipsScreenRouteArgs>();
+    WebViewRoute.name: (routeData) {
+      final args = routeData.argsAs<WebViewRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: ListFavouritesTipsScreen(
+        child: WebViewScreen(
+          args.path,
+          key: args.key,
+        ),
+      );
+    },
+    FavoritesTipDetailsScreen.name: (routeData) {
+      final args = routeData.argsAs<FavoritesTipDetailsScreenArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: FavouritesTipDetailsScreen(
           showTipType: args.showTipType,
           tip: args.tip,
           key: args.key,
@@ -62,7 +72,7 @@ class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<HomeTipsScreenRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: TipsScreen(
+        child: ImageTipDetailsScreen(
           showTipType: args.showTipType,
           tip: args.tip,
           key: args.key,
@@ -72,35 +82,19 @@ class _$AppRouter extends RootStackRouter {
     HomeVideosScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const VideosScreen(),
+        child: const VideosDetailsScreen(),
       );
     },
     HomeFavouritesTipsScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const FavouritesTipsScreen(),
-      );
-    },
-    AboutFlowRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const EmptyRouterPage(),
+        child: const FavouritesTipSimpleScreen(),
       );
     },
     AboutScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const AboutScreen(),
-      );
-    },
-    WebViewRoute.name: (routeData) {
-      final args = routeData.argsAs<WebViewRouteArgs>();
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: WebViewScreen(
-          args.path,
-          key: args.key,
-        ),
       );
     },
   };
@@ -132,6 +126,13 @@ class _$AppRouter extends RootStackRouter {
               parent: UserOnboardedRouter.name,
               children: [
                 RouteConfig(
+                  '#redirect',
+                  path: '',
+                  parent: HomeScreenRoute.name,
+                  redirectTo: 'about',
+                  fullMatch: true,
+                ),
+                RouteConfig(
                   HomeTipsScreenRoute.name,
                   path: 'tips',
                   parent: HomeScreenRoute.name,
@@ -147,33 +148,19 @@ class _$AppRouter extends RootStackRouter {
                   parent: HomeScreenRoute.name,
                 ),
                 RouteConfig(
-                  AboutFlowRoute.name,
-                  path: 'empty-router-page',
+                  AboutScreenRoute.name,
+                  path: 'about',
                   parent: HomeScreenRoute.name,
-                  children: [
-                    RouteConfig(
-                      '#redirect',
-                      path: '',
-                      parent: AboutFlowRoute.name,
-                      redirectTo: 'about',
-                      fullMatch: true,
-                    ),
-                    RouteConfig(
-                      AboutScreenRoute.name,
-                      path: 'about',
-                      parent: AboutFlowRoute.name,
-                    ),
-                    RouteConfig(
-                      WebViewRoute.name,
-                      path: 'webView',
-                      parent: AboutFlowRoute.name,
-                    ),
-                  ],
                 ),
               ],
             ),
             RouteConfig(
-              ListFavouritesTipsScreenRoute.name,
+              WebViewRoute.name,
+              path: 'webView',
+              parent: UserOnboardedRouter.name,
+            ),
+            RouteConfig(
+              FavoritesTipDetailsScreen.name,
               path: 'list_favourite',
               parent: UserOnboardedRouter.name,
             ),
@@ -246,28 +233,62 @@ class HomeScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ListFavouritesTipsScreen]
-class ListFavouritesTipsScreenRoute
-    extends PageRouteInfo<ListFavouritesTipsScreenRouteArgs> {
-  ListFavouritesTipsScreenRoute({
+/// [WebViewScreen]
+class WebViewRoute extends PageRouteInfo<WebViewRouteArgs> {
+  WebViewRoute({
+    required String path,
+    Key? key,
+  }) : super(
+          WebViewRoute.name,
+          path: 'webView',
+          args: WebViewRouteArgs(
+            path: path,
+            key: key,
+          ),
+        );
+
+  static const String name = 'WebViewRoute';
+}
+
+class WebViewRouteArgs {
+  const WebViewRouteArgs({
+    required this.path,
+    this.key,
+  });
+
+  final String path;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'WebViewRouteArgs{path: $path, key: $key}';
+  }
+}
+
+/// generated route for
+/// [FavouritesTipDetailsScreen]
+class FavoritesTipDetailsScreen
+    extends PageRouteInfo<FavoritesTipDetailsScreenArgs> {
+  FavoritesTipDetailsScreen({
     required ShowTipsType showTipType,
     Tip? tip,
     Key? key,
   }) : super(
-          ListFavouritesTipsScreenRoute.name,
+          FavoritesTipDetailsScreen.name,
           path: 'list_favourite',
-          args: ListFavouritesTipsScreenRouteArgs(
+          args: FavoritesTipDetailsScreenArgs(
             showTipType: showTipType,
             tip: tip,
             key: key,
           ),
         );
 
-  static const String name = 'ListFavouritesTipsScreenRoute';
+  static const String name = 'FavoritesTipDetailsScreen';
 }
 
-class ListFavouritesTipsScreenRouteArgs {
-  const ListFavouritesTipsScreenRouteArgs({
+class FavoritesTipDetailsScreenArgs {
+  const FavoritesTipDetailsScreenArgs({
     required this.showTipType,
     this.tip,
     this.key,
@@ -281,12 +302,12 @@ class ListFavouritesTipsScreenRouteArgs {
 
   @override
   String toString() {
-    return 'ListFavouritesTipsScreenRouteArgs{showTipType: $showTipType, tip: $tip, key: $key}';
+    return 'FavoritesTipDetailsScreenArgs{showTipType: $showTipType, tip: $tip, key: $key}';
   }
 }
 
 /// generated route for
-/// [TipsScreen]
+/// [ImageTipDetailsScreen]
 class HomeTipsScreenRoute extends PageRouteInfo<HomeTipsScreenRouteArgs> {
   HomeTipsScreenRoute({
     required ShowTipsType showTipType,
@@ -325,7 +346,7 @@ class HomeTipsScreenRouteArgs {
 }
 
 /// generated route for
-/// [VideosScreen]
+/// [VideosDetailsScreen]
 class HomeVideosScreenRoute extends PageRouteInfo<void> {
   const HomeVideosScreenRoute()
       : super(
@@ -337,7 +358,7 @@ class HomeVideosScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [FavouritesTipsScreen]
+/// [FavouritesTipSimpleScreen]
 class HomeFavouritesTipsScreenRoute extends PageRouteInfo<void> {
   const HomeFavouritesTipsScreenRoute()
       : super(
@@ -346,19 +367,6 @@ class HomeFavouritesTipsScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeFavouritesTipsScreenRoute';
-}
-
-/// generated route for
-/// [EmptyRouterPage]
-class AboutFlowRoute extends PageRouteInfo<void> {
-  const AboutFlowRoute({List<PageRouteInfo>? children})
-      : super(
-          AboutFlowRoute.name,
-          path: 'empty-router-page',
-          initialChildren: children,
-        );
-
-  static const String name = 'AboutFlowRoute';
 }
 
 /// generated route for
@@ -371,38 +379,4 @@ class AboutScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AboutScreenRoute';
-}
-
-/// generated route for
-/// [WebViewScreen]
-class WebViewRoute extends PageRouteInfo<WebViewRouteArgs> {
-  WebViewRoute({
-    required String path,
-    Key? key,
-  }) : super(
-          WebViewRoute.name,
-          path: 'webView',
-          args: WebViewRouteArgs(
-            path: path,
-            key: key,
-          ),
-        );
-
-  static const String name = 'WebViewRoute';
-}
-
-class WebViewRouteArgs {
-  const WebViewRouteArgs({
-    required this.path,
-    this.key,
-  });
-
-  final String path;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'WebViewRouteArgs{path: $path, key: $key}';
-  }
 }

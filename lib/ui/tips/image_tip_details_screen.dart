@@ -15,11 +15,11 @@ import 'package:fluttips/core/model/tip.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
-class TipsScreen extends StatelessWidget {
+class ImageTipDetailsScreen extends StatelessWidget {
   final ShowTipsType showTipType;
   final Tip? tip;
 
-  const TipsScreen({
+  const ImageTipDetailsScreen({
     required this.showTipType,
     this.tip,
     Key? key,

@@ -7,11 +7,11 @@ import 'package:fluttips/ui/tips/tips_screen.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/core/model/tip.dart';
 
-class ListFavouritesTipsScreen extends StatelessWidget {
+class FavouritesTipDetailsScreen extends StatelessWidget {
   final ShowTipsType showTipType;
   final Tip? tip;
 
-  const ListFavouritesTipsScreen({
+  const FavouritesTipDetailsScreen({
     required this.showTipType,
     this.tip,
     Key? key,
@@ -23,7 +23,7 @@ class ListFavouritesTipsScreen extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              TipsScreen(
+              ImageTipDetailsScreen(
                 showTipType: showTipType,
                 tip: tip,
               ),

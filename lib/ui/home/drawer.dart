@@ -142,7 +142,7 @@ extension NavExtensions on HomeNavOptions {
       case HomeNavOptions.favourites:
         return const HomeFavouritesTipsScreenRoute();
       case HomeNavOptions.about:
-        return const AboutFlowRoute();
+        return const AboutScreenRoute();
     }
   }
 }

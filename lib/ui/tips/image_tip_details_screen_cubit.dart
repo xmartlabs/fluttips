@@ -13,18 +13,18 @@ import 'package:fluttips/core/model/tip.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:fluttips/ui/common/fab.dart';
 
-part 'tips_cubit.freezed.dart';
+part 'image_tip_details_screen_cubit.freezed.dart';
 
-part 'tips_state.dart';
+part 'image_tip_details_screen_state.dart';
 
-class TipCubit extends Cubit<TipsBaseState> {
+class ImageTipDetailsScreenCubit extends Cubit<TipsBaseState> {
   final TipRepository _tipRepository = DiProvider.get();
   final GeneralErrorHandler _errorHandler;
   final ShowTipsType _showTipsType;
 
   late StreamSubscription<List<Tip>> subscriptionToTips;
 
-  TipCubit(this._showTipsType, this._errorHandler, Tip? tip)
+  ImageTipDetailsScreenCubit(this._showTipsType, this._errorHandler, Tip? tip)
       : super(TipsBaseState.state(currentTip: tip)) {
     _subscribeToTips();
   }

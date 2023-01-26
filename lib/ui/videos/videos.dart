@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 
-class VideosScreen extends StatelessWidget {
-  const VideosScreen({Key? key}) : super(key: key);
+class VideosDetailsScreen extends StatelessWidget {
+  const VideosDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => _VideosContentScreen();

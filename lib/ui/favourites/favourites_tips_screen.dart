@@ -8,8 +8,8 @@ import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/favourites/display_list_favorites_tips_screen.dart';
 import 'package:fluttips/gen/assets.gen.dart';
 
-class FavouritesTipsScreen extends StatelessWidget {
-  const FavouritesTipsScreen({Key? key}) : super(key: key);
+class FavouritesTipSimpleScreen extends StatelessWidget {
+  const FavouritesTipSimpleScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => BlocProvider(

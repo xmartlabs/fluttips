@@ -29,22 +29,25 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
     _webViewController.setBackgroundColor(context.theme.colors.background);
-    return Container(
-      margin: EdgeInsets.only(left: 80.w, top: 10.h),
-      alignment: Alignment.centerLeft,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              IconButton(
-                onPressed: () => context.router.navigateBack(),
-                color: context.theme.colors.surface,
-                icon: const Icon(Icons.arrow_back_ios),
-              ),
-            ],
-          ),
-          Expanded(child: WebViewWidget(controller: _webViewController)),
-        ],
+    return Material(
+      color: context.theme.colors.background,
+      child: Container(
+        margin: EdgeInsets.only(left: 80.w, top: 10.h),
+        alignment: Alignment.centerLeft,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () => context.router.navigateBack(),
+                  color: context.theme.colors.surface,
+                  icon: const Icon(Icons.arrow_back_ios),
+                ),
+              ],
+            ),
+            Expanded(child: WebViewWidget(controller: _webViewController)),
+          ],
+        ),
       ),
     );
   }
