@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/ui/app_router.dart';
-import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/gen/assets.gen.dart';
+import 'package:fluttips/ui/image_tip_details/show_image_tip_details_type.dart';
 
 class AppDrawer extends StatelessWidget {
   final TabsRouter _tabsController;
@@ -136,7 +136,7 @@ extension NavExtensions on HomeNavOptions {
   PageRouteInfo<dynamic> get route {
     switch (this) {
       case HomeNavOptions.images:
-        return HomeTipsScreenRoute(showTipType: ShowTipsType.all);
+        return HomeTipsScreenRoute(showTipType: ShowImageTipDetailsType.all);
       case HomeNavOptions.videos:
         return const HomeVideosScreenRoute();
       case HomeNavOptions.favourites:

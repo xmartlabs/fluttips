@@ -13,7 +13,7 @@ class FavouritesTipSimpleListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocProvider(
         create: (context) =>
-   FavouritesTipSimpleListCubit(context.read<ErrorHandlerCubit>()),
+            FavouritesTipSimpleListCubit(context.read<ErrorHandlerCubit>()),
         child: _FavouritesTipsContentScreen(),
       );
 }

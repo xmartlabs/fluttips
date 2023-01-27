@@ -28,9 +28,10 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _webViewController.setBackgroundColor(context.theme.colors.background);
+    final colors = context.theme.colors;
+    _webViewController.setBackgroundColor(colors.background);
     return Material(
-      color: context.theme.colors.background,
+      color: colors.background,
       child: Container(
         margin: EdgeInsets.only(left: 80.w, top: 10.h),
         alignment: Alignment.centerLeft,
@@ -40,7 +41,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
               children: [
                 IconButton(
                   onPressed: () => context.router.navigateBack(),
-                  color: context.theme.colors.surface,
+                  color: colors.surface,
                   icon: const Icon(Icons.arrow_back_ios),
                 ),
               ],

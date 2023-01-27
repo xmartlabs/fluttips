@@ -2,24 +2,15 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fluttips/ui/about/about_screen.dart';
 import 'package:fluttips/ui/catalog/catalog_screen.dart';
-import 'package:fluttips/ui/favourites/list_favourites_tips_screen.dart';
 import 'package:fluttips/ui/home/home_screen.dart';
 import 'package:fluttips/ui/onboarding/onboarding_screen.dart';
 import 'package:fluttips/ui/section/section_router.dart';
-import 'package:fluttips/ui/tips/image_tip_details_screen.dart';
-import 'package:fluttips/ui/tips/show_tips_type.dart';
-import 'package:fluttips/ui/tips/tips_screen.dart';
-import 'package:fluttips/ui/videos/videos.dart';
-import 'package:fluttips/ui/favourites/favourites_tips_screen.dart';
-import 'package:fluttips/core/model/tip.dart';
-import 'package:auto_route/empty_router_widgets.dart';
 import 'package:fluttips/ui/videos/videos_details_screen.dart';
 import 'package:fluttips/ui/webView/webview_screen.dart';
-import 'package:fluttips/ui/favourites/favourites_tip_details_screen.dart';
-import 'package:fluttips/ui/favourites/favourites_tip_simple_screen.dart';
 
-import 'favourites_tip_details/favourites_tip_details_screen.dart';
-import 'favourites_tip_simple_list/favourites_tip_simple_list_screen.dart';
+import 'package:fluttips/ui/favourites_tip_details/favourites_tip_details_screen.dart';
+import 'package:fluttips/ui/favourites_tip_simple_list/favourites_tip_simple_list_screen.dart';
+import 'package:fluttips/ui/image_tip_details/image_tip_details_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -62,7 +53,7 @@ part 'app_router.gr.dart';
             AutoRoute(
               path: AppRouter.favouritesTipsPath,
               name: 'HomeFavouritesTipsScreenRoute',
-              page: FavouritesTipSimpleScreen,
+              page: FavouritesTipSimpleListScreen,
             ),
             AutoRoute(
               path: AppRouter.aboutPath,
@@ -86,7 +77,6 @@ part 'app_router.gr.dart';
     ),
   ],
 )
-
 class AppRouter extends _$AppRouter {
   static const signInPath = 'signin';
   static const tipsPath = 'tips';
