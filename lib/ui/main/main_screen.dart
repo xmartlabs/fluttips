@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +29,14 @@ class _SplashContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocBuilder<MainCubit, MainBaseState>(
         builder: (context, state) => MaterialApp.router(
+          scrollBehavior: const MaterialScrollBehavior().copyWith(
+            dragDevices: {
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.touch,
+              PointerDeviceKind.stylus,
+              PointerDeviceKind.unknown,
+            },
+          ),
           debugShowCheckedModeBanner: false,
           theme: AppTheme.provideAppTheme(context),
           routerDelegate: AutoRouterDelegate.declarative(

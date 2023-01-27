@@ -30,7 +30,11 @@ dependencies:
   equatable: 2.0.5
   firebase_core: 2.2.0
   firebase_crashlytics: 3.0.5
-  floor: 1.4.1
+  floor:
+    git:
+      url: https://github.com/mirland/floor.git
+      ref: 64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b
+      path: floor
   flutter_bloc: 8.1.1
   flutter_dotenv: 5.0.2
   flutter_email_sender: 5.2.0
@@ -73,6 +77,13 @@ dev_dependencies:
   freezed: 2.2.0
   json_serializable: 6.5.4
   pedantic: 1.11.1
+
+dependency_overrides:
+  floor_annotation:
+    git:
+      url: https://github.com/mirland/floor.git
+      ref: 64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b
+      path: floor_annotation
 
 flutter:
   generate: true

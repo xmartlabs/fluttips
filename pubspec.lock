@@ -492,18 +492,20 @@ packages:
   floor:
     dependency: "direct main"
     description:
-      name: floor
-      sha256: "47b30dc15d2415533b6d09b9eaff8250472584db218869530c2b760e607ca7b5"
-      url: "https://pub.dev"
-    source: hosted
+      path: floor
+      ref: "64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b"
+      resolved-ref: "64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b"
+      url: "https://github.com/mirland/floor.git"
+    source: git
     version: "1.4.1"
   floor_annotation:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: floor_annotation
-      sha256: "7fea065005731da50ab2161a780228615acf6c9931dc32c2cd84298e466fbf3a"
-      url: "https://pub.dev"
-    source: hosted
+      path: floor_annotation
+      ref: "64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b"
+      resolved-ref: "64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b"
+      url: "https://github.com/mirland/floor.git"
+    source: git
     version: "1.4.1"
   floor_generator:
     dependency: "direct dev"
