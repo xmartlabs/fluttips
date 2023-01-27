@@ -3,18 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:fluttips/ui/favourites/favourites_tips_cubit.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
-import 'package:fluttips/ui/favourites/display_list_favorites_tips_screen.dart';
-import 'package:fluttips/gen/assets.gen.dart';
+import 'package:fluttips/ui/favourites_tip_simple_list/display_favourites_tip_simple_list_screen.dart';
+import 'package:fluttips/ui/favourites_tip_simple_list/favourites_tip_simple_list_cubit.dart';
 
-class FavouritesTipSimpleScreen extends StatelessWidget {
-  const FavouritesTipSimpleScreen({Key? key}) : super(key: key);
+class FavouritesTipSimpleListScreen extends StatelessWidget {
+  const FavouritesTipSimpleListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => BlocProvider(
         create: (context) =>
-            FavouritesTipsCubit(context.read<ErrorHandlerCubit>()),
+   FavouritesTipSimpleListCubit(context.read<ErrorHandlerCubit>()),
         child: _FavouritesTipsContentScreen(),
       );
 }
@@ -22,21 +21,22 @@ class FavouritesTipSimpleScreen extends StatelessWidget {
 class _FavouritesTipsContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<FavouritesTipsCubit>();
-    return BlocBuilder<FavouritesTipsCubit, FavouritesTipsBaseState>(
+    final cubit = context.read<FavouritesTipSimpleListCubit>();
+    return BlocBuilder<FavouritesTipSimpleListCubit,
+        FavouritesTipSimpleListBaseState>(
       builder: (context, state) => Container(
         margin: EdgeInsets.symmetric(horizontal: 20.w),
         padding: EdgeInsets.symmetric(horizontal: 40.0.w),
         child: state.tips.isEmpty
-            ? _emptyFavouriteScreen(context)
-            : _displayFavouritesTips(state, cubit, context),
+            ? emptyFavouriteScreen(context)
+            : displayFavouritesTips(state, cubit, context),
       ),
     );
   }
 
-  Column _displayFavouritesTips(
-    FavouritesTipsBaseState state,
-    FavouritesTipsCubit cubit,
+  Column displayFavouritesTips(
+    FavouritesTipSimpleListBaseState state,
+    FavouritesTipSimpleListCubit cubit,
     BuildContext context,
   ) =>
       Column(
@@ -60,7 +60,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
               crossAxisSpacing: 5,
               children: state.tips
                   .map(
-                    (tip) => DisplayListFavoritesTipsScreen(
+                    (tip) => DisplayFavoritesTipsSimpleListScreen(
                       tip: tip,
                       onTipAppendCallback: () => cubit.navigateToTip(tip),
                     ),
@@ -71,7 +71,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
         ],
       );
 
-  Center _emptyFavouriteScreen(BuildContext context) => Center(
+  Center emptyFavouriteScreen(BuildContext context) => Center(
         child: Container(
           width: .5.sw,
           padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 35.h),
@@ -112,7 +112,7 @@ class _FavouritesTipsContentScreen extends StatelessWidget {
               SizedBox(
                 width: 190.w,
                 height: 190.h,
-                child: Assets.images.onboardingFavourite.image(),
+                child: Image.asset('assets/images/onboarding_favourite.png'),
               ),
             ],
           ),

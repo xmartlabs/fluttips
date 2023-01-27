@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
-import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/core/model/tip.dart';
-import 'package:fluttips/ui/tips/image_tip_details_screen.dart';
+import 'package:fluttips/ui/image_tip_details/image_tip_details_screen.dart';
+import 'package:fluttips/ui/image_tip_details/show_image_tip_details_type.dart';
 
 class FavouritesTipDetailsScreen extends StatelessWidget {
-  final ShowTipsType showTipType;
+  final ShowImageTipDetailsType showTipType;
   final Tip? tip;
 
   const FavouritesTipDetailsScreen({
@@ -28,7 +28,7 @@ class FavouritesTipDetailsScreen extends StatelessWidget {
                 tip: tip,
               ),
               Container(
-                margin: EdgeInsets.only(left: 20.w, top: 10.h),
+                margin: const EdgeInsets.only(left: 20, top: 10),
                 child: TextButton(
                   onPressed: context.router.navigateBack,
                   style: TextButton.styleFrom(

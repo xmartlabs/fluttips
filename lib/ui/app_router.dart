@@ -18,6 +18,9 @@ import 'package:fluttips/ui/webView/webview_screen.dart';
 import 'package:fluttips/ui/favourites/favourites_tip_details_screen.dart';
 import 'package:fluttips/ui/favourites/favourites_tip_simple_screen.dart';
 
+import 'favourites_tip_details/favourites_tip_details_screen.dart';
+import 'favourites_tip_simple_list/favourites_tip_simple_list_screen.dart';
+
 part 'app_router.gr.dart';
 
 @MaterialAutoRouter(
