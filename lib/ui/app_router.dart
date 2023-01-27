@@ -15,6 +15,8 @@ import 'package:fluttips/core/model/tip.dart';
 import 'package:auto_route/empty_router_widgets.dart';
 import 'package:fluttips/ui/videos/videos_details_screen.dart';
 import 'package:fluttips/ui/webView/webview_screen.dart';
+import 'package:fluttips/ui/favourites/favourites_tip_details_screen.dart';
+import 'package:fluttips/ui/favourites/favourites_tip_simple_screen.dart';
 
 part 'app_router.gr.dart';
 

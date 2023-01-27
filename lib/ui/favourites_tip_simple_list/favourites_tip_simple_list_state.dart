@@ -1,4 +1,4 @@
-part of 'favourites_tips_cubit.dart';
+part of 'favourites_tip_simple_list_cubit.dart';
 
 @freezed
 class FavouritesTipSimpleBaseState with _$FavouritesTipSimpleBaseState {

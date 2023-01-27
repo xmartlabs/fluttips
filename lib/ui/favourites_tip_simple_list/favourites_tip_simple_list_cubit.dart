@@ -4,23 +4,22 @@ import 'package:fluttips/core/di/di_provider.dart';
 import 'package:fluttips/core/model/extensions/stock_extensions.dart';
 import 'package:fluttips/ui/app_router.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fluttips/core/repository/tip_repository.dart';
 import 'package:fluttips/core/model/tip.dart';
 import 'package:fluttips/ui/tips/show_tips_type.dart';
 
-part 'favourites_tip_simple_cubit.freezed.dart';
+part 'favourites_tip_simple_list_cubit.freezed.dart';
 
-part 'favourites_tip_simple_state.dart';
+part 'favourites_tip_simple_list_state.dart';
 
-class FavouritesTipsCubit extends Cubit<FavouritesTipsBaseState> {
+class FavouritesTipsSimpleListCubit extends Cubit<FavouritesTipSimpleBaseState> {
   final TipRepository _tipRepository = DiProvider.get();
   final AppRouter _router = DiProvider.get();
   final GeneralErrorHandler _errorHandler;
   late StreamSubscription<List<Tip>> subscriptionToTips;
 
-  FavouritesTipsCubit(this._errorHandler)
-      : super(const FavouritesTipsBaseState.state()) {
+  FavouritesTipsSimpleListCubit(this._errorHandler)
+      : super(const FavouritesTipSimpleBaseState.state()) {
     _subscribeToTips();
   }
 
