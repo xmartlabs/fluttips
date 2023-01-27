@@ -87,12 +87,14 @@ abstract class Config {
   }
 
   static void _initializeEnvVariables() {
-    if (Platform.isAndroid) {
-      bugseeAPIKey =
-          _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY);
-    } else if (Platform.isIOS) {
-      bugseeAPIKey =
-          _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_IOS_API_KEY);
+    if (!kIsWeb){
+      if (Platform.isAndroid) {
+        bugseeAPIKey =
+            _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY);
+      } else if (Platform.isIOS) {
+        bugseeAPIKey =
+            _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_IOS_API_KEY);
+      }
     }
     _initializeFirebaseEnvVariables();
   }
