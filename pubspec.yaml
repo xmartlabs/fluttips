@@ -1,5 +1,5 @@
 name: fluttips
-description: A new Flutter project.
+description: Flutter trips and tricks.
 
 publish_to: 'none'
 
@@ -142,7 +142,9 @@ flutter_icons:
   adaptive_icon_background: '#c7e5f6'
   remove_alpha_ios: true
   web:
-    generate: false
+    generate: true
+    background_color: '#1b1b26'
+    theme_color: '#7095b7'
   windows:
     generate: false
 
