@@ -1365,7 +1365,7 @@ packages:
     source: hosted
     version: "2.2.1+1"
   sqflite_common_ffi_web:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: sqflite_common_ffi_web
       sha256: "1cf0b97475a6ece94565002002b4b5eb3fad3063529b4ad444df040976c59dd1"
@@ -1440,10 +1440,10 @@ packages:
     dependency: "direct main"
     description:
       name: styled_text
-      sha256: "0f3e126b9cd7fc0f3ba2b4beaa65f3015f72bfae8478bed6ba229eb9b40da18e"
+      sha256: f72928d1ebe8cb149e3b34a689cb1ddca696b808187cf40ac3a0bd183dff379c
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0"
+    version: "7.0.0"
   sum_types:
     dependency: transitive
     description:
