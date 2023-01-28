@@ -5,12 +5,13 @@ import 'package:fluttips/ui/catalog/catalog_screen.dart';
 import 'package:fluttips/ui/home/home_screen.dart';
 import 'package:fluttips/ui/onboarding/onboarding_screen.dart';
 import 'package:fluttips/ui/section/section_router.dart';
-import 'package:fluttips/ui/videos/videos_details_screen.dart';
+import 'package:fluttips/ui/videos_details_screen/videos_details_screen.dart';
 import 'package:fluttips/ui/webView/webview_screen.dart';
-
 import 'package:fluttips/ui/favourites_tip_details/favourites_tip_details_screen.dart';
 import 'package:fluttips/ui/favourites_tip_simple_list/favourites_tip_simple_list_screen.dart';
 import 'package:fluttips/ui/image_tip_details/image_tip_details_screen.dart';
+import 'package:fluttips/ui/image_tip_details/show_image_tip_details_type.dart';
+import 'package:fluttips/core/model/tip.dart';
 
 part 'app_router.gr.dart';
 
@@ -57,8 +58,7 @@ part 'app_router.gr.dart';
             ),
             AutoRoute(
               path: AppRouter.aboutPath,
-              initial: true,
-              name: 'AboutScreenRoute',
+              name: 'HomeAboutScreenRoute',
               page: AboutScreen,
             ),
           ],

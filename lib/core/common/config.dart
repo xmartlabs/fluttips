@@ -42,8 +42,10 @@ abstract class Config {
 
   static Uri imagesTipsRepository =
       Uri.parse('https://www.github.com/vandadnp/flutter-tips-and-tricks');
+  static String widgetOfTheWeekPlaylistId =
+      'PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG';
   static Uri widgetOfTheWeekLink = Uri.parse(
-    'https://www.youtube.com/watch?v=b6Z885Z46cU&list=PLjxrf2q8roU23XGwz3Km7sQZFTdB996iG',
+    'https://www.youtube.com/playlist?list=$widgetOfTheWeekPlaylistId',
   );
   static String fluttipsRepository = 'https://github.com/xmartlabs/fluttips';
   static Uri xmartlabsLinkedln =

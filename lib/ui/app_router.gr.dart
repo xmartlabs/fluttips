@@ -91,7 +91,7 @@ class _$AppRouter extends RootStackRouter {
         child: const FavouritesTipSimpleListScreen(),
       );
     },
-    AboutScreenRoute.name: (routeData) {
+    HomeAboutScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const AboutScreen(),
@@ -126,13 +126,6 @@ class _$AppRouter extends RootStackRouter {
               parent: UserOnboardedRouter.name,
               children: [
                 RouteConfig(
-                  '#redirect',
-                  path: '',
-                  parent: HomeScreenRoute.name,
-                  redirectTo: 'about',
-                  fullMatch: true,
-                ),
-                RouteConfig(
                   HomeTipsScreenRoute.name,
                   path: 'tips',
                   parent: HomeScreenRoute.name,
@@ -148,7 +141,7 @@ class _$AppRouter extends RootStackRouter {
                   parent: HomeScreenRoute.name,
                 ),
                 RouteConfig(
-                  AboutScreenRoute.name,
+                  HomeAboutScreenRoute.name,
                   path: 'about',
                   parent: HomeScreenRoute.name,
                 ),
@@ -371,12 +364,12 @@ class HomeFavouritesTipsScreenRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AboutScreen]
-class AboutScreenRoute extends PageRouteInfo<void> {
-  const AboutScreenRoute()
+class HomeAboutScreenRoute extends PageRouteInfo<void> {
+  const HomeAboutScreenRoute()
       : super(
-          AboutScreenRoute.name,
+          HomeAboutScreenRoute.name,
           path: 'about',
         );
 
-  static const String name = 'AboutScreenRoute';
+  static const String name = 'HomeAboutScreenRoute';
 }

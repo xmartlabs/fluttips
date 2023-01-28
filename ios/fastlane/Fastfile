@@ -11,6 +11,9 @@ default_platform(:ios)
 
 provisioning_name = 'fluttips_fastlane'
 
+# https://github.com/fastlane/fastlane/issues/20811
+ENV['ITMSTRANSPORTER_FORCE_ITMS_PACKAGE_UPLOAD'] = 'true'
+
 platform :ios do
 
   desc "Creates a temporal keystore and import the distribution certificate"
@@ -96,6 +99,7 @@ platform :ios do
     "* **`APPSTORE_CONNECT_API_KEY_BASE_64_CONTENT`**: The api key base64 content"
   lane :generate_release_ipa do |options|
     upload_symbols = options[:upload_symbols] || true
+    include_git_version_suffix = options[:include_git_version_suffix] || false
     sign_enabled = options[:setup_signing] || true
     if sign_enabled
        set_signing
@@ -120,7 +124,7 @@ platform :ios do
         build_platform: 'ipa',
         build_type: 'release',
         flavor: env,
-        include_git_version_suffix: true,
+        include_git_version_suffix: include_git_version_suffix,
         export_method: build_export_method,
       )
 
@@ -159,6 +163,7 @@ platform :ios do
       env: 'dev',
       build_export_method: 'ad-hoc',
       firebase_app_id: ENV['FIREBASE_APP_ID_DEV'],
+      include_git_version_suffix: true,
     )
 
     firebase_app_distribution(
@@ -183,6 +188,8 @@ platform :ios do
     generate_release_ipa(
       env: 'prod',
       build_export_method: 'app-store',
+      firebase_app_id: ENV['FIREBASE_APP_ID_PROD'],
+      include_git_version_suffix: false,
     )
     upload_to_testflight(skip_waiting_for_build_processing: true)
   end

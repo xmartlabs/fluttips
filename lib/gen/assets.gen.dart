@@ -32,6 +32,10 @@ class $AssetsImagesGen {
   AssetGenImage get icTwitterLogo =>
       const AssetGenImage('assets/images/ic_twitter_logo.png');
 
+  /// File path: assets/images/ic_youtube_logo.png
+  AssetGenImage get icYoutubeLogo =>
+      const AssetGenImage('assets/images/ic_youtube_logo.png');
+
   /// File path: assets/images/onboarding_branding.png
   AssetGenImage get onboardingBranding =>
       const AssetGenImage('assets/images/onboarding_branding.png');
@@ -59,6 +63,7 @@ class $AssetsImagesGen {
         icInstagramLogo,
         icLinkedlnLogo,
         icTwitterLogo,
+        icYoutubeLogo,
         onboardingBranding,
         onboardingDescribeApp,
         onboardingFavourite,

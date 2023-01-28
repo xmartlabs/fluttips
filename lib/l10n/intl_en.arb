@@ -64,6 +64,8 @@
   "password": "Password",
   "search": "Search",
   "secondMessageEmptyFavoritesScreen": "2. Tap on the start icon on the bottom right of the screen",
-  "videos": "Coming soon",
+  "videos": "Videos",
+  "videos_button": "Watch videos",
+  "videos_description": "Here you have series of quick, animated videos, each of which covers a particular widget from the Flutter SDK.\n\nWe’re working to improve this feature :)",
   "xmartlabs_projects": "Xmartlabs' projects"
 }

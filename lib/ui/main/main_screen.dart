@@ -27,6 +27,7 @@ class _SplashContentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocBuilder<MainCubit, MainBaseState>(
         builder: (context, state) => MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           theme: AppTheme.provideAppTheme(context),
           routerDelegate: AutoRouterDelegate.declarative(
             router,

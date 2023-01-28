@@ -16,7 +16,7 @@ class AppSecondaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => AppBaseButton(
         text: text,
-        action: action,
+        onPressed: action,
         backgroundColor: Colors.transparent,
         textColor: context.theme.colors.surface,
       );

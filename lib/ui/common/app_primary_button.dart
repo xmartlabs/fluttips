@@ -5,18 +5,21 @@ import 'package:fluttips/ui/theme/app_theme.dart';
 
 class AppPrimaryButton extends StatelessWidget {
   final String text;
-  final VoidCallback action;
+  final VoidCallback onPressed;
+  final Image? image;
 
   const AppPrimaryButton({
     required this.text,
-    required this.action,
+    required this.onPressed,
+    this.image,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => AppBaseButton(
         text: text,
-        action: action,
+        onPressed: onPressed,
+        image: image,
         backgroundColor: context.theme.colors.primary.shade100,
         textColor: context.theme.colors.primary,
       );
