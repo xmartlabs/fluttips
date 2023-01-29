@@ -29,6 +29,7 @@ class AppBaseButton extends StatelessWidget {
         ),
         elevation: 5,
         color: backgroundColor,
+        padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 17.w),
         textColor: textColor,
         onPressed: onPressed,
         child: Row(
@@ -37,7 +38,9 @@ class AppBaseButton extends StatelessWidget {
           children: [
             if (image != null)
               Container(
-                padding: EdgeInsets.only(right: 10.w),
+                width: 22.w,
+                height: 22.w,
+                margin: EdgeInsets.only(right: 10.w),
                 child: image,
               ),
             Text(text),
