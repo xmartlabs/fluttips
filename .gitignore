@@ -33,7 +33,7 @@ service-account.json
 /build/
 
 # Web related
-lib/generated_plugin_registrant.dart
+.firebase
 
 # Symbolication related
 app.*.symbols

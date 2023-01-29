@@ -31,8 +31,9 @@ abstract class Config {
   static const debugMode = kDebugMode;
   static const firebaseEnabled = !debugMode;
   static const analyticsEnabled = !debugMode;
-  static const crashlyticsEnabled = !debugMode;
-  static bool bugseeEnabled = !debugMode && _environment == Environments.dev;
+  // TODO: Add alternative for web
+  static const crashlyticsEnabled = !kIsWeb && !debugMode;
+  static bool bugseeEnabled = !kIsWeb && !debugMode && _environment == Environments.dev;
 
   static const String _environmentFolder = 'environments';
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
@@ -75,6 +76,10 @@ abstract class Config {
   static String? firebaseIosIosBundleId;
   static String? firebaseAndroidApiKey;
   static String? firebaseAndroidAppId;
+  static String? firebaseWebApiKey;
+  static String? firebaseWebAppId;
+  static String? firebaseWebAuthDomain;
+  static String? firebaseWebMeasurementId;
   static final _environment = enumFromString(
         Environments.values,
         const String.fromEnvironment('ENV'),
@@ -127,6 +132,18 @@ abstract class Config {
     firebaseAndroidAppId = _EnvConfig.getEnvVariable(
       _EnvConfig.ENV_KEY_FIREBASE_ANDROID_APP_ID,
     );
+    firebaseWebApiKey = _EnvConfig.getEnvVariable(
+      _EnvConfig.ENV_KEY_FIREBASE_WEB_API_KEY,
+    );
+    firebaseWebAppId = _EnvConfig.getEnvVariable(
+      _EnvConfig.ENV_KEY_FIREBASE_WEB_APP_ID,
+    );
+    firebaseWebAuthDomain = _EnvConfig.getEnvVariable(
+      _EnvConfig.ENV_KEY_FIREBASE_WEB_AUTH_DOMAIN,
+    );
+    firebaseWebMeasurementId = _EnvConfig.getEnvVariable(
+      _EnvConfig.ENV_KEY_FIREBASE_WEB_MEASUREMENT_ID,
+    );
   }
 }
 
@@ -151,6 +168,11 @@ abstract class _EnvConfig {
   // Firebase Android
   static const ENV_KEY_FIREBASE_ANDROID_API_KEY = 'FIREBASE_ANDROID_API_KEY';
   static const ENV_KEY_FIREBASE_ANDROID_APP_ID = 'FIREBASE_ANDROID_APP_ID';
+
+  static const ENV_KEY_FIREBASE_WEB_API_KEY = 'FIREBASE_WEB_API_KEY';
+  static const ENV_KEY_FIREBASE_WEB_APP_ID = 'FIREBASE_WEB_APP_ID';
+  static const ENV_KEY_FIREBASE_WEB_AUTH_DOMAIN = 'FIREBASE_WEB_AUTH_DOMAIN';
+  static const ENV_KEY_FIREBASE_WEB_MEASUREMENT_ID = 'FIREBASE_WEB_MEASUREMENT_ID';
 
   static const systemEnv = {
     ENV_KEY_BUGSEE_IOS_API_KEY:
@@ -181,6 +203,16 @@ abstract class _EnvConfig {
         String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_API_KEY),
     ENV_KEY_FIREBASE_ANDROID_APP_ID:
         String.fromEnvironment(ENV_KEY_FIREBASE_ANDROID_APP_ID),
+
+    // Firebase Android
+    ENV_KEY_FIREBASE_WEB_API_KEY:
+        String.fromEnvironment(ENV_KEY_FIREBASE_WEB_API_KEY),
+    ENV_KEY_FIREBASE_WEB_APP_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_WEB_APP_ID),
+    ENV_KEY_FIREBASE_WEB_AUTH_DOMAIN:
+        String.fromEnvironment(ENV_KEY_FIREBASE_WEB_AUTH_DOMAIN),
+    ENV_KEY_FIREBASE_WEB_MEASUREMENT_ID:
+        String.fromEnvironment(ENV_KEY_FIREBASE_WEB_MEASUREMENT_ID),
   };
 
   static final Map<String, String> _envFileEnv = {};
