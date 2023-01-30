@@ -31,9 +31,11 @@ abstract class Config {
   static const debugMode = kDebugMode;
   static const firebaseEnabled = !debugMode;
   static const analyticsEnabled = !debugMode;
+
   // TODO: Add alternative for web
   static const crashlyticsEnabled = !kIsWeb && !debugMode;
-  static bool bugseeEnabled = !kIsWeb && !debugMode && _environment == Environments.dev;
+  static bool bugseeEnabled =
+      !kIsWeb && !debugMode && _environment == Environments.dev;
 
   static const String _environmentFolder = 'environments';
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
@@ -92,10 +94,11 @@ abstract class Config {
   }
 
   static void _initializeEnvVariables() {
-    if (!kIsWeb){
+    if (!kIsWeb) {
       if (Platform.isAndroid) {
-        bugseeAPIKey =
-            _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY);
+        bugseeAPIKey = _EnvConfig.getEnvVariable(
+          _EnvConfig.ENV_KEY_BUGSEE_ANDROID_API_KEY,
+        );
       } else if (Platform.isIOS) {
         bugseeAPIKey =
             _EnvConfig.getEnvVariable(_EnvConfig.ENV_KEY_BUGSEE_IOS_API_KEY);
@@ -172,7 +175,8 @@ abstract class _EnvConfig {
   static const ENV_KEY_FIREBASE_WEB_API_KEY = 'FIREBASE_WEB_API_KEY';
   static const ENV_KEY_FIREBASE_WEB_APP_ID = 'FIREBASE_WEB_APP_ID';
   static const ENV_KEY_FIREBASE_WEB_AUTH_DOMAIN = 'FIREBASE_WEB_AUTH_DOMAIN';
-  static const ENV_KEY_FIREBASE_WEB_MEASUREMENT_ID = 'FIREBASE_WEB_MEASUREMENT_ID';
+  static const ENV_KEY_FIREBASE_WEB_MEASUREMENT_ID =
+      'FIREBASE_WEB_MEASUREMENT_ID';
 
   static const systemEnv = {
     ENV_KEY_BUGSEE_IOS_API_KEY:

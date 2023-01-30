@@ -17,7 +17,6 @@ class AppTheme {
     return ThemeData(
       primaryColor: _colors.primary,
       colorScheme: _colors,
-      backgroundColor: _colors.background,
       textTheme: _styles.getThemeData(),
       primaryTextTheme: _styles.getThemeData(),
     );
