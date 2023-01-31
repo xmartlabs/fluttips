@@ -4,8 +4,8 @@ import 'package:floor/floor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:fluttips/core/model/db/tip_db_entity.dart';
 import 'package:fluttips/core/source/local_source/converters/date_time_converter.dart';
-import 'package:sqflite/sqflite.dart' as sqflite;
 import 'package:fluttips/core/source/local_source/tips_local_source.dart';
+import 'package:sqflite/sqflite.dart' as sqflite;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:sqflite_common_ffi_web/sqflite_ffi_web.dart';
 
