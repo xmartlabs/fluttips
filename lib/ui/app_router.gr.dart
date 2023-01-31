@@ -124,7 +124,7 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           UserOnboardedRouter.name,
-          path: '/section-router',
+          path: '',
           children: [
             RouteConfig(
               HomeScreenRoute.name,
@@ -213,7 +213,7 @@ class UserOnboardedRouter extends PageRouteInfo<void> {
   const UserOnboardedRouter({List<PageRouteInfo>? children})
       : super(
           UserOnboardedRouter.name,
-          path: '/section-router',
+          path: '',
           initialChildren: children,
         );
 

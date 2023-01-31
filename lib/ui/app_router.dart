@@ -37,6 +37,7 @@ part 'app_router.gr.dart';
     AutoRoute(
       name: 'UserOnboardedRouter',
       page: SectionRouter,
+      path: '',
       children: [
         AutoRoute(
           page: HomeScreen,

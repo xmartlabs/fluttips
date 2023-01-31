@@ -238,11 +238,11 @@ class __$$_UnknownErrorHandlerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? error = freezed,
-    Object? retry = freezed,
+    Object? retry = null,
   }) {
     return _then(_$_UnknownErrorHandlerState(
       freezed == error ? _value.error : error,
-      freezed == retry
+      null == retry
           ? _value.retry
           : retry // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -282,12 +282,14 @@ class _$_UnknownErrorHandlerState
         (other.runtimeType == runtimeType &&
             other is _$_UnknownErrorHandlerState &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            (identical(other.retry, retry) || other.retry == retry));
+            const DeepCollectionEquality().equals(other.retry, retry));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(error), retry);
+      runtimeType,
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(retry));
 
   @JsonKey(ignore: true)
   @override
@@ -408,10 +410,10 @@ class __$$_InternetErrorHandlerStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? retry = freezed,
+    Object? retry = null,
   }) {
     return _then(_$_InternetErrorHandlerState(
-      freezed == retry
+      null == retry
           ? _value.retry
           : retry // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -447,11 +449,12 @@ class _$_InternetErrorHandlerState
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InternetErrorHandlerState &&
-            (identical(other.retry, retry) || other.retry == retry));
+            const DeepCollectionEquality().equals(other.retry, retry));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, retry);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(retry));
 
   @JsonKey(ignore: true)
   @override
@@ -572,7 +575,7 @@ class __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? description = null,
-    Object? retry = freezed,
+    Object? retry = null,
   }) {
     return _then(_$_GeneralErrorHandlerState(
       freezed == title
@@ -583,7 +586,7 @@ class __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      freezed == retry
+      null == retry
           ? _value.retry
           : retry // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -628,11 +631,12 @@ class _$_GeneralErrorHandlerState
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.retry, retry) || other.retry == retry));
+            const DeepCollectionEquality().equals(other.retry, retry));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, retry);
+  int get hashCode => Object.hash(runtimeType, title, description,
+      const DeepCollectionEquality().hash(retry));
 
   @JsonKey(ignore: true)
   @override

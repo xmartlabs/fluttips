@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
@@ -22,13 +23,17 @@ class _WebViewScreenState extends State<WebViewScreen> {
   @override
   void initState() {
     _webViewController = WebViewController();
-    _webViewController.loadFlutterAsset(widget.path);
+    DefaultAssetBundle.of(context)
+        .loadString(widget.path)
+        .then((value) => _webViewController.loadHtmlString(value));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _webViewController.setBackgroundColor(context.theme.colors.background);
+    if (!kIsWeb) {
+      _webViewController.setBackgroundColor(context.theme.colors.background);
+    }
     return Container(
       margin: EdgeInsets.only(left: 80.w, top: 10.h),
       alignment: Alignment.centerLeft,
