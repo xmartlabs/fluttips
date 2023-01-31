@@ -13,6 +13,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
+### sh_on_root
+
+```sh
+[bundle exec] fastlane sh_on_root
+```
+
+
+
 ### fetch_dependencies
 
 ```sh
@@ -105,6 +113,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 ## iOS
+
+### ios build_ipa_dev
+
+```sh
+[bundle exec] fastlane ios build_ipa_dev
+```
+
+**Build dev debug app**
 
 ### ios set_signing
 

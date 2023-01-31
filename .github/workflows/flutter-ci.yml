@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
@@ -34,6 +34,14 @@ jobs:
         with:
           bundler-cache: true
           working-directory: 'android'
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: 'web'
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: 'ios'
       - name: Create google-services.json
         uses: timheuer/base64-to-file@v1.2
         with:
@@ -61,3 +69,13 @@ jobs:
         with:
           lane: 'android build_dev_debug_apk'
           subdirectory: 'android'
+      - name: 'Build web app'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'web build_dev'
+          subdirectory: 'web'
+      - name: 'Build ios app'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'ios build_ipa_dev'
+          subdirectory: 'ios'
