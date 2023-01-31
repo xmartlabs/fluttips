@@ -30,11 +30,7 @@ dependencies:
   equatable: 2.0.5
   firebase_core: 2.2.0
   firebase_crashlytics: 3.0.5
-  floor:
-    git:
-      url: https://github.com/mirland/floor.git
-      ref: 64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b
-      path: floor
+  floor: 1.4.1
   flutter_bloc: 8.1.1
   flutter_dotenv: 5.0.2
   flutter_email_sender: 5.2.0
@@ -54,6 +50,8 @@ dependencies:
   rxdart: 0.27.7
   shared_preferences: 2.0.16
   sqflite: 2.2.0+3
+  sqflite_common_ffi: 2.2.1+1 # Used to provide a custom DatabaseFactory
+  sqflite_common_ffi_web: 0.3.2 # Used to provide a custom DatabaseFactory
   stack_trace: 1.11.0
   stock: 1.0.1
   styled_text: 7.0.0
@@ -77,13 +75,6 @@ dev_dependencies:
   freezed: 2.2.0
   json_serializable: 6.5.4
   pedantic: 1.11.1
-
-dependency_overrides:
-  floor_annotation:
-    git:
-      url: https://github.com/mirland/floor.git
-      ref: 64f1eb1e934038f6fc612e8032ea0e5b4dfdfb8b
-      path: floor_annotation
 
 flutter:
   generate: true
