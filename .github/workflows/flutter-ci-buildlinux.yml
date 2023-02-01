@@ -1,4 +1,4 @@
-name: Flutter CI - Lints & tests
+name: Flutter CI - Build Android Web
 on:
   pull_request:
   push:
@@ -30,6 +30,11 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          working-directory: 'android'
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: 'web'
       - name: Create google-services.json
         uses: timheuer/base64-to-file@v1.2
         with:
@@ -40,15 +45,13 @@ jobs:
         uses: maierj/fastlane-action@v3.0.0
         with:
           lane: 'fetch_dependencies'
-      - name: 'Run lints'
+      - name: 'Build android app'
         uses: maierj/fastlane-action@v3.0.0
         with:
-          lane: 'lints'
-      - name: 'Check generated code'
+          lane: 'android build_dev_debug_apk'
+          subdirectory: 'android'
+      - name: 'Build web app'
         uses: maierj/fastlane-action@v3.0.0
         with:
-          lane: 'ensure_no_change_in_generated_code'
-      - name: 'Run tests'
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: 'tests'
+          lane: 'web build_dev'
+          subdirectory: 'web'
