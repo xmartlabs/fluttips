@@ -34,22 +34,27 @@ class _WebViewScreenState extends State<WebViewScreen> {
     if (!kIsWeb) {
       _webViewController.setBackgroundColor(context.theme.colors.background);
     }
-    return Container(
-      margin: EdgeInsets.only(left: 80.w, top: 10.h),
-      alignment: Alignment.centerLeft,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              IconButton(
-                onPressed: () => context.router.navigateBack(),
-                color: context.theme.colors.surface,
-                icon: const Icon(Icons.arrow_back_ios),
-              ),
-            ],
-          ),
-          Expanded(child: WebViewWidget(controller: _webViewController)),
-        ],
+    final colors = context.theme.colors;
+    _webViewController.setBackgroundColor(colors.background);
+    return Scaffold(
+      backgroundColor: colors.background,
+      body: Container(
+        margin: EdgeInsets.only(left: 80.w, top: 10.h),
+        alignment: Alignment.centerLeft,
+        child: Column(
+          children: [
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () => context.router.navigateBack(),
+                  color: colors.surface,
+                  icon: const Icon(Icons.arrow_back_ios),
+                ),
+              ],
+            ),
+            Expanded(child: WebViewWidget(controller: _webViewController)),
+          ],
+        ),
       ),
     );
   }

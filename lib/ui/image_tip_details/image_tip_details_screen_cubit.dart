@@ -5,27 +5,27 @@ import 'package:dartx/dartx.dart';
 import 'package:fluttips/core/di/di_provider.dart';
 import 'package:fluttips/core/model/extensions/stock_extensions.dart';
 import 'package:fluttips/core/model/extensions/tip_extension.dart';
+import 'package:fluttips/ui/image_tip_details/show_image_tip_details_type.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
-import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fluttips/core/repository/tip_repository.dart';
 import 'package:fluttips/core/model/tip.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:fluttips/ui/common/fab.dart';
 
-part 'tips_cubit.freezed.dart';
+part 'image_tip_details_screen_cubit.freezed.dart';
 
-part 'tips_state.dart';
+part 'image_tip_details_screen_state.dart';
 
-class TipCubit extends Cubit<TipsBaseState> {
+class ImageTipDetailsScreenCubit extends Cubit<TipsImageDetailsBaseState> {
   final TipRepository _tipRepository = DiProvider.get();
   final GeneralErrorHandler _errorHandler;
-  final ShowTipsType _showTipsType;
+  final ShowImageTipDetailsType _showTipsType;
 
   late StreamSubscription<List<Tip>> subscriptionToTips;
 
-  TipCubit(this._showTipsType, this._errorHandler, Tip? tip)
-      : super(TipsBaseState.state(currentTip: tip)) {
+  ImageTipDetailsScreenCubit(this._showTipsType, this._errorHandler, Tip? tip)
+      : super(TipsImageDetailsBaseState.state(currentTip: tip)) {
     _subscribeToTips();
   }
 
@@ -66,9 +66,10 @@ class TipCubit extends Cubit<TipsBaseState> {
     });
   }
 
-  Stream<List<Tip>> _getTipStream() => _showTipsType == ShowTipsType.favourite
-      ? _getFavouritesTipStream()
-      : _getAllTips();
+  Stream<List<Tip>> _getTipStream() =>
+      _showTipsType == ShowImageTipDetailsType.favourite
+          ? _getFavouritesTipStream()
+          : _getAllTips();
 
   Stream<List<Tip>> _getFavouritesTipStream() => _tipRepository
       .getFavouritesTips()

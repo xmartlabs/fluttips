@@ -10,8 +10,8 @@ import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/gen/assets.gen.dart';
 import 'package:fluttips/core/common/config.dart';
 
-class VideosScreen extends StatelessWidget {
-  const VideosScreen({Key? key}) : super(key: key);
+class VideosDetailsScreen extends StatelessWidget {
+  const VideosDetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => _VideosContentScreen();

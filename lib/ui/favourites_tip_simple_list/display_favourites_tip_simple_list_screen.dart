@@ -4,11 +4,11 @@ import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:fluttips/core/model/tip.dart';
 
-class DisplayListFavoritesTipsScreen extends StatelessWidget {
+class DisplayFavoritesTipsSimpleListScreen extends StatelessWidget {
   final Tip tip;
   final VoidCallback onTipAppendCallback;
 
-  const DisplayListFavoritesTipsScreen({
+  const DisplayFavoritesTipsSimpleListScreen({
     required this.tip,
     required this.onTipAppendCallback,
     Key? key,

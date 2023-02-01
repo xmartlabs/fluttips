@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'favourites_tips_cubit.dart';
+part of 'favourites_tip_simple_list_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FavouritesTipsBaseState {
+mixin _$FavouritesTipSimpleListBaseState {
   List<Tip> get tips => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,40 +36,42 @@ mixin _$FavouritesTipsBaseState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TipsState value) state,
+    required TResult Function(_FavouritesTipsSimpleListState value) state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TipsState value)? state,
+    TResult? Function(_FavouritesTipsSimpleListState value)? state,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TipsState value)? state,
+    TResult Function(_FavouritesTipsSimpleListState value)? state,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FavouritesTipsBaseStateCopyWith<FavouritesTipsBaseState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FavouritesTipSimpleListBaseStateCopyWith<FavouritesTipSimpleListBaseState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavouritesTipsBaseStateCopyWith<$Res> {
-  factory $FavouritesTipsBaseStateCopyWith(FavouritesTipsBaseState value,
-          $Res Function(FavouritesTipsBaseState) then) =
-      _$FavouritesTipsBaseStateCopyWithImpl<$Res, FavouritesTipsBaseState>;
+abstract class $FavouritesTipSimpleListBaseStateCopyWith<$Res> {
+  factory $FavouritesTipSimpleListBaseStateCopyWith(
+          FavouritesTipSimpleListBaseState value,
+          $Res Function(FavouritesTipSimpleListBaseState) then) =
+      _$FavouritesTipSimpleListBaseStateCopyWithImpl<$Res,
+          FavouritesTipSimpleListBaseState>;
   @useResult
   $Res call({List<Tip> tips, int currentPage});
 }
 
 /// @nodoc
-class _$FavouritesTipsBaseStateCopyWithImpl<$Res,
-        $Val extends FavouritesTipsBaseState>
-    implements $FavouritesTipsBaseStateCopyWith<$Res> {
-  _$FavouritesTipsBaseStateCopyWithImpl(this._value, this._then);
+class _$FavouritesTipSimpleListBaseStateCopyWithImpl<$Res,
+        $Val extends FavouritesTipSimpleListBaseState>
+    implements $FavouritesTipSimpleListBaseStateCopyWith<$Res> {
+  _$FavouritesTipSimpleListBaseStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -96,22 +98,25 @@ class _$FavouritesTipsBaseStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TipsStateCopyWith<$Res>
-    implements $FavouritesTipsBaseStateCopyWith<$Res> {
-  factory _$$_TipsStateCopyWith(
-          _$_TipsState value, $Res Function(_$_TipsState) then) =
-      __$$_TipsStateCopyWithImpl<$Res>;
+abstract class _$$_FavouritesTipsSimpleListStateCopyWith<$Res>
+    implements $FavouritesTipSimpleListBaseStateCopyWith<$Res> {
+  factory _$$_FavouritesTipsSimpleListStateCopyWith(
+          _$_FavouritesTipsSimpleListState value,
+          $Res Function(_$_FavouritesTipsSimpleListState) then) =
+      __$$_FavouritesTipsSimpleListStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Tip> tips, int currentPage});
 }
 
 /// @nodoc
-class __$$_TipsStateCopyWithImpl<$Res>
-    extends _$FavouritesTipsBaseStateCopyWithImpl<$Res, _$_TipsState>
-    implements _$$_TipsStateCopyWith<$Res> {
-  __$$_TipsStateCopyWithImpl(
-      _$_TipsState _value, $Res Function(_$_TipsState) _then)
+class __$$_FavouritesTipsSimpleListStateCopyWithImpl<$Res>
+    extends _$FavouritesTipSimpleListBaseStateCopyWithImpl<$Res,
+        _$_FavouritesTipsSimpleListState>
+    implements _$$_FavouritesTipsSimpleListStateCopyWith<$Res> {
+  __$$_FavouritesTipsSimpleListStateCopyWithImpl(
+      _$_FavouritesTipsSimpleListState _value,
+      $Res Function(_$_FavouritesTipsSimpleListState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +125,7 @@ class __$$_TipsStateCopyWithImpl<$Res>
     Object? tips = null,
     Object? currentPage = null,
   }) {
-    return _then(_$_TipsState(
+    return _then(_$_FavouritesTipsSimpleListState(
       tips: null == tips
           ? _value._tips
           : tips // ignore: cast_nullable_to_non_nullable
@@ -135,8 +140,10 @@ class __$$_TipsStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TipsState implements _TipsState {
-  const _$_TipsState({final List<Tip> tips = const [], this.currentPage = 0})
+class _$_FavouritesTipsSimpleListState
+    implements _FavouritesTipsSimpleListState {
+  const _$_FavouritesTipsSimpleListState(
+      {final List<Tip> tips = const [], this.currentPage = 0})
       : _tips = tips;
 
   final List<Tip> _tips;
@@ -153,14 +160,14 @@ class _$_TipsState implements _TipsState {
 
   @override
   String toString() {
-    return 'FavouritesTipsBaseState.state(tips: $tips, currentPage: $currentPage)';
+    return 'FavouritesTipSimpleListBaseState.state(tips: $tips, currentPage: $currentPage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TipsState &&
+            other is _$_FavouritesTipsSimpleListState &&
             const DeepCollectionEquality().equals(other._tips, _tips) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage));
@@ -173,8 +180,9 @@ class _$_TipsState implements _TipsState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TipsStateCopyWith<_$_TipsState> get copyWith =>
-      __$$_TipsStateCopyWithImpl<_$_TipsState>(this, _$identity);
+  _$$_FavouritesTipsSimpleListStateCopyWith<_$_FavouritesTipsSimpleListState>
+      get copyWith => __$$_FavouritesTipsSimpleListStateCopyWithImpl<
+          _$_FavouritesTipsSimpleListState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -207,7 +215,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_TipsState value) state,
+    required TResult Function(_FavouritesTipsSimpleListState value) state,
   }) {
     return state(this);
   }
@@ -215,7 +223,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_TipsState value)? state,
+    TResult? Function(_FavouritesTipsSimpleListState value)? state,
   }) {
     return state?.call(this);
   }
@@ -223,7 +231,7 @@ class _$_TipsState implements _TipsState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_TipsState value)? state,
+    TResult Function(_FavouritesTipsSimpleListState value)? state,
     required TResult orElse(),
   }) {
     if (state != null) {
@@ -233,9 +241,11 @@ class _$_TipsState implements _TipsState {
   }
 }
 
-abstract class _TipsState implements FavouritesTipsBaseState {
-  const factory _TipsState({final List<Tip> tips, final int currentPage}) =
-      _$_TipsState;
+abstract class _FavouritesTipsSimpleListState
+    implements FavouritesTipSimpleListBaseState {
+  const factory _FavouritesTipsSimpleListState(
+      {final List<Tip> tips,
+      final int currentPage}) = _$_FavouritesTipsSimpleListState;
 
   @override
   List<Tip> get tips;
@@ -243,6 +253,6 @@ abstract class _TipsState implements FavouritesTipsBaseState {
   int get currentPage;
   @override
   @JsonKey(ignore: true)
-  _$$_TipsStateCopyWith<_$_TipsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_FavouritesTipsSimpleListStateCopyWith<_$_FavouritesTipsSimpleListState>
+      get copyWith => throw _privateConstructorUsedError;
 }

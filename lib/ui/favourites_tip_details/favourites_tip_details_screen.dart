@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
-import 'package:fluttips/ui/tips/tips_screen.dart';
-import 'package:fluttips/ui/tips/show_tips_type.dart';
 import 'package:fluttips/core/model/tip.dart';
+import 'package:fluttips/ui/image_tip_details/image_tip_details_screen.dart';
+import 'package:fluttips/ui/image_tip_details/show_image_tip_details_type.dart';
 
-class ListFavouritesTipsScreen extends StatelessWidget {
-  final ShowTipsType showTipType;
+class FavouritesTipDetailsScreen extends StatelessWidget {
+  final ShowImageTipDetailsType showTipType;
   final Tip? tip;
 
-  const ListFavouritesTipsScreen({
+  const FavouritesTipDetailsScreen({
     required this.showTipType,
     this.tip,
     Key? key,
@@ -23,7 +23,7 @@ class ListFavouritesTipsScreen extends StatelessWidget {
         child: SafeArea(
           child: Stack(
             children: [
-              TipsScreen(
+              ImageTipDetailsScreen(
                 showTipType: showTipType,
                 tip: tip,
               ),

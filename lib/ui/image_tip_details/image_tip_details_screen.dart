@@ -4,22 +4,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/core/model/extensions/tip_extension.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
+import 'package:fluttips/ui/image_tip_details/show_image_tip_details_type.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:fluttips/ui/section/global_ui/global_ui_cubit.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
-import 'package:fluttips/ui/tips/show_tips_type.dart';
-import 'package:fluttips/ui/tips/tips_cubit.dart';
 import 'package:fluttips/ui/common/custom_scaffold_fab.dart';
 import 'package:fluttips/ui/common/fab.dart';
 import 'package:fluttips/core/model/tip.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+import 'package:fluttips/ui/image_tip_details/image_tip_details_screen_cubit.dart';
 
-class TipsScreen extends StatelessWidget {
-  final ShowTipsType showTipType;
+class ImageTipDetailsScreen extends StatelessWidget {
+  final ShowImageTipDetailsType showTipType;
   final Tip? tip;
 
-  const TipsScreen({
+  const ImageTipDetailsScreen({
     required this.showTipType,
     this.tip,
     Key? key,
@@ -27,24 +27,29 @@ class TipsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocProvider(
-        create: (context) =>
-            TipCubit(showTipType, context.read<ErrorHandlerCubit>(), tip),
-        child: const _TipContentScreen(),
+        create: (context) => ImageTipDetailsScreenCubit(
+          showTipType,
+          context.read<ErrorHandlerCubit>(),
+          tip,
+        ),
+        child: const _ImageTipDetailsContentScreen(),
       );
 }
 
-class _TipContentScreen extends StatefulWidget {
-  const _TipContentScreen();
+class _ImageTipDetailsContentScreen extends StatefulWidget {
+  const _ImageTipDetailsContentScreen();
 
   @override
-  State<_TipContentScreen> createState() => _TipContentScreenState();
+  State<_ImageTipDetailsContentScreen> createState() =>
+      _ImageTipDetailsContentScreenState();
 }
 
-class _TipContentScreenState extends State<_TipContentScreen> {
+class _ImageTipDetailsContentScreenState
+    extends State<_ImageTipDetailsContentScreen> {
   final PageController _pageController = PageController();
   bool _isScrolling = false;
 
-  _TipContentScreenState();
+  _ImageTipDetailsContentScreenState();
 
   @override
   void dispose() {
@@ -55,8 +60,8 @@ class _TipContentScreenState extends State<_TipContentScreen> {
   @override
   Widget build(BuildContext context) {
     final globalCubit = context.read<GlobalUICubit>();
-    final cubit = context.read<TipCubit>();
-    return BlocConsumer<TipCubit, TipsBaseState>(
+    final cubit = context.read<ImageTipDetailsScreenCubit>();
+    return BlocConsumer<ImageTipDetailsScreenCubit, TipsImageDetailsBaseState>(
       listener: (context, state) {
         if (state.currentPage != _pageController.page?.toInt() &&
             state.currentPage > 0 &&
