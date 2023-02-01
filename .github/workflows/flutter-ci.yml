@@ -64,6 +64,11 @@ jobs:
         uses: maierj/fastlane-action@v3.0.0
         with:
           lane: 'tests'
+      - name: 'Build ios app'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'ios build_ipa_dev'
+          subdirectory: 'ios'
       - name: 'Build android app'
         uses: maierj/fastlane-action@v3.0.0
         with:
@@ -74,8 +79,3 @@ jobs:
         with:
           lane: 'web build_dev'
           subdirectory: 'web'
-      - name: 'Build ios app'
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: 'ios build_ipa_dev'
-          subdirectory: 'ios'

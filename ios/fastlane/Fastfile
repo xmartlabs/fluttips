@@ -23,7 +23,7 @@ platform :ios do
       flavor: 'dev',
       include_git_version_suffix: false,
       export_method: 'ad-hoc',
-      sign_enabled: false,
+       sign_enabled: false,
     )
   end
 
