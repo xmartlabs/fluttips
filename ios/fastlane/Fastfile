@@ -15,6 +15,17 @@ provisioning_name = 'fluttips_fastlane'
 ENV['ITMSTRANSPORTER_FORCE_ITMS_PACKAGE_UPLOAD'] = 'true'
 
 platform :ios do
+  desc "**Build dev debug app**"
+  lane :build_ipa_dev do
+    build_flutter(
+      build_platform: 'ipa',
+      build_type: 'debug',
+      flavor: 'dev',
+      include_git_version_suffix: false,
+      export_method: 'ad-hoc',
+       sign_enabled: false,
+    )
+  end
 
   desc "Creates a temporal keystore and import the distribution certificate"
   desc "#### Envs\n" +

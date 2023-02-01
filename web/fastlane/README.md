@@ -111,6 +111,43 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ----
 
+
+## web
+
+### web build_dev
+
+```sh
+[bundle exec] fastlane web build_dev
+```
+
+**Build dev debug app**
+
+### web deploy_firebase_app_distribution_dev_staging
+
+```sh
+[bundle exec] fastlane web deploy_firebase_app_distribution_dev_staging
+```
+
+**Submit a new Staging Build to Firebase Hosting**
+
+#### Envs
+ * **`FIREBASE_SERVICE_ACCOUNT_FILE`**: The path to your Google service account json file.
+
+
+### web deploy_firebase_app_distribution_prod
+
+```sh
+[bundle exec] fastlane web deploy_firebase_app_distribution_prod
+```
+
+**Submit a new Staging Build to Firebase Hosting**
+
+#### Envs
+ * **`FIREBASE_SERVICE_ACCOUNT_FILE`**: The path to your Google service account json file.
+
+
+----
+
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 
 More information about _fastlane_ can be found on [fastlane.tools](https://fastlane.tools).

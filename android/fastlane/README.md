@@ -13,6 +13,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
+### sh_on_root
+
+```sh
+[bundle exec] fastlane sh_on_root
+```
+
+
+
 ### fetch_dependencies
 
 ```sh
