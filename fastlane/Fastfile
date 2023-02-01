@@ -12,10 +12,10 @@ def compilation_envs
 end
 
 def root_path
-  Dir.pwd.sub(/.*\Kfastlane/, '').sub(/.*\Kandroid/, '').sub(/.*\Kios/, '').sub(/.*\K\/\//, '')
+  Dir.pwd.sub(/.*\Kfastlane/, '').sub(/.*\Kandroid/, '').sub(/.*\Kweb/, '').sub(/.*\Kios/, '').sub(/.*\K\/\//, '')
 end
 
-private_lane :sh_on_root do |options|
+lane :sh_on_root do |options|
   command = options[:command]
   sh("cd #{root_path} && #{command}")
 end
@@ -105,8 +105,7 @@ lane :build_flutter do |options|
     build_type = "--#{build_type}"
   end
 
-  sign_enabled = options[:sign_enabled] || true
-  sign_param = sign_enabled ? '' : '--no-codesign'
+  sign_param = options.fetch(:sign_enabled, true) ? '' : '--no-codesign'
 
   build_platform = options[:build_platform]
 
@@ -123,7 +122,12 @@ lane :build_flutter do |options|
     export_method = "--export-method #{export_method}"
   end
 
-  flutter_command(command: "build #{build_platform} #{build_type} --suppress-analytics #{sign_param} #{config_param} --flavor #{flavor} --dart-define=ENV=#{flavor} --build-name #{version_name} #{export_method} #{compilation_envs}")
+  flavour_arg = options[:export_method] || ''
+  if build_platform != 'web'
+    flavour_arg = " --flavor #{flavor}"
+  end
+
+  flutter_command(command: "build #{build_platform} #{build_type} --suppress-analytics #{sign_param} #{config_param} #{flavour_arg} --dart-define=ENV=#{flavor} --build-name #{version_name} #{export_method} #{compilation_envs}")
 end
 
 private_lane :calculate_version_name do |options|

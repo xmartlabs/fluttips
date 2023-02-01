@@ -1,0 +1,25 @@
+import "../../fastlane/Fastfile"
+
+default_platform(:web)
+platform :web do
+  desc "**Build dev debug app**"
+  lane :build_dev do |options|
+    build_flutter(build_platform: 'web', flavor: 'dev')
+  end
+
+  desc "**Submit a new Staging Build to Firebase Hosting**"
+  desc "#### Envs\n" +
+  " * **`FIREBASE_SERVICE_ACCOUNT_FILE`**: The path to your Google service account json file.\n"
+  lane :deploy_firebase_app_distribution_dev_staging do |options|
+    build_dev
+    sh_on_root(command: 'firebase hosting:channel:deploy staging')
+  end
+
+  desc "**Submit a new Staging Build to Firebase Hosting**"
+  desc "#### Envs\n" +
+  " * **`FIREBASE_SERVICE_ACCOUNT_FILE`**: The path to your Google service account json file.\n"
+  lane :deploy_firebase_app_distribution_prod do |options|
+    build_flutter(build_platform: 'web', flavor: 'prod')
+    sh_on_root(command: 'firebase deploy')
+  end
+end

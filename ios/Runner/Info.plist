@@ -52,5 +52,7 @@
 	<array>
 		<string>youtube</string>
 	</array>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

@@ -6,7 +6,53 @@ on:
       - main
 
 jobs:
-  build:
+  checks_and_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - uses: dart-lang/setup-dart@v1.3
+      - name: Cache FVM & Flutter
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/fvm/versions/
+          key: ${{ runner.os }}-${{ hashFiles('**/fvm_config.json') }}
+      - name: Cache pub cache
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/.pub-cache/
+          key: ${{ runner.os }}-pub-cache
+      - name: Install FVM && Flutter
+        run: dart pub global activate fvm --verbose && fvm install --verbose && fvm use --force --verbose
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Create google-services.json
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'google-services.json'
+          fileDir: 'android/app/'
+          encodedString: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON_BASE_64 }}
+      - name: Get dependencies
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'fetch_dependencies'
+      - name: 'Run lints'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'lints'
+      - name: 'Check generated code'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'ensure_no_change_in_generated_code'
+      - name: 'Run tests'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'tests'
+  build_android_web:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -34,6 +80,10 @@ jobs:
         with:
           bundler-cache: true
           working-directory: 'android'
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: 'web'
       - name: Create google-services.json
         uses: timheuer/base64-to-file@v1.2
         with:
@@ -44,20 +94,56 @@ jobs:
         uses: maierj/fastlane-action@v3.0.0
         with:
           lane: 'fetch_dependencies'
-      - name: 'Run lints'
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: 'lints'
-      - name: 'Check generated code'
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: 'ensure_no_change_in_generated_code'
-      - name: 'Run tests'
-        uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: 'tests'
       - name: 'Build android app'
         uses: maierj/fastlane-action@v3.0.0
         with:
           lane: 'android build_dev_debug_apk'
           subdirectory: 'android'
+      - name: 'Build web app'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'web build_dev'
+          subdirectory: 'web'
+  build_ios:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - uses: dart-lang/setup-dart@v1.3
+      - name: Cache FVM & Flutter
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/fvm/versions/
+          key: ${{ runner.os }}-${{ hashFiles('**/fvm_config.json') }}
+      - name: Cache pub cache
+        uses: actions/cache@v3
+        with:
+          path: /home/runner/.pub-cache/
+          key: ${{ runner.os }}-pub-cache
+      - name: Install FVM && Flutter
+        run: dart pub global activate fvm --verbose && fvm install --verbose && fvm use --force --verbose
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          working-directory: 'ios'
+      - name: Create google-services.json
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'google-services.json'
+          fileDir: 'android/app/'
+          encodedString: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON_BASE_64 }}
+      - name: Get dependencies
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'fetch_dependencies'
+      - name: 'Build ios app'
+        uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'ios build_ipa_dev'
+          subdirectory: 'ios'
