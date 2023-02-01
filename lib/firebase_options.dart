@@ -18,10 +18,7 @@ import 'package:fluttips/core/common/config.dart';
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -45,11 +42,20 @@ class DefaultFirebaseOptions {
         );
       case TargetPlatform.fuchsia:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for fuchsia - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+          'DefaultFirebaseOptions are not supported for this platform.',
         );
     }
   }
+
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey: Config.firebaseWebApiKey!,
+    appId: Config.firebaseWebAppId!,
+    authDomain: Config.firebaseWebAuthDomain!,
+    measurementId: Config.firebaseWebMeasurementId!,
+    messagingSenderId: Config.firebaseMessagingSenderId!,
+    projectId: Config.firebaseProjectId!,
+    storageBucket: Config.firebaseStorageBucket!,
+  );
 
   static FirebaseOptions android = FirebaseOptions(
     apiKey: Config.firebaseAndroidApiKey!,

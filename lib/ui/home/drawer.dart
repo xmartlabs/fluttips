@@ -32,10 +32,14 @@ class AppDrawer extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              width: 50.w,
-              height: 50.h,
-              margin: const EdgeInsets.only(top: 10, left: 5, right: 5),
-              child: Assets.images.icAppLogo.image(),
+              width: 30.w,
+              height: 30.w,
+              margin: EdgeInsets.only(
+                top: 10.h,
+                left: 5.w,
+                right: 5.w,
+              ),
+              child: Assets.images.icAppLogo.image(fit: BoxFit.fitHeight),
             ),
             ...HomeNavOptions.values
                 .where((element) => element.index != HomeNavOptions.about.index)
@@ -45,7 +49,7 @@ class AppDrawer extends StatelessWidget {
                       icon: navOption.icon,
                       isCurrentIndex:
                           navOption.index == _tabsController.activeIndex,
-                      onPress: () {
+                      onPressed: () {
                         _action();
                         _tabsController.setActiveIndex(navOption.index);
                       },
@@ -62,7 +66,7 @@ class AppDrawer extends StatelessWidget {
                   isCurrentIndex:
                       HomeNavOptions.about.index == _tabsController.activeIndex,
                   icon: HomeNavOptions.about.icon,
-                  onPress: () {
+                  onPressed: () {
                     _action();
                     _tabsController.setActiveIndex(HomeNavOptions.about.index);
                   },
@@ -77,12 +81,12 @@ class AppDrawer extends StatelessWidget {
 class _TabOption extends StatelessWidget {
   final bool isCurrentIndex;
   final IconData icon;
-  final Function() onPress;
+  final Function() onPressed;
 
   const _TabOption({
     required this.isCurrentIndex,
     required this.icon,
-    required this.onPress,
+    required this.onPressed,
     Key? key,
   }) : super(key: key);
 
@@ -91,22 +95,13 @@ class _TabOption extends StatelessWidget {
     final color = context.theme.colors;
     return AnimatedContainer(
       duration: const Duration(milliseconds: 350),
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-        color: color.primary.shade100,
-      ),
+      padding: EdgeInsets.all(5.w),
       child: IconButton(
+        iconSize: 21.w,
         icon: isCurrentIndex
-            ? Icon(
-                icon,
-                color: color.surface.shade900,
-              )
-            : Icon(
-                icon,
-                color: color.surface.shade700,
-              ),
-        onPressed: onPress,
+            ? Icon(icon, color: color.surface.shade900)
+            : Icon(icon, color: color.surface.shade700),
+        onPressed: onPressed,
       ),
     );
   }

@@ -1,0 +1,35 @@
+{
+  "name": "Fluttips",
+  "short_name": "Fluttips",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1b1b26",
+  "theme_color": "#7095b7",
+  "description": "Flutter trips and tricks",
+  "orientation": "landscape-primary",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/Icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/Icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

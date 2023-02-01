@@ -45,7 +45,7 @@ class _VideosContentScreen extends StatelessWidget {
             Divider(color: context.theme.colors.surface.shade700),
             SizedBox(height: 30.h),
             AppPrimaryButton(
-              image: Assets.images.icYoutubeLogo.image(),
+              image: Assets.images.icYoutubeLogo.image(fit: BoxFit.fitWidth),
               text: context.localizations.videos_button,
               onPressed: () {
                 unawaited(

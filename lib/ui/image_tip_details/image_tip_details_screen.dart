@@ -32,22 +32,24 @@ class ImageTipDetailsScreen extends StatelessWidget {
           context.read<ErrorHandlerCubit>(),
           tip,
         ),
-        child: const _TipContentScreen(),
+        child: const _ImageTipDetailsContentScreen(),
       );
 }
 
-class _TipContentScreen extends StatefulWidget {
-  const _TipContentScreen();
+class _ImageTipDetailsContentScreen extends StatefulWidget {
+  const _ImageTipDetailsContentScreen();
 
   @override
-  State<_TipContentScreen> createState() => _TipContentScreenState();
+  State<_ImageTipDetailsContentScreen> createState() =>
+      _ImageTipDetailsContentScreenState();
 }
 
-class _TipContentScreenState extends State<_TipContentScreen> {
+class _ImageTipDetailsContentScreenState
+    extends State<_ImageTipDetailsContentScreen> {
   final PageController _pageController = PageController();
   bool _isScrolling = false;
 
-  _TipContentScreenState();
+  _ImageTipDetailsContentScreenState();
 
   @override
   void dispose() {

@@ -5,7 +5,7 @@ import 'package:logger/logger.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 abstract class Logger {
-  static final CrashReportTool _crashReportTool = Config.firebaseEnabled
+  static final CrashReportTool _crashReportTool = Config.crashlyticsEnabled
       ? CrashlyticsCrashReportTool()
       : NoOpsCrashReportTool();
 
