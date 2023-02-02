@@ -44,8 +44,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
             children: [
               Container(
                 alignment: Alignment.topLeft,
-                //  margin: const EdgeInsets.all(10),
-                child: TextButton(
+                child: IconButton(
                   onPressed: () => context.router.navigateBack(),
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.only(
@@ -58,9 +57,8 @@ class _WebViewScreenState extends State<WebViewScreen> {
                     backgroundColor: context.theme.colors.primary,
                     alignment: Alignment.center,
                   ),
-                  child: Icon(
+                  icon: Icon(
                     Icons.arrow_back_ios,
-                    size: 20,
                     color: context.theme.colors.primary.shade100,
                   ),
                 ),
