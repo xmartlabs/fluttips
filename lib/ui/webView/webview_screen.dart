@@ -1,10 +1,10 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttips/ui/common/context_extensions.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:fluttips/ui/common/my_back_button.dart';
 
 class WebViewScreen extends StatefulWidget {
   const WebViewScreen(this.path, {Key? key}) : super(key: key);
@@ -44,24 +44,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
             children: [
               Container(
                 alignment: Alignment.topLeft,
-                child: IconButton(
-                  onPressed: () => context.router.navigateBack(),
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.only(
-                      top: 5.h,
-                      left: 13.w,
-                      right: 5.w,
-                      bottom: 5.h,
-                    ),
-                    shape: const CircleBorder(),
-                    backgroundColor: context.theme.colors.primary,
-                    alignment: Alignment.center,
-                  ),
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: context.theme.colors.primary.shade100,
-                  ),
-                ),
+                child: const MyBackButton(),
               ),
               Expanded(child: WebViewWidget(controller: _webViewController)),
             ],
