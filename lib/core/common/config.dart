@@ -41,6 +41,7 @@ abstract class Config {
   static final num maxDatabaseIntValue = pow(2, 32) - 1;
   static const Duration durationAnimation = Duration(milliseconds: 150);
   static const Duration splashMinDuration = Duration(milliseconds: 300);
+
   static const String appEmail = 'fluttips@xmartlabs.com';
 
   static Uri imagesTipsRepository =
