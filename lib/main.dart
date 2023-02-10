@@ -76,6 +76,6 @@ class MyApp extends StatelessWidget {
         designSize: const Size(812, 360),
         minTextAdapt: false,
         splitScreenMode: false,
-        builder: (_, __) => const MainScreen(),
+        builder: (_, __) => MainScreen(),
       );
 }

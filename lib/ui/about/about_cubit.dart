@@ -7,7 +7,6 @@ import 'package:fluttips/core/di/di_provider.dart';
 import 'package:fluttips/ui/app_router.dart';
 import 'package:fluttips/core/common/config.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:fluttips/gen/assets.gen.dart';
 
 part 'about_cubit.freezed.dart';
 
@@ -21,13 +20,10 @@ class AboutCubit extends Cubit<AboutBaseState> {
 
   AboutCubit(this._errorHandler) : super(const AboutBaseState.state());
 
-  void onTermsAndConditionsButtonPressed() => _router.navigate(
-        WebViewRoute(path: Assets.policyAndTerms.termsAndConditions),
-      );
+  void onTermsAndConditionsButtonPressed() =>
+      _router.navigate(TermsAndConditionsRoute());
 
-  void onPrivacyPolicyButtonPressed() => _router.navigate(
-        WebViewRoute(path: Assets.policyAndTerms.privacyPolicy),
-      );
+  void onPrivacyPolicyButtonPressed() => _router.navigate(PrivacyPolicyRoute());
 
   Future<void> sendEmail() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();

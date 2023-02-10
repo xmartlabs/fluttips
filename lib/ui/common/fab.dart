@@ -24,6 +24,7 @@ class Fab extends StatelessWidget {
   @override
   Widget build(BuildContext context) => FloatingActionButton(
         onPressed: action,
+        heroTag: null,
         backgroundColor: state.when(
           notSelected: () => context.theme.colors.primary.shade100,
           selected: () => context.theme.colors.primary,

@@ -20,7 +20,7 @@ class SharedPreferencesSourceOfTruth
   @override
   @protected
   Future<void> write(String key, String? value) async {
-    await super.write(key, value);
     await _storage.write(key: key, value: value);
+    await super.write(key, value);
   }
 }
