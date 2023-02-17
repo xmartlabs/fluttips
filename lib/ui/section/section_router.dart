@@ -13,6 +13,7 @@ class SectionRouter extends StatelessWidget {
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (BuildContext context) => ErrorHandlerCubit()),
+          // TODO: Create a custom section for the home
           BlocProvider(create: (context) => GlobalUICubit()),
         ],
         child: BlocListener<ErrorHandlerCubit, ErrorHandlerState>(

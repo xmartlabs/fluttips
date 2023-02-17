@@ -4,5 +4,5 @@ import 'package:fluttips/ui/webView/webview_screen.dart';
 
 class TermsAndConditionsScreen extends WebViewScreen {
   TermsAndConditionsScreen({Key? key})
-      : super(Assets.policyAndTerms.termsAndConditions, key: key);
+      : super(path: Assets.policyAndTerms.termsAndConditions, key: key);
 }

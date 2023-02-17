@@ -121,7 +121,7 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           UncompletedOnboardingRouter.name,
-          path: '/',
+          path: '/onboarding',
           guards: [notOnboardedGuard],
           children: [
             RouteConfig(
@@ -206,7 +206,7 @@ class UncompletedOnboardingRouter extends PageRouteInfo<void> {
   const UncompletedOnboardingRouter({List<PageRouteInfo>? children})
       : super(
           UncompletedOnboardingRouter.name,
-          path: '/',
+          path: '/onboarding',
           initialChildren: children,
         );
 

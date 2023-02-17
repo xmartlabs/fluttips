@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:fluttips/ui/common/base_bloc_extensions.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:fluttips/core/di/di_provider.dart';
@@ -13,7 +14,7 @@ class GlobalUICubit extends Cubit<GlobalUIState> {
 
   GlobalUICubit() : super(const GlobalUIState.state()) {
     globalRouter.addListener(
-      () => emit(
+      () => emitSafe(
         state.copyWith(
           showUIActionComponent: true,
         ),

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +8,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'package:fluttips/ui/common/my_back_button.dart';
 
 class WebViewScreen extends StatefulWidget {
-  const WebViewScreen(this.path, {Key? key}) : super(key: key);
+  const WebViewScreen({required this.path, Key? key}) : super(key: key);
 
   final String path;
 
@@ -33,18 +34,21 @@ class _WebViewScreenState extends State<WebViewScreen> {
     if (!kIsWeb) {
       _webViewController.setBackgroundColor(context.theme.colors.background);
     }
-    final colors = context.theme.colors;
     return Scaffold(
-      backgroundColor: colors.background,
+      backgroundColor: context.theme.colors.background,
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.only(left: 20.w, top: 10.h, right: 40.w),
           alignment: Alignment.centerLeft,
           child: Row(
             children: [
-              Container(
-                alignment: Alignment.topLeft,
-                child: const MyBackButton(),
+              Visibility(
+                visible: context.router.stack.length > 1,
+                replacement: SizedBox.square(dimension: 20.w),
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  child: const MyBackButton(),
+                ),
               ),
               Expanded(child: WebViewWidget(controller: _webViewController)),
             ],

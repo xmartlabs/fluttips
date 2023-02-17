@@ -14,7 +14,7 @@ class _AppSessionStatusGuard extends AutoRedirectGuard {
     this._redirectPage,
     this._sessionRepository,
   ) {
-    _sessionRepository.getSessionStatus().distinct().listen(
+    _sessionRepository.getSessionStatus().distinct().skip(1).listen(
           (event) => reevaluate(
             strategy: ReevaluationStrategy.removeAllAndPush(_redirectPage),
           ),

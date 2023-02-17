@@ -28,7 +28,7 @@ part 'app_router.gr.dart';
       name: 'UncompletedOnboardingRouter',
       page: SectionRouter,
       initial: true,
-      path: '/',
+      path: '/onboarding',
       guards: [NotOnboardedGuard],
       children: [
         AutoRoute(
