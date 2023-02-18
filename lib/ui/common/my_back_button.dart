@@ -14,7 +14,7 @@ class MyBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialButton(
-        onPressed: () => context.router.navigateBack(),
+        onPressed: () => context.router.topMostRouter().pop(),
         color: context.theme.colors.primary,
         padding: EdgeInsets.all(max(10, kIsWeb ? 12 : 8.w)),
         shape: const CircleBorder(),

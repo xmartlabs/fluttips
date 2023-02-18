@@ -13,7 +13,15 @@
 part of 'app_router.dart';
 
 class _$AppRouter extends RootStackRouter {
-  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+  _$AppRouter({
+    GlobalKey<NavigatorState>? navigatorKey,
+    required this.notOnboardedGuard,
+    required this.onboardedGuard,
+  }) : super(navigatorKey);
+
+  final NotOnboardedGuard notOnboardedGuard;
+
+  final OnboardedGuard onboardedGuard;
 
   @override
   final Map<String, PageFactory> pagesMap = {
@@ -35,6 +43,22 @@ class _$AppRouter extends RootStackRouter {
         child: const SectionRouter(),
       );
     },
+    PrivacyPolicyRoute.name: (routeData) {
+      final args = routeData.argsAs<PrivacyPolicyRouteArgs>(
+          orElse: () => const PrivacyPolicyRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PrivacyPolicyScreen(key: args.key),
+      );
+    },
+    TermsAndConditionsRoute.name: (routeData) {
+      final args = routeData.argsAs<TermsAndConditionsRouteArgs>(
+          orElse: () => const TermsAndConditionsRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: TermsAndConditionsScreen(key: args.key),
+      );
+    },
     OnboardingRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -45,16 +69,6 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const HomeScreen(),
-      );
-    },
-    WebViewRoute.name: (routeData) {
-      final args = routeData.argsAs<WebViewRouteArgs>();
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: WebViewScreen(
-          args.path,
-          key: args.key,
-        ),
       );
     },
     FavoritesTipDetailsScreen.name: (routeData) {
@@ -107,7 +121,8 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           UncompletedOnboardingRouter.name,
-          path: '/section-router',
+          path: '/onboarding',
+          guards: [notOnboardedGuard],
           children: [
             RouteConfig(
               OnboardingRoute.name,
@@ -118,16 +133,24 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           UserOnboardedRouter.name,
-          path: '',
+          path: '/',
+          guards: [onboardedGuard],
           children: [
             RouteConfig(
-              HomeScreenRoute.name,
+              '#redirect',
               path: '',
+              parent: UserOnboardedRouter.name,
+              redirectTo: 'home',
+              fullMatch: true,
+            ),
+            RouteConfig(
+              HomeScreenRoute.name,
+              path: 'home',
               parent: UserOnboardedRouter.name,
               children: [
                 RouteConfig(
                   HomeTipsScreenRoute.name,
-                  path: 'tips',
+                  path: 'images',
                   parent: HomeScreenRoute.name,
                 ),
                 RouteConfig(
@@ -137,7 +160,7 @@ class _$AppRouter extends RootStackRouter {
                 ),
                 RouteConfig(
                   HomeFavouritesTipsScreenRoute.name,
-                  path: 'favourite',
+                  path: 'favourites',
                   parent: HomeScreenRoute.name,
                 ),
                 RouteConfig(
@@ -148,16 +171,19 @@ class _$AppRouter extends RootStackRouter {
               ],
             ),
             RouteConfig(
-              WebViewRoute.name,
-              path: 'webView',
-              parent: UserOnboardedRouter.name,
-            ),
-            RouteConfig(
               FavoritesTipDetailsScreen.name,
-              path: 'list_favourite',
+              path: 'favourite_images',
               parent: UserOnboardedRouter.name,
             ),
           ],
+        ),
+        RouteConfig(
+          PrivacyPolicyRoute.name,
+          path: '/privacy_policy',
+        ),
+        RouteConfig(
+          TermsAndConditionsRoute.name,
+          path: '/terms_and_conditions',
         ),
       ];
 }
@@ -180,7 +206,7 @@ class UncompletedOnboardingRouter extends PageRouteInfo<void> {
   const UncompletedOnboardingRouter({List<PageRouteInfo>? children})
       : super(
           UncompletedOnboardingRouter.name,
-          path: '/section-router',
+          path: '/onboarding',
           initialChildren: children,
         );
 
@@ -193,11 +219,60 @@ class UserOnboardedRouter extends PageRouteInfo<void> {
   const UserOnboardedRouter({List<PageRouteInfo>? children})
       : super(
           UserOnboardedRouter.name,
-          path: '',
+          path: '/',
           initialChildren: children,
         );
 
   static const String name = 'UserOnboardedRouter';
+}
+
+/// generated route for
+/// [PrivacyPolicyScreen]
+class PrivacyPolicyRoute extends PageRouteInfo<PrivacyPolicyRouteArgs> {
+  PrivacyPolicyRoute({Key? key})
+      : super(
+          PrivacyPolicyRoute.name,
+          path: '/privacy_policy',
+          args: PrivacyPolicyRouteArgs(key: key),
+        );
+
+  static const String name = 'PrivacyPolicyRoute';
+}
+
+class PrivacyPolicyRouteArgs {
+  const PrivacyPolicyRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'PrivacyPolicyRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [TermsAndConditionsScreen]
+class TermsAndConditionsRoute
+    extends PageRouteInfo<TermsAndConditionsRouteArgs> {
+  TermsAndConditionsRoute({Key? key})
+      : super(
+          TermsAndConditionsRoute.name,
+          path: '/terms_and_conditions',
+          args: TermsAndConditionsRouteArgs(key: key),
+        );
+
+  static const String name = 'TermsAndConditionsRoute';
+}
+
+class TermsAndConditionsRouteArgs {
+  const TermsAndConditionsRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'TermsAndConditionsRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -218,45 +293,11 @@ class HomeScreenRoute extends PageRouteInfo<void> {
   const HomeScreenRoute({List<PageRouteInfo>? children})
       : super(
           HomeScreenRoute.name,
-          path: '',
+          path: 'home',
           initialChildren: children,
         );
 
   static const String name = 'HomeScreenRoute';
-}
-
-/// generated route for
-/// [WebViewScreen]
-class WebViewRoute extends PageRouteInfo<WebViewRouteArgs> {
-  WebViewRoute({
-    required String path,
-    Key? key,
-  }) : super(
-          WebViewRoute.name,
-          path: 'webView',
-          args: WebViewRouteArgs(
-            path: path,
-            key: key,
-          ),
-        );
-
-  static const String name = 'WebViewRoute';
-}
-
-class WebViewRouteArgs {
-  const WebViewRouteArgs({
-    required this.path,
-    this.key,
-  });
-
-  final String path;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'WebViewRouteArgs{path: $path, key: $key}';
-  }
 }
 
 /// generated route for
@@ -269,7 +310,7 @@ class FavoritesTipDetailsScreen
     Key? key,
   }) : super(
           FavoritesTipDetailsScreen.name,
-          path: 'list_favourite',
+          path: 'favourite_images',
           args: FavoritesTipDetailsScreenArgs(
             showTipType: showTipType,
             tip: tip,
@@ -308,7 +349,7 @@ class HomeTipsScreenRoute extends PageRouteInfo<HomeTipsScreenRouteArgs> {
     Key? key,
   }) : super(
           HomeTipsScreenRoute.name,
-          path: 'tips',
+          path: 'images',
           args: HomeTipsScreenRouteArgs(
             showTipType: showTipType,
             tip: tip,
@@ -356,7 +397,7 @@ class HomeFavouritesTipsScreenRoute extends PageRouteInfo<void> {
   const HomeFavouritesTipsScreenRoute()
       : super(
           HomeFavouritesTipsScreenRoute.name,
-          path: 'favourite',
+          path: 'favourites',
         );
 
   static const String name = 'HomeFavouritesTipsScreenRoute';

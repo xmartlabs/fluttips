@@ -1,3 +1,4 @@
+// ignore_for_file: unused-files
 import 'package:fluttips/core/common/logger.dart';
 import 'package:fluttips/core/common/result.dart';
 import 'package:rxdart/rxdart.dart';
