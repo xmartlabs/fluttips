@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'global_ui_cubit.dart';
 
@@ -89,22 +89,22 @@ class _$GlobalUIStateCopyWithImpl<$Res, $Val extends GlobalUIState>
 }
 
 /// @nodoc
-abstract class _$$_GlobalUIStateCopyWith<$Res>
+abstract class _$$GlobalUIStateImplCopyWith<$Res>
     implements $GlobalUIStateCopyWith<$Res> {
-  factory _$$_GlobalUIStateCopyWith(
-          _$_GlobalUIState value, $Res Function(_$_GlobalUIState) then) =
-      __$$_GlobalUIStateCopyWithImpl<$Res>;
+  factory _$$GlobalUIStateImplCopyWith(
+          _$GlobalUIStateImpl value, $Res Function(_$GlobalUIStateImpl) then) =
+      __$$GlobalUIStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool showUIActionComponent});
 }
 
 /// @nodoc
-class __$$_GlobalUIStateCopyWithImpl<$Res>
-    extends _$GlobalUIStateCopyWithImpl<$Res, _$_GlobalUIState>
-    implements _$$_GlobalUIStateCopyWith<$Res> {
-  __$$_GlobalUIStateCopyWithImpl(
-      _$_GlobalUIState _value, $Res Function(_$_GlobalUIState) _then)
+class __$$GlobalUIStateImplCopyWithImpl<$Res>
+    extends _$GlobalUIStateCopyWithImpl<$Res, _$GlobalUIStateImpl>
+    implements _$$GlobalUIStateImplCopyWith<$Res> {
+  __$$GlobalUIStateImplCopyWithImpl(
+      _$GlobalUIStateImpl _value, $Res Function(_$GlobalUIStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_GlobalUIStateCopyWithImpl<$Res>
   $Res call({
     Object? showUIActionComponent = null,
   }) {
-    return _then(_$_GlobalUIState(
+    return _then(_$GlobalUIStateImpl(
       showUIActionComponent: null == showUIActionComponent
           ? _value.showUIActionComponent
           : showUIActionComponent // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ class __$$_GlobalUIStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GlobalUIState implements _GlobalUIState {
-  const _$_GlobalUIState({this.showUIActionComponent = true});
+class _$GlobalUIStateImpl implements _GlobalUIState {
+  const _$GlobalUIStateImpl({this.showUIActionComponent = true});
 
   @override
   @JsonKey()
@@ -136,10 +136,10 @@ class _$_GlobalUIState implements _GlobalUIState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GlobalUIState &&
+            other is _$GlobalUIStateImpl &&
             (identical(other.showUIActionComponent, showUIActionComponent) ||
                 other.showUIActionComponent == showUIActionComponent));
   }
@@ -150,8 +150,8 @@ class _$_GlobalUIState implements _GlobalUIState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GlobalUIStateCopyWith<_$_GlobalUIState> get copyWith =>
-      __$$_GlobalUIStateCopyWithImpl<_$_GlobalUIState>(this, _$identity);
+  _$$GlobalUIStateImplCopyWith<_$GlobalUIStateImpl> get copyWith =>
+      __$$GlobalUIStateImplCopyWithImpl<_$GlobalUIStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -212,12 +212,12 @@ class _$_GlobalUIState implements _GlobalUIState {
 
 abstract class _GlobalUIState implements GlobalUIState {
   const factory _GlobalUIState({final bool showUIActionComponent}) =
-      _$_GlobalUIState;
+      _$GlobalUIStateImpl;
 
   @override
   bool get showUIActionComponent;
   @override
   @JsonKey(ignore: true)
-  _$$_GlobalUIStateCopyWith<_$_GlobalUIState> get copyWith =>
+  _$$GlobalUIStateImplCopyWith<_$GlobalUIStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

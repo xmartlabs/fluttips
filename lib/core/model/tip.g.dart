@@ -6,7 +6,7 @@ part of 'tip.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Tip _$$_TipFromJson(Map<String, dynamic> json) => _$_Tip(
+_$TipImpl _$$TipImplFromJson(Map<String, dynamic> json) => _$TipImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       url: json['url'] as String,
@@ -20,7 +20,7 @@ _$_Tip _$$_TipFromJson(Map<String, dynamic> json) => _$_Tip(
       amountViews: json['amount_views'] as int? ?? 0,
     );
 
-Map<String, dynamic> _$$_TipToJson(_$_Tip instance) => <String, dynamic>{
+Map<String, dynamic> _$$TipImplToJson(_$TipImpl instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'url': instance.url,

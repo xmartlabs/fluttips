@@ -3,11 +3,11 @@ description: Flutter trips and tricks.
 
 publish_to: 'none'
 
-version: 1.0.3+6
+version: 1.0.7+7
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
-  flutter: 3.7.0
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: 3.13.8
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -26,26 +26,25 @@ dependencies:
   bugsee_flutter: 5.0.2
   cupertino_icons: 1.0.5
   dartx: 1.1.0
-  dio: 4.0.6 # networking
+  dio: 4.0.6
   equatable: 2.0.5
-  firebase_core: 2.2.0
-  firebase_crashlytics: 3.0.5
+  firebase_core: 2.24.2
+  firebase_crashlytics: 3.4.8
   floor: 1.4.1
   flutter_bloc: 8.1.1
   flutter_dotenv: 5.0.2
   flutter_email_sender: 5.2.0
   flutter_native_splash: 2.2.9
-  flutter_screenutil: 5.5.4
-  flutter_secure_storage: 6.0.0
-  flutter_web_browser: 0.17.1 # This can be removed
-  freezed_annotation: 2.2.0
+  flutter_screenutil: 5.9.0
+  flutter_secure_storage: 9.0.0
+  freezed_annotation: 2.4.1
   get_it: 7.2.0
-  google_fonts: 3.0.1
-  intl: 0.17.0
+  google_fonts: 6.1.0
+  intl: 0.18.1
   json_annotation: 4.7.0
   logger: 1.1.0
   material_color_generator: 1.1.0
-  package_info_plus: 3.0.2
+  package_info_plus: 4.2.0
   photo_view: 0.14.0
   rxdart: 0.27.7
   shared_preferences: 2.0.16
@@ -63,16 +62,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  arb_utils: 0.4.0
   auto_route_generator: 5.0.3
-  build_runner: 2.3.2
-  dart_code_metrics: 5.5.1
+  build_runner: 2.4.7
   floor_generator: 1.4.1
   flutter_flavorizr: 2.1.4
   flutter_gen_runner: 5.0.2
   flutter_launcher_icons: 0.10.0
   flutter_lints: 2.0.1
-  freezed: 2.2.0
+  freezed: 2.4.6
   json_serializable: 6.5.4
   pedantic: 1.11.1
 

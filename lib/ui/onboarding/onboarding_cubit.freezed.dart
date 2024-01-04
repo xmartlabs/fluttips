@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'onboarding_cubit.dart';
 
@@ -89,22 +89,22 @@ class _$OnboardingBaseStateCopyWithImpl<$Res, $Val extends OnboardingBaseState>
 }
 
 /// @nodoc
-abstract class _$$_OnboardingStateCopyWith<$Res>
+abstract class _$$OnboardingStateImplCopyWith<$Res>
     implements $OnboardingBaseStateCopyWith<$Res> {
-  factory _$$_OnboardingStateCopyWith(
-          _$_OnboardingState value, $Res Function(_$_OnboardingState) then) =
-      __$$_OnboardingStateCopyWithImpl<$Res>;
+  factory _$$OnboardingStateImplCopyWith(_$OnboardingStateImpl value,
+          $Res Function(_$OnboardingStateImpl) then) =
+      __$$OnboardingStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({OnboardingStep onboardingStep});
 }
 
 /// @nodoc
-class __$$_OnboardingStateCopyWithImpl<$Res>
-    extends _$OnboardingBaseStateCopyWithImpl<$Res, _$_OnboardingState>
-    implements _$$_OnboardingStateCopyWith<$Res> {
-  __$$_OnboardingStateCopyWithImpl(
-      _$_OnboardingState _value, $Res Function(_$_OnboardingState) _then)
+class __$$OnboardingStateImplCopyWithImpl<$Res>
+    extends _$OnboardingBaseStateCopyWithImpl<$Res, _$OnboardingStateImpl>
+    implements _$$OnboardingStateImplCopyWith<$Res> {
+  __$$OnboardingStateImplCopyWithImpl(
+      _$OnboardingStateImpl _value, $Res Function(_$OnboardingStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
   $Res call({
     Object? onboardingStep = null,
   }) {
-    return _then(_$_OnboardingState(
+    return _then(_$OnboardingStateImpl(
       onboardingStep: null == onboardingStep
           ? _value.onboardingStep
           : onboardingStep // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ class __$$_OnboardingStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnboardingState implements _OnboardingState {
-  const _$_OnboardingState(
+class _$OnboardingStateImpl implements _OnboardingState {
+  const _$OnboardingStateImpl(
       {this.onboardingStep = OnboardingStep.onboardingInitial});
 
   @override
@@ -137,10 +137,10 @@ class _$_OnboardingState implements _OnboardingState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnboardingState &&
+            other is _$OnboardingStateImpl &&
             (identical(other.onboardingStep, onboardingStep) ||
                 other.onboardingStep == onboardingStep));
   }
@@ -151,8 +151,9 @@ class _$_OnboardingState implements _OnboardingState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>
-      __$$_OnboardingStateCopyWithImpl<_$_OnboardingState>(this, _$identity);
+  _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
+      __$$OnboardingStateImplCopyWithImpl<_$OnboardingStateImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -213,12 +214,12 @@ class _$_OnboardingState implements _OnboardingState {
 
 abstract class _OnboardingState implements OnboardingBaseState {
   const factory _OnboardingState({final OnboardingStep onboardingStep}) =
-      _$_OnboardingState;
+      _$OnboardingStateImpl;
 
   @override
   OnboardingStep get onboardingStep;
   @override
   @JsonKey(ignore: true)
-  _$$_OnboardingStateCopyWith<_$_OnboardingState> get copyWith =>
+  _$$OnboardingStateImplCopyWith<_$OnboardingStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

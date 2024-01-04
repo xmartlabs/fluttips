@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'tip.dart';
 
@@ -116,9 +116,9 @@ class _$TipCopyWithImpl<$Res, $Val extends Tip> implements $TipCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
-  factory _$$_TipCopyWith(_$_Tip value, $Res Function(_$_Tip) then) =
-      __$$_TipCopyWithImpl<$Res>;
+abstract class _$$TipImplCopyWith<$Res> implements $TipCopyWith<$Res> {
+  factory _$$TipImplCopyWith(_$TipImpl value, $Res Function(_$TipImpl) then) =
+      __$$TipImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -134,9 +134,9 @@ abstract class _$$_TipCopyWith<$Res> implements $TipCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$_Tip>
-    implements _$$_TipCopyWith<$Res> {
-  __$$_TipCopyWithImpl(_$_Tip _value, $Res Function(_$_Tip) _then)
+class __$$TipImplCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$TipImpl>
+    implements _$$TipImplCopyWith<$Res> {
+  __$$TipImplCopyWithImpl(_$TipImpl _value, $Res Function(_$TipImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -152,7 +152,7 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$_Tip>
     Object? favouriteDate = freezed,
     Object? amountViews = null,
   }) {
-    return _then(_$_Tip(
+    return _then(_$TipImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -196,8 +196,8 @@ class __$$_TipCopyWithImpl<$Res> extends _$TipCopyWithImpl<$Res, _$_Tip>
 /// @nodoc
 
 @JsonSerializable()
-class _$_Tip implements _Tip {
-  _$_Tip(
+class _$TipImpl implements _Tip {
+  _$TipImpl(
       {required this.id,
       required this.name,
       required this.url,
@@ -208,7 +208,8 @@ class _$_Tip implements _Tip {
       this.favouriteDate,
       this.amountViews = 0});
 
-  factory _$_Tip.fromJson(Map<String, dynamic> json) => _$$_TipFromJson(json);
+  factory _$TipImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TipImplFromJson(json);
 
   @override
   final String id;
@@ -236,10 +237,10 @@ class _$_Tip implements _Tip {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Tip &&
+            other is _$TipImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url) &&
@@ -263,12 +264,12 @@ class _$_Tip implements _Tip {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TipCopyWith<_$_Tip> get copyWith =>
-      __$$_TipCopyWithImpl<_$_Tip>(this, _$identity);
+  _$$TipImplCopyWith<_$TipImpl> get copyWith =>
+      __$$TipImplCopyWithImpl<_$TipImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TipToJson(
+    return _$$TipImplToJson(
       this,
     );
   }
@@ -284,9 +285,9 @@ abstract class _Tip implements Tip {
       required final String? mdUrl,
       required final int randomId,
       final DateTime? favouriteDate,
-      final int amountViews}) = _$_Tip;
+      final int amountViews}) = _$TipImpl;
 
-  factory _Tip.fromJson(Map<String, dynamic> json) = _$_Tip.fromJson;
+  factory _Tip.fromJson(Map<String, dynamic> json) = _$TipImpl.fromJson;
 
   @override
   String get id;
@@ -308,5 +309,6 @@ abstract class _Tip implements Tip {
   int get amountViews;
   @override
   @JsonKey(ignore: true)
-  _$$_TipCopyWith<_$_Tip> get copyWith => throw _privateConstructorUsedError;
+  _$$TipImplCopyWith<_$TipImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

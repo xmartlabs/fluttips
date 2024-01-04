@@ -92,6 +92,7 @@ android {
     }
     lintOptions {
         checkReleaseBuilds false
+        baseline file("lint-baseline.xml")
     }
 }
 
