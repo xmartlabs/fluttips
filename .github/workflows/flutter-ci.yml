@@ -138,6 +138,12 @@ jobs:
           fileName: 'google-services.json'
           fileDir: 'android/app/'
           encodedString: ${{ secrets.ANDROID_GOOGLE_SERVICES_JSON_BASE_64 }}
+      - name: Create firebase_app_id_file.json
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'firebase_app_id_file.json'
+          fileDir: 'ios/'
+          encodedString: ${{ secrets.IOS_FIREBASE_JSON_BASE_64 }}
       - name: Get dependencies
         uses: maierj/fastlane-action@v3.0.0
         with:

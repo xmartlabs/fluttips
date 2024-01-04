@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'general_error.dart';
 
@@ -49,7 +49,7 @@ class _$GeneralErrorCopyWithImpl<$Res, $Val extends GeneralError>
   $Res call({
     Object? description = null,
     Object? title = freezed,
-    Object? cause = null,
+    Object? cause = freezed,
   }) {
     return _then(_value.copyWith(
       description: null == description
@@ -60,7 +60,7 @@ class _$GeneralErrorCopyWithImpl<$Res, $Val extends GeneralError>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      cause: null == cause
+      cause: freezed == cause
           ? _value.cause
           : cause // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -69,22 +69,22 @@ class _$GeneralErrorCopyWithImpl<$Res, $Val extends GeneralError>
 }
 
 /// @nodoc
-abstract class _$$_GeneralErrorCopyWith<$Res>
+abstract class _$$GeneralErrorImplCopyWith<$Res>
     implements $GeneralErrorCopyWith<$Res> {
-  factory _$$_GeneralErrorCopyWith(
-          _$_GeneralError value, $Res Function(_$_GeneralError) then) =
-      __$$_GeneralErrorCopyWithImpl<$Res>;
+  factory _$$GeneralErrorImplCopyWith(
+          _$GeneralErrorImpl value, $Res Function(_$GeneralErrorImpl) then) =
+      __$$GeneralErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String description, String? title, dynamic cause});
 }
 
 /// @nodoc
-class __$$_GeneralErrorCopyWithImpl<$Res>
-    extends _$GeneralErrorCopyWithImpl<$Res, _$_GeneralError>
-    implements _$$_GeneralErrorCopyWith<$Res> {
-  __$$_GeneralErrorCopyWithImpl(
-      _$_GeneralError _value, $Res Function(_$_GeneralError) _then)
+class __$$GeneralErrorImplCopyWithImpl<$Res>
+    extends _$GeneralErrorCopyWithImpl<$Res, _$GeneralErrorImpl>
+    implements _$$GeneralErrorImplCopyWith<$Res> {
+  __$$GeneralErrorImplCopyWithImpl(
+      _$GeneralErrorImpl _value, $Res Function(_$GeneralErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,9 +92,9 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
   $Res call({
     Object? description = null,
     Object? title = freezed,
-    Object? cause = null,
+    Object? cause = freezed,
   }) {
-    return _then(_$_GeneralError(
+    return _then(_$GeneralErrorImpl(
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -103,7 +103,7 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      cause: null == cause
+      cause: freezed == cause
           ? _value.cause
           : cause // ignore: cast_nullable_to_non_nullable
               as dynamic,
@@ -113,8 +113,8 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GeneralError implements _GeneralError {
-  const _$_GeneralError({required this.description, this.title, this.cause});
+class _$GeneralErrorImpl implements _GeneralError {
+  const _$GeneralErrorImpl({required this.description, this.title, this.cause});
 
   @override
   final String description;
@@ -129,10 +129,10 @@ class _$_GeneralError implements _GeneralError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GeneralError &&
+            other is _$GeneralErrorImpl &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.title, title) || other.title == title) &&
@@ -146,15 +146,15 @@ class _$_GeneralError implements _GeneralError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GeneralErrorCopyWith<_$_GeneralError> get copyWith =>
-      __$$_GeneralErrorCopyWithImpl<_$_GeneralError>(this, _$identity);
+  _$$GeneralErrorImplCopyWith<_$GeneralErrorImpl> get copyWith =>
+      __$$GeneralErrorImplCopyWithImpl<_$GeneralErrorImpl>(this, _$identity);
 }
 
 abstract class _GeneralError implements GeneralError {
   const factory _GeneralError(
       {required final String description,
       final String? title,
-      final dynamic cause}) = _$_GeneralError;
+      final dynamic cause}) = _$GeneralErrorImpl;
 
   @override
   String get description;
@@ -164,6 +164,6 @@ abstract class _GeneralError implements GeneralError {
   dynamic get cause;
   @override
   @JsonKey(ignore: true)
-  _$$_GeneralErrorCopyWith<_$_GeneralError> get copyWith =>
+  _$$GeneralErrorImplCopyWith<_$GeneralErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

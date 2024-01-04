@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'favourites_tip_simple_list_cubit.dart';
 
@@ -98,25 +98,25 @@ class _$FavouritesTipSimpleListBaseStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_FavouritesTipsSimpleListStateCopyWith<$Res>
+abstract class _$$FavouritesTipsSimpleListStateImplCopyWith<$Res>
     implements $FavouritesTipSimpleListBaseStateCopyWith<$Res> {
-  factory _$$_FavouritesTipsSimpleListStateCopyWith(
-          _$_FavouritesTipsSimpleListState value,
-          $Res Function(_$_FavouritesTipsSimpleListState) then) =
-      __$$_FavouritesTipsSimpleListStateCopyWithImpl<$Res>;
+  factory _$$FavouritesTipsSimpleListStateImplCopyWith(
+          _$FavouritesTipsSimpleListStateImpl value,
+          $Res Function(_$FavouritesTipsSimpleListStateImpl) then) =
+      __$$FavouritesTipsSimpleListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Tip> tips, int currentPage});
 }
 
 /// @nodoc
-class __$$_FavouritesTipsSimpleListStateCopyWithImpl<$Res>
+class __$$FavouritesTipsSimpleListStateImplCopyWithImpl<$Res>
     extends _$FavouritesTipSimpleListBaseStateCopyWithImpl<$Res,
-        _$_FavouritesTipsSimpleListState>
-    implements _$$_FavouritesTipsSimpleListStateCopyWith<$Res> {
-  __$$_FavouritesTipsSimpleListStateCopyWithImpl(
-      _$_FavouritesTipsSimpleListState _value,
-      $Res Function(_$_FavouritesTipsSimpleListState) _then)
+        _$FavouritesTipsSimpleListStateImpl>
+    implements _$$FavouritesTipsSimpleListStateImplCopyWith<$Res> {
+  __$$FavouritesTipsSimpleListStateImplCopyWithImpl(
+      _$FavouritesTipsSimpleListStateImpl _value,
+      $Res Function(_$FavouritesTipsSimpleListStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_FavouritesTipsSimpleListStateCopyWithImpl<$Res>
     Object? tips = null,
     Object? currentPage = null,
   }) {
-    return _then(_$_FavouritesTipsSimpleListState(
+    return _then(_$FavouritesTipsSimpleListStateImpl(
       tips: null == tips
           ? _value._tips
           : tips // ignore: cast_nullable_to_non_nullable
@@ -140,9 +140,9 @@ class __$$_FavouritesTipsSimpleListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_FavouritesTipsSimpleListState
+class _$FavouritesTipsSimpleListStateImpl
     implements _FavouritesTipsSimpleListState {
-  const _$_FavouritesTipsSimpleListState(
+  const _$FavouritesTipsSimpleListStateImpl(
       {final List<Tip> tips = const [], this.currentPage = 0})
       : _tips = tips;
 
@@ -150,6 +150,7 @@ class _$_FavouritesTipsSimpleListState
   @override
   @JsonKey()
   List<Tip> get tips {
+    if (_tips is EqualUnmodifiableListView) return _tips;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tips);
   }
@@ -164,10 +165,10 @@ class _$_FavouritesTipsSimpleListState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FavouritesTipsSimpleListState &&
+            other is _$FavouritesTipsSimpleListStateImpl &&
             const DeepCollectionEquality().equals(other._tips, _tips) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage));
@@ -180,9 +181,10 @@ class _$_FavouritesTipsSimpleListState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FavouritesTipsSimpleListStateCopyWith<_$_FavouritesTipsSimpleListState>
-      get copyWith => __$$_FavouritesTipsSimpleListStateCopyWithImpl<
-          _$_FavouritesTipsSimpleListState>(this, _$identity);
+  _$$FavouritesTipsSimpleListStateImplCopyWith<
+          _$FavouritesTipsSimpleListStateImpl>
+      get copyWith => __$$FavouritesTipsSimpleListStateImplCopyWithImpl<
+          _$FavouritesTipsSimpleListStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -245,7 +247,7 @@ abstract class _FavouritesTipsSimpleListState
     implements FavouritesTipSimpleListBaseState {
   const factory _FavouritesTipsSimpleListState(
       {final List<Tip> tips,
-      final int currentPage}) = _$_FavouritesTipsSimpleListState;
+      final int currentPage}) = _$FavouritesTipsSimpleListStateImpl;
 
   @override
   List<Tip> get tips;
@@ -253,6 +255,7 @@ abstract class _FavouritesTipsSimpleListState
   int get currentPage;
   @override
   @JsonKey(ignore: true)
-  _$$_FavouritesTipsSimpleListStateCopyWith<_$_FavouritesTipsSimpleListState>
+  _$$FavouritesTipsSimpleListStateImplCopyWith<
+          _$FavouritesTipsSimpleListStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
