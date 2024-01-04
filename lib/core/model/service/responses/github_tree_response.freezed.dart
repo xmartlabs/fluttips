@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'github_tree_response.dart';
 
@@ -62,22 +62,22 @@ class _$GitHubTreeResponseCopyWithImpl<$Res, $Val extends GitHubTreeResponse>
 }
 
 /// @nodoc
-abstract class _$$_GitHiubTreeResponseCopyWith<$Res>
+abstract class _$$GitHiubTreeResponseImplCopyWith<$Res>
     implements $GitHubTreeResponseCopyWith<$Res> {
-  factory _$$_GitHiubTreeResponseCopyWith(_$_GitHiubTreeResponse value,
-          $Res Function(_$_GitHiubTreeResponse) then) =
-      __$$_GitHiubTreeResponseCopyWithImpl<$Res>;
+  factory _$$GitHiubTreeResponseImplCopyWith(_$GitHiubTreeResponseImpl value,
+          $Res Function(_$GitHiubTreeResponseImpl) then) =
+      __$$GitHiubTreeResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<GitHubFile> tree});
 }
 
 /// @nodoc
-class __$$_GitHiubTreeResponseCopyWithImpl<$Res>
-    extends _$GitHubTreeResponseCopyWithImpl<$Res, _$_GitHiubTreeResponse>
-    implements _$$_GitHiubTreeResponseCopyWith<$Res> {
-  __$$_GitHiubTreeResponseCopyWithImpl(_$_GitHiubTreeResponse _value,
-      $Res Function(_$_GitHiubTreeResponse) _then)
+class __$$GitHiubTreeResponseImplCopyWithImpl<$Res>
+    extends _$GitHubTreeResponseCopyWithImpl<$Res, _$GitHiubTreeResponseImpl>
+    implements _$$GitHiubTreeResponseImplCopyWith<$Res> {
+  __$$GitHiubTreeResponseImplCopyWithImpl(_$GitHiubTreeResponseImpl _value,
+      $Res Function(_$GitHiubTreeResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_GitHiubTreeResponseCopyWithImpl<$Res>
   $Res call({
     Object? tree = null,
   }) {
-    return _then(_$_GitHiubTreeResponse(
+    return _then(_$GitHiubTreeResponseImpl(
       tree: null == tree
           ? _value._tree
           : tree // ignore: cast_nullable_to_non_nullable
@@ -97,15 +97,17 @@ class __$$_GitHiubTreeResponseCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_GitHiubTreeResponse implements _GitHiubTreeResponse {
-  _$_GitHiubTreeResponse({required final List<GitHubFile> tree}) : _tree = tree;
+class _$GitHiubTreeResponseImpl implements _GitHiubTreeResponse {
+  _$GitHiubTreeResponseImpl({required final List<GitHubFile> tree})
+      : _tree = tree;
 
-  factory _$_GitHiubTreeResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_GitHiubTreeResponseFromJson(json);
+  factory _$GitHiubTreeResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GitHiubTreeResponseImplFromJson(json);
 
   final List<GitHubFile> _tree;
   @override
   List<GitHubFile> get tree {
+    if (_tree is EqualUnmodifiableListView) return _tree;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tree);
   }
@@ -116,10 +118,10 @@ class _$_GitHiubTreeResponse implements _GitHiubTreeResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GitHiubTreeResponse &&
+            other is _$GitHiubTreeResponseImpl &&
             const DeepCollectionEquality().equals(other._tree, _tree));
   }
 
@@ -131,13 +133,13 @@ class _$_GitHiubTreeResponse implements _GitHiubTreeResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GitHiubTreeResponseCopyWith<_$_GitHiubTreeResponse> get copyWith =>
-      __$$_GitHiubTreeResponseCopyWithImpl<_$_GitHiubTreeResponse>(
+  _$$GitHiubTreeResponseImplCopyWith<_$GitHiubTreeResponseImpl> get copyWith =>
+      __$$GitHiubTreeResponseImplCopyWithImpl<_$GitHiubTreeResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GitHiubTreeResponseToJson(
+    return _$$GitHiubTreeResponseImplToJson(
       this,
     );
   }
@@ -145,15 +147,15 @@ class _$_GitHiubTreeResponse implements _GitHiubTreeResponse {
 
 abstract class _GitHiubTreeResponse implements GitHubTreeResponse {
   factory _GitHiubTreeResponse({required final List<GitHubFile> tree}) =
-      _$_GitHiubTreeResponse;
+      _$GitHiubTreeResponseImpl;
 
   factory _GitHiubTreeResponse.fromJson(Map<String, dynamic> json) =
-      _$_GitHiubTreeResponse.fromJson;
+      _$GitHiubTreeResponseImpl.fromJson;
 
   @override
   List<GitHubFile> get tree;
   @override
   @JsonKey(ignore: true)
-  _$$_GitHiubTreeResponseCopyWith<_$_GitHiubTreeResponse> get copyWith =>
+  _$$GitHiubTreeResponseImplCopyWith<_$GitHiubTreeResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'fab.dart';
 
@@ -74,25 +74,25 @@ class _$FabStateCopyWithImpl<$Res, $Val extends FabState>
 }
 
 /// @nodoc
-abstract class _$$_FabNotSelectedCopyWith<$Res> {
-  factory _$$_FabNotSelectedCopyWith(
-          _$_FabNotSelected value, $Res Function(_$_FabNotSelected) then) =
-      __$$_FabNotSelectedCopyWithImpl<$Res>;
+abstract class _$$FabNotSelectedImplCopyWith<$Res> {
+  factory _$$FabNotSelectedImplCopyWith(_$FabNotSelectedImpl value,
+          $Res Function(_$FabNotSelectedImpl) then) =
+      __$$FabNotSelectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FabNotSelectedCopyWithImpl<$Res>
-    extends _$FabStateCopyWithImpl<$Res, _$_FabNotSelected>
-    implements _$$_FabNotSelectedCopyWith<$Res> {
-  __$$_FabNotSelectedCopyWithImpl(
-      _$_FabNotSelected _value, $Res Function(_$_FabNotSelected) _then)
+class __$$FabNotSelectedImplCopyWithImpl<$Res>
+    extends _$FabStateCopyWithImpl<$Res, _$FabNotSelectedImpl>
+    implements _$$FabNotSelectedImplCopyWith<$Res> {
+  __$$FabNotSelectedImplCopyWithImpl(
+      _$FabNotSelectedImpl _value, $Res Function(_$FabNotSelectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FabNotSelected implements _FabNotSelected {
-  const _$_FabNotSelected();
+class _$FabNotSelectedImpl implements _FabNotSelected {
+  const _$FabNotSelectedImpl();
 
   @override
   String toString() {
@@ -100,9 +100,9 @@ class _$_FabNotSelected implements _FabNotSelected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FabNotSelected);
+        (other.runtimeType == runtimeType && other is _$FabNotSelectedImpl);
   }
 
   @override
@@ -172,29 +172,29 @@ class _$_FabNotSelected implements _FabNotSelected {
 }
 
 abstract class _FabNotSelected implements FabState {
-  const factory _FabNotSelected() = _$_FabNotSelected;
+  const factory _FabNotSelected() = _$FabNotSelectedImpl;
 }
 
 /// @nodoc
-abstract class _$$_FabSelectedCopyWith<$Res> {
-  factory _$$_FabSelectedCopyWith(
-          _$_FabSelected value, $Res Function(_$_FabSelected) then) =
-      __$$_FabSelectedCopyWithImpl<$Res>;
+abstract class _$$FabSelectedImplCopyWith<$Res> {
+  factory _$$FabSelectedImplCopyWith(
+          _$FabSelectedImpl value, $Res Function(_$FabSelectedImpl) then) =
+      __$$FabSelectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FabSelectedCopyWithImpl<$Res>
-    extends _$FabStateCopyWithImpl<$Res, _$_FabSelected>
-    implements _$$_FabSelectedCopyWith<$Res> {
-  __$$_FabSelectedCopyWithImpl(
-      _$_FabSelected _value, $Res Function(_$_FabSelected) _then)
+class __$$FabSelectedImplCopyWithImpl<$Res>
+    extends _$FabStateCopyWithImpl<$Res, _$FabSelectedImpl>
+    implements _$$FabSelectedImplCopyWith<$Res> {
+  __$$FabSelectedImplCopyWithImpl(
+      _$FabSelectedImpl _value, $Res Function(_$FabSelectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FabSelected implements _FabSelected {
-  const _$_FabSelected();
+class _$FabSelectedImpl implements _FabSelected {
+  const _$FabSelectedImpl();
 
   @override
   String toString() {
@@ -202,9 +202,9 @@ class _$_FabSelected implements _FabSelected {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FabSelected);
+        (other.runtimeType == runtimeType && other is _$FabSelectedImpl);
   }
 
   @override
@@ -274,5 +274,5 @@ class _$_FabSelected implements _FabSelected {
 }
 
 abstract class _FabSelected implements FabState {
-  const factory _FabSelected() = _$_FabSelected;
+  const factory _FabSelected() = _$FabSelectedImpl;
 }

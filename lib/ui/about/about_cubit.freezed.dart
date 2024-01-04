@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'about_cubit.dart';
 
@@ -69,25 +69,25 @@ class _$AboutBaseStateCopyWithImpl<$Res, $Val extends AboutBaseState>
 }
 
 /// @nodoc
-abstract class _$$_AboutStateCopyWith<$Res> {
-  factory _$$_AboutStateCopyWith(
-          _$_AboutState value, $Res Function(_$_AboutState) then) =
-      __$$_AboutStateCopyWithImpl<$Res>;
+abstract class _$$AboutStateImplCopyWith<$Res> {
+  factory _$$AboutStateImplCopyWith(
+          _$AboutStateImpl value, $Res Function(_$AboutStateImpl) then) =
+      __$$AboutStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AboutStateCopyWithImpl<$Res>
-    extends _$AboutBaseStateCopyWithImpl<$Res, _$_AboutState>
-    implements _$$_AboutStateCopyWith<$Res> {
-  __$$_AboutStateCopyWithImpl(
-      _$_AboutState _value, $Res Function(_$_AboutState) _then)
+class __$$AboutStateImplCopyWithImpl<$Res>
+    extends _$AboutBaseStateCopyWithImpl<$Res, _$AboutStateImpl>
+    implements _$$AboutStateImplCopyWith<$Res> {
+  __$$AboutStateImplCopyWithImpl(
+      _$AboutStateImpl _value, $Res Function(_$AboutStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AboutState implements _AboutState {
-  const _$_AboutState();
+class _$AboutStateImpl implements _AboutState {
+  const _$AboutStateImpl();
 
   @override
   String toString() {
@@ -95,9 +95,9 @@ class _$_AboutState implements _AboutState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AboutState);
+        (other.runtimeType == runtimeType && other is _$AboutStateImpl);
   }
 
   @override
@@ -161,5 +161,5 @@ class _$_AboutState implements _AboutState {
 }
 
 abstract class _AboutState implements AboutBaseState {
-  const factory _AboutState() = _$_AboutState;
+  const factory _AboutState() = _$AboutStateImpl;
 }

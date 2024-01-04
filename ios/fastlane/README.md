@@ -45,14 +45,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 **Lint: Check code format**
 
-### lint_check_language_sorting
-
-```sh
-[bundle exec] fastlane lint_check_language_sorting
-```
-
-**Lint: Check code format**
-
 ### lint_analyze
 
 ```sh
@@ -60,14 +52,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 ```
 
 **Lint: Analyze code**
-
-### lint_code_metrics
-
-```sh
-[bundle exec] fastlane lint_code_metrics
-```
-
-**Lint: Code metrics**
 
 ### lints
 

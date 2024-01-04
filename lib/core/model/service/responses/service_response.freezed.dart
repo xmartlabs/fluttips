@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'service_response.dart';
 
@@ -75,29 +75,29 @@ class _$ServiceResponseCopyWithImpl<T, $Res, $Val extends ServiceResponse<T>>
 }
 
 /// @nodoc
-abstract class _$$ServiceResponseDataCopyWith<T, $Res> {
-  factory _$$ServiceResponseDataCopyWith(_$ServiceResponseData<T> value,
-          $Res Function(_$ServiceResponseData<T>) then) =
-      __$$ServiceResponseDataCopyWithImpl<T, $Res>;
+abstract class _$$ServiceResponseDataImplCopyWith<T, $Res> {
+  factory _$$ServiceResponseDataImplCopyWith(_$ServiceResponseDataImpl<T> value,
+          $Res Function(_$ServiceResponseDataImpl<T>) then) =
+      __$$ServiceResponseDataImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({T data});
 }
 
 /// @nodoc
-class __$$ServiceResponseDataCopyWithImpl<T, $Res>
-    extends _$ServiceResponseCopyWithImpl<T, $Res, _$ServiceResponseData<T>>
-    implements _$$ServiceResponseDataCopyWith<T, $Res> {
-  __$$ServiceResponseDataCopyWithImpl(_$ServiceResponseData<T> _value,
-      $Res Function(_$ServiceResponseData<T>) _then)
+class __$$ServiceResponseDataImplCopyWithImpl<T, $Res>
+    extends _$ServiceResponseCopyWithImpl<T, $Res, _$ServiceResponseDataImpl<T>>
+    implements _$$ServiceResponseDataImplCopyWith<T, $Res> {
+  __$$ServiceResponseDataImplCopyWithImpl(_$ServiceResponseDataImpl<T> _value,
+      $Res Function(_$ServiceResponseDataImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
   }) {
-    return _then(_$ServiceResponseData<T>(
-      null == data
+    return _then(_$ServiceResponseDataImpl<T>(
+      freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as T,
@@ -107,8 +107,8 @@ class __$$ServiceResponseDataCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ServiceResponseData<T> implements ServiceResponseData<T> {
-  _$ServiceResponseData(this.data);
+class _$ServiceResponseDataImpl<T> implements ServiceResponseData<T> {
+  _$ServiceResponseDataImpl(this.data);
 
   @override
   final T data;
@@ -119,10 +119,10 @@ class _$ServiceResponseData<T> implements ServiceResponseData<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServiceResponseData<T> &&
+            other is _$ServiceResponseDataImpl<T> &&
             const DeepCollectionEquality().equals(other.data, data));
   }
 
@@ -133,9 +133,9 @@ class _$ServiceResponseData<T> implements ServiceResponseData<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServiceResponseDataCopyWith<T, _$ServiceResponseData<T>> get copyWith =>
-      __$$ServiceResponseDataCopyWithImpl<T, _$ServiceResponseData<T>>(
-          this, _$identity);
+  _$$ServiceResponseDataImplCopyWith<T, _$ServiceResponseDataImpl<T>>
+      get copyWith => __$$ServiceResponseDataImplCopyWithImpl<T,
+          _$ServiceResponseDataImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -201,19 +201,20 @@ class _$ServiceResponseData<T> implements ServiceResponseData<T> {
 }
 
 abstract class ServiceResponseData<T> implements ServiceResponse<T> {
-  factory ServiceResponseData(final T data) = _$ServiceResponseData<T>;
+  factory ServiceResponseData(final T data) = _$ServiceResponseDataImpl<T>;
 
   T get data;
   @JsonKey(ignore: true)
-  _$$ServiceResponseDataCopyWith<T, _$ServiceResponseData<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ServiceResponseDataImplCopyWith<T, _$ServiceResponseDataImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ServiceResponseErrorCopyWith<T, $Res> {
-  factory _$$ServiceResponseErrorCopyWith(_$ServiceResponseError<T> value,
-          $Res Function(_$ServiceResponseError<T>) then) =
-      __$$ServiceResponseErrorCopyWithImpl<T, $Res>;
+abstract class _$$ServiceResponseErrorImplCopyWith<T, $Res> {
+  factory _$$ServiceResponseErrorImplCopyWith(
+          _$ServiceResponseErrorImpl<T> value,
+          $Res Function(_$ServiceResponseErrorImpl<T>) then) =
+      __$$ServiceResponseErrorImplCopyWithImpl<T, $Res>;
   @useResult
   $Res call({NetworkException error});
 
@@ -221,11 +222,12 @@ abstract class _$$ServiceResponseErrorCopyWith<T, $Res> {
 }
 
 /// @nodoc
-class __$$ServiceResponseErrorCopyWithImpl<T, $Res>
-    extends _$ServiceResponseCopyWithImpl<T, $Res, _$ServiceResponseError<T>>
-    implements _$$ServiceResponseErrorCopyWith<T, $Res> {
-  __$$ServiceResponseErrorCopyWithImpl(_$ServiceResponseError<T> _value,
-      $Res Function(_$ServiceResponseError<T>) _then)
+class __$$ServiceResponseErrorImplCopyWithImpl<T, $Res>
+    extends _$ServiceResponseCopyWithImpl<T, $Res,
+        _$ServiceResponseErrorImpl<T>>
+    implements _$$ServiceResponseErrorImplCopyWith<T, $Res> {
+  __$$ServiceResponseErrorImplCopyWithImpl(_$ServiceResponseErrorImpl<T> _value,
+      $Res Function(_$ServiceResponseErrorImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -233,7 +235,7 @@ class __$$ServiceResponseErrorCopyWithImpl<T, $Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$ServiceResponseError<T>(
+    return _then(_$ServiceResponseErrorImpl<T>(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -252,8 +254,8 @@ class __$$ServiceResponseErrorCopyWithImpl<T, $Res>
 
 /// @nodoc
 
-class _$ServiceResponseError<T> implements ServiceResponseError<T> {
-  _$ServiceResponseError(this.error);
+class _$ServiceResponseErrorImpl<T> implements ServiceResponseError<T> {
+  _$ServiceResponseErrorImpl(this.error);
 
   @override
   final NetworkException error;
@@ -264,10 +266,10 @@ class _$ServiceResponseError<T> implements ServiceResponseError<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServiceResponseError<T> &&
+            other is _$ServiceResponseErrorImpl<T> &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -277,9 +279,9 @@ class _$ServiceResponseError<T> implements ServiceResponseError<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServiceResponseErrorCopyWith<T, _$ServiceResponseError<T>> get copyWith =>
-      __$$ServiceResponseErrorCopyWithImpl<T, _$ServiceResponseError<T>>(
-          this, _$identity);
+  _$$ServiceResponseErrorImplCopyWith<T, _$ServiceResponseErrorImpl<T>>
+      get copyWith => __$$ServiceResponseErrorImplCopyWithImpl<T,
+          _$ServiceResponseErrorImpl<T>>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -346,10 +348,10 @@ class _$ServiceResponseError<T> implements ServiceResponseError<T> {
 
 abstract class ServiceResponseError<T> implements ServiceResponse<T> {
   factory ServiceResponseError(final NetworkException error) =
-      _$ServiceResponseError<T>;
+      _$ServiceResponseErrorImpl<T>;
 
   NetworkException get error;
   @JsonKey(ignore: true)
-  _$$ServiceResponseErrorCopyWith<T, _$ServiceResponseError<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ServiceResponseErrorImplCopyWith<T, _$ServiceResponseErrorImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }

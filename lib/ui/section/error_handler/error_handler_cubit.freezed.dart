@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'error_handler_cubit.dart';
 
@@ -91,27 +91,28 @@ class _$ErrorHandlerStateCopyWithImpl<$Res, $Val extends ErrorHandlerState>
 }
 
 /// @nodoc
-abstract class _$$_InitErrorHandlerStateCopyWith<$Res> {
-  factory _$$_InitErrorHandlerStateCopyWith(_$_InitErrorHandlerState value,
-          $Res Function(_$_InitErrorHandlerState) then) =
-      __$$_InitErrorHandlerStateCopyWithImpl<$Res>;
+abstract class _$$InitErrorHandlerStateImplCopyWith<$Res> {
+  factory _$$InitErrorHandlerStateImplCopyWith(
+          _$InitErrorHandlerStateImpl value,
+          $Res Function(_$InitErrorHandlerStateImpl) then) =
+      __$$InitErrorHandlerStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitErrorHandlerStateCopyWithImpl<$Res>
-    extends _$ErrorHandlerStateCopyWithImpl<$Res, _$_InitErrorHandlerState>
-    implements _$$_InitErrorHandlerStateCopyWith<$Res> {
-  __$$_InitErrorHandlerStateCopyWithImpl(_$_InitErrorHandlerState _value,
-      $Res Function(_$_InitErrorHandlerState) _then)
+class __$$InitErrorHandlerStateImplCopyWithImpl<$Res>
+    extends _$ErrorHandlerStateCopyWithImpl<$Res, _$InitErrorHandlerStateImpl>
+    implements _$$InitErrorHandlerStateImplCopyWith<$Res> {
+  __$$InitErrorHandlerStateImplCopyWithImpl(_$InitErrorHandlerStateImpl _value,
+      $Res Function(_$InitErrorHandlerStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_InitErrorHandlerState
+class _$InitErrorHandlerStateImpl
     with DiagnosticableTreeMixin
     implements _InitErrorHandlerState {
-  const _$_InitErrorHandlerState();
+  const _$InitErrorHandlerStateImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -125,9 +126,10 @@ class _$_InitErrorHandlerState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_InitErrorHandlerState);
+        (other.runtimeType == runtimeType &&
+            other is _$InitErrorHandlerStateImpl);
   }
 
   @override
@@ -213,36 +215,38 @@ class _$_InitErrorHandlerState
 }
 
 abstract class _InitErrorHandlerState implements ErrorHandlerState {
-  const factory _InitErrorHandlerState() = _$_InitErrorHandlerState;
+  const factory _InitErrorHandlerState() = _$InitErrorHandlerStateImpl;
 }
 
 /// @nodoc
-abstract class _$$_UnknownErrorHandlerStateCopyWith<$Res> {
-  factory _$$_UnknownErrorHandlerStateCopyWith(
-          _$_UnknownErrorHandlerState value,
-          $Res Function(_$_UnknownErrorHandlerState) then) =
-      __$$_UnknownErrorHandlerStateCopyWithImpl<$Res>;
+abstract class _$$UnknownErrorHandlerStateImplCopyWith<$Res> {
+  factory _$$UnknownErrorHandlerStateImplCopyWith(
+          _$UnknownErrorHandlerStateImpl value,
+          $Res Function(_$UnknownErrorHandlerStateImpl) then) =
+      __$$UnknownErrorHandlerStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Object? error, VoidCallback? retry});
 }
 
 /// @nodoc
-class __$$_UnknownErrorHandlerStateCopyWithImpl<$Res>
-    extends _$ErrorHandlerStateCopyWithImpl<$Res, _$_UnknownErrorHandlerState>
-    implements _$$_UnknownErrorHandlerStateCopyWith<$Res> {
-  __$$_UnknownErrorHandlerStateCopyWithImpl(_$_UnknownErrorHandlerState _value,
-      $Res Function(_$_UnknownErrorHandlerState) _then)
+class __$$UnknownErrorHandlerStateImplCopyWithImpl<$Res>
+    extends _$ErrorHandlerStateCopyWithImpl<$Res,
+        _$UnknownErrorHandlerStateImpl>
+    implements _$$UnknownErrorHandlerStateImplCopyWith<$Res> {
+  __$$UnknownErrorHandlerStateImplCopyWithImpl(
+      _$UnknownErrorHandlerStateImpl _value,
+      $Res Function(_$UnknownErrorHandlerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? error = freezed,
-    Object? retry = null,
+    Object? retry = freezed,
   }) {
-    return _then(_$_UnknownErrorHandlerState(
+    return _then(_$UnknownErrorHandlerStateImpl(
       freezed == error ? _value.error : error,
-      null == retry
+      freezed == retry
           ? _value.retry
           : retry // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -252,10 +256,10 @@ class __$$_UnknownErrorHandlerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnknownErrorHandlerState
+class _$UnknownErrorHandlerStateImpl
     with DiagnosticableTreeMixin
     implements _UnknownErrorHandlerState {
-  const _$_UnknownErrorHandlerState(this.error, [this.retry]);
+  const _$UnknownErrorHandlerStateImpl(this.error, [this.retry]);
 
   @override
   final Object? error;
@@ -277,10 +281,10 @@ class _$_UnknownErrorHandlerState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnknownErrorHandlerState &&
+            other is _$UnknownErrorHandlerStateImpl &&
             const DeepCollectionEquality().equals(other.error, error) &&
             const DeepCollectionEquality().equals(other.retry, retry));
   }
@@ -294,9 +298,9 @@ class _$_UnknownErrorHandlerState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnknownErrorHandlerStateCopyWith<_$_UnknownErrorHandlerState>
-      get copyWith => __$$_UnknownErrorHandlerStateCopyWithImpl<
-          _$_UnknownErrorHandlerState>(this, _$identity);
+  _$$UnknownErrorHandlerStateImplCopyWith<_$UnknownErrorHandlerStateImpl>
+      get copyWith => __$$UnknownErrorHandlerStateImplCopyWithImpl<
+          _$UnknownErrorHandlerStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -379,41 +383,42 @@ class _$_UnknownErrorHandlerState
 
 abstract class _UnknownErrorHandlerState implements ErrorHandlerState {
   const factory _UnknownErrorHandlerState(final Object? error,
-      [final VoidCallback? retry]) = _$_UnknownErrorHandlerState;
+      [final VoidCallback? retry]) = _$UnknownErrorHandlerStateImpl;
 
   Object? get error;
   VoidCallback? get retry;
   @JsonKey(ignore: true)
-  _$$_UnknownErrorHandlerStateCopyWith<_$_UnknownErrorHandlerState>
+  _$$UnknownErrorHandlerStateImplCopyWith<_$UnknownErrorHandlerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_InternetErrorHandlerStateCopyWith<$Res> {
-  factory _$$_InternetErrorHandlerStateCopyWith(
-          _$_InternetErrorHandlerState value,
-          $Res Function(_$_InternetErrorHandlerState) then) =
-      __$$_InternetErrorHandlerStateCopyWithImpl<$Res>;
+abstract class _$$InternetErrorHandlerStateImplCopyWith<$Res> {
+  factory _$$InternetErrorHandlerStateImplCopyWith(
+          _$InternetErrorHandlerStateImpl value,
+          $Res Function(_$InternetErrorHandlerStateImpl) then) =
+      __$$InternetErrorHandlerStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({VoidCallback? retry});
 }
 
 /// @nodoc
-class __$$_InternetErrorHandlerStateCopyWithImpl<$Res>
-    extends _$ErrorHandlerStateCopyWithImpl<$Res, _$_InternetErrorHandlerState>
-    implements _$$_InternetErrorHandlerStateCopyWith<$Res> {
-  __$$_InternetErrorHandlerStateCopyWithImpl(
-      _$_InternetErrorHandlerState _value,
-      $Res Function(_$_InternetErrorHandlerState) _then)
+class __$$InternetErrorHandlerStateImplCopyWithImpl<$Res>
+    extends _$ErrorHandlerStateCopyWithImpl<$Res,
+        _$InternetErrorHandlerStateImpl>
+    implements _$$InternetErrorHandlerStateImplCopyWith<$Res> {
+  __$$InternetErrorHandlerStateImplCopyWithImpl(
+      _$InternetErrorHandlerStateImpl _value,
+      $Res Function(_$InternetErrorHandlerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? retry = null,
+    Object? retry = freezed,
   }) {
-    return _then(_$_InternetErrorHandlerState(
-      null == retry
+    return _then(_$InternetErrorHandlerStateImpl(
+      freezed == retry
           ? _value.retry
           : retry // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -423,10 +428,10 @@ class __$$_InternetErrorHandlerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_InternetErrorHandlerState
+class _$InternetErrorHandlerStateImpl
     with DiagnosticableTreeMixin
     implements _InternetErrorHandlerState {
-  const _$_InternetErrorHandlerState([this.retry]);
+  const _$InternetErrorHandlerStateImpl([this.retry]);
 
   @override
   final VoidCallback? retry;
@@ -445,10 +450,10 @@ class _$_InternetErrorHandlerState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_InternetErrorHandlerState &&
+            other is _$InternetErrorHandlerStateImpl &&
             const DeepCollectionEquality().equals(other.retry, retry));
   }
 
@@ -459,9 +464,9 @@ class _$_InternetErrorHandlerState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InternetErrorHandlerStateCopyWith<_$_InternetErrorHandlerState>
-      get copyWith => __$$_InternetErrorHandlerStateCopyWithImpl<
-          _$_InternetErrorHandlerState>(this, _$identity);
+  _$$InternetErrorHandlerStateImplCopyWith<_$InternetErrorHandlerStateImpl>
+      get copyWith => __$$InternetErrorHandlerStateImplCopyWithImpl<
+          _$InternetErrorHandlerStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -544,30 +549,32 @@ class _$_InternetErrorHandlerState
 
 abstract class _InternetErrorHandlerState implements ErrorHandlerState {
   const factory _InternetErrorHandlerState([final VoidCallback? retry]) =
-      _$_InternetErrorHandlerState;
+      _$InternetErrorHandlerStateImpl;
 
   VoidCallback? get retry;
   @JsonKey(ignore: true)
-  _$$_InternetErrorHandlerStateCopyWith<_$_InternetErrorHandlerState>
+  _$$InternetErrorHandlerStateImplCopyWith<_$InternetErrorHandlerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GeneralErrorHandlerStateCopyWith<$Res> {
-  factory _$$_GeneralErrorHandlerStateCopyWith(
-          _$_GeneralErrorHandlerState value,
-          $Res Function(_$_GeneralErrorHandlerState) then) =
-      __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>;
+abstract class _$$GeneralErrorHandlerStateImplCopyWith<$Res> {
+  factory _$$GeneralErrorHandlerStateImplCopyWith(
+          _$GeneralErrorHandlerStateImpl value,
+          $Res Function(_$GeneralErrorHandlerStateImpl) then) =
+      __$$GeneralErrorHandlerStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String? title, String description, VoidCallback? retry});
 }
 
 /// @nodoc
-class __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>
-    extends _$ErrorHandlerStateCopyWithImpl<$Res, _$_GeneralErrorHandlerState>
-    implements _$$_GeneralErrorHandlerStateCopyWith<$Res> {
-  __$$_GeneralErrorHandlerStateCopyWithImpl(_$_GeneralErrorHandlerState _value,
-      $Res Function(_$_GeneralErrorHandlerState) _then)
+class __$$GeneralErrorHandlerStateImplCopyWithImpl<$Res>
+    extends _$ErrorHandlerStateCopyWithImpl<$Res,
+        _$GeneralErrorHandlerStateImpl>
+    implements _$$GeneralErrorHandlerStateImplCopyWith<$Res> {
+  __$$GeneralErrorHandlerStateImplCopyWithImpl(
+      _$GeneralErrorHandlerStateImpl _value,
+      $Res Function(_$GeneralErrorHandlerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -575,9 +582,9 @@ class __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>
   $Res call({
     Object? title = freezed,
     Object? description = null,
-    Object? retry = null,
+    Object? retry = freezed,
   }) {
-    return _then(_$_GeneralErrorHandlerState(
+    return _then(_$GeneralErrorHandlerStateImpl(
       freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -586,7 +593,7 @@ class __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      null == retry
+      freezed == retry
           ? _value.retry
           : retry // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -596,10 +603,11 @@ class __$$_GeneralErrorHandlerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GeneralErrorHandlerState
+class _$GeneralErrorHandlerStateImpl
     with DiagnosticableTreeMixin
     implements _GeneralErrorHandlerState {
-  const _$_GeneralErrorHandlerState(this.title, this.description, [this.retry]);
+  const _$GeneralErrorHandlerStateImpl(this.title, this.description,
+      [this.retry]);
 
   @override
   final String? title;
@@ -624,10 +632,10 @@ class _$_GeneralErrorHandlerState
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GeneralErrorHandlerState &&
+            other is _$GeneralErrorHandlerStateImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -641,9 +649,9 @@ class _$_GeneralErrorHandlerState
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GeneralErrorHandlerStateCopyWith<_$_GeneralErrorHandlerState>
-      get copyWith => __$$_GeneralErrorHandlerStateCopyWithImpl<
-          _$_GeneralErrorHandlerState>(this, _$identity);
+  _$$GeneralErrorHandlerStateImplCopyWith<_$GeneralErrorHandlerStateImpl>
+      get copyWith => __$$GeneralErrorHandlerStateImplCopyWithImpl<
+          _$GeneralErrorHandlerStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -727,12 +735,12 @@ class _$_GeneralErrorHandlerState
 abstract class _GeneralErrorHandlerState implements ErrorHandlerState {
   const factory _GeneralErrorHandlerState(
       final String? title, final String description,
-      [final VoidCallback? retry]) = _$_GeneralErrorHandlerState;
+      [final VoidCallback? retry]) = _$GeneralErrorHandlerStateImpl;
 
   String? get title;
   String get description;
   VoidCallback? get retry;
   @JsonKey(ignore: true)
-  _$$_GeneralErrorHandlerStateCopyWith<_$_GeneralErrorHandlerState>
+  _$$GeneralErrorHandlerStateImplCopyWith<_$GeneralErrorHandlerStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

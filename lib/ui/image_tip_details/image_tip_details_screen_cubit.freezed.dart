@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'image_tip_details_screen_cubit.dart';
 
@@ -117,12 +117,12 @@ class _$TipsImageDetailsBaseStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_TipsImageDetailsBaseStateCopyWith<$Res>
+abstract class _$$TipsImageDetailsBaseStateImplCopyWith<$Res>
     implements $TipsImageDetailsBaseStateCopyWith<$Res> {
-  factory _$$_TipsImageDetailsBaseStateCopyWith(
-          _$_TipsImageDetailsBaseState value,
-          $Res Function(_$_TipsImageDetailsBaseState) then) =
-      __$$_TipsImageDetailsBaseStateCopyWithImpl<$Res>;
+  factory _$$TipsImageDetailsBaseStateImplCopyWith(
+          _$TipsImageDetailsBaseStateImpl value,
+          $Res Function(_$TipsImageDetailsBaseStateImpl) then) =
+      __$$TipsImageDetailsBaseStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Tip> tips, int currentPage, Tip? currentTip});
@@ -132,13 +132,13 @@ abstract class _$$_TipsImageDetailsBaseStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TipsImageDetailsBaseStateCopyWithImpl<$Res>
+class __$$TipsImageDetailsBaseStateImplCopyWithImpl<$Res>
     extends _$TipsImageDetailsBaseStateCopyWithImpl<$Res,
-        _$_TipsImageDetailsBaseState>
-    implements _$$_TipsImageDetailsBaseStateCopyWith<$Res> {
-  __$$_TipsImageDetailsBaseStateCopyWithImpl(
-      _$_TipsImageDetailsBaseState _value,
-      $Res Function(_$_TipsImageDetailsBaseState) _then)
+        _$TipsImageDetailsBaseStateImpl>
+    implements _$$TipsImageDetailsBaseStateImplCopyWith<$Res> {
+  __$$TipsImageDetailsBaseStateImplCopyWithImpl(
+      _$TipsImageDetailsBaseStateImpl _value,
+      $Res Function(_$TipsImageDetailsBaseStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -148,7 +148,7 @@ class __$$_TipsImageDetailsBaseStateCopyWithImpl<$Res>
     Object? currentPage = null,
     Object? currentTip = freezed,
   }) {
-    return _then(_$_TipsImageDetailsBaseState(
+    return _then(_$TipsImageDetailsBaseStateImpl(
       tips: null == tips
           ? _value._tips
           : tips // ignore: cast_nullable_to_non_nullable
@@ -167,8 +167,8 @@ class __$$_TipsImageDetailsBaseStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TipsImageDetailsBaseState implements _TipsImageDetailsBaseState {
-  const _$_TipsImageDetailsBaseState(
+class _$TipsImageDetailsBaseStateImpl implements _TipsImageDetailsBaseState {
+  const _$TipsImageDetailsBaseStateImpl(
       {final List<Tip> tips = const [], this.currentPage = 0, this.currentTip})
       : _tips = tips;
 
@@ -176,6 +176,7 @@ class _$_TipsImageDetailsBaseState implements _TipsImageDetailsBaseState {
   @override
   @JsonKey()
   List<Tip> get tips {
+    if (_tips is EqualUnmodifiableListView) return _tips;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tips);
   }
@@ -192,10 +193,10 @@ class _$_TipsImageDetailsBaseState implements _TipsImageDetailsBaseState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TipsImageDetailsBaseState &&
+            other is _$TipsImageDetailsBaseStateImpl &&
             const DeepCollectionEquality().equals(other._tips, _tips) &&
             (identical(other.currentPage, currentPage) ||
                 other.currentPage == currentPage) &&
@@ -210,9 +211,9 @@ class _$_TipsImageDetailsBaseState implements _TipsImageDetailsBaseState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TipsImageDetailsBaseStateCopyWith<_$_TipsImageDetailsBaseState>
-      get copyWith => __$$_TipsImageDetailsBaseStateCopyWithImpl<
-          _$_TipsImageDetailsBaseState>(this, _$identity);
+  _$$TipsImageDetailsBaseStateImplCopyWith<_$TipsImageDetailsBaseStateImpl>
+      get copyWith => __$$TipsImageDetailsBaseStateImplCopyWithImpl<
+          _$TipsImageDetailsBaseStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -276,7 +277,7 @@ abstract class _TipsImageDetailsBaseState implements TipsImageDetailsBaseState {
   const factory _TipsImageDetailsBaseState(
       {final List<Tip> tips,
       final int currentPage,
-      final Tip? currentTip}) = _$_TipsImageDetailsBaseState;
+      final Tip? currentTip}) = _$TipsImageDetailsBaseStateImpl;
 
   @override
   List<Tip> get tips;
@@ -286,6 +287,6 @@ abstract class _TipsImageDetailsBaseState implements TipsImageDetailsBaseState {
   Tip? get currentTip;
   @override
   @JsonKey(ignore: true)
-  _$$_TipsImageDetailsBaseStateCopyWith<_$_TipsImageDetailsBaseState>
+  _$$TipsImageDetailsBaseStateImplCopyWith<_$TipsImageDetailsBaseStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

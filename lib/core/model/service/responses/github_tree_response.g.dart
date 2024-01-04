@@ -6,16 +6,16 @@ part of 'github_tree_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GitHiubTreeResponse _$$_GitHiubTreeResponseFromJson(
+_$GitHiubTreeResponseImpl _$$GitHiubTreeResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_GitHiubTreeResponse(
+    _$GitHiubTreeResponseImpl(
       tree: (json['tree'] as List<dynamic>)
           .map((e) => GitHubFile.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_GitHiubTreeResponseToJson(
-        _$_GitHiubTreeResponse instance) =>
+Map<String, dynamic> _$$GitHiubTreeResponseImplToJson(
+        _$GitHiubTreeResponseImpl instance) =>
     <String, dynamic>{
       'tree': instance.tree.map((e) => e.toJson()).toList(),
     };

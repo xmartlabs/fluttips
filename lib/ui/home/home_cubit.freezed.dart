@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'home_cubit.dart';
 
@@ -95,22 +95,22 @@ class _$HomeBaseStateCopyWithImpl<$Res, $Val extends HomeBaseState>
 }
 
 /// @nodoc
-abstract class _$$_HomeStateCopyWith<$Res>
+abstract class _$$HomeStateImplCopyWith<$Res>
     implements $HomeBaseStateCopyWith<$Res> {
-  factory _$$_HomeStateCopyWith(
-          _$_HomeState value, $Res Function(_$_HomeState) then) =
-      __$$_HomeStateCopyWithImpl<$Res>;
+  factory _$$HomeStateImplCopyWith(
+          _$HomeStateImpl value, $Res Function(_$HomeStateImpl) then) =
+      __$$HomeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool hideFabMenu, bool hideFavouriteFab});
 }
 
 /// @nodoc
-class __$$_HomeStateCopyWithImpl<$Res>
-    extends _$HomeBaseStateCopyWithImpl<$Res, _$_HomeState>
-    implements _$$_HomeStateCopyWith<$Res> {
-  __$$_HomeStateCopyWithImpl(
-      _$_HomeState _value, $Res Function(_$_HomeState) _then)
+class __$$HomeStateImplCopyWithImpl<$Res>
+    extends _$HomeBaseStateCopyWithImpl<$Res, _$HomeStateImpl>
+    implements _$$HomeStateImplCopyWith<$Res> {
+  __$$HomeStateImplCopyWithImpl(
+      _$HomeStateImpl _value, $Res Function(_$HomeStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -119,7 +119,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
     Object? hideFabMenu = null,
     Object? hideFavouriteFab = null,
   }) {
-    return _then(_$_HomeState(
+    return _then(_$HomeStateImpl(
       hideFabMenu: null == hideFabMenu
           ? _value.hideFabMenu
           : hideFabMenu // ignore: cast_nullable_to_non_nullable
@@ -134,8 +134,9 @@ class __$$_HomeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_HomeState implements _HomeState {
-  const _$_HomeState({this.hideFabMenu = false, this.hideFavouriteFab = false});
+class _$HomeStateImpl implements _HomeState {
+  const _$HomeStateImpl(
+      {this.hideFabMenu = false, this.hideFavouriteFab = false});
 
   @override
   @JsonKey()
@@ -150,10 +151,10 @@ class _$_HomeState implements _HomeState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_HomeState &&
+            other is _$HomeStateImpl &&
             (identical(other.hideFabMenu, hideFabMenu) ||
                 other.hideFabMenu == hideFabMenu) &&
             (identical(other.hideFavouriteFab, hideFavouriteFab) ||
@@ -166,8 +167,8 @@ class _$_HomeState implements _HomeState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
-      __$$_HomeStateCopyWithImpl<_$_HomeState>(this, _$identity);
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
+      __$$HomeStateImplCopyWithImpl<_$HomeStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -228,7 +229,7 @@ class _$_HomeState implements _HomeState {
 
 abstract class _HomeState implements HomeBaseState {
   const factory _HomeState(
-      {final bool hideFabMenu, final bool hideFavouriteFab}) = _$_HomeState;
+      {final bool hideFabMenu, final bool hideFavouriteFab}) = _$HomeStateImpl;
 
   @override
   bool get hideFabMenu;
@@ -236,6 +237,6 @@ abstract class _HomeState implements HomeBaseState {
   bool get hideFavouriteFab;
   @override
   @JsonKey(ignore: true)
-  _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
+  _$$HomeStateImplCopyWith<_$HomeStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

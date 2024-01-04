@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'github_file_response.dart';
 
@@ -74,22 +74,22 @@ class _$GitHubFileCopyWithImpl<$Res, $Val extends GitHubFile>
 }
 
 /// @nodoc
-abstract class _$$_GitHubFileCopyWith<$Res>
+abstract class _$$GitHubFileImplCopyWith<$Res>
     implements $GitHubFileCopyWith<$Res> {
-  factory _$$_GitHubFileCopyWith(
-          _$_GitHubFile value, $Res Function(_$_GitHubFile) then) =
-      __$$_GitHubFileCopyWithImpl<$Res>;
+  factory _$$GitHubFileImplCopyWith(
+          _$GitHubFileImpl value, $Res Function(_$GitHubFileImpl) then) =
+      __$$GitHubFileImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String path, String url, GitHubFileType type});
 }
 
 /// @nodoc
-class __$$_GitHubFileCopyWithImpl<$Res>
-    extends _$GitHubFileCopyWithImpl<$Res, _$_GitHubFile>
-    implements _$$_GitHubFileCopyWith<$Res> {
-  __$$_GitHubFileCopyWithImpl(
-      _$_GitHubFile _value, $Res Function(_$_GitHubFile) _then)
+class __$$GitHubFileImplCopyWithImpl<$Res>
+    extends _$GitHubFileCopyWithImpl<$Res, _$GitHubFileImpl>
+    implements _$$GitHubFileImplCopyWith<$Res> {
+  __$$GitHubFileImplCopyWithImpl(
+      _$GitHubFileImpl _value, $Res Function(_$GitHubFileImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_GitHubFileCopyWithImpl<$Res>
     Object? url = null,
     Object? type = null,
   }) {
-    return _then(_$_GitHubFile(
+    return _then(_$GitHubFileImpl(
       path: null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -119,11 +119,11 @@ class __$$_GitHubFileCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_GitHubFile implements _GitHubFile {
-  _$_GitHubFile({required this.path, required this.url, required this.type});
+class _$GitHubFileImpl implements _GitHubFile {
+  _$GitHubFileImpl({required this.path, required this.url, required this.type});
 
-  factory _$_GitHubFile.fromJson(Map<String, dynamic> json) =>
-      _$$_GitHubFileFromJson(json);
+  factory _$GitHubFileImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GitHubFileImplFromJson(json);
 
   @override
   final String path;
@@ -138,10 +138,10 @@ class _$_GitHubFile implements _GitHubFile {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GitHubFile &&
+            other is _$GitHubFileImpl &&
             (identical(other.path, path) || other.path == path) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.type, type) || other.type == type));
@@ -154,12 +154,12 @@ class _$_GitHubFile implements _GitHubFile {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GitHubFileCopyWith<_$_GitHubFile> get copyWith =>
-      __$$_GitHubFileCopyWithImpl<_$_GitHubFile>(this, _$identity);
+  _$$GitHubFileImplCopyWith<_$GitHubFileImpl> get copyWith =>
+      __$$GitHubFileImplCopyWithImpl<_$GitHubFileImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GitHubFileToJson(
+    return _$$GitHubFileImplToJson(
       this,
     );
   }
@@ -169,10 +169,10 @@ abstract class _GitHubFile implements GitHubFile {
   factory _GitHubFile(
       {required final String path,
       required final String url,
-      required final GitHubFileType type}) = _$_GitHubFile;
+      required final GitHubFileType type}) = _$GitHubFileImpl;
 
   factory _GitHubFile.fromJson(Map<String, dynamic> json) =
-      _$_GitHubFile.fromJson;
+      _$GitHubFileImpl.fromJson;
 
   @override
   String get path;
@@ -182,6 +182,6 @@ abstract class _GitHubFile implements GitHubFile {
   GitHubFileType get type;
   @override
   @JsonKey(ignore: true)
-  _$$_GitHubFileCopyWith<_$_GitHubFile> get copyWith =>
+  _$$GitHubFileImplCopyWith<_$GitHubFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

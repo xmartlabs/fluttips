@@ -3,27 +3,30 @@ PODS:
   - bugsee_flutter (5.0.2):
     - Bugsee (= 3.2.1)
     - Flutter
-  - Firebase/CoreOnly (10.1.0):
-    - FirebaseCore (= 10.1.0)
-  - Firebase/Crashlytics (10.1.0):
+  - Firebase/CoreOnly (10.18.0):
+    - FirebaseCore (= 10.18.0)
+  - Firebase/Crashlytics (10.18.0):
     - Firebase/CoreOnly
-    - FirebaseCrashlytics (~> 10.1.0)
-  - firebase_core (2.2.0):
-    - Firebase/CoreOnly (= 10.1.0)
+    - FirebaseCrashlytics (~> 10.18.0)
+  - firebase_core (2.24.2):
+    - Firebase/CoreOnly (= 10.18.0)
     - Flutter
-  - firebase_crashlytics (3.0.5):
-    - Firebase/Crashlytics (= 10.1.0)
+  - firebase_crashlytics (3.4.8):
+    - Firebase/Crashlytics (= 10.18.0)
     - firebase_core
     - Flutter
-  - FirebaseCore (10.1.0):
+  - FirebaseCore (10.18.0):
     - FirebaseCoreInternal (~> 10.0)
-    - GoogleUtilities/Environment (~> 7.8)
-    - GoogleUtilities/Logger (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.12)
+    - GoogleUtilities/Logger (~> 7.12)
+  - FirebaseCoreExtension (10.19.0):
+    - FirebaseCore (~> 10.0)
   - FirebaseCoreInternal (10.19.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseCrashlytics (10.1.0):
-    - FirebaseCore (~> 10.0)
+  - FirebaseCrashlytics (10.18.0):
+    - FirebaseCore (~> 10.5)
     - FirebaseInstallations (~> 10.0)
+    - FirebaseSessions (~> 10.5)
     - GoogleDataTransport (~> 9.2)
     - GoogleUtilities/Environment (~> 7.8)
     - nanopb (< 2.30910.0, >= 2.30908.0)
@@ -33,6 +36,14 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
+  - FirebaseSessions (10.19.0):
+    - FirebaseCore (~> 10.5)
+    - FirebaseCoreExtension (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/Environment (~> 7.10)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
+    - PromisesSwift (~> 2.1)
   - Flutter (1.0.0)
   - flutter_email_sender (0.0.1):
     - Flutter
@@ -65,6 +76,8 @@ PODS:
     - Flutter
     - FlutterMacOS
   - PromisesObjC (2.3.1)
+  - PromisesSwift (2.3.1):
+    - PromisesObjC (= 2.3.1)
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -96,14 +109,17 @@ SPEC REPOS:
     - Bugsee
     - Firebase
     - FirebaseCore
+    - FirebaseCoreExtension
     - FirebaseCoreInternal
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FirebaseSessions
     - FMDB
     - GoogleDataTransport
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - PromisesSwift
 
 EXTERNAL SOURCES:
   bugsee_flutter:
@@ -136,13 +152,15 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Bugsee: bee7c99744047186669df53f8b7ed77cb50ef2f1
   bugsee_flutter: ef54a68c4fa59caf82f8954bbf03156965e7b6c4
-  Firebase: 444b35a9c568a516666213c2f6cccd10cb12559f
-  firebase_core: d2242c6f318db1d0dcecfbfa491e943337b0d755
-  firebase_crashlytics: f56022b932775045c810d01387b097234b204bd5
-  FirebaseCore: 55e7ae35991ccca4db03ff8d8df6ed5f17a3e4c7
+  Firebase: 414ad272f8d02dfbf12662a9d43f4bba9bec2a06
+  firebase_core: 0af4a2b24f62071f9bf283691c0ee41556dcb3f5
+  firebase_crashlytics: 55714f63ae0973c54b3a721c451ae5f815086c1f
+  FirebaseCore: 2322423314d92f946219c8791674d2f3345b598f
+  FirebaseCoreExtension: c08d14c7b22e07994e876d837e6f58642f340087
   FirebaseCoreInternal: b444828ea7cfd594fca83046b95db98a2be4f290
-  FirebaseCrashlytics: 93906d7085eb3e4dd90d08fe42a15d4f0406b6ab
+  FirebaseCrashlytics: 86d5bce01f42fa1db265f87ff1d591f04db610ec
   FirebaseInstallations: 033d199474164db20c8350736842a94fe717b960
+  FirebaseSessions: e5f4caa188dc8bc6142abc974355be75b042215e
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_email_sender: 02d7443217d8c41483223627972bfdc09f74276b
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
@@ -154,6 +172,7 @@ SPEC CHECKSUMS:
   package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
   path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
   shared_preferences_foundation: 297b3ebca31b34ec92be11acd7fb0ba932c822ca
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   url_launcher_ios: ae1517e5e344f5544fb090b079e11f399dfbe4d2
