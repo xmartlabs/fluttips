@@ -58,6 +58,7 @@ dependencies:
   url_launcher: 6.1.7
   webview_flutter: 4.0.1
   webview_flutter_web: 0.2.1
+  upgrader: ^6.5.0
 
 dev_dependencies:
   flutter_test:

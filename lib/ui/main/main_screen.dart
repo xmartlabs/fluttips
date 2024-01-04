@@ -7,6 +7,7 @@ import 'package:fluttips/core/di/di_provider.dart';
 import 'package:fluttips/ui/app_router.dart';
 import 'package:fluttips/ui/resources.dart';
 import 'package:fluttips/ui/theme/app_theme.dart';
+import 'package:upgrader/upgrader.dart';
 
 class MainScreen extends StatelessWidget {
   final _router = DiProvider.get<AppRouter>();
@@ -37,7 +38,7 @@ class MainScreen extends StatelessWidget {
         supportedLocales: AppLocalizations.supportedLocales,
         builder: (context, child) {
           Resources.setup(context);
-          return child!;
+          return UpgradeAlert(child: child!);
         },
       );
 }
