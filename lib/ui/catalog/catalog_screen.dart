@@ -14,12 +14,10 @@ class CatalogScreen extends StatefulWidget {
 }
 
 class CatalogScreenState extends State<CatalogScreen> {
-  final controllerSearchBar = TextEditingController();
   final controllerAppButton = TextEditingController();
 
   @override
   void dispose() {
-    controllerSearchBar.dispose();
     controllerAppButton.dispose();
     super.dispose();
   }
@@ -40,10 +38,6 @@ class CatalogScreenState extends State<CatalogScreen> {
               ),
             ),
             child: null,
-          ),
-          SearchBar(
-            controller: controllerSearchBar,
-            action: (word) => print('writing'),
           ),
           AppSecondaryButton(
             text: 'hello',

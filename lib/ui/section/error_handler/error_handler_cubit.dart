@@ -10,7 +10,7 @@ part 'error_handler_cubit.freezed.dart';
 part 'error_handler_state.dart';
 
 class ErrorHandlerCubit extends Cubit<ErrorHandlerState>
-    with GeneralErrorHandler {
+    implements GeneralErrorHandler {
   ErrorHandlerCubit() : super(const ErrorHandlerState.init());
 
   @override
@@ -32,7 +32,7 @@ class ErrorHandlerCubit extends Cubit<ErrorHandlerState>
   }
 }
 
-abstract class GeneralErrorHandler {
+abstract interface class GeneralErrorHandler {
   void handleError(
     Object? error, [
     StackTrace? stacktrace,

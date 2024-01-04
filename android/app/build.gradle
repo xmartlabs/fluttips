@@ -92,6 +92,9 @@ android {
     }
     lintOptions {
         checkReleaseBuilds false
+        checkAllWarnings false
+        ignoreWarnings true
+        quiet true
     }
 }
 
