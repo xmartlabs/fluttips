@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttips/ui/common/app_secondary_button.dart';
 import 'package:fluttips/ui/common/app_dialog.dart';
 import 'package:fluttips/ui/common/fab.dart';
-import 'package:fluttips/ui/common/search_bar.dart';
 import 'package:fluttips/ui/common/app_primary_button.dart';
 
 class CatalogScreen extends StatefulWidget {

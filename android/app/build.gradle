@@ -92,9 +92,7 @@ android {
     }
     lintOptions {
         checkReleaseBuilds false
-        checkAllWarnings false
-        ignoreWarnings true
-        quiet true
+        baseline file("lint-baseline.xml")
     }
 }
 
