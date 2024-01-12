@@ -3,7 +3,7 @@ description: Flutter trips and tricks.
 
 publish_to: 'none'
 
-version: 1.0.7+7
+version: 1.0.2
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -47,16 +47,17 @@ dependencies:
   package_info_plus: 4.2.0
   photo_view: 0.14.0
   rxdart: 0.27.7
-  shared_preferences: 2.0.16
+  shared_preferences: 2.1.1
   sqflite: 2.2.0+3
   sqflite_common_ffi: 2.2.1+1 # Used to provide a custom DatabaseFactory
   sqflite_common_ffi_web: 0.3.2 # Used to provide a custom DatabaseFactory
   stack_trace: 1.11.0
   stock: 1.0.1
   styled_text: 7.0.0
-  url_launcher: 6.1.7
+  url_launcher: 6.1.11
   webview_flutter: 4.0.1
   webview_flutter_web: 0.2.1
+  upgrader: 8.4.0
 
 dev_dependencies:
   flutter_test:

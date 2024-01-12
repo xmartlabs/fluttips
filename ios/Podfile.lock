@@ -3,6 +3,8 @@ PODS:
   - bugsee_flutter (5.0.2):
     - Bugsee (= 3.2.1)
     - Flutter
+  - device_info_plus (0.0.1):
+    - Flutter
   - Firebase/CoreOnly (10.18.0):
     - FirebaseCore (= 10.18.0)
   - Firebase/Crashlytics (10.18.0):
@@ -91,6 +93,7 @@ PODS:
 
 DEPENDENCIES:
   - bugsee_flutter (from `.symlinks/plugins/bugsee_flutter/ios`)
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - Flutter (from `Flutter`)
@@ -99,7 +102,7 @@ DEPENDENCIES:
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
   - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
-  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - webview_flutter_wkwebview (from `.symlinks/plugins/webview_flutter_wkwebview/ios`)
@@ -124,6 +127,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   bugsee_flutter:
     :path: ".symlinks/plugins/bugsee_flutter/ios"
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_crashlytics:
@@ -141,7 +146,7 @@ EXTERNAL SOURCES:
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
-    :path: ".symlinks/plugins/shared_preferences_foundation/ios"
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
   url_launcher_ios:
@@ -152,6 +157,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Bugsee: bee7c99744047186669df53f8b7ed77cb50ef2f1
   bugsee_flutter: ef54a68c4fa59caf82f8954bbf03156965e7b6c4
+  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
   Firebase: 414ad272f8d02dfbf12662a9d43f4bba9bec2a06
   firebase_core: 0af4a2b24f62071f9bf283691c0ee41556dcb3f5
   firebase_crashlytics: 55714f63ae0973c54b3a721c451ae5f815086c1f
@@ -173,11 +179,11 @@ SPEC CHECKSUMS:
   path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
-  shared_preferences_foundation: 297b3ebca31b34ec92be11acd7fb0ba932c822ca
+  shared_preferences_foundation: b4c3b4cddf1c21f02770737f147a3f5da9d39695
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
   url_launcher_ios: ae1517e5e344f5544fb090b079e11f399dfbe4d2
   webview_flutter_wkwebview: b7e70ef1ddded7e69c796c7390ee74180182971f
 
-PODFILE CHECKSUM: 4e8f8b2be68aeea4c0d5beb6ff1e79fface1d048
+PODFILE CHECKSUM: 989d81c492c14dc649311e4e03b91db276355942
 
 COCOAPODS: 1.14.3
