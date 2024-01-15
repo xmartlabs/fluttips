@@ -52,12 +52,11 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
         backgroundColor: context.theme.colors.background,
         body: SafeArea(
           child: UpgradeAlert(
-              upgrader: Upgrader(
-                debugLogging: true,
-                showIgnore: false,
-                durationUntilAlertAgain: Duration(milliseconds: 50),
-              ),
-              child: child,),
+            upgrader: Upgrader(
+              showIgnore: false,
+            ),
+            child: child,
+          ),
         ),
         drawer: AppDrawer(
           tabsController: AutoTabsRouter.of(context),
