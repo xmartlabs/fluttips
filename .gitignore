@@ -65,6 +65,9 @@ vendor/bundle/
 #iOS related
 ios/build
 
-#macos relates
-macos/Flutter/ephemeral/Flutter-Generated.xcconfig
-macos/Flutter/ephemeral/flutter_export_environment.sh
+# macOS
+**/Flutter/ephemeral/
+**/Pods/
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+**/macos/Flutter/ephemeral
+**/xcuserdata/

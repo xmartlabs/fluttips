@@ -52,9 +52,7 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
         backgroundColor: context.theme.colors.background,
         body: SafeArea(
           child: UpgradeAlert(
-            upgrader: Upgrader(
-              showIgnore: false,
-            ),
+            upgrader: Upgrader(),
             child: child,
           ),
         ),
