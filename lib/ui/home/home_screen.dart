@@ -9,6 +9,7 @@ import 'package:fluttips/ui/home/home_cubit.dart';
 import 'package:fluttips/ui/section/error_handler/error_handler_cubit.dart';
 import 'package:fluttips/ui/section/global_ui/global_ui_cubit.dart';
 import 'package:fluttips/core/common/config.dart';
+import 'package:upgrader/upgrader.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -49,7 +50,12 @@ class _HomeContentScreenState extends State<HomeContentScreen> {
         floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: _buildFab(showUIActionComponent),
         backgroundColor: context.theme.colors.background,
-        body: SafeArea(child: child),
+        body: SafeArea(
+          child: UpgradeAlert(
+            upgrader: Upgrader(),
+            child: child,
+          ),
+        ),
         drawer: AppDrawer(
           tabsController: AutoTabsRouter.of(context),
           action: () => _scaffoldKey.currentState!.closeDrawer(),

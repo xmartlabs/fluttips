@@ -64,3 +64,10 @@ vendor/bundle/
 
 #iOS related
 ios/build
+
+# macOS
+**/Flutter/ephemeral/
+**/Pods/
+**/macos/Flutter/GeneratedPluginRegistrant.swift
+**/macos/Flutter/ephemeral
+**/xcuserdata/
